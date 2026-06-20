@@ -60,22 +60,50 @@ food to sustain themselves. That is sensing->action->self-maintenance = the firs
 "intelligence", not asserted. Parallel track: open-endedness — evolve a ZOO of distinct
 creatures, add a behavioural-diversity metric, watch complexity grow.
 
+## Round 3 — AGENCY: a creature that senses food and forages (DONE, committed)
+
+### What worked
+- ForagingWorld = the round-2 Lenia glider + a food field + a SENSORIMOTOR REFLEX:
+  sense the food gradient over the body, rigidly translate the body up-gradient with
+  np.roll (an exact permutation -> mass-exact, no blow-up), and eat food under the body.
+- Evolving the reflex (gain + sensing radius) gives genuine chemotaxis: on UNSEEN
+  random food layouts the evolved forager eats 85% vs 18% ablated vs 18% random-drift.
+- The random-drift control is the clincher: it moves exactly as much but toward a random
+  direction, and scores like ablated -> the advantage is FOOD-DIRECTED sensing, not motion.
+  Trajectories visibly bend toward food from every direction and then buzz on it, eating.
+
+### What did NOT work / honest negatives (3 dead ends before the reflex)
+- Isotropic food->growth bonus: no steering (gamma=0 already ate ~0.31 ballistically;
+  higher gamma just destabilised the body).
+- Non-conservative advection -gamma*(grad S . grad A): produced strong "taxis" BUT
+  ballooned the creature ~10x (covers all food = soup-gaming again). Not real steering.
+- Mass-conserving advection -gamma*div(A grad S): still blew up ~10x — explicit
+  central-difference advection of a clipped field is numerically unstable; the clip
+  rectifies oscillations and injects mass. Abandoned PDE advection.
+- WHAT FIXED IT: peak-normalise the sensing kernel (sum-norm made grad S ~0), then steer
+  by a RIGID np.roll drift (mass-exact). Robust, stable, strong taxis (gain~5-7).
+
+### Next-round seed
+Round 4 = deepen agency. Top pick: METABOLIC SURVIVAL — turn on decay+feed (already in
+foraging.py) so the creature DIES without food; fitness = lifetime. Foraging stops being
+free reward and becomes survival = real homeostatic intelligence. Then ecology (many
+creatures + competition) and/or a learned within-lifetime controller (torch+MPS).
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING: evolved 2D creatures with genuine persistent locomotion (gliders),
-  discovered by co-evolving rule + morphology. Engine proven N-D capable. Still: no
-  agency, no objective the creature pursues, no learning.
+- CURRENT CEILING: an evolved 2D creature with genuine AGENCY — it senses food and
+  steers to it, food-directedly (proven vs ablation + random-drift controls), and it
+  generalises to unseen layouts. Engine N-D capable. Still missing: survival stakes
+  (food isn't yet required to live), ecology/other creatures, within-lifetime learning, 3D.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. Sensorimotor AGENCY (round 3): resource field + selection for foraging. The real
-     bar — where intelligence starts. Highest priority.
-  2. Open-endedness: a ZOO of distinct evolved creatures + behavioural-diversity /
-     novelty metrics; track complexity growth over evolutionary time.
-  3. Multi-creature ecology: predator/prey, Flow-Lenia mass-conservation so species
-     share one world without one soup eating everything.
-  4. Neural-controlled agents: a small learned controller modulating local growth;
-     within-lifetime adaptation, not just evolution. (torch + MPS here.)
-  5. Intelligence MEASURED: information integration, predictive ability, goal
-     achievement under perturbation — not asserted.
+  1. Metabolic SURVIVAL (round 4): decay+feed so death is real; select for lifetime.
+     Highest priority — converts foraging-as-reward into intelligence-for-survival.
+  2. Open-endedness: a ZOO of distinct evolved creatures + behavioural-diversity metrics.
+  3. Multi-creature ecology: competition / predator-prey; Flow-Lenia mass-conservation.
+  4. Within-lifetime LEARNING: a small neural controller modulating the drift/growth;
+     adaptation, not just evolution. (torch + MPS here.)
+  5. Intelligence MEASURED: prediction, info-integration, goal achievement under
+     perturbation — not asserted.
   6. 3D worlds: same engine, one more axis; 3D creatures + volumetric rendering.
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -84,8 +112,9 @@ creatures, add a behavioural-diversity metric, watch complexity grow.
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (what an expert would still find unimpressive): we have evolved
-  locomotion, but the creature pursues NOTHING — no perception, no goal, no learning.
-  Movement without a task is not intelligence. The ratchet: round 3 MUST add a world the
-  creature must cope with (food/resource) and select for goal-directed behaviour, so
-  "intelligence" becomes sensing->acting->surviving, measured — not prettier patterns.
+- AMBITION CRITIC (what an expert would still find unimpressive): the creature now SENSES
+  and PURSUES food (real agency, measured vs controls) — but food is not yet required to
+  LIVE, there is only one creature, and there is no within-lifetime learning. Foraging is
+  still reward, not survival. The ratchet: round 4 MUST make death real (metabolic
+  decay+feed -> fitness = lifetime), so the creature forages to STAY ALIVE; then ecology
+  (many creatures, competition) and learning. That is when "intelligence" gets teeth.

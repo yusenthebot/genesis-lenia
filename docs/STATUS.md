@@ -5,31 +5,36 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 2 (complete, committed)
+ROUND: 3 (complete, committed)
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 15 tests green.
+  convolution + growth; same code 1D/2D/3D. 19 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
-  scale-aware mass-concentration & gyration (separates a creature from soup),
-  wrap-aware centroid, net-drift vs oscillation.
-- Evolution (genesis/evolve.py): co-evolves RULE (LeniaParams) + an evolvable SEED
-  MORPHOLOGY (smooth patch) under a locomotion fitness. (mu+lambda) GA.
-- ROUND 1 (1D): spontaneous self-organisation into a persistent homeostatic lattice;
-  directed motion transient (0.40w -> 0.00w).
-- ROUND 2 (2D, VERIFIED by real run + eye): EVOLVED a genuine travelling creature
-  (a glider) DE NOVO — net travel 3.78 widths, straightness 0.99, concentration 1.0,
-  mass_cv 0.0021. Discovered, not hand-placed. Evidence: outputs/round2_2d_creature.png
-  + .gif. Caught/fixed two Goodhart failures (soup gamed support; blobs can't reach
-  the glider basin -> evolve the seed morphology).
+  scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
+- Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
+- Foraging (genesis/foraging.py): ForagingWorld = Lenia body + food field + sensorimotor
+  reflex (sense food gradient over body -> rigid np.roll drift up-gradient, mass-exact)
+  + eat. run3.py evolves the forager and runs the agency benchmark.
+- ROUND 1 (1D): self-organisation into a persistent homeostatic lattice; motion transient.
+- ROUND 2 (2D): EVOLVED a genuine glider DE NOVO (travel 3.78w, straightness 0.99).
+- ROUND 3 (2D, VERIFIED by run + eye): AGENCY. Evolved a forager that senses food and
+  steers to it. On UNSEEN random layouts: evolved (sensing on) eats 85% vs ablated
+  (sensing off) 18% vs random-drift 18%. The random-drift control = same motion, no
+  food-sensing, scores like ablated -> the win is specifically food-directed sensing,
+  not movement. Evidence: outputs/round3_agency.png, round3_benchmark.png, round3_forage.gif.
 
-NEXT ROUND SEED (round 3): turn locomotion into AGENCY. Add a resource/food field to
-the world; select creatures that move TOWARD and consume it (sensing -> action ->
-self-maintenance). This is where "intelligence" starts being real, not asserted.
-Also: open-endedness — evolve a ZOO of distinct creatures + a diversity metric.
+NEXT ROUND SEED (round 4): deepen agency + open-endedness. Options, ranked:
+  (a) METABOLIC SURVIVAL: turn on decay+feed so the creature DIES without food; fitness
+      = lifetime. Foraging becomes survival, not reward. (foraging.py already has decay/feed.)
+  (b) ECOLOGY: multiple creatures + food competition; or predator/prey. Flow-Lenia
+      mass-conservation so species share a world.
+  (c) LEARNING within lifetime (neural controller modulating drift; torch+MPS).
+  (d) 3D world (same engine) once agency is rich.
 
 HOW TO RUN:
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run3 --gif      # round-3 foraging agency + benchmark
   .venv/bin/python -m genesis.run2d --gif     # evolve a 2D glider, render strip+gif
   .venv/bin/python -m genesis.run1d           # round-1 1D self-organisation
   .venv/bin/python -m pytest -q
