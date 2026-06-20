@@ -62,6 +62,42 @@ def _circular_net_displacement(centroids: np.ndarray, shape) -> float:
     return float(np.sqrt((net ** 2).sum()))
 
 
+def _wrap_dist2_to(field: np.ndarray, centroid: np.ndarray) -> np.ndarray:
+    """Per-cell squared distance to ``centroid`` under periodic boundaries."""
+    idx = np.indices(field.shape, dtype=np.float64)
+    d2 = np.zeros(field.shape, dtype=np.float64)
+    for ax in range(field.ndim):
+        n = field.shape[ax]
+        d = idx[ax] - centroid[ax]
+        d = (d + n / 2.0) % n - n / 2.0
+        d2 += d * d
+    return d2
+
+
+def mass_concentration(field: np.ndarray, centroid: np.ndarray,
+                       window: float, threshold: float = 0.0) -> float:
+    """Fraction of mass within ``window`` cells of the centroid (wrap-aware).
+
+    ~1 for a single compact body; ~(window-area / field-area) for a space-filling
+    soup. This is the test that separates a creature from gamed turbulence.
+    """
+    w = np.where(field > threshold, field, 0.0)
+    total = w.sum()
+    if total <= 0:
+        return 0.0
+    inside = w[_wrap_dist2_to(field, centroid) <= window * window].sum()
+    return float(inside / total)
+
+
+def radius_of_gyration(field: np.ndarray, centroid: np.ndarray,
+                       threshold: float = 0.0) -> float:
+    w = np.where(field > threshold, field, 0.0)
+    total = w.sum()
+    if total <= 0:
+        return 0.0
+    return float(np.sqrt((w * _wrap_dist2_to(field, centroid)).sum() / total))
+
+
 def window_drift(history: np.ndarray, lo: float, hi: float,
                  threshold: float = 0.1) -> dict:
     """Net centroid drift over the fractional window [lo, hi] of the run.
@@ -81,12 +117,18 @@ def window_drift(history: np.ndarray, lo: float, hi: float,
 
 
 def analyze_history(history: np.ndarray, threshold: float = 0.1,
-                    tail: float = 0.5) -> dict:
-    """Compute emergence metrics from a (T, *shape) history array."""
+                    tail: float = 0.5, window: float | None = None) -> dict:
+    """Compute emergence metrics from a (T, *shape) history array.
+
+    ``window`` (cells) sets the concentration radius — pass ~2-2.5x the creature
+    scale (kernel R). Defaults to 0.2x the field width when unknown.
+    """
     T = history.shape[0]
     spatial = history.shape[1:]
     ncells = int(np.prod(spatial))
     t0 = int(T * (1.0 - tail))
+    if window is None:
+        window = 0.2 * max(spatial)
 
     mass = history.reshape(T, -1).sum(axis=1)
     tail_mass = mass[t0:]
@@ -95,6 +137,9 @@ def analyze_history(history: np.ndarray, threshold: float = 0.1,
 
     final = history[-1]
     support_fraction = float((final > threshold).mean())
+    final_centroid = circular_centroid(final, threshold)
+    concentration = mass_concentration(final, final_centroid, window, threshold)
+    gyration = radius_of_gyration(final, final_centroid, threshold) / max(spatial)
 
     centroids = np.stack([circular_centroid(history[i], threshold)
                           for i in range(t0, T)])
@@ -129,6 +174,8 @@ def analyze_history(history: np.ndarray, threshold: float = 0.1,
         "mean_mass": mean_mass,
         "mass_cv": mass_cv,
         "support_fraction": support_fraction,
+        "concentration": float(concentration),
+        "gyration": float(gyration),
         "drift_speed": float(drift_speed),
         "osc_speed": float(osc_speed),
         "straightness": float(straightness),

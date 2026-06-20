@@ -20,34 +20,50 @@ evolution and agency are meant to *emerge* from local rules.
 ## North star
 
 1. **Emergence** — self-maintaining structures arise from local rules. ✅ (round 1, 1D)
-2. **Locomotion** — creatures that travel (proto-agency). → 2D Orbium gliders (round 2)
-3. **Evolution** — genomes (`LeniaParams`) under selection → open-ended complexity.
-4. **Agency / intelligence** — sensing + neural control + selection; intelligence
-   measured, not asserted.
+2. **Locomotion** — creatures that travel (proto-agency). ✅ (round 2, evolved 2D glider)
+3. **Evolution** — rule + morphology under selection → open-ended complexity. ✅ (round 2)
+4. **Agency / intelligence** — sensing + acting + selection over a world the creature
+   must cope with (food/resource); intelligence *measured*, not asserted. → round 3
 5. **3D** — the same engine, one more axis.
 
 ## Round 1 result (1D)
 
 From a single seed, the world spontaneously self-organises into a **persistent,
-homeostatic lattice** of localised structures (mass coefficient-of-variation
-≈ 0, support ≈ 12% of space). Directed motion appears but is **transient**: net
-centroid drift decays from ~0.4 world-widths early to ~0 late — a clean,
-*measured* finding that persistent gliders are a 2D phenomenon, motivating round 2.
-
+homeostatic lattice** of localised structures (mass CV ≈ 0, support ≈ 12%).
+Directed motion appears but is **transient** (net drift ~0.4 widths early → ~0
+late) — a measured finding that persistent gliders are a 2D phenomenon.
 Evidence: `outputs/round1_1d_selforg.png`, `outputs/round1_1d_locomotion.png`.
+
+## Round 2 result (2D) — an evolved creature that travels
+
+We **co-evolve the rule and the seed morphology** (a small smooth patch) under a
+locomotion objective, and selection discovers a genuine **glider** de novo — a
+single compact body that crosses the field in a near-straight line (net travel
+≈ 3.8 widths, straightness 0.99, concentration 1.0) while holding constant mass
+(homeostasis, mass CV ≈ 0.002). Orbium is *not* hardcoded; the creature is found.
+
+Key lesson (twice caught by *looking*, not trusting metrics): a glider is a narrow
+attractor — no Gaussian blob reaches it under any rule, so the **seed shape must be
+evolved too**; and a space-filling "soup" games naive travel/support metrics, so a
+scale-aware **mass-concentration** gate is required to mean "one creature."
+
+Evidence: `outputs/round2_2d_creature.png` (snapshot strip + trajectory), `.gif`.
 
 ## Run
 
 ```bash
 uv venv --python 3.12 && uv pip install -e ".[dev]"
-.venv/bin/python -m genesis.run1d        # search + render to outputs/
-.venv/bin/python -m pytest -q            # engine invariants (1D/2D/3D)
+.venv/bin/python -m genesis.run2d --gif   # evolve a 2D glider, render strip + gif
+.venv/bin/python -m genesis.run1d         # round-1 1D self-organisation
+.venv/bin/python -m pytest -q             # engine + evolution invariants
 ```
 
 ## Layout
 
 - `genesis/world.py` — dimension-agnostic Lenia engine (`World`, `LeniaParams`).
-- `genesis/metrics.py` — emergence metrics (alive / localized / persistent / locomotion).
-- `genesis/run1d.py` — round-1 search, simulation, and space-time visualisation.
-- `tests/` — engine invariants across 1D/2D/3D.
+- `genesis/metrics.py` — emergence metrics (alive / localized / persistent /
+  locomotion / concentration / gyration), all dimension-agnostic.
+- `genesis/evolve.py` — co-evolution of rule + seed morphology (`Individual`, GA).
+- `genesis/run1d.py`, `genesis/run2d.py` — round drivers + visualisation.
+- `tests/` — engine invariants (1D/2D/3D) + evolution invariants.
 - `docs/STATUS.md`, `docs/progress.md` — autonomous-loop resume state.
