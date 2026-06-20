@@ -1,0 +1,19 @@
+[project]
+name = "genesis"
+version = "0.1.0"
+description = "A sandbox world where intelligence is grown, not coded — 1D to 3D."
+requires-python = ">=3.12"
+dependencies = ["numpy>=2.0", "matplotlib>=3.8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["genesis"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
