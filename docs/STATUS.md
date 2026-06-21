@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 17 (REVIEW/milestone complete, committed)
+ROUND: 18 (complete, committed)
 
 REVIEW (round 10): re-verified rounds 1-9 -> all hold. REVIEW (round 17): re-verified rounds 11-16 ->
 ALL HOLD. R11 93%/0.89-vs-0.52; R12 0.69 bits + envelope; R13 changing->1.00 / stable->0.44; R14 lr
@@ -16,7 +16,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 62 tests green.
+  convolution + growth; same code 1D/2D/3D. 65 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -108,20 +108,26 @@ CURRENT STATE:
   must predict the next state of a periodic AMBIGUOUS world (pattern [0,0,1,1]: a 0 leads to 0 at one
   phase and 1 at another, so you must track phase + model the pattern). Result: recurrent 1.00 accuracy
   + 1.00 BIT of PREDICTIVE INFORMATION I(brain;next-state), anticipating EVERY flip; feedforward
-  (reactive) 0.50 + 0.00 bits (can't disambiguate). The brain builds a model and FORESEES the world,
-  measured in bits. Fast (~5s). Evidence: outputs/round16_predict.png (ES curves + prediction trace
-  matching the actual next-state at every flip) + .gif (the brain calls the next symbol before it lands).
+  (reactive) 0.50 + 0.00 bits. The brain builds a model and FORESEES the world. run16.py.
+- ROUND 18 (VERIFIED): EMBODIED MEMORY — the two tracks reunited + payoff proven. genesis/embodied_memory.py
+  — a recurrent brain (ES, numpy) drives a LENIA forager's drift; the world FLASHES (food gradient visible
+  briefly, then dark while the food persists). Result (food collected/episode, averaged over 2 ES seeds,
+  unseen eval seeds): recurrent-flashing 1.9 vs feedforward-flashing 1.0; feedforward-STEADY control 3.4.
+  So flashing CRUSHES the memoryless forager (3.4 -> 1.0, -70%) and memory roughly DOUBLES it (-> 1.9),
+  recovering much of the loss -> memory PAYS exactly when the world hides information across time. The
+  embodied (rounds 3-13) and deep-mind (rounds 15-16) tracks are now ONE creature. Evidence:
+  outputs/round18_embodied_memory.png (ES curves + 3-bar payoff with steady control) + .gif (the Lenia
+  creature coasting to food through the DARK on memory).
 
-NEXT ROUND SEED (round 18 — review done, resume building): ranked:
-  (a) EMBODIED MEMORY/PREDICTION (leading): put a RECURRENT brain into a Lenia/foraging creature in a
-      world that REQUIRES memory or prediction (e.g. food whose location must be remembered, or a
-      predictable-but-delayed food schedule) -> reunite the deep-mind track (15-16) with the embodied
-      track (1-13), and show memory/prediction PAYS (survival/fitness) vs a memoryless reflex.
-  (b) PLANNING / model-based control: use the predictive model to CHOOSE actions that steer the future.
-  (c) Stable mobile 3D creature (hard/open).
+NEXT ROUND SEED (round 19): ranked:
+  (a) PLANNING / model-based control (leading): the brain PREDICTS (16) — now make it use the model to
+      CHOOSE actions that steer the future toward a goal (not just react). Anticipatory interception, etc.
+  (b) Embody PREDICTION (like R18 embodied memory, but a task needing foresight: moving/scheduled food).
+  (c) Open-endedness metrics / a creature ZOO; or stable mobile 3D creature (hard/open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run18 --gif     # round-18 embodied memory (recurrent brain in Lenia) + gif (~4 min)
   .venv/bin/python -m genesis.run16 --gif     # round-16 a brain that predicts + gif (~5s)
   .venv/bin/python -m genesis.run15 --gif     # round-15 a brain with memory + gif (~6s)
   .venv/bin/python -m genesis.run14 --gif     # round-14 Baldwin effect + gif (~4 min)

@@ -1,0 +1,5 @@
+{
+  "recurrent_flashing": 1.9,
+  "feedforward_flashing": 1.0,
+  "feedforward_steady": 3.4
+}

@@ -425,9 +425,34 @@ VERDICT: the newer half stands up. The two open structural gaps are INTEGRATION 
 in abstract benchmarks, not embodied) and PROOF-OF-PAYOFF (is memory/prediction adaptive under selection?).
 Resume building at round 18 by reuniting the tracks.
 
+## Round 18 — embodied memory: the two tracks reunited + payoff proven (DONE, committed)
+
+### What worked
+- genesis/embodied_memory.py: a recurrent net (ES, pure numpy) drives a LENIA forager's drift. The world
+  FLASHES — the food gradient is visible briefly, then dark while the food persists — so reaching food
+  requires holding the direction across the dark. This reunites the EMBODIED track (Lenia body, drift,
+  metabolism; rounds 3-13) with the RECURRENT-MIND track (rounds 15-16) in ONE creature.
+- PAYOFF (food collected/episode, averaged over 2 ES seeds, unseen eval seeds): recurrent-flashing 1.9 vs
+  feedforward-flashing 1.0; feedforward-STEADY control 3.4. Reading: a steady signal lets the memoryless
+  forager thrive (3.4); FLASHING crushes it (-> 1.0, a 70% collapse); MEMORY roughly doubles it (-> 1.9),
+  recovering much of the loss. Memory PAYS exactly when the world hides information across time — and the
+  steady control proves the feedforward forager is not broken, it just cannot cope with intermittency.
+
+### What did NOT work / honest notes
+- High variance: a single ES seed gave anywhere from feedforward=0.0 to 2.0 in flashing -> averaged over 2
+  ES seeds + 10 eval seeds for a stable estimate, and HARDENED the regime (longer dark, flash_off=26) so the
+  gap is robust. The magnitude is modest in absolute terms (a Lenia glider is a clumsy navigator), but the
+  RELATIVE effect (memory ~2x feedforward under flashing; flashing -70% for the reflex) is clear and honest.
+- Did not also embody PREDICTION (16) yet — only memory (15). That, and PLANNING, are next.
+
+### Next-round seed
+Round 19 = PLANNING / model-based control (leading): the brain can predict (16) — now make it USE the model
+to choose actions that steer the future toward a goal (anticipatory interception), not just react. Or embody
+prediction (a foresight-requiring task: moving/scheduled food).
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 16 rounds + TWO clean reviews): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 18 rounds + TWO clean reviews): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -436,13 +461,12 @@ Resume building at round 18 by reuniting the tracks.
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate->memory->prediction is complete in skeleton. (Round 16: the brain
-  FORESEES — 1 bit of predictive information, anticipating an ambiguous world's flips; a reflex can't.)
+  learning-selected->baldwin-rate->memory->prediction->embodied-memory is complete in skeleton. (Round 18:
+  a recurrent brain drives a Lenia forager; memory ~2x foraging in a flashing world — the tracks reunited.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. EMBODIED MEMORY/PREDICTION: put a recurrent brain into a Lenia/foraging creature in a world that
-     REQUIRES memory or prediction; show it PAYS (survival/fitness) vs a memoryless reflex. Reunites the
-     embodied track (1-13) with the deep-mind track (15-16) AND proves payoff. The two-birds round.
-  2. PLANNING / model-based control: use the predictive model to CHOOSE actions that steer the future.
+  1. PLANNING / model-based control: the brain predicts (16) -> make it USE the model to CHOOSE actions that
+     steer the future toward a goal (anticipatory interception), not just react. The capstone of "mind".
+  2. Embody PREDICTION (a foresight-requiring task: moving/scheduled food), like R18 did for memory.
   3. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -451,12 +475,12 @@ Resume building at round 18 by reuniting the tracks.
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 16): the brain now REMEMBERS (15) and PREDICTS (16) — it carries a model
-  of the world and foresees it, measured in bits. The mind has real depth now, not just breadth. Two
-  honest gaps remain: (1) predicting is not PLANNING — the brain foresees the world but does not yet use
-  its model to CHOOSE actions that steer the future (no model-based control); (2) the deep-brain results
-  (15, 16) live in ABSTRACT benchmarks, divorced from the Lenia body and the ecology — the embodied track
-  (1-13) and the deep-mind track (15-16) have not been reunited, and it is unproven that memory/prediction
-  PAY under selection. Also, 16 rounds in, the newer half (11-16) has not been adversarially reviewed.
-  The ratchet for round 17+: REVIEW + consolidate, then reunite (embody the predictive brain; does
-  foresight win?), then PLANNING. Depth is established; integration and proof-of-payoff are the work.
+- AMBITION CRITIC (after round 18): the mind now remembers (15), predicts (16), and — reunited with the body
+  (18) — its memory PAYS in a world that hides information. That closes the integration + proof-of-payoff gaps
+  the round-16 critic named. The one capstone left for "real intelligence": the brain foresees the future but
+  does not yet ACT ON that foresight — there is no PLANNING, no model-based control where the creature chooses
+  actions to STEER the world toward a goal. Everything so far is react / remember / predict; the missing verb
+  is INTEND. The ratchet for round 19+: planning (use the predictive model to select goal-directed actions;
+  e.g. intercept a target whose future position must be predicted). Also still open and honestly parked: a
+  stable mobile 3D creature. After planning, the mind's core loop (perceive->model->predict->act-to-achieve)
+  would be complete — a defensible end of the "make real intelligence" arc, modest in scale but whole in kind.

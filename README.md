@@ -38,6 +38,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 14 | **The Baldwin effect** — evolving how to learn | ✅ round 14 (rate self-tunes; honest negative) |
 | 15 | **A brain with memory** — holding a cue across a delay | ✅ round 15 (1 bit of memory; reflex can't) |
 | 16 | **A brain that predicts** — foreseeing the next state | ✅ round 16 (1 bit predictive info; reflex can't) |
+| 18 | **Embodied memory** — a recurrent brain in a Lenia body | ✅ round 18 (memory pays: ~2× foraging) |
 
 ---
 
@@ -306,6 +307,25 @@ builds an internal model and **foresees** the world, measured in bits.
 
 *(the brain calls the next symbol before it arrives — even at the flips)*
 
+## Round 18 — embodied memory (the two tracks reunited)
+
+Rounds 15–16 grew a *mind* (memory, prediction) in clean benchmarks; rounds 3–13 grew a
+*body* (a Lenia forager). Round 18 puts them together: a **recurrent brain drives a Lenia
+forager's drift**, in a world that **flashes** — the food gradient is visible only briefly,
+then dark while the food stays put. To reach food you must *remember* the direction and
+coast through the dark:
+
+![embodied memory: memory pays under a flashing signal](outputs/round18_embodied_memory.png)
+
+A **steady** signal lets even a memoryless forager thrive (**3.4** food/episode). **Flashing
+crushes it** (→ **1.0**, a 70% collapse). **Memory roughly doubles it** (→ **1.9**), recovering
+much of the loss. So memory isn't a free upgrade — it **pays exactly when the world hides
+information across time**, and the body + the deep brain are now *one creature*.
+
+![the creature coasts to food through the dark](outputs/round18_embodied_memory.gif)
+
+*(red = the Lenia creature, green = food; it keeps moving to food even when the signal is dark)*
+
 ---
 
 ## How it works
@@ -342,6 +362,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run14 --gif   # the Baldwin effect (evolving the learning rate) + gif
 .venv/bin/python -m genesis.run15 --gif   # a brain with memory (recurrent cue-recall) + gif
 .venv/bin/python -m genesis.run16 --gif   # a brain that predicts (recurrent forecasting) + gif
+.venv/bin/python -m genesis.run18 --gif   # embodied memory (recurrent brain in a Lenia forager) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -367,7 +388,8 @@ genesis/
   baldwin.py    a heritable learning rate (the Baldwin effect)
   memory_brain.py  a recurrent controller with memory (evolved by ES)
   predict_brain.py  a recurrent controller that predicts the next world-state
-  run1d.py … run16.py   round drivers + visualisation
+  embodied_memory.py  a recurrent brain driving a Lenia forager (memory pays)
+  run1d.py … run18.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

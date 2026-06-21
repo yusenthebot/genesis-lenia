@@ -60,6 +60,9 @@ PANELS = [
     ("outputs/round16_predict.png",
      "Round 16 · A BRAIN THAT PREDICTS — a recurrent model foresees an ambiguous world, anticipating "
      "every flip (1.00 bit of predictive info) where a reactive brain is at chance. A mind that sees ahead."),
+    ("outputs/round18_embodied_memory.png",
+     "Round 18 · EMBODIED MEMORY — a recurrent brain drives a Lenia forager in a FLASHING world: memory "
+     "lets it coast to food through the dark (forages) where a memoryless reflex collects nothing. Memory pays."),
 ]
 
 
