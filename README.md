@@ -35,6 +35,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 11 | **Embodied learning** — the brain inside the body | ✅ round 11 (body + agency + learning) |
 | 12 | **Measuring the mind** — intelligence in bits | ✅ round 12 (I(brain;world) = 0.69 bits) |
 | 13 | **Learning under selection** — does knowing win? | ✅ round 13 (yes — in a changing world) |
+| 14 | **The Baldwin effect** — evolving how to learn | ✅ round 14 (rate self-tunes; honest negative) |
 
 ---
 
@@ -242,6 +243,29 @@ The answer is conditional and clean — the **evolution-of-learning (Baldwin)** 
 
 *(blue = learners, red = fixed-reflex creatures, green = food; in a changing world the blue learners take over)*
 
+## Round 14 — the Baldwin effect (2D)
+
+If learning is selected, can evolution tune *how* to learn? The **learning rate** is now a
+heritable gene — each creature is born naive and learns at its own inherited rate, which
+mutates and is selected:
+
+![the Baldwin effect — evolving the learning rate](outputs/round14_baldwin.png)
+
+From **random** learning rates, the population self-tunes to a consistent optimum (~0.57),
+shifting from a uniform spread to a concentration at higher rates — evolution discovers a
+good amount of plasticity (favouring fast learning in this changing world). The Baldwin
+effect operates on the learning rate itself.
+
+> **Honest negative:** I expected the evolved rate to *track* how fast the world changes
+> (the textbook volatility→learning-rate law). It does **not** here — across change rates
+> from 80 to 3000 steps, and with added reward noise, the evolved rate stays ~0.5. A
+> memoryless, embodied learner washes out the clean Bayesian relationship. Recorded as-is
+> rather than tuned to fit the story (see `docs/progress.md`).
+
+![evolving learning rates](outputs/round14_baldwin.gif)
+
+*(creatures coloured by learning rate — red = slow learner, blue = fast)*
+
 ---
 
 ## How it works
@@ -275,6 +299,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run11 --gif   # embodied learning (brain in a Lenia body) + gif
 .venv/bin/python -m genesis.run12 --gif   # measuring the mind: I(brain;world) in bits + gif
 .venv/bin/python -m genesis.run13 --gif   # learning under selection (does knowing win?) + gif
+.venv/bin/python -m genesis.run14 --gif   # the Baldwin effect (evolving the learning rate) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -297,7 +322,8 @@ genesis/
   embodied_learning.py  the plastic brain inside a Lenia creature (round 11)
   measure.py    information-theoretic measures of mind (I(brain;world), bits)
   evo_learning.py  learners vs fixed-reflex creatures compete (evolution of learning)
-  run1d.py … run13.py   round drivers + visualisation
+  baldwin.py    a heritable learning rate (the Baldwin effect)
+  run1d.py … run14.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

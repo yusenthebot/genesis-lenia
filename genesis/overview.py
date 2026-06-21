@@ -51,6 +51,9 @@ PANELS = [
     ("outputs/round13_selection.png",
      "Round 13 · LEARNING UNDER SELECTION — learners vs fixed-reflex creatures compete: learning is "
      "selected (fraction -> 1) in a CHANGING world but lost in a STABLE one. Knowing wins, conditionally."),
+    ("outputs/round14_baldwin.png",
+     "Round 14 · THE BALDWIN EFFECT — the LEARNING RATE is heritable: from random rates evolution "
+     "self-tunes the population to a consistent optimum (~0.5). (Honest negative: it doesn't track change-rate.)"),
 ]
 
 

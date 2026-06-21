@@ -5,13 +5,13 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 13 (complete, committed)
+ROUND: 14 (complete, committed)
 
 REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (incl fresh seeds). Negatives intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 51 tests green.
+  convolution + growth; same code 1D/2D/3D. 54 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -82,17 +82,25 @@ CURRENT STATE:
   a STABLE world it FALLS 0.5 -> 0.39 (fixed reflexes win — learning's startup cost buys nothing). The
   change-rate sweep shows a sharp transition (~interval 1000-2000): learning pays ONLY in worlds that
   change within a lifetime. Knowing more (R12) makes a creature win — conditionally. Evidence:
-  outputs/round13_selection.png (learner-fraction-over-time + when-does-learning-pay curve) + .gif
-  (learners=blue take over fixed=red in a changing world). Slow (~6 min, ~9 sims).
+  outputs/round13_selection.png + .gif. run13.py.
+- ROUND 14 (VERIFIED, mixed): THE BALDWIN EFFECT. genesis/baldwin.py — the LEARNING RATE is a
+  heritable gene; creatures are born naive and learn at their own inherited rate, mutated+selected.
+  POSITIVE: from RANDOM rates the population self-tunes to ~0.57 (concentrated high) -> evolution
+  discovers a good amount of plasticity (favouring fast learning in a changing world); the Baldwin
+  effect operates on the rate. HONEST NEGATIVE: the evolved rate does NOT track the world's change-
+  rate (tested flip 80..3000, +/- reward noise -> ~flat / no clean gradient). The clean Bayesian
+  volatility->learning-rate law is washed out by the embodied foraging dynamics. Evidence:
+  outputs/round14_baldwin.png (mean-lr convergence + random->concentrated histogram) + .gif.
 
-NEXT ROUND SEED (round 14): ranked:
-  (a) BALDWIN EFFECT: let the learning rule / brain priors themselves evolve -> does evolution tune
-      HOW to learn? (b) Deeper controller: multi-cue / recurrent / short-term memory.
-  (c) PREDICTIVE/PLANNING intelligence: a creature that predicts the next world-state, not just reacts.
-  (d) MILESTONE REVIEW (13 rounds in). (e) Stable mobile 3D creature (hard/open).
+NEXT ROUND SEED (round 15): ranked:
+  (a) DEEPER CONTROLLER (leading): give the brain MEMORY / recurrence (a hidden state) so it can do
+      more than a one-cue reflex -> sequence tasks, anticipation. (b) PREDICTIVE intelligence: a
+      creature that predicts the next world-state (measure predictive info, not just I(brain;world)).
+  (c) MILESTONE REVIEW (14 rounds in: re-verify newer rounds). (d) Stable mobile 3D creature (open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run14 --gif     # round-14 Baldwin effect + gif (~4 min)
   .venv/bin/python -m genesis.run13 --gif     # round-13 learning under selection + gif (~6 min)
   .venv/bin/python -m genesis.run12 --gif     # round-12 measuring the mind (bits) + gif
   .venv/bin/python -m genesis.run11 --gif     # round-11 embodied learning + gif

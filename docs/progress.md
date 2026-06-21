@@ -338,9 +338,32 @@ Round 14 = BALDWIN EFFECT (leading): let the learning RULE / brain priors evolve
 is_learner flag -> does evolution tune HOW to learn? Or deeper controller (memory/recurrence), or
 predictive/planning intelligence, or a milestone review (13 rounds in).
 
+## Round 14 — the Baldwin effect (DONE, committed; mixed result)
+
+### What worked
+- genesis/baldwin.py: the LEARNING RATE is a heritable gene. Each creature is born naive (weights
+  reset) and learns at its own inherited rate, which mutates + is selected. From RANDOM rates the
+  population self-tunes to ~0.57 (distribution shifts from uniform toward high rates) -> evolution
+  discovers a good amount of plasticity (favouring fast learning in a changing world). The Baldwin
+  effect operates on the rate itself. Visual: mean-lr convergence + random->concentrated histogram + GIF.
+
+### What did NOT work / honest negative (the predicted result did NOT appear)
+- I predicted the evolved rate would TRACK the world's change-rate (high for fast worlds, low for
+  stable) — the textbook volatility->learning-rate law. It does NOT here: across flip 80..3000, and
+  with added reward noise (0.25, 0.35), the evolved rate stayed ~0.5 (one noise level even ran the
+  WRONG way). The clean Bayesian relationship is washed out by the embodied foraging dynamics
+  (born-naive each life, food competition, body inertia, the cap at LR_MAX biting). Reframed the round
+  honestly around the real positive (evolution tunes the rate to a good value) + this documented
+  negative, rather than forcing the change-rate story.
+
+### Next-round seed
+Round 15 = DEEPER CONTROLLER (leading): the brain is a one-cue value reflex; give it MEMORY / a hidden
+recurrent state so it can handle sequences and anticipate, not just react. Or predictive intelligence
+(a creature that predicts the next world-state). Or a milestone review (14 rounds in).
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 13 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 14 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -349,14 +372,15 @@ predictive/planning intelligence, or a milestone review (13 rounds in).
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected is complete in skeleton.
+  learning-selected->baldwin-rate is complete in skeleton. (Round 14 Baldwin: evolution tunes the
+  learning RATE to a good value, but — honest negative — not to the world's change-rate.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. BALDWIN EFFECT: evolve the learning RULE / brain priors, not just the is_learner flag -> does
-     evolution tune HOW to learn (lr, sensing, initial weights)?
-  2. Deeper controller: multi-cue / recurrent / short-term memory (still numpy, or torch+MPS if asked).
-  3. Predictive/planning intelligence: a creature that PREDICTS the next world-state, not just reacts.
-  4. MILESTONE REVIEW (13 rounds in): adversarially re-verify the newer rounds; consolidate.
-  5. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
+  1. DEEPER CONTROLLER: give the brain MEMORY / a recurrent hidden state -> sequences, anticipation,
+     beyond a one-cue reflex. The path to a less shallow mind.
+  2. Predictive/planning intelligence: a creature that PREDICTS the next world-state, not just reacts
+     (measure predictive information, not only I(brain;world)).
+  3. MILESTONE REVIEW (14 rounds in): adversarially re-verify the newer rounds; consolidate.
+  4. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -364,12 +388,12 @@ predictive/planning intelligence, or a milestone review (13 rounds in).
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 13): we now have the full loop — a creature that emerges, forages,
-  learns, whose mind is MEASURED, and whose learning is shown ADAPTIVE under selection (wins in a
-  changing world). That is a genuine, end-to-end artificial-life-to-intelligence story. What still
-  separates it from "real intelligence": (1) the brain only KNOWS the present hidden state — it does
-  not PREDICT the future or PLAN ahead; (2) the controller is shallow (one cue-value mapping, no memory
-  of sequences); (3) HOW it learns is hand-set, not itself evolved (no Baldwin of the learning rule).
-  The ratchet for round 14+: evolve the learning rule (Baldwin), add memory/prediction so the creature
-  anticipates rather than reacts, deepen the controller. The skeleton is whole; the depth of mind is
-  the remaining frontier.
+- AMBITION CRITIC (after round 14): the loop is complete AND the learning rule itself now evolves
+  (Baldwin) — though honestly it tunes to a good value, not to volatility as theory predicts. The one
+  thing that has not moved across 14 rounds: the CONTROLLER is shallow. Every "mind" here is a one-cue
+  value reflex with no MEMORY — it cannot represent a sequence, hold a belief over time, or PREDICT
+  what comes next; it only maps current sensation to action. That ceiling is why round 14's clean
+  Bayesian prediction failed (a memoryless learner can't be Bayes-optimal about volatility) and why
+  "intelligence" still means "tropism + fast value-update." The ratchet for round 15+: give the brain
+  a HIDDEN STATE (memory/recurrence) and a PREDICTIVE objective. Depth of mind, not breadth of demo,
+  is now the whole game.
