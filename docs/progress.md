@@ -410,9 +410,24 @@ Round 17 = MILESTONE REVIEW (leading; 16 rounds in): adversarially re-verify rou
 run the ambition critic. Then: embody the predictive brain (does foresight PAY under selection?), or
 PLANNING (use the model to act). 
 
+## Round 17 — REVIEW / milestone (DONE, committed)
+
+Adversarial re-verification of rounds 11-16 (re-ran drivers, checked metric vs claim, fresh seeds):
+- R11 embodied learning: brain 93% correct, nutritious 0.89 vs 0.52 ablated — exact.
+- R12 measuring the mind: I(brain;world) 0.69 bits vs 0.00; envelope 0.17->0.88 — exact.
+- R13 learning under selection: changing world learner-fraction ->1.00, stable ->0.44 — holds (spot-check).
+- R14 Baldwin: mean learning rate 0.48 (random) -> 0.59 (evolved) — holds (spot-check); honest negative intact.
+- R15 memory: recurrent 1.00 / 1.00 bit vs feedforward 0.53 / 0.00; on FRESH seeds 300-302: 1.00 vs 0.48.
+- R16 prediction: recurrent 1.00 / 1.00 bit vs feedforward 0.50 / 0.00; on FRESH seeds: 1.00 vs 0.50.
+- 62 tests green; no orphan modules; all README images resolve; honest negatives (R5 3D, R8 arms race,
+  R14 change-rate) all intact and documented. Repo growing (.git ~50M, outputs ~46M from committed GIFs).
+VERDICT: the newer half stands up. The two open structural gaps are INTEGRATION (deep brain 15-16 lives
+in abstract benchmarks, not embodied) and PROOF-OF-PAYOFF (is memory/prediction adaptive under selection?).
+Resume building at round 18 by reuniting the tracks.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 16 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 16 rounds + TWO clean reviews): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -424,10 +439,11 @@ PLANNING (use the model to act).
   learning-selected->baldwin-rate->memory->prediction is complete in skeleton. (Round 16: the brain
   FORESEES — 1 bit of predictive information, anticipating an ambiguous world's flips; a reflex can't.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. MILESTONE REVIEW (16 rounds in): adversarially re-verify rounds 11-16; consolidate; ambition critic.
-  2. Embody the recurrent/predictive brain in the ecology (does memory/prediction PAY under selection?).
-  3. PLANNING / model-based control: use the predictive model to CHOOSE actions that steer the future.
-  4. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
+  1. EMBODIED MEMORY/PREDICTION: put a recurrent brain into a Lenia/foraging creature in a world that
+     REQUIRES memory or prediction; show it PAYS (survival/fitness) vs a memoryless reflex. Reunites the
+     embodied track (1-13) with the deep-mind track (15-16) AND proves payoff. The two-birds round.
+  2. PLANNING / model-based control: use the predictive model to CHOOSE actions that steer the future.
+  3. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.

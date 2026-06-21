@@ -5,9 +5,14 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 16 (complete, committed)
+ROUND: 17 (REVIEW/milestone complete, committed)
 
-REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (incl fresh seeds). Negatives intact.
+REVIEW (round 10): re-verified rounds 1-9 -> all hold. REVIEW (round 17): re-verified rounds 11-16 ->
+ALL HOLD. R11 93%/0.89-vs-0.52; R12 0.69 bits + envelope; R13 changing->1.00 / stable->0.44; R14 lr
+0.48->0.59; R15 1.00-vs-0.53 (1 bit); R16 1.00-vs-0.50 (1 bit). R15/R16 robust on FRESH unused seeds
+(recurrent ~1.0, feedforward ~chance -> not cherry-picked). 62 tests green; no orphan modules; all README
+images resolve; honest negatives intact. NOTE: repo growing (.git ~50M, outputs ~46M) from committed
+GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
@@ -107,11 +112,13 @@ CURRENT STATE:
   measured in bits. Fast (~5s). Evidence: outputs/round16_predict.png (ES curves + prediction trace
   matching the actual next-state at every flip) + .gif (the brain calls the next symbol before it lands).
 
-NEXT ROUND SEED (round 17): ranked:
-  (a) MILESTONE REVIEW (16 rounds in): adversarially re-verify the newer rounds (11-16), consolidate.
-  (b) Embody the recurrent/predictive brain in the ecology (does memory/prediction PAY under selection?).
-  (c) PLANNING: use the predictive model to choose actions that steer the future (model-based control).
-  (d) Stable mobile 3D creature (hard/open).
+NEXT ROUND SEED (round 18 — review done, resume building): ranked:
+  (a) EMBODIED MEMORY/PREDICTION (leading): put a RECURRENT brain into a Lenia/foraging creature in a
+      world that REQUIRES memory or prediction (e.g. food whose location must be remembered, or a
+      predictable-but-delayed food schedule) -> reunite the deep-mind track (15-16) with the embodied
+      track (1-13), and show memory/prediction PAYS (survival/fitness) vs a memoryless reflex.
+  (b) PLANNING / model-based control: use the predictive model to CHOOSE actions that steer the future.
+  (c) Stable mobile 3D creature (hard/open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
