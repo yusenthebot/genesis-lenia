@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~44 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~46 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -79,6 +79,7 @@ with a runnable driver, a figure, and a metric.
 | 41 | **Cumulative culture** — the ratchet | ✅ round 41 (an artifact ratchets into a star no lifetime could build) |
 | 43 | **Open-ended ratchet** — complexity with no target | ✅ round 43 (a culture stacks a tower whose height just keeps growing) |
 | 44 | **Emergent roles** — symmetry-breaking, no id | ✅ round 44 (identical agents differentiate into complementary roles) |
+| 46 | **Evolution of cooperation** — a spatial major transition | ✅ round 46 (space lets altruism cluster and survive) |
 
 ---
 
@@ -786,6 +787,26 @@ pencil needs both instability and a nudge to fall.
 
 ![two identical agents settling into two roles](outputs/round44_symmetry_break.gif)
 
+## Round 46 — the evolution of cooperation (a spatial major transition)
+
+The arc set out to *derive the world's evolution*, and the one major evolutionary phenomenon it hadn't
+shown is how **cooperation** survives. In a **well-mixed** world it can't: defectors free-ride on the
+benefit cooperators provide and out-reproduce them, so altruism collapses to zero. Give the world
+**spatial structure**, though, and everything changes:
+
+![the evolution of cooperation: spatial clustering lets altruism survive](outputs/round46_cooperation.png)
+
+Same prisoner's-dilemma game, same imitate-the-best update — the only difference is whether agents
+play their **grid neighbours** or a **shuffled** population. Spatially, cooperators form **clusters**
+that preferentially help each other (clustering **2.2×** random) and cooperation **persists at ~0.37**;
+well-mixed, it **collapses to 0**. A sweep over the temptation to defect shows space sustains
+cooperation up to a critical point, then it falls — while the well-mixed world never cooperates at all.
+
+![cooperator clusters surviving vs cooperation vanishing](outputs/round46_cooperation.gif)
+
+> This is **network reciprocity** (Nowak & May, 1992): space itself is the mechanism that lets altruism
+> invade a world of cheaters — a genuine major transition, and fittingly a 2D one.
+
 ---
 
 ## How it works
@@ -842,6 +863,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run41 --gif   # cumulative culture: the ratchet builds a star + gif
 .venv/bin/python -m genesis.run43 --gif   # open-ended ratchet: a culture stacks a tower + gif
 .venv/bin/python -m genesis.run44 --gif   # emergent roles from scratch: symmetry-breaking + gif
+.venv/bin/python -m genesis.run46 --gif   # the evolution of cooperation: a spatial transition + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -887,7 +909,8 @@ genesis/
   cumulative_culture.py  cumulative culture: the ratchet (transmission + innovation)
   open_ended.py  open-ended ratchet: a culture stacks a tower (complexity, no target)
   symmetry_break.py  emergent roles from scratch: identical agents break symmetry
-  run1d.py … run44.py   round drivers + visualisation
+  cooperation.py  the evolution of cooperation: spatial network reciprocity
+  run1d.py … run46.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

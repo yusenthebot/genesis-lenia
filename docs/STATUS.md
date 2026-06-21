@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 45 (MILESTONE REVIEW — R43/R44 re-verified + capstone refresh; complete, committed)
+ROUND: 46 (THE EVOLUTION OF COOPERATION — a spatial major transition; complete, committed)
 
 REVIEW (round 45): re-verified the post-summit rounds on FRESH unseen seeds -> ALL HOLD. R43 open-ended ratchet
 (seeds 5-6): cumulative height 127-160 vs individual 5 vs transmit 1 (unbounded accumulation reproduces). R44
@@ -86,7 +86,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 111 tests green.
+  convolution + growth; same code 1D/2D/3D. 113 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -361,19 +361,29 @@ CURRENT STATE:
   spontaneous symmetry breaking (a balanced pencil needs both instability AND a perturbation). The roles emerge from the
   interaction, not from a handed-out label. Evidence: outputs/round44_symmetry_break.png (split bars + the BIFURCATION:
   identical leanings diverge to opposite roles; + the perfect-symmetry contrast where they stay tied) + .gif. run44.py.
+- ROUND 46 (VERIFIED): THE EVOLUTION OF COOPERATION — a spatial major transition (the last clearly-distinct ungated
+  dimension; closes the eco-evolutionary thread R6-8 and is fittingly 2D). genesis/cooperation.py — a spatial prisoner's
+  dilemma on a 60x60 grid: a cooperator earns 1 per cooperating neighbour, a defector earns b=1.62 per cooperating
+  neighbour (free-riding); each cell imitates the highest-scoring strategy in its Moore neighbourhood. Result: WELL-MIXED
+  (shuffle positions each step) -> defectors win, cooperation COLLAPSES to 0.00; SPATIAL (real neighbours) -> cooperators
+  CLUSTER (clustering index ~2.2x random) and cooperation PERSISTS at ~0.37 (dynamic coexistence). A b-sweep shows space
+  sustains cooperation up to a CRITICAL temptation (~1.7) then it collapses; well-mixed is 0 for all b. The mechanism is
+  NETWORK RECIPROCITY (Nowak & May 1992) -- cooperators survive by clumping; same game + update, the only difference is a
+  2D neighbourhood vs a shuffled one. Evidence: outputs/round46_cooperation.png (coop-over-time spatial-vs-well-mixed +
+  the clustered grid + the b-sweep phase transition) + .gif (the grid evolving: clusters survive vs cooperation vanishing). run46.py.
 
-NEXT ROUND SEED (round 46): review done; the new-dimension vein is THIN. The ONE clearly-distinct ungated dimension still
-  untouched is ECO-EVOLUTION major transitions. Ranked:
-  (a) ECO-EVOLUTION / MAJOR TRANSITIONS (leading): on the existing ecology (R6-8), show a major evolutionary transition --
-      e.g. the EVOLUTION OF COOPERATION (cooperators vs defectors + a mechanism: kin/spatial clustering or reciprocity that
-      lets cooperation invade), or NICHE CONSTRUCTION (organisms modify the shared environment, changing selection). A genuinely
-      distinct eco-evolutionary result, not another single-agent net-vs-ablation.
-  (b) If (a) lands, the substrate is at its HONEST EDGE -> a final whole-project capstone, then present remaining (gated) forks.
-  (c) Honour the user's /loop steer (gated motion via differentiable Lenia stays a human call).
+NEXT ROUND SEED (round 47 — the substrate is at its HONEST EDGE): the evolution of cooperation (R46) was the last clearly-
+  distinct ungated dimension, and it landed. 46 rounds: 3 capstoned threads + 3 post-summit dims + the cooperation transition.
+  Round 47 = FINAL WHOLE-PROJECT CAPSTONE: re-verify R46, refresh CAPSTONE.md to 46 rounds as the closing summary, and PRESENT
+  THE REMAINING FORKS to the user -- all now either GATED on a dependency (differentiable Lenia for the mobile creature; torch
+  for scale) or a genuinely-open research question (an open-ended ratchet that invents new structure-KINDS; N-agent symmetry-
+  breaking). The honest position: the open /loop direction is delivered broad + deep; further big leaps need a human call.
+  Lean: do the capstone, then surface the forks and let the user steer (do NOT invent same-shaped increments to keep busy).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run46 --gif     # round-46 the evolution of cooperation (spatial transition) + gif (~6s)
   .venv/bin/python -m genesis.run44 --gif     # round-44 emergent roles from scratch (symmetry-breaking) + gif (~8s)
   .venv/bin/python -m genesis.run43 --gif     # round-43 open-ended ratchet (a culture builds a tower) + gif (~5s)
   .venv/bin/python -m genesis.run41 --gif     # round-41 cumulative culture (the ratchet -> a star) + gif (~6s)

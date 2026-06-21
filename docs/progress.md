@@ -807,6 +807,28 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 46 — the evolution of cooperation: a spatial major transition (DONE, committed)
+
+### What worked (the last clearly-distinct ungated dimension; closes the eco thread R6-8)
+- genesis/cooperation.py: a spatial prisoner's dilemma on a 60x60 grid (Nowak & May 1992). A cooperator earns 1 per
+  cooperating neighbour; a defector earns b=1.62 per cooperating neighbour (free-riding); each cell imitates the
+  highest-scoring strategy in its Moore neighbourhood. Result: WELL-MIXED (positions shuffled each step) -> defectors win,
+  cooperation COLLAPSES to 0.00; SPATIAL (real neighbours) -> cooperators CLUSTER (clustering ~2.2x random) and cooperation
+  PERSISTS at ~0.37 (dynamic coexistence). A b-sweep shows space sustains cooperation up to a critical temptation (~1.7),
+  then collapse; well-mixed is 0 for all b. The mechanism is NETWORK RECIPROCITY -- same game + update, the only difference
+  is a 2D neighbourhood vs a shuffled one. A genuine major evolutionary transition, fittingly spatial/2D, distinct from
+  every net-vs-ablation round; it answers the arc's "推演世界的演化 / derive the world's evolution" for cooperation.
+
+### What did NOT work / honest notes
+- It's a classic abstract game (PD + imitate-best), not embodied in Lenia bodies -- the cleanest demonstration of the
+  spatial-cooperation transition; an embodied version (Lenia foragers that share/withhold) would be heavier and noisier.
+- The result is a faithful replication of a known model (Nowak-May), not a novel mechanism -- but it closes a real gap
+  in the world-evolution arc that the project had not shown. Stated.
+
+### Next-round seed
+Round 47 = FINAL WHOLE-PROJECT CAPSTONE (re-verify R46, refresh capstone to 46 rounds) + present the remaining forks to the
+user; the substrate is at its honest edge (further big leaps are gated or open research questions). Motion stays a proven wall.
+
 ## Round 45 — MILESTONE REVIEW: R43/R44 re-verified + capstone refresh + edge assessment (DONE, committed)
 
 Adversarial re-verification of the post-summit rounds on FRESH unseen seeds (last full review R42).
@@ -993,8 +1015,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 44 rounds + NINE reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet, + OPEN-ENDED RATCHET/unbounded complexity no target, + EMERGENT ROLES from scratch/symmetry-breaking); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 46 rounds + TEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet, + OPEN-ENDED RATCHET/unbounded complexity no target, + EMERGENT ROLES from scratch/symmetry-breaking) + ECO-EVOLUTION (the EVOLUTION OF COOPERATION via spatial network reciprocity); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

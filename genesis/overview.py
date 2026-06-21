@@ -121,6 +121,9 @@ PANELS = [
     ("outputs/round44_symmetry_break.png",
      "Round 44 · EMERGENT ROLES FROM SCRATCH — two IDENTICAL agents (no id) break symmetry into complementary roles via a learned "
      "mutual-inhibition bifurcation: split rate 1.00 vs 0.0 with no interaction vs 0.0 under perfect symmetry. Both ingredients needed."),
+    ("outputs/round46_cooperation.png",
+     "Round 46 · THE EVOLUTION OF COOPERATION — a major transition: in a well-mixed world defectors win and altruism collapses to 0, "
+     "but SPATIAL structure lets cooperators CLUSTER and survive (0.37 vs 0.00, clustering 2.2x). Space sustains cooperation."),
 ]
 
 
