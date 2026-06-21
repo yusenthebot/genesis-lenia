@@ -766,10 +766,30 @@ VERDICT: the recent rounds stand up on unseen seeds; docs are back in sync with 
 Round 34 = ITERATED LEARNING (does compositionality emerge from a transmission bottleneck, no hand-added pressure?) or
 multi-agent COORDINATION / theory-of-mind. Motion stays a proven wall.
 
+## Round 34 — iterated learning: compositionality from cultural transmission (DONE, committed)
+
+### What worked (the principled "why" behind R31)
+- genesis/communicate_iterate.py: Kirby-style iterated learning. Each generation LEARNS the language (a meaning->signal
+  map, a tanh-MLP trained by hand-coded numpy backprop) from only a SUBSET of meanings (the learnability BOTTLENECK),
+  then PRODUCES the whole language (generalising to unseen meanings); a light expressivity rescale prevents the trivial
+  all-signals-collapse. Over ~45 generations: under the BOTTLENECK (5/9) topographic similarity rises ~0 -> ~0.3 (peak
+  0.4); under FULL transmission (9/9) it stays flat ~0.0. So compositional structure emerges from TRANSMISSION ALONE
+  (holistic codes can't be reconstructed from few examples and degrade; systematic ones survive) — NO hand-added
+  structure term (unlike R31). This is the recognised mechanism, replicated cleanly in numpy with manual backprop.
+
+### What did NOT work / honest notes
+- The emergent topo is ~0.3 (more modest than R31's hand-pressured 0.79) and FLUCTUATES across seeds/generations (the
+  re-learning from a random subset each generation is stochastic). The robust claim is the bottleneck-vs-full CONTRAST
+  (~0.3 vs ~0.0), not a precise level. The expressivity rescale is a (mild) hand-added anti-collapse term — without it
+  pure transmission collapses to one signal (degenerate); stated honestly.
+
+### Next-round seed
+Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or multi-agent COORDINATION. Motion stays a proven wall.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 33 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (emergent +
-  compositional + GROUNDED communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 34 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (emergent +
+  compositional + grounded communication + iterated learning); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

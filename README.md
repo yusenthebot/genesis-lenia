@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~33 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~34 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -71,6 +71,7 @@ with a runnable driver, a figure, and a metric.
 | 30 | **Emergent communication** — two agents, a shared code | ✅ round 30 (a language emerges: 2 bits, ablation-proven) |
 | 31 | **Compositional communication** — does it factorise? | ✅ round 31 (holistic by default; structured under pressure) |
 | 33 | **Grounded communication** — a signal that drives foraging | ✅ round 33 (blind forager forages only with the channel) |
+| 34 | **Iterated learning** — compositionality from transmission | ✅ round 34 (Kirby: structure emerges from a bottleneck) |
 
 ---
 
@@ -612,6 +613,28 @@ the world, fusing the embodied track (navigation) with the social track (signall
 
 ![foragers navigating: with comm vs ablated](outputs/round33_grounded.gif)
 
+## Round 34 — iterated learning (compositionality from cultural transmission)
+
+Round 31 made language compositional with a *hand-added* structural reward. The principled
+mechanism (Kirby et al.) needs no such term: **cultural transmission through a learnability
+bottleneck**. Each "generation" learns the language (a tanh-MLP, trained by hand-coded numpy
+backprop) from only a **subset** of meanings, then must produce *all* of them — generalising to
+the ones it never saw. Holistic codes can't be reconstructed from few examples and degrade;
+compositional ones survive:
+
+![iterated learning: compositionality emerges from a transmission bottleneck](outputs/round34_iterated.png)
+
+Under the **bottleneck** (learn from 5 of 9 meanings), topographic similarity rises from ~0 to
+**~0.35** over generations; under **full transmission** (all 9) it stays flat at ~0. So
+compositional structure emerges from **transmission alone** — no structure term added — because
+compositional languages are *learnable from few examples* and holistic ones are not.
+
+![the language organising over generations](outputs/round34_iterated.gif)
+
+> So R31's hand-added pressure was a stand-in for a real mechanism: the bottleneck of passing a
+> language to the next learner. Honest scope: the emergent effect (~0.3) is more modest than R31's
+> forced 0.79 and fluctuates across runs; the bottleneck-vs-full *contrast* is the robust claim.
+
 ---
 
 ## How it works
@@ -660,6 +683,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run30 --gif   # emergent communication: two agents evolve a shared code + gif
 .venv/bin/python -m genesis.run31 --gif   # compositional communication: structure under pressure + gif
 .venv/bin/python -m genesis.run33 --gif   # grounded communication: scout guides a blind forager + gif
+.venv/bin/python -m genesis.run34 --gif   # iterated learning: compositionality from transmission + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -697,7 +721,8 @@ genesis/
   communicate.py  emergent communication: two agents evolve a shared code (ES)
   communicate_comp.py  compositional communication (2-attribute referents; topo pressure)
   communicate_grounded.py  grounded communication: scout signals food, blind forager navigates
-  run1d.py … run33.py   round drivers + visualisation
+  communicate_iterate.py  iterated learning: compositionality from a transmission bottleneck (Kirby)
+  run1d.py … run34.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

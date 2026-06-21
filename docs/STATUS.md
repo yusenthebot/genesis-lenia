@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 33 (GROUNDED COMMUNICATION — signal drives foraging; complete, committed)
+ROUND: 34 (ITERATED LEARNING — compositionality from cultural transmission; complete, committed)
 
 REVIEW (round 32): re-verified the post-R26 rounds on FRESH seeds -> ALL HOLD. R27 Flow-Lenia: mass conserved
 EXACTLY (ratio 1.00000) 2D AND 3D on a fresh config. R30 emergent comm (fresh seeds 5-7): accuracy 1.00, 2.00
@@ -47,7 +47,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 95 tests green.
+  convolution + growth; same code 1D/2D/3D. 97 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -249,16 +249,27 @@ CURRENT STATE:
   ablated it scatters randomly. Fuses the embodied track (navigation) with the social track (signalling) — the
   first communication that DOES something in the world. Evidence: outputs/round33_grounded.png (catch-rate bars
   + with-comm vs ablated trajectories) + .gif (foragers navigating, comm vs ablated side by side). run33.py.
+- ROUND 34 (VERIFIED): ITERATED LEARNING — compositionality from cultural transmission (the principled "why" behind
+  R31). genesis/communicate_iterate.py — each "generation" LEARNS the language (a meaning->signal map, a tanh-MLP
+  trained by hand-coded numpy backprop) from only a SUBSET of meanings (the learnability BOTTLENECK), then PRODUCES
+  the whole language (generalising to unseen meanings); a light expressivity rescale prevents collapse. Result over
+  ~45 generations (mean of seeds): under the BOTTLENECK (5 of 9) topographic similarity rises ~0 -> ~0.3 (peak 0.4);
+  under FULL transmission (9 of 9) it stays flat ~0.0. So compositional structure emerges from transmission ALONE
+  (holistic codes can't be reconstructed from few examples and degrade) — NO hand-added structure term (unlike R31).
+  HONEST: the effect is ~0.3 (more modest than R31's hand-pressured 0.79) and fluctuates across seeds (a stochastic
+  process); the bottleneck-vs-full contrast (~0.3 vs ~0.0) is the robust claim. Evidence: outputs/round34_iterated.png
+  (topo-over-generations bottleneck vs full + the structured transmitted language) + .gif (language organising over generations). run34.py.
 
-NEXT ROUND SEED (round 34): the social/intelligence vein stays rich + ungated. Ranked:
-  (a) ITERATED LEARNING / cultural transmission (leading): does compositionality emerge from a TRANSMISSION BOTTLENECK
-      across "generations" (Kirby), WITHOUT R31's hand-added topo pressure? The principled, more impressive mechanism.
-  (b) Multi-agent COORDINATION (a task only solvable together; division of labour) or THEORY-OF-MIND (model the other).
-  (c) BIDIRECTIONAL/dialogue grounded comm; or ground the scout-forager in the actual Lenia body (heavier).
+NEXT ROUND SEED (round 35): the social/intelligence vein stays rich + ungated. Ranked:
+  (a) THEORY-OF-MIND (leading): an OBSERVER infers another agent's hidden GOAL from its behaviour (mentalising) — a
+      distinct social-intelligence axis (not communication). Or multi-agent COORDINATION (a task only solvable together).
+  (b) Combine threads: comm-enabled coordination (agents must agree where to meet via the channel).
+  (c) A capstone/"social intelligence" SUMMARY figure tying R30-34 together if the vein starts to thin.
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run34 --gif     # round-34 iterated learning (compositionality from transmission) + gif (~12s)
   .venv/bin/python -m genesis.run33 --gif     # round-33 grounded communication (scout guides blind forager) + gif (~10s)
   .venv/bin/python -m genesis.run31 --gif     # round-31 compositional communication (structure under pressure) + gif (~8s)
   .venv/bin/python -m genesis.run30 --gif     # round-30 emergent communication (two agents evolve a code) + gif (~6s)

@@ -97,6 +97,9 @@ PANELS = [
     ("outputs/round33_grounded.png",
      "Round 33 · GROUNDED COMMUNICATION — a SCOUT sees food and signals; a BLIND FORAGER navigates to it on the signal alone. "
      "Catch rate 0.58 WITH comm vs 0.05 ablated -> the signal carries actionable spatial info a body uses to forage."),
+    ("outputs/round34_iterated.png",
+     "Round 34 · ITERATED LEARNING — compositionality emerges from cultural transmission through a learnability BOTTLENECK "
+     "(Kirby): topo ~0 -> ~0.35 across generations, while FULL transmission stays flat. No hand-added structure pressure."),
 ]
 
 
