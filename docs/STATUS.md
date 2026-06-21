@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 39 (MILESTONE REVIEW — R37/R38 re-verified + capstone refresh; complete, committed)
+ROUND: 40 (UNIFIED SOCIAL WORLD — communicate AND coordinate; the social-arc capstone; complete, committed)
 
 REVIEW (round 39): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R37 coordination (seeds 5-7):
 coverage 1.00 vs ablated 0.25 (perfect division of labour reproduces). R38 harder ToM (seed 4): mid-detour observer
@@ -67,7 +67,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 103 tests green.
+  convolution + growth; same code 1D/2D/3D. 105 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -307,17 +307,27 @@ CURRENT STATE:
   ablated (random motion) 0.35 ~ chance (0.33). So unlike R35, the modelling observer BEATS the position oracle by reading
   intent THROUGH misleading behaviour. Evidence: outputs/round38_tom_obstacle.png (accuracy-by-step observer>oracle mid-detour
   + detour trajectories around the obstacle + a mid-detour snapshot: observer right, oracle fooled) + .gif. run38.py.
+- ROUND 40 (VERIFIED): UNIFIED SOCIAL WORLD — the social-arc capstone (the multi-agent analogue of R21's unification of
+  the single mind). genesis/unified_social.py — each round a few sites are RICH but only a SCOUT sees which; it signals a
+  team of foragers (N=2, fewer than K=4 sites) who must COVER the rich sites without piling up. Full yield needs BOTH
+  social faculties together: COMMUNICATION (to know which sites are rich) and COORDINATION (to divide labour across them).
+  Result: team yield FULL 1.00 | NO-COMM 0.52 | NO-COORD 0.50 -> ablate EITHER faculty and the yield HALVES; each is
+  LOAD-BEARING, exactly as R21 showed memory/prediction/planning each necessary. This INTEGRATES the isolated social
+  rounds R30-38 into one world rather than adding a 9th standalone demo. Evidence: outputs/round40_unified_social.png
+  (yield bars + 3 vignettes: FULL covers both rich sites, NO-COMM forages blind & misses one, NO-COORD piles on one) + .gif. run40.py.
 
-NEXT ROUND SEED (round 40 — review done): the ambition critic's answer. Ranked:
-  (a) UNIFIED SOCIAL WORLD (leading): the multi-agent analogue of R21's unification — ONE world where agents must
-      COMMUNICATE AND COORDINATE to forage/survive under selection, each social faculty shown LOAD-BEARING (ablate the
-      channel or the role-split and the group does worse). The social-arc capstone; integrates R30-38 instead of adding a 9th isolated demo.
-  (b) A genuinely NEW dimension (emergent roles with no pre-given id; cumulative culture) if (a) feels forced.
-  (c) Recognise broad completeness + a whole-project capstone pass (38 rounds, 3 threads, all verified).
+NEXT ROUND SEED (round 41): the social arc is now CAPPED (R40 unified it, R21-style). The project spans 3 mature threads
+  (mind loop, open-endedness, social) across 40 rounds. Ranked:
+  (a) WHOLE-PROJECT CAPSTONE pass (leading): the social arc reached its R21-analogue unification -> a natural summit. Refresh
+      CAPSTONE.md to "40 rounds, 3 threads each with its own unification/illumination", a milestone review of the whole, and
+      present the remaining frontiers (gated motion via differentiable Lenia; emergent-roles-from-scratch; cumulative culture).
+  (b) A genuinely NEW dimension if continuing: cumulative culture (ratchet), or emergent roles WITHOUT pre-given ids.
+  (c) Present remaining options to the user (40 rounds in, a natural plateau -- worth surfacing the frontier menu).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run40 --gif     # round-40 unified social world (communicate AND coordinate) + gif (~12s)
   .venv/bin/python -m genesis.run38 --gif     # round-38 harder theory of mind (detour misleads the oracle) + gif (~18s)
   .venv/bin/python -m genesis.run37 --gif     # round-37 multi-agent coordination (division of labour) + gif (~8s)
   .venv/bin/python -m genesis.run35 --gif     # round-35 theory of mind (infer hidden goal from behaviour) + gif (~15s)

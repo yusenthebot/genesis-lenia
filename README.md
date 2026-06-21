@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~38 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~40 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -75,6 +75,7 @@ with a runnable driver, a figure, and a metric.
 | 35 | **Theory of mind** — infer a hidden goal from behaviour | ✅ round 35 (belief sharpens; ablate observation → chance) |
 | 37 | **Multi-agent coordination** — division of labour | ✅ round 37 (team covers all sites; identical agents collide) |
 | 38 | **Harder theory of mind** — intent when behaviour misleads | ✅ round 38 (detour fools the position oracle; modelling wins) |
+| 40 | **Unified social world** — communicate AND coordinate | ✅ round 40 (both faculties load-bearing; the social-arc capstone) |
 
 ---
 
@@ -700,6 +701,28 @@ and ablating the observation drops it to chance.
 > heuristic** precisely because the behaviour points the wrong way. (Honest: the oracle still wins at
 > the trivial final step, when the actor has arrived — the observer's edge is reading intent *early*.)
 
+## Round 40 — unified social world (communicate AND coordinate)
+
+Rounds 30–38 each isolated *one* social faculty. This round is their **capstone** — the multi-agent
+analogue of round 21, which unified memory + prediction + planning into one organism where every
+faculty is load-bearing. Here a team forages a world where each round a few sites are **rich**, but
+only a **scout** sees which; it must signal a team that has **fewer foragers than sites**, so they
+can't blanket everything — they must *choose* the rich sites and *split* across them:
+
+![unified social world: communication and coordination are both load-bearing](outputs/round40_unified_social.png)
+
+Full yield needs **both** faculties. With communication *and* coordination the team covers every rich
+site (**1.00**); **ablate the channel** and it forages blind, missing rich sites (**0.52**); **ablate
+the role-split** and both foragers pile onto one site (**0.50**). Each social faculty is load-bearing
+— ablate either and the yield halves.
+
+![the team foraging: full coverage vs piling up](outputs/round40_unified_social.gif)
+
+> Just as round 21 proved the single mind's faculties *compose and each is necessary*, this proves it
+> for the social mind: communication and coordination aren't separate party tricks — together they let
+> a group forage what no isolated faculty could. (Honest design note: it only works with *fewer*
+> foragers than sites — otherwise the team blankets everything and communication becomes unnecessary.)
+
 ---
 
 ## How it works
@@ -752,6 +775,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run35 --gif   # theory of mind: infer a hidden goal from behaviour + gif
 .venv/bin/python -m genesis.run37 --gif   # multi-agent coordination: division of labour + gif
 .venv/bin/python -m genesis.run38 --gif   # harder theory of mind: a detour fools the position oracle + gif
+.venv/bin/python -m genesis.run40 --gif   # unified social world: communicate AND coordinate + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -793,7 +817,8 @@ genesis/
   theory_of_mind.py  infer another agent's hidden goal from its behaviour (mentalising)
   coordinate.py  multi-agent coordination: a team evolves a division of labour
   tom_obstacle.py  harder theory of mind: read intent when a detour misleads
-  run1d.py … run38.py   round drivers + visualisation
+  unified_social.py  unified social world: communicate AND coordinate (both load-bearing)
+  run1d.py … run40.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

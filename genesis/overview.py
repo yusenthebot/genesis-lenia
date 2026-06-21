@@ -109,6 +109,9 @@ PANELS = [
     ("outputs/round38_tom_obstacle.png",
      "Round 38 · HARDER THEORY OF MIND — the actor DETOURS around an obstacle, so its motion points AWAY from its goal. "
      "Mid-detour the observer infers the goal (0.97) while a position oracle is FOOLED (0.67); modelling beats position."),
+    ("outputs/round40_unified_social.png",
+     "Round 40 · UNIFIED SOCIAL WORLD — the social-arc capstone (R21 for the group): a team must COMMUNICATE (which sites are "
+     "rich) AND COORDINATE (split across them) to forage. Yield 1.00 full vs 0.52 no-comm vs 0.50 no-coord -- both load-bearing."),
 ]
 
 

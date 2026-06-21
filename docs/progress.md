@@ -807,6 +807,27 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 40 — unified social world: communicate AND coordinate (the social-arc capstone) (DONE, committed)
+
+### What worked
+- genesis/unified_social.py: the multi-agent analogue of R21's unification of the single mind. The isolated social rounds
+  R30-38 each showed ONE faculty; here they must work TOGETHER. Each round a few sites are RICH but only a SCOUT sees
+  which; it signals a team of foragers (N=2 < K=4 sites) who must COVER the rich sites without piling up. Full yield needs
+  BOTH faculties: COMMUNICATION (which sites are rich) and COORDINATION (split across them). Result: team yield FULL 1.00
+  | NO-COMM 0.52 | NO-COORD 0.50 -> ablate EITHER and the yield HALVES; each is LOAD-BEARING, exactly as R21 proved
+  memory/prediction/planning each necessary. The vignettes make it legible: FULL covers both rich sites, NO-COMM forages
+  blind and misses one, NO-COORD piles both foragers on one. The social arc now has its capstone, integrating R30-38.
+
+### What did NOT work / honest notes
+- First attempt used N=K=4 (foragers==sites): communication became UNNECESSARY because the team could blanket ALL sites and
+  cover the rich ones for free (no-comm = 1.0). Fixed by making FEWER foragers than sites (N=2 < K=4) so they must CHOOSE
+  which to cover -> communication becomes load-bearing. Documented the design fix.
+- The no-comm vignette needed a representative (failing) draw, not a lucky one, to match the 0.52 average -- handled.
+
+### Next-round seed
+Round 41 = a WHOLE-PROJECT CAPSTONE pass (the social arc reached its R21-analogue summit; 40 rounds, 3 mature threads) OR a
+genuinely new dimension (cumulative culture; emergent roles from scratch). A natural plateau -- worth surfacing the frontier menu.
+
 ## Round 39 — MILESTONE REVIEW: R37/R38 re-verified + capstone refresh + ambition critic (DONE, committed)
 
 Adversarial re-verification of the latest rounds on FRESH unseen seeds (last full review R36).
@@ -880,8 +901,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 38 rounds + SEVEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 40 rounds + EIGHT reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
