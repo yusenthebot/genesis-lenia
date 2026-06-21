@@ -31,7 +31,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 6 | **Ecology** — many creatures compete for food | ✅ round 6 (stabilizing selection) |
 | 7 | **Evolution running** — the population self-tunes | ✅ round 7 (discovers the optimum) |
 | 8 | **Predator–prey** — a world that pushes back | ✅ round 8 (top-down regulation) |
-| 9 | **Within-lifetime learning** | → next |
+| 9 | **Learning** — a creature adapts within its life | ✅ round 9 (reversal learning) |
 
 ---
 
@@ -165,6 +165,24 @@ push back:
 
 *(prey = blue, predators = red, food = green)*
 
+## Round 9 — within-lifetime learning (2D)
+
+Everything so far was a *fixed reflex* whose gain evolution set across generations. Here a
+creature carries a **plastic brain** and adapts during a *single life*. The task is
+**reversal learning**: two food sources, only one nutritious at a time, and the rule
+**flips** every 320 steps. The learner tracks the rewarding source and — crucially —
+**re-learns after every reversal**, something no fixed or purely-evolved policy can do:
+
+![within-lifetime learning + reversals](outputs/round9_learning.png)
+
+Accuracy **0.87** for the plastic brain vs **0.49** (chance) for the *same* creature with
+plasticity switched off. The curve dips at each reversal (grey lines) and recovers — the
+hallmark of learning within a lifetime, not across generations.
+
+![learning animation](outputs/round9_learning.gif)
+
+*(the agent follows whichever source is currently nutritious as the rule flips)*
+
 ---
 
 ## How it works
@@ -194,6 +212,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run6  --gif   # ecology / competition + gif
 .venv/bin/python -m genesis.run7  --gif   # evolution running inside the ecology + gif
 .venv/bin/python -m genesis.run8  --gif   # predator-prey + gif
+.venv/bin/python -m genesis.run9  --gif   # within-lifetime learning + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -212,7 +231,8 @@ genesis/
   ecology.py    many creatures sharing one food field (competition)
   evo_ecology.py  heritable gain + birth/death/mutation (evolution running)
   predprey.py   two species: prey + predators (co-evolution, regulation)
-  run1d.py … run8.py   round drivers + visualisation
+  learning.py   a plastic value-learning brain (within-lifetime, reversal)
+  run1d.py … run9.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

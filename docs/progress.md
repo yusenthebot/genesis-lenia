@@ -220,19 +220,45 @@ that ADAPTS during its life (not only across generations). Learning is the missi
 "real intelligence". Or QUANTIFY intelligence (prediction / info-integration / goal under
 perturbation). Or evolve morphology in-ecology / revisit stable mobile 3D creature.
 
+## Round 9 — within-lifetime learning (DONE, committed)
+
+### What worked
+- genesis/learning.py: a creature with a PLASTIC value-learning brain (Rescorla-Wagner delta
+  rule per source; epsilon-greedy choice) on a REVERSAL task: two sources, one nutritious, the
+  rule flips every 320 steps. The learner re-learns after EVERY reversal -> accuracy 0.87 vs 0.49
+  for the same creature with plasticity off (lr=0 = chance). Clean ablation, 8-life stats, and a
+  curve that visibly dips at each flip then recovers. Pure numpy, fast (~8s), no torch (no gate).
+- This closes the last big conceptual gap the ambition critic kept naming: adaptation WITHIN a
+  life from a creature's OWN experience, not only across generations.
+
+### What did NOT work / honest notes
+- The brain is intentionally minimal (one-layer value learner), not a deep net. It demonstrates
+  the PRINCIPLE (within-life plasticity + reversal) cleanly; richer controllers (multi-layer,
+  recurrent, embodied in the Lenia drift policy) are deferred. The agent here is a point in an
+  arena (rendered as a marker), a deliberate departure from the Lenia body to make learning crisp
+  and measurable — re-uniting brain + Lenia body is a future round.
+
+### Next-round seed
+Round 10 is a natural MILESTONE. Options: (a) a REVIEW round — adversarially re-verify all 9
+claims by re-running every driver and checking the picture matches the metric, prune/polish;
+(b) MEASURE intelligence quantitatively (predictive info, goal under perturbation); (c) marry the
+plastic brain to the embodied Lenia creature (learned drift policy in the ecology); (d) Baldwin
+effect (evolve the learning rule). Leaning toward a REVIEW round at this milestone, then (c)/(b).
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING: 1D->2D->3D engine; agency + survival; ecology with stabilizing selection;
-  evolution running; AND a two-species world with top-down regulation + (honest) co-evolution.
-  Missing: within-lifetime LEARNING, quantitative intelligence measures, evolved morphology
-  in-ecology, stable mobile 3D creatures, sustained predator-prey cycles.
+- CURRENT CEILING (after 9 rounds): a continuous-CA world with ONE engine across 1D/2D/3D; an
+  embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
+  a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
+  two-species predator-prey world (top-down regulation); and a creature that LEARNS within its
+  life and re-learns under reversal. The arc emergence->locomotion->agency->survival->3D->ecology
+  ->evolution->predation->learning is complete in skeleton.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. WITHIN-LIFETIME LEARNING: a plastic/neural controller that adapts during life -> the
-     missing ingredient of real intelligence. (Round 9 pick.)
-  2. Intelligence MEASURED: prediction, info-integration, goal achievement under perturbation.
-  3. Evolve MORPHOLOGY in-ecology (body+brain) -> open-ended.
-  4. Stable MOBILE 3D creatures: multi-ring kernels + CMA-ES/gradient search (hard, open).
-  5. Sustained predator-prey CYCLES (delicate balance; agent-based PP is finicky).
+  1. REVIEW + consolidate (milestone): adversarially re-verify all claims; tighten the story.
+  2. MEASURE intelligence: predictive info / goal achievement under perturbation -> mind, measured.
+  3. Embodied LEARNING: plastic brain drives the Lenia creature's drift in the ecology.
+  4. Baldwin effect: evolve the learning rule / priors (learning x evolution).
+  5. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -240,10 +266,11 @@ perturbation). Or evolve morphology in-ecology / revisit stable mobile 3D creatu
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (what an expert would still find unimpressive): there are now two species and
-  the world pushes back (predators regulate prey) — but every "decision" any creature makes is
-  still a FIXED reflex whose gain is set by EVOLUTION across generations. Nothing LEARNS within
-  its own life; nothing predicts or plans; "intelligence" is a tuned tropism. The ratchet: round
-  9 must add WITHIN-LIFETIME adaptation — a small plastic/neural controller that changes a
-  creature's behaviour based on its own experience — and ideally MEASURE the resulting intelligence
-  (prediction / goal achievement), not assert it. Evolution found good reflexes; a mind learns.
+- AMBITION CRITIC (what an expert would still find unimpressive): a creature now LEARNS within its
+  life and re-learns under reversal — but the brain is a one-layer value learner on a 2-choice task,
+  and it lives DETACHED from the Lenia body/ecology (a point agent). The mind and the embodied
+  world have not yet met, the learning is shallow (no prediction, no planning, no memory of
+  sequences), and intelligence is still shown by a task score, not MEASURED information-theoretically.
+  The ratchet: marry the plastic brain to the embodied creature in the ecology, deepen the
+  controller, and measure the mind (predictive info / goal under perturbation). Also: consolidate —
+  after 9 rounds, a REVIEW that adversarially re-verifies every claim is overdue.

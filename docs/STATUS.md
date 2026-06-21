@@ -5,11 +5,11 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 8 (complete, committed)
+ROUND: 9 (complete, committed)
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 32 tests green.
+  convolution + growth; same code 1D/2D/3D. 36 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -51,17 +51,25 @@ CURRENT STATE:
   "forage hard, out-breed predation" wins; predator pursuit stable (~10). HONEST NEGATIVE: no
   clean escalating arms race — across 5 regimes evasion was always selected down and the
   balance is knife-edge (strong predation -> prey extinction; moderate -> predator-cap-pinned
-  coexistence). Evidence: outputs/round8_predprey.png + .gif (prey blue, predators red, food green).
+  coexistence). Evidence: outputs/round8_predprey.png + .gif.
+- ROUND 9 (VERIFIED): WITHIN-LIFETIME LEARNING. genesis/learning.py — a creature with a PLASTIC
+  value-learning brain on a REVERSAL-learning task (two food sources, only one nutritious, the
+  rule flips every 320 steps). The learner tracks the rewarding source and RE-LEARNS after every
+  reversal: accuracy 0.87 vs 0.49 for the SAME creature with plasticity off (lr=0, chance). This
+  is adaptation within ONE life, not across generations — the missing ingredient. Pure numpy (no
+  torch, avoided the dependency gate). Evidence: outputs/round9_learning.png (accuracy-over-life
+  with reversal dips+recoveries + learner-vs-ablated bars) + .gif (agent following the active source).
 
-NEXT ROUND SEED (round 9): ranked options to deepen "real intelligence":
-  (a) WITHIN-LIFETIME LEARNING: give a creature a tiny neural/plastic controller that ADAPTS
-      during life (not just evolution) -> learning, the missing ingredient. (numpy or torch+MPS.)
-  (b) Quantify INTELLIGENCE: predictive ability / info-integration / goal achievement under
-      perturbation -> measure mind, don't assert it.
-  (c) EVOLVE MORPHOLOGY in-ecology (body+brain), or revisit stable mobile 3D creature.
+NEXT ROUND SEED (round 10 — a milestone/review point after 9 rounds): options:
+  (a) MEASURE intelligence quantitatively (predictive info / goal achievement under perturbation),
+      or combine learning + evolution (Baldwin effect: evolve the learning rule / priors).
+  (b) Put the plastic brain into the EMBODIED Lenia creature (drive the drift policy) so learning
+      and the ecology meet. (c) A REVIEW round: adversarially re-verify all 9 claims, prune, polish.
+  (d) Evolve morphology in-ecology, or revisit stable mobile 3D creature.
 
 HOW TO RUN:
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run9 --gif      # round-9 within-lifetime learning + gif
   .venv/bin/python -m genesis.run8 --gif      # round-8 predator-prey + gif
   .venv/bin/python -m genesis.run7 --gif      # round-7 evolution inside the ecology + gif
   .venv/bin/python -m genesis.run6 --gif      # round-6 ecology / competition + gif

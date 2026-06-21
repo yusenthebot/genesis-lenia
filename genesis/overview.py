@@ -39,6 +39,9 @@ PANELS = [
     ("outputs/round8_predprey.png",
      "Round 8 · 2D · PREDATOR-PREY — a second species hunts the foragers: predators regulate "
      "prey 4x below its food ceiling; prey evolve to forage-hard, not flee (honest co-evolution)"),
+    ("outputs/round9_learning.png",
+     "Round 9 · LEARNING — a plastic brain learns which source is rewarding and RE-LEARNS after "
+     "the rule reverses (0.87 vs 0.49 ablated): adaptation within one life, not across generations"),
 ]
 
 
