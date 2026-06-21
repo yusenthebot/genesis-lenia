@@ -287,21 +287,47 @@ Round 12 = MEASURE intelligence (leading): a NUMBER for the mind — predictive 
 carries about the world / goal achievement under perturbation — not a task score. Or put learners
 INTO the ecology/predator-prey (do learners out-compete non-learners?). Or Baldwin / deeper controller.
 
+## Round 12 — measuring the mind (DONE, committed)
+
+### What worked
+- genesis/measure.py: quantify intelligence information-theoretically. I(brain;world) in BITS =
+  mutual information between the creature's internal state (which food its brain prefers, sign of
+  w_A - w_B) and the world's hidden variable (which food is nutritious). Pure, tested info-theory.
+- RESULT: the learner's brain carries 0.69 bits about the world; the same body with plasticity off
+  carries 0.00. A literal number for "the mind knows about the world", not a task score.
+- OPERATING ENVELOPE: sweep how fast the world reverses -> I(brain;world) rises monotonically from
+  0.17 bits (flip 100, world changes faster than it can learn) to 0.88 bits (flip 1600, near the
+  1-bit ceiling). This is the timescale of environmental change the mind can track.
+- Visuals: MI bar (learner vs ablated) + the envelope curve + a GIF with a live "knowledge meter"
+  (windowed I(brain;world)) rising and falling as the creature learns and the world flips.
+
+### What did NOT work / honest notes
+- MI within a single stable epoch is 0 (no variation in the hidden variable -> nothing to be
+  informative about); the meaningful measure is over windows that SPAN reversals. So the live meter
+  uses a window > one flip period. I(brain;world) measures KNOWING (epistemic state), one component
+  of intelligence — not planning or prediction-of-the-future, which remain open.
+
+### Next-round seed
+Round 13 = LEARNING UNDER SELECTION (leading): drop learners AND fixed-reflex creatures into the
+ecology under competition — does learning WIN (does plasticity pay its metabolic cost)? Measure
+I(brain;world) of the survivors. Then Baldwin effect, deeper controllers.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 11 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 12 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
   re-learns under reversal; AND (round 11) that plastic brain now lives INSIDE a Lenia creature —
-  body+agency+learning united in one organism. The arc emergence->locomotion->agency->survival->3D
-  ->ecology->evolution->predation->learning->embodied-learning is complete in skeleton.
+  body+agency+learning united in one organism; AND (round 12) intelligence MEASURED — I(brain;world)
+  = 0.69 bits, with an operating envelope. The arc emergence->locomotion->agency->survival->3D
+  ->ecology->evolution->predation->learning->embodied-learning->measured-mind is complete in skeleton.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. MEASURE intelligence: predictive info / goal achievement under perturbation -> mind, MEASURED
-     not scored. The biggest remaining "is it real intelligence?" lever.
-  2. Embodied learners IN the ecology/predator-prey: do learners out-compete fixed-reflex creatures?
-  3. Baldwin effect: evolve the learning rule / priors (learning x evolution).
-  4. Deeper controller: multi-cue / recurrent / short-term memory (still numpy, or torch+MPS if asked).
+  1. LEARNING UNDER SELECTION: learners vs fixed-reflex creatures competing in the ecology -> does
+     learning WIN / pay its cost? Measure I(brain;world) of survivors. The "is plasticity adaptive?" test.
+  2. Baldwin effect: evolve the learning rule / priors (learning x evolution).
+  3. Deeper controller: multi-cue / recurrent / short-term memory (still numpy, or torch+MPS if asked).
+  4. Predictive/planning intelligence: a creature that PREDICTS the next world-state, not just reacts.
   5. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -310,11 +336,11 @@ INTO the ecology/predator-prey (do learners out-compete non-learners?). Or Baldw
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 11): the learning brain and the Lenia body have now MET — one creature
-  that emerges, forages, and learns which food to chase, re-learning under reversal. What is still
-  missing for "real intelligence": (1) it is never MEASURED — we report task scores (accuracy, nutfrac),
-  never an information-theoretic or goal-under-perturbation NUMBER for the mind; (2) the learner has not
-  been dropped into the ECOLOGY to see if learning beats fixed reflexes under competition; (3) the brain
-  is shallow — one cue-value mapping, no memory of sequences, no prediction or planning. The ratchet for
-  round 12+: MEASURE the mind first (a number, not a demo), then test learning under selection, then
-  deepen the controller. Adding capabilities is cheap now; proving and quantifying them is the work.
+- AMBITION CRITIC (after round 12): the mind is now MEASURED (0.69 bits about the world, with an
+  operating envelope) — a real number, not a demo. What still separates this from "real intelligence":
+  (1) the brain only KNOWS (encodes the present hidden state); it does not PREDICT the future or PLAN;
+  (2) learning has never been shown to PAY — drop learners and fixed-reflex creatures into the ecology
+  and see if plasticity wins under competition/its metabolic cost; (3) the controller is shallow (one
+  cue-value mapping, no memory of sequences). The ratchet for round 13+: test learning UNDER SELECTION
+  (is plasticity adaptive?), then prediction/planning, then a deeper controller. Knowing is measured;
+  the open question is whether knowing more makes a creature win.

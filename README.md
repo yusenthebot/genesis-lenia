@@ -33,6 +33,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 8 | **Predator–prey** — a world that pushes back | ✅ round 8 (top-down regulation) |
 | 9 | **Learning** — a creature adapts within its life | ✅ round 9 (reversal learning) |
 | 11 | **Embodied learning** — the brain inside the body | ✅ round 11 (body + agency + learning) |
+| 12 | **Measuring the mind** — intelligence in bits | ✅ round 12 (I(brain;world) = 0.69 bits) |
 
 ---
 
@@ -203,6 +204,24 @@ within-life learning (round 9), united in **one creature**.
 
 *(magenta = the Lenia creature; the nutritious food type is shown brighter; it flips mid-life)*
 
+## Round 12 — measuring the mind (bits)
+
+Task scores ("0.89 nutritious") say a creature *does well*; they don't say its mind *knows*
+anything. So we measure knowing: the **mutual information `I(brain ; world)`**, in bits,
+between the creature's internal state (which food its brain prefers) and the world's hidden
+variable (which food is nutritious).
+
+![measuring the mind: bits + operating envelope](outputs/round12_measure.png)
+
+The learner's brain carries **0.69 bits** about the world; the same body with plasticity off
+carries **0.00**. And sweeping how fast the world reverses traces the mind's **operating
+envelope** — knowledge rises from 0.17 bits (a world that changes faster than it can learn)
+to 0.88 bits (a slow world, near the 1-bit ceiling). The mind, *measured*, not asserted.
+
+![the mind's knowledge, live](outputs/round12_measure.gif)
+
+*(left: the creature foraging; right: a live "knowledge meter" — recent `I(brain;world)` rising and falling as it learns and the world flips)*
+
 ---
 
 ## How it works
@@ -234,6 +253,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run8  --gif   # predator-prey + gif
 .venv/bin/python -m genesis.run9  --gif   # within-lifetime learning + gif
 .venv/bin/python -m genesis.run11 --gif   # embodied learning (brain in a Lenia body) + gif
+.venv/bin/python -m genesis.run12 --gif   # measuring the mind: I(brain;world) in bits + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -254,7 +274,8 @@ genesis/
   predprey.py   two species: prey + predators (co-evolution, regulation)
   learning.py   a plastic value-learning brain (within-lifetime, reversal)
   embodied_learning.py  the plastic brain inside a Lenia creature (round 11)
-  run1d.py … run11.py   round drivers + visualisation
+  measure.py    information-theoretic measures of mind (I(brain;world), bits)
+  run1d.py … run12.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

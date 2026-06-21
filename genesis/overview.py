@@ -45,6 +45,9 @@ PANELS = [
     ("outputs/round11_embodied.png",
      "Round 11 · EMBODIED LEARNING — the plastic brain lives INSIDE a Lenia creature: its drift "
      "weights flip with the rule (93% correct) and it eats 0.89 nutritious vs 0.52 ablated (body+mind united)"),
+    ("outputs/round12_measure.png",
+     "Round 12 · MEASURING THE MIND — I(brain;world)=0.69 bits for the learner vs 0.00 ablated; the "
+     "operating envelope shows knowledge scaling with how slowly the world changes. Mind, measured."),
 ]
 
 

@@ -5,14 +5,13 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 11 (complete, committed)
+ROUND: 12 (complete, committed)
 
-REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (R2 4.05w/0.99, R3 85/18/18,
-R4 832/158/299, R6 optimum~4, R9 0.87 vs 0.49 incl fresh seeds). Honest negatives intact.
+REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (incl fresh seeds). Negatives intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 42 tests green.
+  convolution + growth; same code 1D/2D/3D. 48 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -68,17 +67,24 @@ CURRENT STATE:
   uneaten (so it must actively forage). The drift weights flip with the rule (argmax(w)==active 93%)
   and the embodied learner eats 0.89 nutritious vs 0.52 for the same body with plasticity off. Body
   (R2) + agency (R3) + learning (R9) united in ONE creature. Evidence: outputs/round11_embodied.png
-  (weight-flip trajectory + nutritious-fraction curve) + .gif (creature chasing the nutritious food).
+  (weight-flip trajectory + nutritious-fraction curve) + .gif. run11.py.
+- ROUND 12 (VERIFIED): MEASURING THE MIND. genesis/measure.py — quantify intelligence as the mutual
+  information I(brain;world) in BITS between the creature's internal state (which food its brain
+  prefers) and the world's hidden variable (which food is nutritious). Result: learner 0.69 bits vs
+  ablated 0.00 bits. OPERATING ENVELOPE (MI vs reversal interval): 0.17 bits (fast world, flip 100)
+  -> 0.88 bits (slow world, flip 1600) -> the rate of change the mind can track, approaching the
+  1-bit ceiling. The mind MEASURED, not asserted. Evidence: outputs/round12_measure.png (MI bar +
+  envelope) + .gif (live "knowledge meter": recent I(brain;world) rising/falling as it learns/reverses).
 
-NEXT ROUND SEED (round 12): ranked:
-  (a) MEASURE intelligence (leading): give the mind a NUMBER — predictive information the brain
-      carries about the world, or goal achievement under perturbation — not a task score.
-  (b) Embodied learning IN the ecology/predator-prey (learners vs non-learners compete; does
-      learning win?). (c) Baldwin effect (evolve the learning rule). (d) Deeper controller
-      (multi-cue / recurrent / memory). (e) Stable mobile 3D creature (hard/open).
+NEXT ROUND SEED (round 13): ranked:
+  (a) LEARNING UNDER SELECTION (leading): put learners vs fixed-reflex creatures in the ecology
+      (round 6/7) under competition — does learning WIN? (does plasticity pay its cost?) Measure
+      I(brain;world) of survivors. (b) Baldwin effect (evolve the learning rule/priors).
+      (c) Deeper controller (multi-cue/recurrent/memory). (d) Stable mobile 3D creature (hard/open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run12 --gif     # round-12 measuring the mind (bits) + gif
   .venv/bin/python -m genesis.run11 --gif     # round-11 embodied learning + gif
   .venv/bin/python -m genesis.run9 --gif      # round-9 within-lifetime learning + gif
   .venv/bin/python -m genesis.run8 --gif      # round-8 predator-prey + gif
