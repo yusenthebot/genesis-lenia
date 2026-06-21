@@ -73,6 +73,9 @@ PANELS = [
     ("outputs/round22_openended.png",
      "Round 22 · OPEN-ENDEDNESS — MAP-Elites ILLUMINATES a behaviour space (move x size), filling ~84% of it with a "
      "ZOO of distinct creatures while fitness search collapses to one; diversity ACCUMULATES instead of converging."),
+    ("outputs/round24_openmind.png",
+     "Round 24 · OPEN-ENDED MINDS — same body, but the MIND varies: MAP-Elites illuminates a zoo of distinct foraging "
+     "STRATEGIES (roam x spread) with visibly different trajectories, where fitness converges to one. Creativity of minds."),
 ]
 
 

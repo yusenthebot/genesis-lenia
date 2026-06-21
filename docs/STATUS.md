@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 23 (MILESTONE REVIEW, complete, committed)
+ROUND: 24 (OPEN-ENDED MINDS, complete, committed)
 
 REVIEW (round 23): re-verified R21-22 on FRESH unseen seeds -> BOTH HOLD (not cherry-picked). R21 ablation
 ladder on seeds 30-49: full 288 > memory_only 192 > no_memory 157 (committed 263/188/140 on seeds 0-19 —
@@ -31,7 +31,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 75 tests green.
+  convolution + growth; same code 1D/2D/3D. 78 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -158,17 +158,28 @@ CURRENT STATE:
   this behaviour space, not single-attractor. HONEST: the "zoo" spans a clean small glider (mass ~140) through
   large multi-blob "foam" textures (high mass) — the behaviour space is filled with viable PATTERNS, not all
   discrete single organisms; and the map is bounded (no claim of UNBOUNDED open-endedness). Evidence:
-  outputs/round22_openended.png (behaviour map + coverage curve + zoo gallery) + .gif (4 creatures animating). run22.py.
+  outputs/round22_openended.png + .gif. run22.py.
+- ROUND 24 (VERIFIED): OPEN-ENDED MINDS — a zoo of foraging STRATEGIES, not body shapes. genesis/openmind.py —
+  same body (the evolved glider), but the MIND is a 4-parameter foraging policy (sensing range, gain, exploration,
+  momentum); the creature forages scattered food. MAP-Elites illuminates the foraging-BEHAVIOUR space (how much it
+  ROAMS x how WIDELY its path SPREADS), keeping the best-eating forager per niche; vs a fitness GA. Result:
+  MAP-Elites fills 28 niches (of the reachable ~30; low-roam can't be high-spread) with VISIBLY DISTINCT
+  trajectories — compact efficient foragers, sprawling rovers, columnar pacers — while the fitness GA's population
+  diversity collapses to ~5. So open-endedness holds for MINDS too, not just morphologies. HONEST: the reachable
+  behaviour region is a triangle (~30/64 is near max, not 64); and a compact path can eat as much as a long rover
+  (small world) -> the diversity is in STYLE, not all in success. Evidence: outputs/round24_openmind.png (strategy
+  map + coverage curve + TRAJECTORY gallery) + .gif (4 minds foraging). run24.py.
 
-NEXT ROUND SEED (round 24 — review done; build again): ranked:
-  (a) OPEN-ENDED MINDS (leading): MAP-Elites/novelty over FORAGING-BEHAVIOUR descriptors (not body shape) — a zoo of
-      distinct foraging STRATEGIES. Extends R22's open-endedness from bodies to minds; the deeper creativity claim.
-  (b) Stable mobile 3D creature (hard/open, long-parked) — the biggest remaining honest negative; would also
-      strengthen the 1D->2D->3D claim. Needs the heavy specialised search (multi-ring kernels + CMA-ES).
-  (c) Deepen unification: EVOLVE (not hand-code) the integrated controller, or put unified creatures in an ecology.
+NEXT ROUND SEED (round 25): ranked:
+  (a) STABLE MOBILE 3D CREATURE (leading now): the biggest remaining honest negative, parked since R5 — the only place
+      the 1D->2D->3D promise is incomplete (3D gives self-organisation, not a glider). Worth ONE serious push with the
+      heavier search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negative — report honestly.
+  (b) Deepen unification: EVOLVE the integrated controller; or unified creatures competing in an ecology.
+  (c) A capstone REVIEW + "what is this" essay if returns are clearly diminishing (gate: don't add a dependency).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run24 --gif     # round-24 open-ended minds (foraging-strategy zoo) + gif (~6 min)
   .venv/bin/python -m genesis.run22 --gif     # round-22 open-endedness (MAP-Elites zoo) + gif (~5 min)
   .venv/bin/python -m genesis.run21 --gif     # round-21 unification (ablation of faculties) + gif (~4s)
   .venv/bin/python -m genesis.run19 --gif     # round-19 planning / interception + gif (~90s)

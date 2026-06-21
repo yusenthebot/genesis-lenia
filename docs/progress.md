@@ -556,9 +556,32 @@ Adversarial re-verification of R21-22 on FRESH unseen seeds (the last full revie
 - NOTE: repo growing (.git 62M, outputs 51M) from committed GIFs/PNGs — inherent to the visual README; acceptable.
 VERDICT: the newer rounds stand up on unseen seeds. Unlike R18 (corrected at R20), R21-22 needed no correction.
 
+## Round 24 — open-ended MINDS: a zoo of foraging strategies (DONE, committed)
+
+### What worked
+- genesis/openmind.py: same body (the evolved glider), but the MIND varies — a 4-parameter foraging policy
+  (sensing range, gain, exploration, momentum). The creature forages scattered food; MAP-Elites illuminates the
+  foraging-BEHAVIOUR space (roaming x trajectory-spread), keeping the best-eating forager per niche; vs a fitness GA.
+- RESULT: MAP-Elites fills 28 niches (~the reachable max) with VISIBLY DISTINCT trajectories — compact efficient
+  foragers (path 136, ate 16), sprawling rovers (path 360-600, ate 16), columnar pacers (path 212, ate 7) — while the
+  fitness GA's population diversity collapses to ~5. Open-endedness holds for MINDS, not just bodies (R22). The
+  trajectory gallery is the centrepiece: distinct minds forage in qualitatively different ways.
+
+### What did NOT work / honest notes
+- Same axis-tuning lesson as R22, twice: first axes clipped/saturated (ROAM_MAX too small; directness compressed to
+  0..0.32 because scattered-food foragers wander) -> swapped to roaming x trajectory-SPREAD and widened ROAM_MAX -> a
+  good spread (28 vs 6). Lesson restated: pick behaviour axes that actually vary, verify with a diagnostic sweep.
+- The reachable behaviour region is a TRIANGLE (low-roam physically can't be high-spread), so 28/64 is ~the max, not a
+  failure to fill. And in this small world a compact path eats as much as a long rover -> the diversity is in STYLE,
+  not all in foraging success; "more roaming" is not "more food" here. Stated, not hidden.
+
+### Next-round seed
+Round 25 = the STABLE MOBILE 3D CREATURE (the biggest parked negative, since R5) — one serious push with a heavier
+search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negative; report honestly either way.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 23 rounds + FOUR reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 24 rounds + FOUR reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -567,13 +590,13 @@ VERDICT: the newer rounds stand up on unseen seeds. Unlike R18 (corrected at R20
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION->OPEN-ENDEDNESS.
-  (Round 22: MAP-Elites illuminates 54/64 niches — a ZOO — while fitness converges to one; the substrate is
-  generative across a behaviour space, the first round about creativity rather than convergence.)
+  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION->OPEN-ENDEDNESS(bodies)
+  ->OPEN-ENDED-MINDS. (Round 24: same body, varied policy -> MAP-Elites illuminates 28 distinct foraging STRATEGIES
+  with visibly different trajectories, while fitness converges to ~5. Creativity of minds, not just morphology.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. MILESTONE REVIEW (22 rounds, last review R20): re-verify R21-22 adversarially, prune, refresh the arc telling.
-  2. Open-ended MINDS (not bodies): novelty-search / MAP-Elites over FORAGING-BEHAVIOUR descriptors — does the
-     mind space stay generative too? (R22 illuminated bodies; the deeper claim is open-ended behaviour.)
+  1. STABLE MOBILE 3D CREATURE (the biggest parked negative since R5; 3D gives self-organisation, not a glider) — one
+     serious push with a heavier search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negative.
+  2. Deepen unification: EVOLVE the integrated controller; or unified creatures competing in an ecology.
   3. Stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked) — the biggest remaining honest negative.
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -627,3 +650,12 @@ VERDICT: the newer rounds stand up on unseen seeds. Unlike R18 (corrected at R20
   feasibility, extends R22) OR a real attempt at the 3D creature (higher ambition, may stay negative — but worth one honest
   push with the heavier search). Either is a legitimate frontier; neither is busywork. The substrate itself (numpy CA) is
   near its ceiling — bigger leaps (Flow-Lenia, torch/GPU, differentiable) are gated on a new dependency = ask the user first.
+- AMBITION CRITIC (after round 24 — open-ended minds done): the creativity claim is now BOTH bodies (R22) and minds (R24) —
+  a zoo of foraging strategies with visibly distinct trajectories. Of the two gaps the R23 critic named, one is closed; the
+  remaining headline negative is the STABLE MOBILE 3D CREATURE (parked since R5). It is the single most honest, most
+  expert-legible thing still missing — "you scaled the ENGINE to 3D but never grew a 3D creature." Round 25 should make ONE
+  serious, well-resourced attempt (multi-ring/shell 3D kernels, CMA-ES or a big random screen over rule+seed, viability =
+  localized+persistent+mobile in 3D) and REPORT THE RESULT HONESTLY — a found 3D glider would be the capstone; a rigorous
+  negative ("here is exactly how hard it is, here's the search, here's why it's knife-edge") is itself a real result and
+  closes the question. After that, the numpy-CA substrate is genuinely near its ceiling: further leaps (Flow-Lenia, torch/GPU)
+  need a dependency = a GATE (ask the user). So R25 = the 3D push; then likely a capstone/曲终 unless the user redirects.

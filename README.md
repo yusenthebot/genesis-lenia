@@ -19,13 +19,13 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~22 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~24 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
 act-to-achieve*. Those faculties are then **integrated into one organism** (round 21), and the
 substrate is shown to keep **generating a zoo of distinct creatures** rather than converging
-(round 22). Each capability is shown with a runnable driver, a figure, and a metric.
+(round 22) — in both body shape and **foraging strategy** (round 24). Each capability is shown with a runnable driver, a figure, and a metric.
 
 > **Honest scope.** These are *focused demonstrations*, not one organism doing everything at
 > once: the deep-mind results (memory, prediction, planning) are isolated in the settings that
@@ -58,6 +58,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 19 | **Planning** — acting on foresight to intercept | ✅ round 19 (planner 2× faster; the loop is whole) |
 | 21 | **Unification** — one creature, all four faculties | ✅ round 21 (ablate any → it starves; each load-bearing) |
 | 22 | **Open-endedness** — keep generating, or converge? | ✅ round 22 (MAP-Elites zoo: 54/64 niches vs 1) |
+| 24 | **Open-ended minds** — a zoo of foraging strategies | ✅ round 24 (28 distinct strategies vs ~5) |
 
 ---
 
@@ -430,6 +431,26 @@ optimization *throws away* — the substrate is genuinely generative across this
 > discrete single organisms; and the map is **bounded** (illumination of a finite space, not a
 > claim of *unbounded* open-endedness, which would need a richer, coevolving substrate).
 
+## Round 24 — open-ended minds (a zoo of *strategies*)
+
+Round 22 illuminated a zoo of *body shapes*. This goes one level deeper: keep the body **fixed**
+(the evolved glider) and vary the **mind** — a 4-parameter foraging policy (sensing range, speed,
+exploration, momentum) — then illuminate the space of foraging *behaviours* (how much it **roams**
+× how **widely** its path spreads) with MAP-Elites:
+
+![open-ended minds: a zoo of foraging strategies with distinct trajectories](outputs/round24_openmind.png)
+
+MAP-Elites fills **28 strategy niches** (≈ the reachable maximum) with foragers whose **trajectories
+look visibly different** — compact efficient foragers, sprawling rovers, columnar pacers — while the
+fitness GA's population diversity collapses to ~**5**. So open-endedness holds for **minds**, not just
+morphologies: the same body supports a whole zoo of distinct ways to forage.
+
+![four foraging minds, one body](outputs/round24_openmind.gif)
+
+> Honest scope: the reachable behaviour region is a triangle (a low-roaming forager *can't* have a
+> wide-spreading path), so ~30/64 is near the ceiling, not a shortfall; and in this small world a
+> compact path can eat as much as a long rover, so the diversity is in *style*, not all in success.
+
 ---
 
 ## How it works
@@ -470,6 +491,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run19 --gif   # planning / interception (act on foresight) + gif
 .venv/bin/python -m genesis.run21 --gif   # unification: one creature, all faculties (ablation) + gif
 .venv/bin/python -m genesis.run22 --gif   # open-endedness: MAP-Elites zoo vs fitness converges + gif
+.venv/bin/python -m genesis.run24 --gif   # open-ended minds: a zoo of foraging strategies + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -499,7 +521,8 @@ genesis/
   planning.py   acting on foresight: intercept a moving target (pursuit vs planner)
   unified.py    one creature integrating body+memory+prediction+planning (ablation)
   openended.py  MAP-Elites illuminating a behaviour-space zoo (open-endedness)
-  run1d.py … run22.py   round drivers + visualisation
+  openmind.py   MAP-Elites over foraging policies — a zoo of strategies (open-ended minds)
+  run1d.py … run24.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
