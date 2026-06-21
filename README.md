@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~37 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~38 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -74,6 +74,7 @@ with a runnable driver, a figure, and a metric.
 | 34 | **Iterated learning** — compositionality from transmission | ✅ round 34 (Kirby: structure emerges from a bottleneck) |
 | 35 | **Theory of mind** — infer a hidden goal from behaviour | ✅ round 35 (belief sharpens; ablate observation → chance) |
 | 37 | **Multi-agent coordination** — division of labour | ✅ round 37 (team covers all sites; identical agents collide) |
+| 38 | **Harder theory of mind** — intent when behaviour misleads | ✅ round 38 (detour fools the position oracle; modelling wins) |
 
 ---
 
@@ -678,6 +679,27 @@ assignment is an *emergent convention* (a different permutation each run).
 > variant was tried first but collapsed into a fixed convention / one-way communication; division of
 > labour is the cleaner, genuinely-distinct coordination result.
 
+## Round 38 — harder theory of mind (intent when behaviour misleads)
+
+Round 35's observer read intent from motion — but a position oracle did just as well, because the
+actor walked *straight* at its goal. Here the actor must **detour around a central obstacle** to
+reach goals behind it, so its early motion points *away* from the goal — surface behaviour
+**misleads**:
+
+![harder theory of mind: a detour fools the position oracle, but the observer models it](outputs/round38_tom_obstacle.png)
+
+While the actor is **mid-detour** (still on the wrong side), the observer — which has learned the
+obstacle and the go-around policy — already infers the true goal (**0.97**), while the **position
+oracle is fooled** (0.67), guessing whichever goal the actor is currently nearest. The oracle only
+catches up once the actor *arrives*; over the whole trajectory the observer wins (**0.80 vs 0.73**),
+and ablating the observation drops it to chance.
+
+![the actor detours while the observer's belief tracks the true goal](outputs/round38_tom_obstacle.gif)
+
+> This is the genuine theory of mind R35 lacked: **modelling goal-directed behaviour beats a position
+> heuristic** precisely because the behaviour points the wrong way. (Honest: the oracle still wins at
+> the trivial final step, when the actor has arrived — the observer's edge is reading intent *early*.)
+
 ---
 
 ## How it works
@@ -729,6 +751,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run34 --gif   # iterated learning: compositionality from transmission + gif
 .venv/bin/python -m genesis.run35 --gif   # theory of mind: infer a hidden goal from behaviour + gif
 .venv/bin/python -m genesis.run37 --gif   # multi-agent coordination: division of labour + gif
+.venv/bin/python -m genesis.run38 --gif   # harder theory of mind: a detour fools the position oracle + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -769,7 +792,8 @@ genesis/
   communicate_iterate.py  iterated learning: compositionality from a transmission bottleneck (Kirby)
   theory_of_mind.py  infer another agent's hidden goal from its behaviour (mentalising)
   coordinate.py  multi-agent coordination: a team evolves a division of labour
-  run1d.py … run37.py   round drivers + visualisation
+  tom_obstacle.py  harder theory of mind: read intent when a detour misleads
+  run1d.py … run38.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 37 (MULTI-AGENT COORDINATION — division of labour; complete, committed)
+ROUND: 38 (HARDER THEORY OF MIND — reading intent when behaviour misleads; complete, committed)
 
 REVIEW (round 36): re-verified the SOCIAL rounds (R33/34/35) on FRESH unseen seeds -> ALL HOLD. R33 grounded comm
 (seeds 5-6): catch WITH comm 0.71 vs ablated 0.03 (committed 0.58/0.05 -> even stronger). R34 iterated learning
@@ -57,7 +57,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 101 tests green.
+  convolution + growth; same code 1D/2D/3D. 103 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -288,16 +288,26 @@ CURRENT STATE:
   honesty): a comm-rendezvous variant was tried first but the agents found a fixed meeting CONVENTION that needed no
   channel; division-of-labour is the cleaner, genuinely-distinct coordination result. Evidence: outputs/round37_coordination.png
   (coverage bars + evolved team each on its own site vs ablated all-piled-up) + .gif (the team spreading to cover). run37.py.
+- ROUND 38 (VERIFIED): HARDER THEORY OF MIND — reading intent when behaviour MISLEADS (the genuine ToM the R35 review
+  flagged). genesis/tom_obstacle.py — the ACTOR must DETOUR around a central obstacle to reach goals behind it, so its
+  early motion points AWAY from its goal. A POSITION ORACLE (nearest goal to current position) is FOOLED while the actor
+  is on the wrong side; only an OBSERVER (recurrent, ES) that has learned the obstacle + go-around policy infers the true
+  goal mid-detour. Result: at the misleading moment (3/4 through, actor still detouring) observer ~0.97 vs oracle ~0.67;
+  mean over the trajectory observer 0.80 > oracle 0.73 (the oracle only catches up at the very end when the actor arrives);
+  ablated (random motion) 0.35 ~ chance (0.33). So unlike R35, the modelling observer BEATS the position oracle by reading
+  intent THROUGH misleading behaviour. Evidence: outputs/round38_tom_obstacle.png (accuracy-by-step observer>oracle mid-detour
+  + detour trajectories around the obstacle + a mid-detour snapshot: observer right, oracle fooled) + .gif. run38.py.
 
-NEXT ROUND SEED (round 38): social vein now BROAD (comm 4 ways + theory of mind + coordination = 7 social rounds). Ranked:
-  (a) MILESTONE REVIEW soon (7 social rounds; last review R36) — a "social intelligence" consolidation if the vein thins.
-  (b) HARDER theory-of-mind where behaviour MISLEADS (actor detours around an obstacle; modeling beats the position oracle)
-      -- the genuine ToM the R35 review flagged. (c) EMERGENT roles WITHOUT pre-given ids (symmetry-breaking from scratch),
-      or comm-COORDINATION combined. (d) A new NON-social frontier if social returns diminish (the vein is getting deep).
+NEXT ROUND SEED (round 39): social vein now DEEP + BROAD (8 social rounds: comm x4 + ToM x2 + coordination). Ranked:
+  (a) MILESTONE REVIEW (leading; 8 social rounds, last review R36) — re-verify R37/R38, refresh capstone to the full social
+      arc, a "social intelligence" consolidation; the vein is getting deep so consolidate before more.
+  (b) A genuinely NEW dimension if continuing: emergent roles WITHOUT pre-given ids (symmetry-breaking from scratch), or
+      a non-social frontier (the social pattern -- evolve a net, beat an ablation -- is becoming repetitive; consider freshness).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run38 --gif     # round-38 harder theory of mind (detour misleads the oracle) + gif (~18s)
   .venv/bin/python -m genesis.run37 --gif     # round-37 multi-agent coordination (division of labour) + gif (~8s)
   .venv/bin/python -m genesis.run35 --gif     # round-35 theory of mind (infer hidden goal from behaviour) + gif (~15s)
   .venv/bin/python -m genesis.run34 --gif     # round-34 iterated learning (compositionality from transmission) + gif (~12s)

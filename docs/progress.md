@@ -807,6 +807,27 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 38 — harder theory of mind: reading intent when behaviour misleads (DONE, committed)
+
+### What worked (addresses the R35 honest gap)
+- genesis/tom_obstacle.py: the ACTOR must DETOUR around a central obstacle to reach goals behind it (potential-field /
+  go-around navigation), so its early motion points AWAY from its goal. A POSITION ORACLE (nearest goal to current
+  position) is FOOLED while the actor is on the wrong side; only an OBSERVER (recurrent, ES) that has learned the obstacle
+  + the go-around policy infers the true goal mid-detour. Result: at the misleading moment (3/4 through) observer ~0.97 vs
+  oracle ~0.67; mean over the trajectory observer 0.80 > oracle 0.73 (the oracle only catches up at the very end when the
+  actor arrives); ablated 0.35 ~ chance (0.33). Unlike R35 (where a position oracle did as well), the modelling observer
+  BEATS the position oracle here -- it reads intent THROUGH misleading behaviour. The vivid detour trajectories + the
+  mid-detour snapshot (observer right, oracle fooled) make the mechanism legible.
+
+### What did NOT work / honest notes
+- Potential-field navigation traps at the directly-OPPOSITE goal (forces balance) -> needed explicit "blocked -> steer
+  tangentially around (consistent side)" logic + a longer window (T=34) so all detours complete. Documented.
+- The oracle still wins at the FINAL step (1.00) once the actor arrives -- the observer's edge is reading intent EARLY /
+  mid-detour (0.97 vs 0.67) and on AVERAGE (0.80 vs 0.73), not at the trivial endpoint. Stated honestly.
+
+### Next-round seed
+Round 39 = MILESTONE REVIEW (8 social rounds; last review R36) OR a genuinely new dimension. Motion stays a proven wall.
+
 ## Round 37 — multi-agent coordination: division of labour (DONE, committed)
 
 ### What worked
@@ -844,8 +865,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 37 rounds + SEVEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind, + COORDINATION/division-of-labour); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 38 rounds + SEVEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

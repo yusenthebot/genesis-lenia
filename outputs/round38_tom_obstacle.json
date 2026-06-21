@@ -1,0 +1,9 @@
+{
+  "observer_mean": 0.8033823529411767,
+  "naive_mean": 0.7274264705882354,
+  "observer_mid": 0.975,
+  "naive_mid": 0.6725,
+  "observer_final": 0.89,
+  "ablated": 0.3525,
+  "chance": 0.3333333333333333
+}

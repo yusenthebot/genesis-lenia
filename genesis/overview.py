@@ -106,6 +106,9 @@ PANELS = [
     ("outputs/round37_coordination.png",
      "Round 37 · MULTI-AGENT COORDINATION — a team must COVER N sites; it evolves a DIVISION OF LABOUR (a permutation, each "
      "agent its own site): coverage 1.00 vs 0.69 random vs 0.25 ablated (identical agents pile up). Joint action via broken symmetry."),
+    ("outputs/round38_tom_obstacle.png",
+     "Round 38 · HARDER THEORY OF MIND — the actor DETOURS around an obstacle, so its motion points AWAY from its goal. "
+     "Mid-detour the observer infers the goal (0.97) while a position oracle is FOOLED (0.67); modelling beats position."),
 ]
 
 
