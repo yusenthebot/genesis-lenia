@@ -5,11 +5,11 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 5 (complete, committed)
+ROUND: 6 (complete, committed)
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 22 tests green.
+  convolution + growth; same code 1D/2D/3D. 25 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -30,16 +30,25 @@ CURRENT STATE:
   sweeps, evolved 3D morphology) the 3D dynamics are knife-edge (die/foam/proliferate, and
   flip on grid/seed); stable localised 3D creatures need the heavy specialised search 3D-Lenia
   research uses. Evidence: outputs/round5_3d.png + .gif; genesis/evolve3d.py (3D morphology GA).
+- ROUND 6 (2D, VERIFIED): ECOLOGY. Many creatures (each a Lenia body in its own channel)
+  compete for ONE shared, finite, replenishing food field; each has energy/metabolism +
+  the foraging reflex (genesis/ecology.py). Result: STABILIZING SELECTION — survival peaks
+  at INTERMEDIATE foraging gain (~4), with under-foragers (gain 0) starving first and
+  over-foragers (gain 16) overshooting; robust across food-scarcity regimes (spawn 38/50/65,
+  optimum=4 in all). Evidence: outputs/round6_ecology.png + .gif (creatures coloured by
+  skill competing for green food). run6.py.
 
-NEXT ROUND SEED (round 6): ECOLOGY (leading) — many creatures in one 2D world sharing
-finite/contested food -> competition, then predator/prey. Needs per-creature identity +
-energy bookkeeping (multiple bodies in one field, or a multi-channel field). Social
-selection is where richer intelligence pressure lives. Alternatives: open-ended ZOO +
-diversity metric; within-lifetime LEARNING (neural controller, torch+MPS); deeper 3D
-creature search (multi-ring kernels + CMA-ES) if revisiting 3D.
+NEXT ROUND SEED (round 7): deepen the ecology / intelligence. Ranked:
+  (a) EVOLVE the foragers IN the ecology (not a fixed gain sweep): let gain/sense/morphology
+      mutate + be selected by competitive survival -> watch the population converge to the
+      optimal strategy on its own (evolution inside the ecology, open-ended).
+  (b) PREDATOR/PREY: a second species that eats creatures (not food) -> arms race.
+  (c) WITHIN-LIFETIME LEARNING: a neural controller modulating drift (torch+MPS).
+  (d) Revisit stable mobile 3D creature (multi-ring kernels + CMA-ES) — hard, open.
 
 HOW TO RUN:
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run6 --gif      # round-6 ecology / competition + gif
   .venv/bin/python -m genesis.run5_3d --gif   # round-5 3D self-organisation + rotating gif
   .venv/bin/python -m genesis.run4 --gif      # round-4 survival (metabolism) + benchmark
   .venv/bin/python -m genesis.run3 --gif      # round-3 foraging agency + benchmark

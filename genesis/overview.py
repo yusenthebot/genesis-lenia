@@ -30,6 +30,9 @@ PANELS = [
     ("outputs/round5_3d.png",
      "Round 5 · 3D · DIMENSIONAL GENERALITY — the SAME engine self-organises a seed "
      "into a robust, homeostatic 3D structure (mass_cv 0.0008); 1D -> 2D -> 3D, one codebase"),
+    ("outputs/round6_ecology.png",
+     "Round 6 · 2D · ECOLOGY — many creatures contest shared food: survival peaks at an "
+     "INTERMEDIATE foraging skill (stabilizing selection) — under- & over-foragers die out"),
 ]
 
 

@@ -28,7 +28,8 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 3 | **Agency** — sense the world and act to pursue a goal | ✅ round 3 (evolved forager) |
 | 4 | **Survival** — forage to stay alive, or die | ✅ round 4 (metabolism) |
 | 5 | **3D** — the same engine, one more axis | ✅ round 5 (3D self-organisation) |
-| 6 | **Ecology / learning** | → next |
+| 6 | **Ecology** — many creatures compete for food | ✅ round 6 (stabilizing selection) |
+| 7 | **Evolution-in-ecology / predator-prey / learning** | → next |
 
 ---
 
@@ -111,6 +112,21 @@ seeds. This completes the **1D → 2D → 3D** arc on one codebase.
 > specialised search the 3D-Lenia literature uses. What is solid here is robust 3D
 > *self-organisation*; the 3D *creature* is an open frontier.
 
+## Round 6 — ecology (2D)
+
+Many creatures now share **one world and one finite food field** — each is a Lenia body
+in its own channel, with its own energy and foraging reflex, and food eaten by one is
+denied to the others (exploitation competition). Sweeping foraging skill across the
+population reveals **stabilizing selection**: survival peaks at an *intermediate* skill —
+under-foragers can't find food and starve, over-foragers overshoot and forage
+inefficiently. The optimum sits at gain ≈ 4 and is robust across food-scarcity regimes.
+
+![ecology: stabilizing selection + population dynamics](outputs/round6_ecology.png)
+
+![ecology animation](outputs/round6_ecology.gif)
+
+*(creatures coloured by foraging skill — red = low, blue = high; green = food)*
+
 ---
 
 ## How it works
@@ -137,6 +153,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run3  --gif   # evolve a forager, agency benchmark + gif
 .venv/bin/python -m genesis.run4  --gif   # turn on metabolism, survival benchmark + gif
 .venv/bin/python -m genesis.run5_3d --gif # 3D self-organisation + rotating gif
+.venv/bin/python -m genesis.run6  --gif   # ecology / competition + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -152,7 +169,8 @@ genesis/
   evolve.py     co-evolution of rule + seed morphology (2D)
   evolve3d.py   3D morphology GA (PATCH^3 seed + rule)
   foraging.py   food field + sensorimotor reflex + metabolism (agency, survival)
-  run1d.py run2d.py run3.py run4.py run5_3d.py   round drivers + visualisation
+  ecology.py    many creatures sharing one food field (competition)
+  run1d.py run2d.py run3.py run4.py run5_3d.py run6.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
