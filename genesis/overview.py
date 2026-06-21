@@ -24,6 +24,9 @@ PANELS = [
     ("outputs/round3_agency.png",
      "Round 3 · 2D · AGENCY — an evolved forager senses food and steers to it "
      "(85% eaten vs 18% sensing-ablated, on unseen layouts)"),
+    ("outputs/round4_survival.png",
+     "Round 4 · 2D · SURVIVAL — with metabolism, foraging is life or death: the "
+     "forager lives ~832 steps vs 158 ablated / 299 random (unseen schedules)"),
 ]
 
 

@@ -75,3 +75,33 @@ def test_sensing_steers_toward_food():
         return float(np.hypot(*d))
 
     assert end_dist(8.0) < end_dist(0.0) - 5.0   # sensing gets it closer to food
+
+
+def test_metabolism_drains_and_kills_without_food():
+    """With a metabolic cost and no food, the energy reserve drains and the body dies."""
+    size = 70
+    w = ForagingWorld((size, size), _glider_rule(), sense_sigma=12.0, gamma=0.0,
+                      decay=0.02, feed=0.05, energy0=0.5)
+    _seed(w, size)
+    e0 = w.energy
+    for _ in range(200):
+        w.step()
+    assert w.energy < e0                 # metabolism drained the reserve
+    assert w.A.sum() < 1e-2 or not w.alive   # starved -> body dissipated
+
+
+def test_eating_refills_energy():
+    """Eating banks energy: with food, the reserve ends higher than starving alone."""
+    size = 70
+
+    def final_energy(with_food):
+        w = ForagingWorld((size, size), _glider_rule(), sense_sigma=12.0,
+                          gamma=0.0, eta=0.4, decay=0.01, feed=0.2, energy0=1.0)
+        _seed(w, size)
+        if with_food:
+            w.add_food_blob((35, 35), radius=12.0, amp=1.0)  # food under the body
+        for _ in range(15):
+            w.step()
+        return w.energy
+
+    assert final_energy(True) > final_energy(False)

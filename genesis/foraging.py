@@ -23,15 +23,21 @@ from genesis.world import World, LeniaParams
 class ForagingWorld(World):
     def __init__(self, shape, params: LeniaParams, sense_sigma: float,
                  gamma: float, eta: float = 0.20, decay: float = 0.0,
-                 feed: float = 0.0, dtype=np.float64):
+                 feed: float = 0.0, energy0: float = 1.0, dtype=np.float64):
         super().__init__(shape, params, dtype=dtype)
         self.sense_sigma = float(sense_sigma)
         self.gamma = float(gamma)        # sensorimotor gain (sense -> drift)
         self.eta = float(eta)            # consumption rate
-        self.decay = float(decay)        # metabolic cost per step
-        self.feed = float(feed)          # eaten food -> body mass (sustenance)
+        self.decay = float(decay)        # metabolic cost: energy drained per step
+        self.feed = float(feed)          # eaten food -> ENERGY (a reserve, not mass)
         self.F = np.zeros(self.shape, dtype=dtype)
         self.eaten = 0.0
+        # METABOLISM: a scalar energy reserve. While energy > 0 the body is a normal
+        # glider (constant mass); metabolism drains it, eating refills it; at 0 the body
+        # dissipates (death). Eating sustains the creature without inflating it.
+        self.energy0 = float(energy0)
+        self.energy = float(energy0)
+        self.alive = True
         self._drift = np.zeros(self.ndim)   # accumulated sub-cell displacement
         self._build_sense_kernel(self.sense_sigma)
 
@@ -54,14 +60,21 @@ class ForagingWorld(World):
 
     def step(self) -> np.ndarray:
         U = self.potential()                       # neighbourhood sum K*A
-        # base Lenia growth, minus a metabolic cost paid wherever there is body
-        self.A = self.A + self.params.dt * (self.growth(U) - self.decay * (self.A > 0))
-        # eat food under the body; eaten food feeds the body (sustenance)
+        self.A = self.A + self.params.dt * self.growth(U)   # base Lenia growth
+        # eat food under the body; eaten food refills the ENERGY reserve, not mass
         bite = np.clip(self.eta * self.A, 0.0, 1.0) * self.F
         self.F = self.F - bite
-        self.A = self.A + self.feed * bite
+        meal = float(bite.sum())
+        self.eaten += meal
+        # metabolism: pay the per-step cost, bank the food. When the reserve is empty
+        # the body can no longer hold itself together and dissipates -> death.
+        self.energy += self.feed * meal - self.decay
+        if self.energy <= 0.0:
+            self.energy = 0.0
+            self.A = self.A * 0.90          # starving: the body falls apart
+            if self.A.sum() < 1e-3:
+                self.alive = False
         self.A = np.clip(self.A, 0.0, 1.0)
-        self.eaten += float(bite.sum())
         # SENSORIMOTOR REFLEX: sense the food gradient over the body and rigidly
         # translate the creature toward it. np.roll is an exact permutation, so this
         # moves the body without creating or destroying any mass (no blow-up). The

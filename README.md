@@ -26,7 +26,8 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 1 | **Emergence** — self-maintaining structure from local rules | ✅ round 1 (1D) |
 | 2 | **Locomotion** — a creature that travels | ✅ round 2 (evolved 2D glider) |
 | 3 | **Agency** — sense the world and act to pursue a goal | ✅ round 3 (evolved forager) |
-| 4 | **Survival / ecology / learning / 3D** | → next |
+| 4 | **Survival** — forage to stay alive, or die | ✅ round 4 (metabolism) |
+| 5 | **Ecology / learning / 3D** | → next |
 
 ---
 
@@ -75,6 +76,22 @@ toward food **in every direction**, then stays and consumes it:
 
 *(red = creature, green = food)*
 
+## Round 4 — survival (2D)
+
+Now metabolism is on: the creature carries an **energy reserve** that drains every step
+and is refilled only by eating; when it hits zero the body dissipates and the creature
+**dies**. Food appears at random places over time, so staying alive demands *continual,
+aimed* foraging. We evolve the forager to maximise lifetime and benchmark on **unseen**
+food schedules:
+
+![survival: energy curves + lifetimes](outputs/round4_survival.png)
+
+The evolved forager banks an energy surplus and lives indefinitely (≈ **832** of 900
+steps), while the sensing-ablated body starves at **158** and a random-drifter at **299**.
+Intelligence now has teeth — it is the difference between living and dying.
+
+![survival animation](outputs/round4_survival.gif)
+
 ---
 
 ## How it works
@@ -86,9 +103,10 @@ toward food **in every direction**, then stays and consumes it:
   tells one compact creature from space-filling turbulence. All dimension-agnostic.
 - **Evolution** (`genesis/evolve.py`) — a `(μ+λ)` GA over an `Individual` = rule
   (`LeniaParams`) + an evolvable **seed morphology** (a small smooth patch).
-- **Agency** (`genesis/foraging.py`) — `ForagingWorld` adds a food field, a sensing
-  kernel, a sensorimotor drift reflex, and eating; `genesis/run3.py` evolves the forager
-  and runs the ablation/random-drift benchmark.
+- **Agency + survival** (`genesis/foraging.py`) — `ForagingWorld` adds a food field, a
+  sensing kernel, a sensorimotor drift reflex, eating, and a scalar **energy reserve**
+  (metabolism drains it, food refills it, zero = death). `genesis/run3.py` evolves the
+  forager (agency benchmark); `genesis/run4.py` turns on metabolism (survival benchmark).
 
 ## Run
 
@@ -98,6 +116,8 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run1d         # 1D self-organisation
 .venv/bin/python -m genesis.run2d --gif   # evolve a 2D glider, render strip + gif
 .venv/bin/python -m genesis.run3  --gif   # evolve a forager, agency benchmark + gif
+.venv/bin/python -m genesis.run4  --gif   # turn on metabolism, survival benchmark + gif
+.venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
 
@@ -110,8 +130,9 @@ genesis/
   world.py      dimension-agnostic Lenia engine
   metrics.py    emergence + concentration metrics (any dimension)
   evolve.py     co-evolution of rule + seed morphology
-  foraging.py   food field + sensorimotor reflex (agency)
-  run1d.py run2d.py run3.py   round drivers + visualisation
+  foraging.py   food field + sensorimotor reflex + metabolism (agency, survival)
+  run1d.py run2d.py run3.py run4.py   round drivers + visualisation
+  overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
 outputs/        figures, GIFs, evolved genomes
