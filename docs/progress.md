@@ -807,6 +807,26 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 43 — open-ended ratchet: cumulative complexity with no target (DONE, committed)
+
+### What worked (deepens R41 into open-endedness)
+- genesis/open_ended.py: cumulative culture that INVENTS its own complexity, with NO target (R41 ratcheted toward a given
+  star). The artifact is a TOWER of stacked blocks; the only rule is physics -- the running centre of mass above every
+  joint must stay supported, else it topples. Complexity = HEIGHT, unbounded. Each generation INHERITS the tower and adds
+  a BOUNDED few blocks (one lifetime). Result: CUMULATIVE (transmit + innovate) accumulates a ~148-block spire; INDIVIDUAL
+  (restart each gen) is capped at ~5 (one lifetime's budget); TRANSMIT-ONLY (copy) stays at 1. The tower keeps reaching
+  with no ceiling but stability -- open-ended complexity no single lifetime could build. First round with NO target/fitness
+  target (the complexity is intrinsic, not distance-to-a-goal); the tall gradient spire vs stub makes it legible.
+
+### What did NOT work / honest notes
+- The strict CoM-stability rule caps horizontal REACH/overhang at <1 block-width (a tall tower must be near-vertical to
+  stay stable), so the open-ended axis is HEIGHT, not the harmonic-overhang reach. Stated; height is genuinely unbounded.
+- "Open-ended" here = unbounded accumulation of one complexity axis (height), not unbounded NOVELTY of kind. A ratchet
+  that invents qualitatively new structure-types is a deeper frontier; this is the honest, clean first step.
+
+### Next-round seed
+Round 44 = emergent roles WITHOUT pre-given ids (symmetry-breaking from scratch) OR eco-evolution major transitions. Motion stays a proven wall.
+
 ## Round 42 — WHOLE-PROJECT CAPSTONE/REVIEW + frontier menu (DONE, committed)
 
 Adversarial re-verification of the latest rounds on FRESH unseen seeds (last review R39), at a broad/deep summit.
@@ -936,8 +956,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 41 rounds + EIGHT reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 43 rounds + NINE reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet, + OPEN-ENDED RATCHET/unbounded complexity no target); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

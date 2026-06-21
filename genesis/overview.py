@@ -115,6 +115,9 @@ PANELS = [
     ("outputs/round41_cumulative.png",
      "Round 41 · CUMULATIVE CULTURE (the ratchet) — each generation inherits + improves an artifact, ratcheting it into a STAR "
      "(quality 0->0.92) no single lifetime could build. Needs BOTH transmission AND innovation (individual restart ~0.05, copy-only ~0)."),
+    ("outputs/round43_open_ended.png",
+     "Round 43 · OPEN-ENDED RATCHET — no target this time: a culture stacks a stable TOWER whose height just keeps accumulating "
+     "(148 blocks vs 5 for one lifetime vs 1 for copy-only). Open-ended complexity with no ceiling but physics itself."),
 ]
 
 

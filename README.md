@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~41 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~43 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -77,6 +77,7 @@ with a runnable driver, a figure, and a metric.
 | 38 | **Harder theory of mind** — intent when behaviour misleads | ✅ round 38 (detour fools the position oracle; modelling wins) |
 | 40 | **Unified social world** — communicate AND coordinate | ✅ round 40 (both faculties load-bearing; the social-arc capstone) |
 | 41 | **Cumulative culture** — the ratchet | ✅ round 41 (an artifact ratchets into a star no lifetime could build) |
+| 43 | **Open-ended ratchet** — complexity with no target | ✅ round 43 (a culture stacks a tower whose height just keeps growing) |
 
 ---
 
@@ -745,6 +746,27 @@ innovate) never improves at all (~0.00). The star is something no one lifetime h
 > innovation** together. (Honest scope: the artifact matches a *given* target shape — a truly
 > open-ended ratchet that *invents* its own complexity is a deeper frontier.)
 
+## Round 43 — open-ended ratchet (complexity with no target)
+
+Round 41 ratcheted toward a *given* star. This round removes the target entirely: the artifact is a
+**tower** of stacked blocks, and the only rule is **physics** — the running centre of mass above
+every joint must stay supported, or it topples. Complexity is just **height**, with no ceiling but
+stability itself:
+
+![open-ended ratchet: a culture stacks a tower whose height just keeps growing](outputs/round43_open_ended.png)
+
+With both transmission and innovation, the culture accumulates a **~148-block spire** across
+generations; a single lifetime (restart each generation) is capped at its small block budget (~5);
+copy-only never grows (1). The height curve just keeps climbing — there is no target it is converging
+to, only complexity that *accumulates*. This is the project's first result with **no fitness target
+at all**: the structure's worth is intrinsic.
+
+![the tower rising across generations](outputs/round43_open_ended.gif)
+
+> Honest scope: the open-ended axis is *height* — a strict stability rule caps horizontal overhang at
+> under one block-width, and "open-ended" here means unbounded accumulation of one complexity axis,
+> not the invention of qualitatively new *kinds* of structure (a deeper frontier still).
+
 ---
 
 ## How it works
@@ -799,6 +821,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run38 --gif   # harder theory of mind: a detour fools the position oracle + gif
 .venv/bin/python -m genesis.run40 --gif   # unified social world: communicate AND coordinate + gif
 .venv/bin/python -m genesis.run41 --gif   # cumulative culture: the ratchet builds a star + gif
+.venv/bin/python -m genesis.run43 --gif   # open-ended ratchet: a culture stacks a tower + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -842,7 +865,8 @@ genesis/
   tom_obstacle.py  harder theory of mind: read intent when a detour misleads
   unified_social.py  unified social world: communicate AND coordinate (both load-bearing)
   cumulative_culture.py  cumulative culture: the ratchet (transmission + innovation)
-  run1d.py … run41.py   round drivers + visualisation
+  open_ended.py  open-ended ratchet: a culture stacks a tower (complexity, no target)
+  run1d.py … run43.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

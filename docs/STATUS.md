@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 42 (WHOLE-PROJECT CAPSTONE/REVIEW — R40/R41 re-verified + capstone refresh + frontier menu; complete, committed)
+ROUND: 43 (OPEN-ENDED RATCHET — cumulative complexity with no target; complete, committed)
 
 REVIEW (round 42, WHOLE-PROJECT): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R40 unified social
 (seeds 5-6): full 1.00 vs no-comm 0.38-0.56 vs no-coord 0.50 (both faculties load-bearing). R41 cumulative culture
@@ -76,7 +76,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 107 tests green.
+  convolution + growth; same code 1D/2D/3D. 109 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -333,18 +333,27 @@ CURRENT STATE:
   (a star) is something no individual lifetime here could build -- Tomasello's ratchet, the hallmark of human culture.
   Evidence: outputs/round41_cumulative.png (quality-over-generations ratchet + the artifact emerging blob->partial->star
   at gens 0/27/55) + .gif (the star ratcheting into existence across generations). run41.py.
+- ROUND 43 (VERIFIED): OPEN-ENDED RATCHET — cumulative culture that INVENTS its own complexity, NO target (deepens R41,
+  which ratcheted toward a given star). genesis/open_ended.py — the artifact is a TOWER of stacked blocks; the only rule
+  is physics (the running centre of mass above every joint must stay supported, else it topples). Complexity = HEIGHT,
+  UNBOUNDED -- taller is always better with no target. Each generation INHERITS the tower and adds a BOUNDED few blocks
+  (one lifetime). Result: CUMULATIVE (transmit + innovate) accumulates a ~148-block tall spire; INDIVIDUAL (restart each
+  generation) is capped at ~5 (one lifetime's budget); TRANSMIT-ONLY (copy, no innovation) stays at 1. The tower keeps
+  reaching upward with no ceiling but stability itself -- open-ended complexity no single lifetime could build, and the
+  first round with NO target/fitness landscape (R41 had a target shape). Evidence: outputs/round43_open_ended.png (height
+  -over-generations open-ended ramp + the towers: a tall spire vs a stub vs one block) + .gif (the tower rising). run43.py.
 
-NEXT ROUND SEED (round 43): at a broad/deep SUMMIT (42 rounds, 3 capstoned threads, frontier menu surfaced in CAPSTONE.md).
-  Continue ONLY into a genuinely-new ungated dimension; do not add same-shaped increments. Ranked:
-  (a) OPEN-ENDED RATCHET (leading): cumulative culture that INVENTS its own complexity (no fixed target) -- novelty search /
-      MAP-Elites-over-artifacts as the innovation step, quality measured as un-reachable-by-one-lifetime structure. Deepens R41.
-  (b) EMERGENT ROLES WITHOUT pre-given ids (symmetry-breaking from scratch) -- deepens R37/R40's "role distinction is given".
-  (c) ECO-EVOLUTION major transitions (niche construction / multi-level selection) on the existing ecology (R6-8).
-  (d) Recognise completeness; honour the user's next /loop as the steer (gated motion stays a human call).
+NEXT ROUND SEED (round 44): summit + 2 genuinely-new dims (cumulative culture R41, open-ended ratchet R43). Remaining ungated
+  forks (do NOT add same-shaped increments). Ranked:
+  (a) EMERGENT ROLES WITHOUT pre-given ids (leading): symmetry-breaking from scratch -- two IDENTICAL agents must
+      differentiate into complementary roles with no id to distinguish them (deepens R37/R40, whose role distinction was GIVEN).
+  (b) ECO-EVOLUTION major transitions (niche construction / multi-level selection) on the existing ecology (R6-8).
+  (c) A whole-project REVIEW soon (last full review R42) if the new dims start to thin; or honour the user's /loop steer.
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run43 --gif     # round-43 open-ended ratchet (a culture builds a tower) + gif (~5s)
   .venv/bin/python -m genesis.run41 --gif     # round-41 cumulative culture (the ratchet -> a star) + gif (~6s)
   .venv/bin/python -m genesis.run40 --gif     # round-40 unified social world (communicate AND coordinate) + gif (~12s)
   .venv/bin/python -m genesis.run38 --gif     # round-38 harder theory of mind (detour misleads the oracle) + gif (~18s)
