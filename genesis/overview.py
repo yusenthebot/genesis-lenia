@@ -112,6 +112,9 @@ PANELS = [
     ("outputs/round40_unified_social.png",
      "Round 40 · UNIFIED SOCIAL WORLD — the social-arc capstone (R21 for the group): a team must COMMUNICATE (which sites are "
      "rich) AND COORDINATE (split across them) to forage. Yield 1.00 full vs 0.52 no-comm vs 0.50 no-coord -- both load-bearing."),
+    ("outputs/round41_cumulative.png",
+     "Round 41 · CUMULATIVE CULTURE (the ratchet) — each generation inherits + improves an artifact, ratcheting it into a STAR "
+     "(quality 0->0.92) no single lifetime could build. Needs BOTH transmission AND innovation (individual restart ~0.05, copy-only ~0)."),
 ]
 
 

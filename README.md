@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~40 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~41 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -76,6 +76,7 @@ with a runnable driver, a figure, and a metric.
 | 37 | **Multi-agent coordination** — division of labour | ✅ round 37 (team covers all sites; identical agents collide) |
 | 38 | **Harder theory of mind** — intent when behaviour misleads | ✅ round 38 (detour fools the position oracle; modelling wins) |
 | 40 | **Unified social world** — communicate AND coordinate | ✅ round 40 (both faculties load-bearing; the social-arc capstone) |
+| 41 | **Cumulative culture** — the ratchet | ✅ round 41 (an artifact ratchets into a star no lifetime could build) |
 
 ---
 
@@ -723,6 +724,27 @@ the role-split** and both foragers pile onto one site (**0.50**). Each social fa
 > a group forage what no isolated faculty could. (Honest design note: it only works with *fewer*
 > foragers than sites — otherwise the team blankets everything and communication becomes unnecessary.)
 
+## Round 41 — cumulative culture (the ratchet)
+
+Round 34 showed a *fixed* language survives cultural transmission. The deeper phenomenon — the one
+that makes human culture unique — is **cumulative improvement**: each generation inherits the
+previous artifact, innovates a *bounded* amount in one lifetime, and passes on a slightly better one,
+so skill **ratchets up** past anything a single lifetime could reach:
+
+![cumulative culture: an artifact ratchets into a star no single lifetime could build](outputs/round41_cumulative.png)
+
+With **both transmission and innovation**, the artifact (a cloud of points) ratchets from a random
+blob into a sharp five-pointed **star** — quality **0 → 0.92**. Take away either ingredient and the
+ratchet breaks: **individual** learning (innovate but restart each generation) is stuck at the
+single-lifetime ceiling (~0.05, never accumulates), and **transmit-only** (copy faithfully, never
+innovate) never improves at all (~0.00). The star is something no one lifetime here could build.
+
+![the star ratcheting into existence across generations](outputs/round41_cumulative.gif)
+
+> This is Tomasello's *ratchet effect*: cumulative culture needs **faithful transmission AND
+> innovation** together. (Honest scope: the artifact matches a *given* target shape — a truly
+> open-ended ratchet that *invents* its own complexity is a deeper frontier.)
+
 ---
 
 ## How it works
@@ -776,6 +798,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run37 --gif   # multi-agent coordination: division of labour + gif
 .venv/bin/python -m genesis.run38 --gif   # harder theory of mind: a detour fools the position oracle + gif
 .venv/bin/python -m genesis.run40 --gif   # unified social world: communicate AND coordinate + gif
+.venv/bin/python -m genesis.run41 --gif   # cumulative culture: the ratchet builds a star + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -818,7 +841,8 @@ genesis/
   coordinate.py  multi-agent coordination: a team evolves a division of labour
   tom_obstacle.py  harder theory of mind: read intent when a detour misleads
   unified_social.py  unified social world: communicate AND coordinate (both load-bearing)
-  run1d.py … run40.py   round drivers + visualisation
+  cumulative_culture.py  cumulative culture: the ratchet (transmission + innovation)
+  run1d.py … run41.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

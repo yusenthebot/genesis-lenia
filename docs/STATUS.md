@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 40 (UNIFIED SOCIAL WORLD — communicate AND coordinate; the social-arc capstone; complete, committed)
+ROUND: 41 (CUMULATIVE CULTURE — the ratchet; complete, committed)
 
 REVIEW (round 39): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R37 coordination (seeds 5-7):
 coverage 1.00 vs ablated 0.25 (perfect division of labour reproduces). R38 harder ToM (seed 4): mid-detour observer
@@ -67,7 +67,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 105 tests green.
+  convolution + growth; same code 1D/2D/3D. 107 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -315,18 +315,28 @@ CURRENT STATE:
   LOAD-BEARING, exactly as R21 showed memory/prediction/planning each necessary. This INTEGRATES the isolated social
   rounds R30-38 into one world rather than adding a 9th standalone demo. Evidence: outputs/round40_unified_social.png
   (yield bars + 3 vignettes: FULL covers both rich sites, NO-COMM forages blind & misses one, NO-COORD piles on one) + .gif. run40.py.
+- ROUND 41 (VERIFIED): CUMULATIVE CULTURE — the ratchet (a genuinely new dimension beyond R34's transmission).
+  genesis/cumulative_culture.py — each generation INHERITS the previous artifact (a point cloud), innovates a BOUNDED
+  amount within one lifetime (50-70 hill-climb steps), and passes on a slightly better one -> skill RATCHETS UP past any
+  single lifetime. The ratchet needs BOTH faithful transmission AND innovation: CUMULATIVE (both) ratchets quality 0 ->
+  0.92, building a sharp 5-pointed STAR; INDIVIDUAL (innovate, restart each generation) is stuck at the single-lifetime
+  ceiling (~0.05, no accumulation); TRANSMIT-ONLY (copy, no innovation) never improves (~0.00). The accumulated artifact
+  (a star) is something no individual lifetime here could build -- Tomasello's ratchet, the hallmark of human culture.
+  Evidence: outputs/round41_cumulative.png (quality-over-generations ratchet + the artifact emerging blob->partial->star
+  at gens 0/27/55) + .gif (the star ratcheting into existence across generations). run41.py.
 
-NEXT ROUND SEED (round 41): the social arc is now CAPPED (R40 unified it, R21-style). The project spans 3 mature threads
-  (mind loop, open-endedness, social) across 40 rounds. Ranked:
-  (a) WHOLE-PROJECT CAPSTONE pass (leading): the social arc reached its R21-analogue unification -> a natural summit. Refresh
-      CAPSTONE.md to "40 rounds, 3 threads each with its own unification/illumination", a milestone review of the whole, and
-      present the remaining frontiers (gated motion via differentiable Lenia; emergent-roles-from-scratch; cumulative culture).
-  (b) A genuinely NEW dimension if continuing: cumulative culture (ratchet), or emergent roles WITHOUT pre-given ids.
-  (c) Present remaining options to the user (40 rounds in, a natural plateau -- worth surfacing the frontier menu).
+NEXT ROUND SEED (round 42): cumulative culture (R41) added a NEW depth to the social arc (now 10 social rounds). The
+  project spans 3 mature threads across 41 rounds + a fresh cumulative-culture result. Ranked:
+  (a) WHOLE-PROJECT CAPSTONE/REVIEW (leading): refresh CAPSTONE.md to 41 rounds incl. cumulative culture; re-verify R40/R41
+      on fresh seeds; a milestone consolidation (last review R39). The project is at a rich, broad summit.
+  (b) One more genuinely new dimension: emergent roles WITHOUT pre-given ids (symmetry-breaking from scratch), or combine
+      cumulative culture WITH the grounded language (a culturally-ratcheting communication system).
+  (c) Surface the frontier menu to the user (41 rounds; remaining big leaps are gated motion / new-dimension calls).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run41 --gif     # round-41 cumulative culture (the ratchet -> a star) + gif (~6s)
   .venv/bin/python -m genesis.run40 --gif     # round-40 unified social world (communicate AND coordinate) + gif (~12s)
   .venv/bin/python -m genesis.run38 --gif     # round-38 harder theory of mind (detour misleads the oracle) + gif (~18s)
   .venv/bin/python -m genesis.run37 --gif     # round-37 multi-agent coordination (division of labour) + gif (~8s)

@@ -807,6 +807,26 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 41 — cumulative culture: the ratchet (DONE, committed)
+
+### What worked (a genuinely new dimension beyond R34)
+- genesis/cumulative_culture.py: the Tomasello ratchet. Each generation INHERITS the previous artifact (a point cloud),
+  innovates a BOUNDED amount within one lifetime (hill-climbing), and passes on a slightly better one -> skill RATCHETS
+  UP past any single lifetime. The ratchet needs BOTH transmission AND innovation: CUMULATIVE (both) climbs quality 0 ->
+  0.92, building a sharp 5-pointed STAR; INDIVIDUAL (innovate, restart each gen) is stuck at the single-lifetime ceiling
+  (~0.05); TRANSMIT-ONLY (copy, no innovation) never improves (~0.00). The accumulated artifact is something no single
+  lifetime here could build -- the hallmark of human cumulative culture. The artifact-emerging visual (blob -> partial ->
+  star) makes the ratchet legible; distinct from R34 (which transmitted a FIXED language, no improvement).
+
+### What did NOT work / honest notes
+- The task is an abstract point-cloud-matching artifact (not a Lenia body) -- the cumulative principle is substrate-
+  independent and this is the cleanest demonstration; a Lenia-embodied ratchet would be heavier. Stated.
+- "Quality" is shape-match to a fixed target; the ratchet is real (accumulation past single-lifetime) but the target is
+  given, not open-ended-invented. A truly open-ended ratchet (no fixed target) is a deeper future frontier.
+
+### Next-round seed
+Round 42 = whole-project capstone/review (41 rounds, 3 threads + cumulative culture) OR one more new dimension. A rich summit.
+
 ## Round 40 — unified social world: communicate AND coordinate (the social-arc capstone) (DONE, committed)
 
 ### What worked
@@ -901,8 +921,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 40 rounds + EIGHT reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 41 rounds + EIGHT reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
