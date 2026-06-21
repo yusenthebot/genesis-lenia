@@ -94,6 +94,9 @@ PANELS = [
     ("outputs/round31_compositional.png",
      "Round 31 · COMPOSITIONAL COMMUNICATION — naive emergent language is HOLISTIC (memorises, topo 0.25); under a structural "
      "pressure it becomes COMPOSITIONAL (topographic similarity 0.25->0.79, partial zero-shot generalisation). Structure is not free."),
+    ("outputs/round33_grounded.png",
+     "Round 33 · GROUNDED COMMUNICATION — a SCOUT sees food and signals; a BLIND FORAGER navigates to it on the signal alone. "
+     "Catch rate 0.58 WITH comm vs 0.05 ablated -> the signal carries actionable spatial info a body uses to forage."),
 ]
 
 

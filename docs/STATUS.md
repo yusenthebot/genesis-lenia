@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 32 (MILESTONE REVIEW + capstone refresh; complete, committed)
+ROUND: 33 (GROUNDED COMMUNICATION — signal drives foraging; complete, committed)
 
 REVIEW (round 32): re-verified the post-R26 rounds on FRESH seeds -> ALL HOLD. R27 Flow-Lenia: mass conserved
 EXACTLY (ratio 1.00000) 2D AND 3D on a fresh config. R30 emergent comm (fresh seeds 5-7): accuracy 1.00, 2.00
@@ -47,7 +47,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 93 tests green.
+  convolution + growth; same code 1D/2D/3D. 95 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -240,17 +240,26 @@ CURRENT STATE:
   infinite meanings) is NOT free from communicative success alone — it emerges under a learnability/structure pressure.
   A recognised emergent-language result, replicated in numpy. Evidence: outputs/round31_compositional.png (topo bars +
   naive-scrambled vs pressured-structured signal scatter) + .gif (signals organising under pressure). run31.py.
+- ROUND 33 (VERIFIED): GROUNDED COMMUNICATION — a signal that drives ACTION (embodied + social fused).
+  genesis/communicate_grounded.py — a SCOUT sees where food is (direction theta) and emits a signal; a BLIND
+  FORAGER sees only the signal and must navigate to the food. The pair is evolved JOINTLY (ES). Result (catch
+  rate, unseen episodes): sighted upper bound 1.00 | comm pair 0.58 | ablated (random signal) 0.05. So the
+  emitted signal carries ACTIONABLE SPATIAL information the body uses to forage — with the channel the blind
+  forager reaches food, ablated it is lost. Trajectory visual: WITH comm the forager steers to the food star;
+  ablated it scatters randomly. Fuses the embodied track (navigation) with the social track (signalling) — the
+  first communication that DOES something in the world. Evidence: outputs/round33_grounded.png (catch-rate bars
+  + with-comm vs ablated trajectories) + .gif (foragers navigating, comm vs ablated side by side). run33.py.
 
-NEXT ROUND SEED (round 33 — review done; resume the social vein): ranked:
-  (a) GROUNDED communication (leading): tie the social mind back to the Lenia BODY — a speaker that SEES food signals a
-      listener; coordinated foraging (with comm) beats solo (ablate the channel). Embodied + social in one demo.
-  (b) ITERATED LEARNING / cultural transmission: does compositionality emerge from a transmission bottleneck across
-      "generations" (Kirby), without the hand-added topo pressure? The principled mechanism for R31's effect.
-  (c) Multi-agent COORDINATION (a shared task only solvable together) or theory-of-mind (model the other agent).
+NEXT ROUND SEED (round 34): the social/intelligence vein stays rich + ungated. Ranked:
+  (a) ITERATED LEARNING / cultural transmission (leading): does compositionality emerge from a TRANSMISSION BOTTLENECK
+      across "generations" (Kirby), WITHOUT R31's hand-added topo pressure? The principled, more impressive mechanism.
+  (b) Multi-agent COORDINATION (a task only solvable together; division of labour) or THEORY-OF-MIND (model the other).
+  (c) BIDIRECTIONAL/dialogue grounded comm; or ground the scout-forager in the actual Lenia body (heavier).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run33 --gif     # round-33 grounded communication (scout guides blind forager) + gif (~10s)
   .venv/bin/python -m genesis.run31 --gif     # round-31 compositional communication (structure under pressure) + gif (~8s)
   .venv/bin/python -m genesis.run30 --gif     # round-30 emergent communication (two agents evolve a code) + gif (~6s)
   .venv/bin/python -m genesis.run29 --gif     # round-29 multi-channel Flow-Lenia (built; motion walled off) + gif (~10s)

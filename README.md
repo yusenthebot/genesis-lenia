@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~31 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~33 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -70,6 +70,7 @@ with a runnable driver, a figure, and a metric.
 | 29 | **Multi-channel Flow-Lenia** — coupled channels | ◑ round 29 (built + coupled creatures; motion still walled off) |
 | 30 | **Emergent communication** — two agents, a shared code | ✅ round 30 (a language emerges: 2 bits, ablation-proven) |
 | 31 | **Compositional communication** — does it factorise? | ✅ round 31 (holistic by default; structured under pressure) |
+| 33 | **Grounded communication** — a signal that drives foraging | ✅ round 33 (blind forager forages only with the channel) |
 
 ---
 
@@ -594,6 +595,23 @@ partial zero-shot generalisation appears (**0.00 → 0.33**).
 > known emergent-language result, here in pure numpy). Honest scope: the speaker's code becomes
 > compositional, but the *listener's* zero-shot decoding lags, so generalisation is partial.
 
+## Round 33 — grounded communication (a signal that drives foraging)
+
+Rounds 30–31 communicated abstract labels. Here the signal is **grounded in action**: a **scout**
+sees where food is and emits a signal; a **blind forager** sees only the signal and must navigate
+to the food. The pair is **evolved jointly**:
+
+![grounded communication: a scout's signal guides a blind forager to food](outputs/round33_grounded.png)
+
+A *sighted* forager (sees food itself) catches it every time (1.00). The **blind forager + scout
+pair** reaches food **0.58** of the time — but **ablate the channel** (feed a random signal) and it
+collapses to **0.05**, lost. The trajectories make it vivid: with the channel the forager steers
+straight to the food; ablated, it scatters at random. So the emitted signal carries **actionable
+spatial information a body uses to forage** — the first communication here that *does* something in
+the world, fusing the embodied track (navigation) with the social track (signalling).
+
+![foragers navigating: with comm vs ablated](outputs/round33_grounded.gif)
+
 ---
 
 ## How it works
@@ -641,6 +659,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run29 --gif   # multi-channel Flow-Lenia: coupled creatures; motion walled + gif
 .venv/bin/python -m genesis.run30 --gif   # emergent communication: two agents evolve a shared code + gif
 .venv/bin/python -m genesis.run31 --gif   # compositional communication: structure under pressure + gif
+.venv/bin/python -m genesis.run33 --gif   # grounded communication: scout guides a blind forager + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -677,7 +696,8 @@ genesis/
   flowlenia_mc.py  multi-channel Flow-Lenia (coupled channels; mass conserved per channel)
   communicate.py  emergent communication: two agents evolve a shared code (ES)
   communicate_comp.py  compositional communication (2-attribute referents; topo pressure)
-  run1d.py … run31.py   round drivers + visualisation
+  communicate_grounded.py  grounded communication: scout signals food, blind forager navigates
+  run1d.py … run33.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

@@ -746,10 +746,30 @@ Adversarial re-verification of the post-R26 rounds on FRESH seeds (last full rev
 - NOTE: repo .git 80M / outputs 55M (growing; inherent to the visual README — ~33 round figures + GIFs; acceptable).
 VERDICT: the recent rounds stand up on unseen seeds; docs are back in sync with the (now 31-round) reality. Resume the social vein.
 
+## Round 33 — grounded communication: a signal that drives foraging (DONE, committed)
+
+### What worked
+- genesis/communicate_grounded.py: communication GROUNDED in action. A SCOUT sees the food direction and emits a
+  signal; a BLIND FORAGER sees only the signal and must navigate to the food; the pair is evolved JOINTLY (ES).
+- RESULT (catch rate, unseen episodes): sighted upper bound 1.00 | comm pair 0.58 | ablated (random signal) 0.05.
+  The signal carries ACTIONABLE SPATIAL information: with the channel the blind forager reaches food, ablated it is
+  lost. The trajectory visual makes it vivid — WITH comm the forager steers straight to the food star; ablated it
+  scatters. This FUSES the embodied track (navigation) with the social track (signalling) — the first communication
+  that DOES something in the world (not an abstract label game).
+
+### What did NOT work / honest notes
+- Catch rate with comm is 0.58 (not ~1.0): encoding a continuous direction and decoding it into a heading is lossy
+  (the catch radius is tight), so the pair forages a majority of the time but not always. The comm-vs-ablated gap
+  (0.58 vs 0.05, ~12x) is the robust claim; 0.58 < sighted 1.00 is the honest ceiling gap. Stated, not hidden.
+
+### Next-round seed
+Round 34 = ITERATED LEARNING (does compositionality emerge from a transmission bottleneck, no hand-added pressure?) or
+multi-agent COORDINATION / theory-of-mind. Motion stays a proven wall.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 32 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + now SOCIAL (emergent +
-  COMPOSITIONAL communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 33 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (emergent +
+  compositional + GROUNDED communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
