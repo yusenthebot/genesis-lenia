@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~28 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~29 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -65,6 +65,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 25 | **The 3D creature** — a compact body in 3D; a mover? | ◑ round 25 (compact body found; mobile glider still open) |
 | 27 | **Flow-Lenia** — a mass-conserving substrate (numpy) | ✅ round 27 (exact conservation; robust 3D; multi-creature) |
 | 28 | **Why it won't move** — diagnosing the motion negative | ✅ round 28 (gradient flow relaxes; needs multi-channel) |
+| 29 | **Multi-channel Flow-Lenia** — coupled channels | ◑ round 29 (built + coupled creatures; motion still walled off) |
 
 ---
 
@@ -526,6 +527,28 @@ a **compact but stationary** creature. Sustained locomotion needs a **non-gradie
 > substrates, a proper evolutionary search, and a clear mechanism for the wall. The next real
 > attempt (multi-channel Flow-Lenia) is a multi-round effort — a genuine fork in the road.
 
+## Round 29 — multi-channel Flow-Lenia (built; the wall holds)
+
+At the fork, the call was to **build multi-channel Flow-Lenia** — the paper's glider mechanism:
+several channels, each advected by its own affinity gradient and **coupled** through cross-channel
+kernels, so the combined system is no longer a single gradient. It's built (`flowlenia_mc.py`) and
+it works — structured **2-channel coupled creatures** form and each channel conserves its own mass:
+
+![multi-channel Flow-Lenia: coupled creatures + per-channel mass conservation; motion still walled](outputs/round29_multichannel.png)
+
+But a serious GA over the coupling reached only **0.11 R** of travel, and a less-diffusive
+**reintegration-tracking** advection (the suspected culprit) gave the same. **Motion hits the same
+wall with or without multi-channel** — so the binding constraint really is the **gradient flow**
+(it relaxes to a stationary equilibrium), not the channel count or the advection scheme.
+
+![a 2-channel coupled creature, staying put](outputs/round29_multichannel.gif)
+
+> So the mobile creature is now an *exhaustively* tested negative: plain Lenia, Flow-Lenia
+> (single- and multi-channel), two advection schemes, proper evolutionary searches — all
+> stationary, all explained by one mechanism. The remaining real path is **differentiable Lenia**
+> (gradient-descend through the dynamics to *find* a glider), which needs a deep-learning
+> dependency — a gate this numpy-only project leaves to a deliberate decision.
+
 ---
 
 ## How it works
@@ -570,6 +593,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run25 --gif   # the 3D creature: compact body found, mobile glider open + gif
 .venv/bin/python -m genesis.run27 --gif   # Flow-Lenia: mass-conserving substrate (robust 3D, multi-creature) + gif
 .venv/bin/python -m genesis.run28 --gif   # why it won't move: the gradient-flow motion diagnosis + gif
+.venv/bin/python -m genesis.run29 --gif   # multi-channel Flow-Lenia: coupled creatures; motion walled + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -603,7 +627,8 @@ genesis/
   creature3d.py  multi-ring + shaped search for a 3D creature (compact found, glider open)
   flowlenia.py  Flow-Lenia: mass-conserving substrate in numpy (robust 3D + multi-creature)
   creature_flow.py  GA for a mobile Flow-Lenia creature (the gradient-flow negative)
-  run1d.py … run28.py   round drivers + visualisation
+  flowlenia_mc.py  multi-channel Flow-Lenia (coupled channels; mass conserved per channel)
+  run1d.py … run29.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

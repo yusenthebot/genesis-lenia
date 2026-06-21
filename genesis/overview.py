@@ -85,6 +85,9 @@ PANELS = [
     ("outputs/round28_motion_diagnosis.png",
      "Round 28 · WHY IT WON'T MOVE — a proper GA can't make a single-channel Flow-Lenia creature locomote (plateaus far below "
      "the bar). The diagnosis: F=grad(G) is a GRADIENT flow -> relaxes to a stationary equilibrium; locomotion needs multi-channel."),
+    ("outputs/round29_multichannel.png",
+     "Round 29 · MULTI-CHANNEL FLOW-LENIA — built: C coupled channels, each conserving its mass; structured 2-channel creatures "
+     "form. But a GA + reintegration advection still leave motion at ~0.1R: the wall is the GRADIENT FLOW, not the channel count."),
 ]
 
 

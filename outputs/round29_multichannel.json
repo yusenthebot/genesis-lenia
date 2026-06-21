@@ -1,0 +1,5 @@
+{
+  "single_channel_travel_R": 0.2,
+  "multi_channel_travel_R": 0.11,
+  "locomotion_R": 7.5
+}

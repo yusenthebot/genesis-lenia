@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 28 (FLOW-LENIA MOTION DIAGNOSIS — gradient flow relaxes; complete, committed)
+ROUND: 29 (MULTI-CHANNEL FLOW-LENIA built; motion still walled off — complete, committed)
 
 REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
 even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
@@ -39,7 +39,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 86 tests green.
+  convolution + growth; same code 1D/2D/3D. 88 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -204,18 +204,28 @@ CURRENT STATE:
   the paper's glider mechanism). This resolves the recurring motion negative (R25/R27/R28) with a precise mechanism.
   Evidence: outputs/round28_motion_diagnosis.png (GA curve vs locomotion bar + compact-but-stationary creature +
   centroid-stays-put trajectory) + .gif. run28.py.
+- ROUND 29 (VERIFIED, negative): MULTI-CHANNEL FLOW-LENIA (the user's chosen direction, via AskUserQuestion).
+  genesis/flowlenia_mc.py — FlowWorldMC: C channels, each advected by its OWN affinity gradient, COUPLED via
+  cross-channel kernels (offsets/asym/weights); EACH channel conserves its own mass. POSITIVE: built + works —
+  structured 2-channel coupled creatures form and conserve mass (unit-tested). NEGATIVE: a serious GA over the
+  coupling (22 gens) reached only 0.11R travel, AND a less-diffusive REINTEGRATION-TRACKING advection (tested) also
+  gave ~0. So motion is the SAME wall with or without multi-channel -> the binding constraint is the GRADIENT FLOW
+  (F=grad(G) relaxes to a stationary equilibrium), NOT the channel count or advection scheme. Translation needs a
+  self-sustaining asymmetric (uniform-drift) attractor these numpy formulations don't reach. The mobile creature is
+  now an EXHAUSTIVELY-tested, well-explained negative (plain Lenia + Flow-Lenia single/multi-channel + 2 advections).
+  Evidence: outputs/round29_multichannel.png (2-channel creature + per-channel mass curve + motion-vs-channels bars) + .gif.
 
-NEXT ROUND SEED (round 29 — DECISION POINT, surface to user): the mobile creature is now a THOROUGH negative across
-  3 substrates/methods; the diagnosis says it needs MULTI-CHANNEL Flow-Lenia (a multi-round build, uncertain payoff).
-  Options to PRESENT to the user (returns on the motion frontier are genuinely diminishing):
-  (a) Build MULTI-CHANNEL Flow-Lenia (ungated, big): the principled path to gliders + rich ecology; multi-round, may
-      still be hard. (b) CONSOLIDATE: the project is comprehensive (mind arc + integration + open-endedness + a
-      rigorous, well-explained 3D/motion negative); update the capstone and call it. (c) GATED: torch/GPU,
-      differentiable Lenia. Recommendation: surface (a)/(b) to the user rather than autonomously sinking many rounds
-      into a speculative multi-channel build.
+NEXT ROUND SEED (round 30 — the ungated motion frontier is EXHAUSTED; DECISION for the user):
+  multi-channel (the user's pick) was built + searched and did NOT crack motion; the wall is the gradient flow, not
+  fixable by channel count / advection in numpy. The mobile creature now genuinely needs the GATED differentiable-Lenia
+  apparatus (gradient-descent through the dynamics to FIND a glider; the paper used JAX). Options to surface:
+  (a) GATED: add torch/JAX -> differentiable Lenia to gradient-find the glider (a dependency gate; biggest real shot).
+  (b) CONSOLIDATE: the project is comprehensive + every negative now exhaustively explained; refresh capstone, call it.
+  Do NOT keep grinding numpy motion variants (proven a wall). Recommend surfacing (a) vs (b).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run29 --gif     # round-29 multi-channel Flow-Lenia (built; motion walled off) + gif (~10s)
   .venv/bin/python -m genesis.run28 --gif     # round-28 Flow-Lenia motion diagnosis (gradient flow relaxes) + gif (~20s)
   .venv/bin/python -m genesis.run27 --gif     # round-27 Flow-Lenia (mass-conserving substrate) + gif (~3s)
   .venv/bin/python -m genesis.run25 --gif     # round-25 the 3D creature (compact found, mobile negative) + gif (~7s)
