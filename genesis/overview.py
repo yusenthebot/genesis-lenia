@@ -76,6 +76,9 @@ PANELS = [
     ("outputs/round24_openmind.png",
      "Round 24 · OPEN-ENDED MINDS — same body, but the MIND varies: MAP-Elites illuminates a zoo of distinct foraging "
      "STRATEGIES (roam x spread) with visibly different trajectories, where fitness converges to one. Creativity of minds."),
+    ("outputs/round25_creature3d.png",
+     "Round 25 · THE 3D CREATURE — a serious push (multi-ring kernels + shaped search) finds a STABLE COMPACT 3D creature "
+     "(an upgrade on R5's lattice), but the compact-OR-moving trade-off leaves the MOBILE 3D glider an honest open negative."),
 ]
 
 

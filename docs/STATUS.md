@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 24 (OPEN-ENDED MINDS, complete, committed)
+ROUND: 25 (THE 3D CREATURE — compact found, mobile still negative; complete, committed)
 
 REVIEW (round 23): re-verified R21-22 on FRESH unseen seeds -> BOTH HOLD (not cherry-picked). R21 ablation
 ladder on seeds 30-49: full 288 > memory_only 192 > no_memory 157 (committed 263/188/140 on seeds 0-19 —
@@ -31,7 +31,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 78 tests green.
+  convolution + growth; same code 1D/2D/3D. 80 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -47,11 +47,9 @@ CURRENT STATE:
 - ROUND 5 (3D, VERIFIED): DIMENSIONAL GENERALITY. The IDENTICAL engine runs a 3D world and
   self-organises a seed into a ROBUST, persistent 3D structure (tail mass_cv=0.0008, final
   mass ~22150 reproducible across 3 seeds) — the 3D analogue of round 1's lattice. Completes
-  the 1D->2D->3D engine arc. HONEST NEGATIVE: a compact MOBILE 3D creature (round-2-glider
-  analogue) is NOT delivered — across 5+ search strategies (single/multi-ring kernels, growth
-  sweeps, evolved 3D morphology) the 3D dynamics are knife-edge (die/foam/proliferate, and
-  flip on grid/seed); stable localised 3D creatures need the heavy specialised search 3D-Lenia
-  research uses. Evidence: outputs/round5_3d.png + .gif; genesis/evolve3d.py (3D morphology GA).
+  the 1D->2D->3D engine arc. HONEST NEGATIVE (ADVANCED in R25): a compact MOBILE 3D creature is NOT
+  delivered. (R25 found a stable COMPACT 3D creature — conc 1.00 — but it does not move; the mobile 3D
+  glider remains the open negative.) Evidence: outputs/round5_3d.png + .gif; genesis/evolve3d.py.
 - ROUND 6 (2D, VERIFIED): ECOLOGY. Many creatures (each a Lenia body in its own channel)
   compete for ONE shared, finite, replenishing food field; each has energy/metabolism +
   the foraging reflex (genesis/ecology.py). Result: STABILIZING SELECTION — survival peaks
@@ -169,16 +167,28 @@ CURRENT STATE:
   behaviour region is a triangle (~30/64 is near max, not 64); and a compact path can eat as much as a long rover
   (small world) -> the diversity is in STYLE, not all in success. Evidence: outputs/round24_openmind.png (strategy
   map + coverage curve + TRAJECTORY gallery) + .gif (4 minds foraging). run24.py.
+- ROUND 25 (VERIFIED, mixed): THE 3D CREATURE — a serious push at the R5 negative. genesis/creature3d.py upgrades
+  R5's search with (1) MULTI-RING kernels (kernel_peaks), (2) a SHAPED viability gradient (partial credit for healthy
+  mass + compactness + persistence, so the GA can climb where the round-2 fitness hard-gates on `alive` and gives no
+  gradient), (3) a motion reward. POSITIVE: a STABLE COMPACT 3D creature is found — a single localised body,
+  concentration 1.00, mass ~3162 (an upgrade on R5's diffuse self-organisation). HONEST NEGATIVE (sharpened): a
+  MOBILE 3D glider is still NOT found. The compactness x motion scatter shows exactly why — compact bodies are
+  STATIONARY attractors, the structures that MOVE (travel ~0.5) are DIFFUSE (conc ~0.3); the glider is the unmet
+  INTERSECTION (compact AND moving), and that corner is empty. Evidence: outputs/round25_creature3d.png (3 views of
+  the compact creature + the compact-OR-moving trade-off scatter) + .gif (rotating 3D creature). run25.py.
 
-NEXT ROUND SEED (round 25): ranked:
-  (a) STABLE MOBILE 3D CREATURE (leading now): the biggest remaining honest negative, parked since R5 — the only place
-      the 1D->2D->3D promise is incomplete (3D gives self-organisation, not a glider). Worth ONE serious push with the
-      heavier search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negative — report honestly.
-  (b) Deepen unification: EVOLVE the integrated controller; or unified creatures competing in an ecology.
-  (c) A capstone REVIEW + "what is this" essay if returns are clearly diminishing (gate: don't add a dependency).
+NEXT ROUND SEED (round 26 — most frontiers explored; lean consolidation/honesty): ranked:
+  (a) CAPSTONE REVIEW + "what is this" essay (leading): 25 rounds in, the arc is comprehensive and the last big
+      negative (3D glider) is now sharply characterised. Re-verify a couple recent rounds, write the definitive
+      whole-project telling, ensure the README/montage are the artifact. A natural place to consolidate.
+  (b) One more 3D-glider attempt from the DIFFUSE-MOVING side (relax compactness, seek a propagating localised wave)
+      — lower odds, but the scatter hints motion is reachable; could try seeding from 2D-glider-like asymmetry in 3D.
+  (c) GATED: a richer substrate (Flow-Lenia / torch-GPU / differentiable Lenia) would unlock harder 3D + bigger
+      worlds, but needs a NEW DEPENDENCY -> ask the user before adding.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run25 --gif     # round-25 the 3D creature (compact found, mobile negative) + gif (~7s)
   .venv/bin/python -m genesis.run24 --gif     # round-24 open-ended minds (foraging-strategy zoo) + gif (~6 min)
   .venv/bin/python -m genesis.run22 --gif     # round-22 open-endedness (MAP-Elites zoo) + gif (~5 min)
   .venv/bin/python -m genesis.run21 --gif     # round-21 unification (ablation of faculties) + gif (~4s)

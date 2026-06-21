@@ -579,9 +579,35 @@ VERDICT: the newer rounds stand up on unseen seeds. Unlike R18 (corrected at R20
 Round 25 = the STABLE MOBILE 3D CREATURE (the biggest parked negative, since R5) — one serious push with a heavier
 search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negative; report honestly either way.
 
+## Round 25 — the 3D creature: compact body found, mobile glider still negative (DONE, committed)
+
+### What worked
+- genesis/creature3d.py: a serious, well-resourced push at the R5 negative (the mobile 3D creature). Three upgrades
+  over R5's search: (1) MULTI-RING kernels (kernel_peaks) — what Bert Chan's 3D Lenia creatures actually use, where
+  R5 searched mostly single-ring; (2) a SHAPED viability gradient — the round-2 fitness hard-gates on `alive`, so
+  dead/exploded candidates score ~0 and the GA has NO gradient; partial credit (healthy mass + compactness +
+  persistence) lets it CLIMB; (3) a motion reward.
+- POSITIVE RESULT: the search RELIABLY finds a STABLE, COMPACT 3D creature — a single localised body, concentration
+  1.00, mass ~3162 — across multiple seeds. This is a genuine upgrade on R5, which only delivered diffuse 3D
+  self-organisation (a lattice). So "a 3D creature" (stable, compact, single body) IS now delivered.
+
+### What did NOT work / honest notes (the sharpened negative)
+- A MOBILE 3D creature (a 3D glider) is STILL NOT found. The aggressive-motion search (chase=True) found structures
+  that MOVE (travel ~0.5) but they are DIFFUSE (conc ~0.3), not compact creatures; the viability search finds compact
+  bodies (conc 1.0) that are STATIONARY (travel 0). The compactness x motion scatter makes it precise: the two
+  ingredients exist SEPARATELY, but their intersection — compact AND moving — is EMPTY. The 3D glider is the
+  knife-edge between a stationary-compact attractor and a diffuse-moving wave. This is a far more precise, honest
+  negative than R5's "knife-edge, dies/foams/proliferates."
+- Why: a compact symmetric blob has no preferred direction (no net motion); a 3D glider needs self-sustaining
+  ASYMMETRY that translates without dispersing — rare, and the GA converges to the easy stationary-compact basin.
+
+### Next-round seed
+Round 26 = CAPSTONE REVIEW + "what is this" essay (most frontiers now explored; the last big negative is sharply
+characterised). Or one more 3D-glider attempt from the diffuse-moving side. A richer substrate (Flow-Lenia/torch) is GATED.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 24 rounds + FOUR reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 25 rounds + FOUR reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -591,13 +617,13 @@ search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negat
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
   learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION->OPEN-ENDEDNESS(bodies)
-  ->OPEN-ENDED-MINDS. (Round 24: same body, varied policy -> MAP-Elites illuminates 28 distinct foraging STRATEGIES
-  with visibly different trajectories, while fitness converges to ~5. Creativity of minds, not just morphology.)
+  ->OPEN-ENDED-MINDS->3D-CREATURE(compact yes, mobile no). (Round 25: a serious push finds a stable COMPACT 3D creature
+  — upgrade on R5 — but the mobile 3D glider stays the knife-edge intersection of compact-stationary and diffuse-moving.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. STABLE MOBILE 3D CREATURE (the biggest parked negative since R5; 3D gives self-organisation, not a glider) — one
-     serious push with a heavier search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negative.
-  2. Deepen unification: EVOLVE the integrated controller; or unified creatures competing in an ecology.
-  3. Stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked) — the biggest remaining honest negative.
+  1. CAPSTONE REVIEW + "what is this" telling — consolidate 25 rounds into the definitive artifact (the high-value move now).
+  2. GATED substrate leaps (ask the user first): Flow-Lenia (unbounded open-endedness + real 3D creatures); torch/GPU
+     (scale, bigger 3D); differentiable Lenia (gradient-find the 3D glider the GA can't reach). Each = a new dependency.
+  3. Smaller numpy-CA rounds (diminishing returns — avoid unless a fresh genuinely-new angle appears).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -659,3 +685,14 @@ search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negat
   negative ("here is exactly how hard it is, here's the search, here's why it's knife-edge") is itself a real result and
   closes the question. After that, the numpy-CA substrate is genuinely near its ceiling: further leaps (Flow-Lenia, torch/GPU)
   need a dependency = a GATE (ask the user). So R25 = the 3D push; then likely a capstone/曲终 unless the user redirects.
+- AMBITION CRITIC (after round 25 — the 3D push, mixed result): the last big negative is now SHARPLY characterised — a
+  stable COMPACT 3D creature is found (upgrade on R5), but the mobile 3D glider remains the knife-edge intersection of
+  compact-stationary and diffuse-moving. This is the most honest possible state for that question on this substrate: not
+  "we never tried hard enough" but "here is exactly the trade-off that makes it rare." An expert would now respect the
+  negative rather than dock it. WHAT'S LEFT, honestly: the project is comprehensive (25 rounds: full mind arc + integration
+  + open-endedness of bodies AND minds + a rigorous 3D result). Every remaining BIG leap needs a new substrate/dependency
+  (Flow-Lenia for unbounded open-endedness + real 3D creatures; torch/GPU for scale; differentiable Lenia to gradient-find
+  the 3D glider) — all GATED on the user. So the honest next move is CONSOLIDATION: a capstone review + the definitive
+  "what is this" telling, making the repo the artifact. Continuing to add small numpy-CA rounds would be busywork / diminishing
+  returns; the high-value moves from here are either (a) capstone, or (b) a user-approved substrate leap. Round 26 = capstone,
+  and surface the gated substrate options to the user rather than silently grinding.

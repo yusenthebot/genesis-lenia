@@ -19,7 +19,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~24 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~25 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -31,8 +31,8 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 > once: the deep-mind results (memory, prediction, planning) are isolated in the settings that
 > make them measurable, embodied in the Lenia creature where that's the point (agency, survival,
 > embodied memory). It is small-scale and CPU/`numpy`-only — not competitive with engineered
-> agents. And the **3D *creature*** (a mobile 3D analogue of the 2D glider) is an open negative;
-> what 3D delivers here is robust self-*organisation*. Every round's honest negatives are kept,
+> agents. And the **mobile 3D *creature*** (a 3D glider) is an open negative — round 25 finds a
+> *stable compact* 3D creature but not a *moving* one. Every round's honest negatives are kept,
 > not hidden.
 
 ## The arc so far
@@ -59,6 +59,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 21 | **Unification** — one creature, all four faculties | ✅ round 21 (ablate any → it starves; each load-bearing) |
 | 22 | **Open-endedness** — keep generating, or converge? | ✅ round 22 (MAP-Elites zoo: 54/64 niches vs 1) |
 | 24 | **Open-ended minds** — a zoo of foraging strategies | ✅ round 24 (28 distinct strategies vs ~5) |
+| 25 | **The 3D creature** — a compact body in 3D; a mover? | ◑ round 25 (compact body found; mobile glider still open) |
 
 ---
 
@@ -139,7 +140,8 @@ seeds. This completes the **1D → 2D → 3D** arc on one codebase.
 > evolved 3D morphology) the reachable 3D dynamics are knife-edge — they die, foam, or
 > proliferate, and flip on grid size and seed. Stable localised 3D creatures need the heavy
 > specialised search the 3D-Lenia literature uses. What is solid here is robust 3D
-> *self-organisation*; the 3D *creature* is an open frontier.
+> *self-organisation*; the 3D *creature* is an open frontier. **(Round 25 advances this: a stable
+> *compact* 3D creature is now found, but a *mobile* 3D glider is still the open negative.)**
 
 ## Round 6 — ecology (2D)
 
@@ -451,6 +453,30 @@ morphologies: the same body supports a whole zoo of distinct ways to forage.
 > wide-spreading path), so ~30/64 is near the ceiling, not a shortfall; and in this small world a
 > compact path can eat as much as a long rover, so the diversity is in *style*, not all in success.
 
+## Round 25 — the 3D creature (a compact body found; the glider still open)
+
+Round 5 scaled the *engine* to 3D and got robust self-*organisation* — but never a 3D
+*creature* (the analogue of the 2D glider). This round makes one serious push at that
+negative, with three upgrades over R5's search: **multi-ring kernels** (what 3D Lenia
+creatures actually use), a **shaped viability gradient** (the round-2 fitness hard-gates on
+*alive*, giving the search no foothold; partial credit for healthy mass + compactness lets it
+climb), and a **motion reward**.
+
+![the 3D creature: a stable compact body, and why the mobile glider is knife-edge](outputs/round25_creature3d.png)
+
+**Result (honest, mixed).** The search now reliably finds a **stable, compact 3D creature** — a
+single localised body, concentration **1.00** — a genuine upgrade on R5's diffuse lattice. But a
+**mobile** 3D creature (a 3D *glider*) is **still not found**, and the search shows exactly *why*:
+the compactness × motion scatter has the two ingredients only **separately** — compact bodies are
+**stationary**, and the structures that **move** are **diffuse**. The glider is the empty
+**intersection** (compact *and* moving) — the knife-edge that keeps it rare.
+
+![a stable compact 3D creature, rotating](outputs/round25_creature3d.gif)
+
+> This *sharpens* R5's negative rather than erasing it: *a* 3D creature, yes; a *moving* one, not
+> yet. Reaching it likely needs a richer substrate (differentiable Lenia to gradient-find it, or
+> Flow-Lenia) — a dependency this numpy-only project has deliberately not added.
+
 ---
 
 ## How it works
@@ -492,6 +518,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run21 --gif   # unification: one creature, all faculties (ablation) + gif
 .venv/bin/python -m genesis.run22 --gif   # open-endedness: MAP-Elites zoo vs fitness converges + gif
 .venv/bin/python -m genesis.run24 --gif   # open-ended minds: a zoo of foraging strategies + gif
+.venv/bin/python -m genesis.run25 --gif   # the 3D creature: compact body found, mobile glider open + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -522,7 +549,8 @@ genesis/
   unified.py    one creature integrating body+memory+prediction+planning (ablation)
   openended.py  MAP-Elites illuminating a behaviour-space zoo (open-endedness)
   openmind.py   MAP-Elites over foraging policies — a zoo of strategies (open-ended minds)
-  run1d.py … run24.py   round drivers + visualisation
+  creature3d.py  multi-ring + shaped search for a 3D creature (compact found, glider open)
+  run1d.py … run25.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
