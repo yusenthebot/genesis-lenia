@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 20 (MILESTONE REVIEW + capstone, complete, committed)
+ROUND: 21 (UNIFICATION, complete, committed)
 
 REVIEW (round 20): re-verified R18-19. R19 reproduces EXACTLY (pursuit 54 vs planner 24; recurrent 0.45 vs
 feedforward 0.05). R18 HOLDS ON AVERAGE but is the project's MOST SEED-SENSITIVE result: a quick under-
@@ -24,7 +24,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 69 tests green.
+  convolution + growth; same code 1D/2D/3D. 72 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -132,17 +132,27 @@ CURRENT STATE:
   interception trajectories. And an EVOLVED RECURRENT controller (sees only relative position, must infer
   the motion) LEARNS to anticipate: catch rate 0.45 vs 0.05 for a feedforward (reaction-only) controller.
   Completes the mind's core loop perceive->model->predict->ACT-TO-ACHIEVE. (Honest: ES doesn't reach the
-  hand-coded planner; interception is hard to learn from scratch, but recurrent >> feedforward 9x.) Fast
-  (~90s). Evidence: outputs/round19_planning.png (trajectories + catch-time bars + evolved catch-rate) + .gif.
+  hand-coded planner; interception is hard to learn from scratch, but recurrent >> feedforward 9x.) run19.py.
+- ROUND 21 (VERIFIED): UNIFICATION — one creature, all four faculties, proven load-bearing by ablation.
+  genesis/unified.py — a Lenia creature must stay on food that MOVES (constant-velocity, bouncing) and FLASHES
+  (visible briefly then dark) under METABOLISM, so tracking it is survival. ONE integrated controller:
+  perceive -> REMEMBER (hold the estimate across dark) -> PREDICT (dead-reckon by remembered velocity) ->
+  PLAN/ACT (drive the Lenia drift to the lead/intercept). Ablation ladder (steps survived, max 320, 20 seeds):
+  full 263 > memory_only 188 (no prediction -> lags) > no_memory 140 (stalls in the dark). Each faculty earns
+  its place. Body (3-13)+memory (15/18)+prediction (16)+planning (19) are now ONE organism. HONEST: controller
+  is hand-integrated (faculties were shown EVOLVABLE earlier; this proves they COMPOSE + each is necessary);
+  the lead occasionally overshoots at a bounce so full isn't best on every seed (best on avg + 10/16 seeds).
+  Fast (~4s, deterministic). Evidence: outputs/round21_unified.png (ablation bars + energy-over-life) + .gif.
 
-NEXT ROUND SEED (round 21 — review/capstone done; build again): ranked:
-  (a) UNIFY (leading): ONE creature with body + memory + prediction + planning, in a task/ecology that
-      needs all of them (the grand integration — answers the round-20 critic's "not one organism does it all").
-  (b) Open-endedness: a ZOO of evolved minds + a behavioural-diversity/novelty metric over the whole arc.
-  (c) Stable mobile 3D creature (hard/open, long-parked) — would also strengthen the 1D->2D->3D claim.
+NEXT ROUND SEED (round 22): ranked:
+  (a) OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty, or converge? a ZOO of evolved minds/
+      bodies + a behavioural-diversity / novelty-search metric over the arc (the one big theme not yet shown).
+  (b) Stable mobile 3D creature (hard/open, long-parked) — would strengthen the 1D->2D->3D claim.
+  (c) Deepen unification: evolve (not hand-code) the integrated controller, or put unified creatures in an ecology.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run21 --gif     # round-21 unification (ablation of faculties) + gif (~4s)
   .venv/bin/python -m genesis.run19 --gif     # round-19 planning / interception + gif (~90s)
   .venv/bin/python -m genesis.run18 --gif     # round-18 embodied memory (recurrent brain in Lenia) + gif (~4 min)
   .venv/bin/python -m genesis.run16 --gif     # round-16 a brain that predicts + gif (~5s)

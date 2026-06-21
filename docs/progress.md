@@ -491,9 +491,35 @@ Adversarial re-verification of R18-19 + a capstone README pass at the natural mi
   suptitle updated to the full arc. 69 tests green; all README images resolve; honest negatives intact.
 VERDICT: the arc holds; one optimistic headline (R18) corrected to honest numbers. Build resumes at UNIFICATION.
 
+## Round 21 — unification: one creature, all four faculties (DONE, committed)
+
+### What worked
+- genesis/unified.py: a Lenia creature must stay on food that MOVES (constant-velocity, bouncing) and FLASHES
+  (visible briefly, then dark) under METABOLISM -> tracking it IS survival. ONE integrated controller:
+  perceive -> REMEMBER (hold the position estimate across the dark) -> PREDICT (dead-reckon by remembered
+  velocity) -> PLAN/ACT (drive the Lenia body's np.roll drift toward the lead/intercept).
+- ABLATION LADDER (steps survived, max 320, 20 seeds): full 263 > memory_only 188 (keeps memory but does not
+  predict the motion -> aims at a stale spot, lags) > no_memory 140 (retains nothing across the dark -> stalls).
+  Each step removes one faculty and costs survival -> every faculty is LOAD-BEARING. The energy-over-life panel
+  shows the mechanism: full keeps eating (sawtooth recoveries) and lives; no_memory declines monotonically.
+- Body (3-13) + memory (15/18) + prediction (16) + planning (19) are now demonstrably ONE organism.
+
+### What did NOT work / honest notes
+- The ES route FAILED first (twice): training one recurrent net to learn all four jointly gave recurrent == feedforward
+  (memory not load-bearing on a too-regular orbit) and, when hardened, both collapsed (too hard for ES). This is the
+  same R18/R19 tension a THIRD time: where memory/prediction is necessary, a tiny ES net can't learn it. PIVOTED to a
+  hand-INTEGRATED controller (the faculties were already shown EVOLVABLE in 15/16/19; unification's claim is that they
+  COMPOSE and each is necessary, which ablation proves cleanly and deterministically).
+- The prediction LEAD occasionally overshoots at a wall bounce (dead-reckons the old velocity through the bounce), so
+  `full` is not best on every seed (best on average + 10/16 seeds survive the whole episode). Documented, not hidden.
+
+### Next-round seed
+Round 22 = OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty or converge? a ZOO of evolved minds/bodies
++ a behavioural-diversity / novelty metric — the one big theme not yet shown. Or the long-parked stable 3D creature.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 20 rounds + THREE reviews): the mind's core loop is COMPLETE — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 21 rounds + THREE reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -502,14 +528,14 @@ VERDICT: the arc holds; one optimistic headline (R18) corrected to honest number
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING is complete in skeleton.
-  (Round 19: a planner intercepts a circling target ~2x faster than reaction; a recurrent controller LEARNS
-  to anticipate. perceive->model->predict->act-to-achieve — the mind's core loop is whole.)
+  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION is whole.
+  (Round 21: ONE creature integrates body+memory+prediction+planning to survive tracking moving, flashing food;
+  ablate any faculty and it starves sooner — each is load-bearing. The mind is not just complete but integrated.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. MILESTONE + CAPSTONE: review 18-19, then tighten the README/story into a coherent "what this is" telling.
-  2. UNIFY: one creature with body + memory + prediction + planning, in the ecology (the grand integration).
-  3. Open-endedness: a ZOO of evolved minds + a behavioural-diversity/novelty metric over the whole arc.
-  4. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked).
+  1. OPEN-ENDEDNESS: does the world keep GENERATING novelty or converge? a ZOO of evolved minds/bodies + a
+     behavioural-diversity / novelty-search metric over the arc — the one big theme (creativity) not yet shown.
+  2. Stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked) — would strengthen 1D->2D->3D.
+  3. Deepen unification: EVOLVE (not hand-code) the integrated controller, or put unified creatures in an ecology.
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -534,3 +560,13 @@ VERDICT: the arc holds; one optimistic headline (R18) corrected to honest number
   honest answer to "it's not one organism doing it all," and it is the natural climax of the arc. Second: open-ended
   novelty (a ZOO + diversity metric) to show the world keeps GENERATING, not just converging. The 3D creature stays
   parked (would need a heavier specialised search). Build, don't add: integrate and prove the whole.
+- AMBITION CRITIC (after round 21 — unification done): the climax landed — ONE creature integrates all four faculties
+  and ablation proves each is load-bearing (full 263 > memory_only 188 > no_memory 140). Honest dent: the integrated
+  controller is HAND-coded, not evolved (the faculties were each shown evolvable earlier; ES couldn't learn them jointly
+  — a real, documented limitation, the R18/R19/R21 tension). So "grown not coded" holds for the faculties and the
+  substrate, but the final wiring is engineered. What's genuinely NOT yet shown across 21 rounds: OPEN-ENDEDNESS /
+  creativity — every result so far CONVERGES to an optimum or a fixed skill; nothing demonstrates the world keeps
+  GENERATING new behaviours. That is the most expert-unimpressive gap now ("nice, but does it keep surprising you?").
+  Round 22+ ratchet: novelty search / a diversity metric / a ZOO showing open-ended generation — or honestly report
+  that this numpy-CA substrate converges and open-endedness needs Flow-Lenia / a richer substrate (a real finding either
+  way). Secondary: evolve the unified controller; the long-parked 3D creature.

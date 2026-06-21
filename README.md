@@ -54,6 +54,7 @@ act-to-achieve*. Each capability is shown with a runnable driver, a figure, and 
 | 16 | **A brain that predicts** — foreseeing the next state | ✅ round 16 (1 bit predictive info; reflex can't) |
 | 18 | **Embodied memory** — a recurrent brain in a Lenia body | ✅ round 18 (memory pays: ~2× foraging) |
 | 19 | **Planning** — acting on foresight to intercept | ✅ round 19 (planner 2× faster; the loop is whole) |
+| 21 | **Unification** — one creature, all four faculties | ✅ round 21 (ablate any → it starves; each load-bearing) |
 
 ---
 
@@ -369,6 +370,41 @@ now **intend** (19) — all grown from local rules, and where it matters, shown 
 
 *(blue = target, red = reactive pursuit, green = planner cutting across to intercept)*
 
+## Round 21 — unification (one creature, all four faculties)
+
+The arc demonstrated each faculty in isolation. This round puts them in **one organism** on
+one survival task that needs all of them: a Lenia creature must **stay on food that moves**
+(constant-velocity, bouncing off the walls) **and flashes** (visible briefly, then dark),
+under metabolism — so tracking it is literally staying alive. One integrated controller runs
+the whole loop: **perceive** the food when visible → **remember** where it is across the dark
+→ **predict** where it moved (dead-reckon by the remembered velocity) → **plan/act** by driving
+the body's drift to the lead point.
+
+Then we **ablate** each faculty and watch survival fall:
+
+![unification: ablate any faculty and the creature starves sooner](outputs/round21_unified.png)
+
+| controller | faculties | steps survived (max 320) |
+|---|---|---|
+| **full** | memory + prediction + planning | **263** |
+| memory only | remembers, but doesn't predict the motion → aims at a stale spot | 188 |
+| no memory | retains nothing across the dark → stalls when food is invisible | 140 |
+
+Every step down the ladder removes one faculty and **costs survival** — so each one is
+load-bearing. The body (rounds 3–13), memory (15/18), prediction (16) and planning (19) are
+now demonstrably **one creature**.
+
+![the unified creature tracks moving, flashing food through the dark](outputs/round21_unified.gif)
+
+*(red = the Lenia creature; green dot = food, dim when its signal is dark — the creature keeps
+tracking it on memory + prediction)*
+
+> Honest note: the integrating controller here is **hand-wired**, not evolved — the faculties
+> were each shown *evolvable* in earlier rounds (15/16/19), but a single tiny ES-trained net
+> couldn't learn all four jointly, so unification proves they **compose and each is necessary**
+> rather than re-deriving them. The prediction lead can also overshoot at a wall bounce, so
+> `full` wins on average (and on 10/16 seeds) rather than on every single one.
+
 ---
 
 ## How it works
@@ -407,6 +443,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run16 --gif   # a brain that predicts (recurrent forecasting) + gif
 .venv/bin/python -m genesis.run18 --gif   # embodied memory (recurrent brain in a Lenia forager) + gif
 .venv/bin/python -m genesis.run19 --gif   # planning / interception (act on foresight) + gif
+.venv/bin/python -m genesis.run21 --gif   # unification: one creature, all faculties (ablation) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -434,7 +471,8 @@ genesis/
   predict_brain.py  a recurrent controller that predicts the next world-state
   embodied_memory.py  a recurrent brain driving a Lenia forager (memory pays)
   planning.py   acting on foresight: intercept a moving target (pursuit vs planner)
-  run1d.py … run19.py   round drivers + visualisation
+  unified.py    one creature integrating body+memory+prediction+planning (ablation)
+  run1d.py … run21.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

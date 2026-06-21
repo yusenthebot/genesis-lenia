@@ -67,6 +67,9 @@ PANELS = [
     ("outputs/round19_planning.png",
      "Round 19 · PLANNING — acting on foresight: a planner intercepts a circling target (cuts across, 2x "
      "faster) where reaction tail-chases; an evolved recurrent controller LEARNS to anticipate. Mind loop complete."),
+    ("outputs/round21_unified.png",
+     "Round 21 · UNIFICATION — ONE creature tracks moving, flashing food to survive, integrating body + memory + "
+     "prediction + planning; ablate any faculty (263 -> 188 -> 140 steps) and it starves sooner. Each one earns its place."),
 ]
 
 
