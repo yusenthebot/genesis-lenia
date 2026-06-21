@@ -5,7 +5,17 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 38 (HARDER THEORY OF MIND — reading intent when behaviour misleads; complete, committed)
+ROUND: 39 (MILESTONE REVIEW — R37/R38 re-verified + capstone refresh; complete, committed)
+
+REVIEW (round 39): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R37 coordination (seeds 5-7):
+coverage 1.00 vs ablated 0.25 (perfect division of labour reproduces). R38 harder ToM (seed 4): mid-detour observer
+0.99 vs oracle 0.63, mean 0.77 vs 0.70 -> modelling beats the position oracle through misleading behaviour; ablated
+0.33 chance. 103 tests green; all images resolve; no orphan modules. REFRESHED docs/CAPSTONE.md (35 -> 38 rounds): the
+social arc now spans all 8 social rounds (comm x4 + theory of mind x2 + coordination); reviews list -> 8; arc one-line
++ next-step updated. AMBITION CRITIC: the social vein is now deep + broad (8 rounds) and the pattern (evolve a net,
+beat an ablation) is becoming repetitive -> the strongest in-kind next move is a UNIFIED SOCIAL WORLD (multi-agent
+analogue of R21: agents must communicate AND coordinate to forage under selection, each faculty load-bearing); else a
+genuinely new dimension or recognising broad completeness. NOTE: repo .git 94M / outputs 57M (growing; watch).
 
 REVIEW (round 36): re-verified the SOCIAL rounds (R33/34/35) on FRESH unseen seeds -> ALL HOLD. R33 grounded comm
 (seeds 5-6): catch WITH comm 0.71 vs ablated 0.03 (committed 0.58/0.05 -> even stronger). R34 iterated learning
@@ -298,11 +308,12 @@ CURRENT STATE:
   intent THROUGH misleading behaviour. Evidence: outputs/round38_tom_obstacle.png (accuracy-by-step observer>oracle mid-detour
   + detour trajectories around the obstacle + a mid-detour snapshot: observer right, oracle fooled) + .gif. run38.py.
 
-NEXT ROUND SEED (round 39): social vein now DEEP + BROAD (8 social rounds: comm x4 + ToM x2 + coordination). Ranked:
-  (a) MILESTONE REVIEW (leading; 8 social rounds, last review R36) — re-verify R37/R38, refresh capstone to the full social
-      arc, a "social intelligence" consolidation; the vein is getting deep so consolidate before more.
-  (b) A genuinely NEW dimension if continuing: emergent roles WITHOUT pre-given ids (symmetry-breaking from scratch), or
-      a non-social frontier (the social pattern -- evolve a net, beat an ablation -- is becoming repetitive; consider freshness).
+NEXT ROUND SEED (round 40 — review done): the ambition critic's answer. Ranked:
+  (a) UNIFIED SOCIAL WORLD (leading): the multi-agent analogue of R21's unification — ONE world where agents must
+      COMMUNICATE AND COORDINATE to forage/survive under selection, each social faculty shown LOAD-BEARING (ablate the
+      channel or the role-split and the group does worse). The social-arc capstone; integrates R30-38 instead of adding a 9th isolated demo.
+  (b) A genuinely NEW dimension (emergent roles with no pre-given id; cumulative culture) if (a) feels forced.
+  (c) Recognise broad completeness + a whole-project capstone pass (38 rounds, 3 threads, all verified).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):

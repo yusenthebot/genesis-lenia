@@ -807,6 +807,21 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 39 — MILESTONE REVIEW: R37/R38 re-verified + capstone refresh + ambition critic (DONE, committed)
+
+Adversarial re-verification of the latest rounds on FRESH unseen seeds (last full review R36).
+- R37 coordination (seeds 5-7): coverage 1.00 vs ablated 0.25 -> perfect division of labour reproduces.
+- R38 harder ToM (seed 4): mid-detour observer 0.99 vs oracle 0.63, mean 0.77 vs 0.70 -> modelling beats the position
+  oracle through misleading behaviour; ablated 0.33 chance -> holds.
+- 103 tests green; all README images resolve; no orphan modules.
+- REFRESHED docs/CAPSTONE.md (35 -> 38 rounds): the social arc now spans all 8 social rounds; reviews list -> 8.
+- AMBITION CRITIC: the social vein is now DEEP + BROAD (8 rounds) and the pattern (evolve a net, beat an ablation) is
+  becoming repetitive. Strongest IN-KIND next move = a UNIFIED SOCIAL WORLD (multi-agent analogue of R21's unification:
+  agents must COMMUNICATE AND COORDINATE to forage/survive under selection, each social faculty load-bearing). Else a
+  genuinely new dimension, or recognise broad completeness. This integrates R30-38 rather than adding a 9th isolated demo.
+- NOTE: repo .git 94M / outputs 57M (growing; inherent to the visual README; watch).
+VERDICT: latest rounds hold on unseen seeds; docs in sync with 38-round reality; round 40 = the unified social world (capstone of the social arc).
+
 ## Round 38 — harder theory of mind: reading intent when behaviour misleads (DONE, committed)
 
 ### What worked (addresses the R35 honest gap)
