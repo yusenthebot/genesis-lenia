@@ -544,9 +544,21 @@ Round 22 = OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty or c
 Round 23 is a natural MILESTONE (22 rounds, last review R20): re-verify R21-22 adversarially, prune, refresh the arc.
 Or the long-parked stable 3D creature; or novelty-search in the MIND space (open-ended brains, not just bodies).
 
+## Round 23 — MILESTONE REVIEW (DONE, committed)
+
+Adversarial re-verification of R21-22 on FRESH unseen seeds (the last full review was R20).
+- R21 (unification): the ablation ladder HOLDS on fresh seeds 30-49 -> full 288 > memory_only 192 > no_memory 157
+  (committed 263/188/140 on seeds 0-19 reproduces directionally). Each faculty still load-bearing; not cherry-picked.
+- R22 (open-endedness): on a FRESH seed (2), MAP-Elites fills 54/64 niches and the fitness-GA's population diversity
+  collapses to 8 -> reproduces the committed numbers EXACTLY. The generativity result is robust, not seed-specific.
+- 75 tests green; all README images resolve; no orphan modules; every honest negative/caveat intact (R18 seed-
+  sensitivity, R21 hand-wired controller + bounce overshoot, R22 foam textures + bounded map, 3D creature negative).
+- NOTE: repo growing (.git 62M, outputs 51M) from committed GIFs/PNGs — inherent to the visual README; acceptable.
+VERDICT: the newer rounds stand up on unseen seeds. Unlike R18 (corrected at R20), R21-22 needed no correction.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 22 rounds + THREE reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 23 rounds + FOUR reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -606,3 +618,12 @@ Or the long-parked stable 3D creature; or novelty-search in the MIND space (open
   rounds in, R21-22 are unreviewed and the last full review was R20. Ratchet: a MILESTONE REVIEW (re-verify R21-22,
   refresh the arc), THEN either open-ended MINDS (novelty over foraging behaviour) or finally attack the 3D creature.
   The arc is now broad AND deep AND (mostly) honest; the remaining moves are consolidation and the few real negatives.
+- AMBITION CRITIC (after round 23 — review): R21-22 verified robust on fresh seeds (no correction needed — the project's
+  honesty discipline is holding). 23 rounds + 4 reviews in, the work is comprehensive; the two genuinely-unshown things an
+  expert would still name are: (1) open-ended MINDS, not just bodies — R22 illuminated a zoo of body shapes, but a zoo of
+  distinct FORAGING STRATEGIES (behaviour, not morphology) would be the stronger creativity claim and reuses the existing
+  foraging machinery; (2) the stable mobile 3D CREATURE — the one hard negative parked since R5, the only place the
+  "1D->2D->3D" promise is incomplete (3D gives self-organisation, not a glider). Round 24 ratchet: open-ended minds (higher
+  feasibility, extends R22) OR a real attempt at the 3D creature (higher ambition, may stay negative — but worth one honest
+  push with the heavier search). Either is a legitimate frontier; neither is busywork. The substrate itself (numpy CA) is
+  near its ceiling — bigger leaps (Flow-Lenia, torch/GPU, differentiable) are gated on a new dependency = ask the user first.

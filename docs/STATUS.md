@@ -5,7 +5,14 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 22 (OPEN-ENDEDNESS, complete, committed)
+ROUND: 23 (MILESTONE REVIEW, complete, committed)
+
+REVIEW (round 23): re-verified R21-22 on FRESH unseen seeds -> BOTH HOLD (not cherry-picked). R21 ablation
+ladder on seeds 30-49: full 288 > memory_only 192 > no_memory 157 (committed 263/188/140 on seeds 0-19 —
+reproduces directionally). R22 on fresh seed 2: MAP-Elites fills 54/64 niches, fitness-GA diversity collapses
+to 8 (reproduces exactly). 75 tests green; all images resolve; no orphan modules; honest negatives/caveats
+(R18 seed-sensitivity, R21 hand-wired + bounce overshoot, R22 foam + bounded) all intact. NOTE: repo growing
+(.git 62M, outputs 51M) from committed GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 REVIEW (round 20): re-verified R18-19. R19 reproduces EXACTLY (pursuit 54 vs planner 24; recurrent 0.45 vs
 feedforward 0.05). R18 HOLDS ON AVERAGE but is the project's MOST SEED-SENSITIVE result: a quick under-
@@ -153,10 +160,12 @@ CURRENT STATE:
   discrete single organisms; and the map is bounded (no claim of UNBOUNDED open-endedness). Evidence:
   outputs/round22_openended.png (behaviour map + coverage curve + zoo gallery) + .gif (4 creatures animating). run22.py.
 
-NEXT ROUND SEED (round 23 — a natural milestone point, 22 rounds in): ranked:
-  (a) MILESTONE REVIEW (leading; last review was R20): re-verify R21-22 adversarially, prune, refresh the arc telling.
-  (b) Stable mobile 3D creature (hard/open, long-parked) — the biggest remaining honest negative.
-  (c) Deepen: evolve the unified controller; or novelty-search in the FORAGING/mind space (open-ended minds, not bodies).
+NEXT ROUND SEED (round 24 — review done; build again): ranked:
+  (a) OPEN-ENDED MINDS (leading): MAP-Elites/novelty over FORAGING-BEHAVIOUR descriptors (not body shape) — a zoo of
+      distinct foraging STRATEGIES. Extends R22's open-endedness from bodies to minds; the deeper creativity claim.
+  (b) Stable mobile 3D creature (hard/open, long-parked) — the biggest remaining honest negative; would also
+      strengthen the 1D->2D->3D claim. Needs the heavy specialised search (multi-ring kernels + CMA-ES).
+  (c) Deepen unification: EVOLVE (not hand-code) the integrated controller, or put unified creatures in an ecology.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
