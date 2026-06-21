@@ -70,6 +70,9 @@ PANELS = [
     ("outputs/round21_unified.png",
      "Round 21 · UNIFICATION — ONE creature tracks moving, flashing food to survive, integrating body + memory + "
      "prediction + planning; ablate any faculty (263 -> 188 -> 140 steps) and it starves sooner. Each one earns its place."),
+    ("outputs/round22_openended.png",
+     "Round 22 · OPEN-ENDEDNESS — MAP-Elites ILLUMINATES a behaviour space (move x size), filling ~84% of it with a "
+     "ZOO of distinct creatures while fitness search collapses to one; diversity ACCUMULATES instead of converging."),
 ]
 
 

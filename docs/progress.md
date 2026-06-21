@@ -517,9 +517,36 @@ VERDICT: the arc holds; one optimistic headline (R18) corrected to honest number
 Round 22 = OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty or converge? a ZOO of evolved minds/bodies
 + a behavioural-diversity / novelty metric — the one big theme not yet shown. Or the long-parked stable 3D creature.
 
+## Round 22 — open-endedness: does the world keep generating, or converge? (DONE, committed)
+
+### What worked
+- genesis/openended.py: MAP-Elites (Mouret & Clune) ILLUMINATES a 2-D behaviour space — (drift-speed) x (body-mass)
+  — keeping the most VIABLE creature found in each of 8x8 niches, vs a fitness-GA baseline.
+- RESULT: MAP-Elites fills 54/64 niches (84%) spanning the FULL move x size range; coverage ACCUMULATES (climbs
+  24->54 over evaluations, still rising). The fitness GA's population diversity COLLAPSES / hovers ~8 as elitist
+  selection drives it to one body type. So the Lenia substrate is GENERATIVE across this behaviour space — diversity
+  accumulates under illumination where it converges under optimization. This is the first round about CREATIVITY /
+  open-endedness rather than convergence — the one big theme the prior 21 rounds hadn't shown.
+- Visuals: the behaviour map (filled niches coloured by viability), the coverage curve (grow vs collapse), and a
+  zoo GALLERY of 8 distinct creatures + a GIF of 4 of them animating their different behaviours.
+
+### What did NOT work / honest notes
+- First axes were WRONG: drift-speed clipped (MOVE_MAX 0.32 vs real 0.83) and gyration SATURATED (~0.41 for all) ->
+  only 9/64 cells, plateaued. A feature diagnostic (sweep random creatures) showed drift-speed and mean_mass spread
+  well -> fixed axes (move 0..0.85 x mass 60..1900) -> 54/64. Lesson: pick behaviour axes that actually vary.
+- First fitness baseline was DISHONEST: it counted behaviour cells TOUCHED during hill-climbing (30), not RETAINED ->
+  made convergence look diverse. Fixed to a population GA tracking the POPULATION's diversity, which honestly collapses.
+- The "zoo" is HONESTLY MIXED: low-mass niches hold a clean single glider; high-mass niches hold multi-blob "foam"
+  textures, not discrete organisms (the localized>0.25 filter admits sparse foam). So the substrate fills the BEHAVIOUR
+  space with viable PATTERNS, not all single creatures; and the map is bounded -> no claim of UNBOUNDED open-endedness.
+
+### Next-round seed
+Round 23 is a natural MILESTONE (22 rounds, last review R20): re-verify R21-22 adversarially, prune, refresh the arc.
+Or the long-parked stable 3D creature; or novelty-search in the MIND space (open-ended brains, not just bodies).
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 21 rounds + THREE reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 22 rounds + THREE reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -528,14 +555,14 @@ Round 22 = OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty or c
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION is whole.
-  (Round 21: ONE creature integrates body+memory+prediction+planning to survive tracking moving, flashing food;
-  ablate any faculty and it starves sooner — each is load-bearing. The mind is not just complete but integrated.)
+  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION->OPEN-ENDEDNESS.
+  (Round 22: MAP-Elites illuminates 54/64 niches — a ZOO — while fitness converges to one; the substrate is
+  generative across a behaviour space, the first round about creativity rather than convergence.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. OPEN-ENDEDNESS: does the world keep GENERATING novelty or converge? a ZOO of evolved minds/bodies + a
-     behavioural-diversity / novelty-search metric over the arc — the one big theme (creativity) not yet shown.
-  2. Stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked) — would strengthen 1D->2D->3D.
-  3. Deepen unification: EVOLVE (not hand-code) the integrated controller, or put unified creatures in an ecology.
+  1. MILESTONE REVIEW (22 rounds, last review R20): re-verify R21-22 adversarially, prune, refresh the arc telling.
+  2. Open-ended MINDS (not bodies): novelty-search / MAP-Elites over FORAGING-BEHAVIOUR descriptors — does the
+     mind space stay generative too? (R22 illuminated bodies; the deeper claim is open-ended behaviour.)
+  3. Stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked) — the biggest remaining honest negative.
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -570,3 +597,12 @@ Round 22 = OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty or c
   Round 22+ ratchet: novelty search / a diversity metric / a ZOO showing open-ended generation — or honestly report
   that this numpy-CA substrate converges and open-endedness needs Flow-Lenia / a richer substrate (a real finding either
   way). Secondary: evolve the unified controller; the long-parked 3D creature.
+- AMBITION CRITIC (after round 22 — open-endedness shown, with caveats): the creativity gap is now addressed — MAP-Elites
+  fills 54/64 niches (a real zoo) where fitness converges to one, so the substrate IS generative across a behaviour space.
+  Honest dents an expert would still press: (1) the zoo is bodies, not MINDS — diversity of move/size patterns, and many
+  high-mass niches are foam textures, not discrete organisms; open-ended BEHAVIOUR/intelligence (a zoo of distinct
+  foraging strategies) is the deeper, unshown claim. (2) The map is BOUNDED — coverage saturates toward 64; this is
+  illumination of a finite space, not UNBOUNDED open-endedness (which needs a coevolving/Flow-Lenia substrate). (3) 22
+  rounds in, R21-22 are unreviewed and the last full review was R20. Ratchet: a MILESTONE REVIEW (re-verify R21-22,
+  refresh the arc), THEN either open-ended MINDS (novelty over foraging behaviour) or finally attack the 3D creature.
+  The arc is now broad AND deep AND (mostly) honest; the remaining moves are consolidation and the few real negatives.

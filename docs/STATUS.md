@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 21 (UNIFICATION, complete, committed)
+ROUND: 22 (OPEN-ENDEDNESS, complete, committed)
 
 REVIEW (round 20): re-verified R18-19. R19 reproduces EXACTLY (pursuit 54 vs planner 24; recurrent 0.45 vs
 feedforward 0.05). R18 HOLDS ON AVERAGE but is the project's MOST SEED-SENSITIVE result: a quick under-
@@ -24,7 +24,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 72 tests green.
+  convolution + growth; same code 1D/2D/3D. 75 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -142,16 +142,25 @@ CURRENT STATE:
   its place. Body (3-13)+memory (15/18)+prediction (16)+planning (19) are now ONE organism. HONEST: controller
   is hand-integrated (faculties were shown EVOLVABLE earlier; this proves they COMPOSE + each is necessary);
   the lead occasionally overshoots at a bounce so full isn't best on every seed (best on avg + 10/16 seeds).
-  Fast (~4s, deterministic). Evidence: outputs/round21_unified.png (ablation bars + energy-over-life) + .gif.
+  Fast (~4s, deterministic). Evidence: outputs/round21_unified.png (ablation bars + energy-over-life) + .gif. run21.py.
+- ROUND 22 (VERIFIED): OPEN-ENDEDNESS — does the world keep GENERATING, or converge? genesis/openended.py —
+  MAP-Elites ILLUMINATES a 2-D behaviour space (drift-speed x body-mass), keeping the most VIABLE creature in
+  each niche; vs a fitness-GA baseline. Result: MAP-Elites fills 54/64 niches (84%) across the FULL move x size
+  range, and diversity ACCUMULATES (coverage climbs 24->54 over evaluations); the fitness GA's population
+  diversity COLLAPSES/stays ~8 as selection converges to one body type. So the substrate is GENERATIVE across
+  this behaviour space, not single-attractor. HONEST: the "zoo" spans a clean small glider (mass ~140) through
+  large multi-blob "foam" textures (high mass) — the behaviour space is filled with viable PATTERNS, not all
+  discrete single organisms; and the map is bounded (no claim of UNBOUNDED open-endedness). Evidence:
+  outputs/round22_openended.png (behaviour map + coverage curve + zoo gallery) + .gif (4 creatures animating). run22.py.
 
-NEXT ROUND SEED (round 22): ranked:
-  (a) OPEN-ENDEDNESS (leading): does the world keep GENERATING novelty, or converge? a ZOO of evolved minds/
-      bodies + a behavioural-diversity / novelty-search metric over the arc (the one big theme not yet shown).
-  (b) Stable mobile 3D creature (hard/open, long-parked) — would strengthen the 1D->2D->3D claim.
-  (c) Deepen unification: evolve (not hand-code) the integrated controller, or put unified creatures in an ecology.
+NEXT ROUND SEED (round 23 — a natural milestone point, 22 rounds in): ranked:
+  (a) MILESTONE REVIEW (leading; last review was R20): re-verify R21-22 adversarially, prune, refresh the arc telling.
+  (b) Stable mobile 3D creature (hard/open, long-parked) — the biggest remaining honest negative.
+  (c) Deepen: evolve the unified controller; or novelty-search in the FORAGING/mind space (open-ended minds, not bodies).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run22 --gif     # round-22 open-endedness (MAP-Elites zoo) + gif (~5 min)
   .venv/bin/python -m genesis.run21 --gif     # round-21 unification (ablation of faculties) + gif (~4s)
   .venv/bin/python -m genesis.run19 --gif     # round-19 planning / interception + gif (~90s)
   .venv/bin/python -m genesis.run18 --gif     # round-18 embodied memory (recurrent brain in Lenia) + gif (~4 min)

@@ -19,11 +19,13 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~20 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~22 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
-act-to-achieve*. Each capability is shown with a runnable driver, a figure, and a metric.
+act-to-achieve*. Those faculties are then **integrated into one organism** (round 21), and the
+substrate is shown to keep **generating a zoo of distinct creatures** rather than converging
+(round 22). Each capability is shown with a runnable driver, a figure, and a metric.
 
 > **Honest scope.** These are *focused demonstrations*, not one organism doing everything at
 > once: the deep-mind results (memory, prediction, planning) are isolated in the settings that
@@ -55,6 +57,7 @@ act-to-achieve*. Each capability is shown with a runnable driver, a figure, and 
 | 18 | **Embodied memory** — a recurrent brain in a Lenia body | ✅ round 18 (memory pays: ~2× foraging) |
 | 19 | **Planning** — acting on foresight to intercept | ✅ round 19 (planner 2× faster; the loop is whole) |
 | 21 | **Unification** — one creature, all four faculties | ✅ round 21 (ablate any → it starves; each load-bearing) |
+| 22 | **Open-endedness** — keep generating, or converge? | ✅ round 22 (MAP-Elites zoo: 54/64 niches vs 1) |
 
 ---
 
@@ -405,6 +408,28 @@ tracking it on memory + prediction)*
 > rather than re-deriving them. The prediction lead can also overshoot at a wall bounce, so
 > `full` wins on average (and on 10/16 seeds) rather than on every single one.
 
+## Round 22 — open-endedness (does the world keep generating?)
+
+Every round so far **converges** — to the glider, the optimum, the intercept. Convergence is
+the opposite of open-endedness. So: can this substrate keep producing *qualitatively different*
+creatures? We **illuminate** a 2-D behaviour space — (how much a creature **moves**) × (how
+**big** it is) — with **MAP-Elites**, keeping the most viable creature in each niche, and
+compare against a fitness GA:
+
+![open-endedness: MAP-Elites fills a behaviour map vs fitness converges](outputs/round22_openended.png)
+
+MAP-Elites fills **54 of 64 niches (84%)** with a **zoo** of distinct creatures, and that
+diversity **accumulates** as the search runs; the fitness GA's population diversity **collapses**
+to ~8 as selection drives it to a single body type. Illumination *keeps* the diversity that
+optimization *throws away* — the substrate is genuinely generative across this behaviour space.
+
+![four creatures from the zoo, one substrate](outputs/round22_openended.gif)
+
+> Honest scope: the zoo spans a clean small glider (low mass) through large multi-blob **foam**
+> textures (high mass) — so the behaviour space is filled with viable *patterns*, not all of them
+> discrete single organisms; and the map is **bounded** (illumination of a finite space, not a
+> claim of *unbounded* open-endedness, which would need a richer, coevolving substrate).
+
 ---
 
 ## How it works
@@ -444,6 +469,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run18 --gif   # embodied memory (recurrent brain in a Lenia forager) + gif
 .venv/bin/python -m genesis.run19 --gif   # planning / interception (act on foresight) + gif
 .venv/bin/python -m genesis.run21 --gif   # unification: one creature, all faculties (ablation) + gif
+.venv/bin/python -m genesis.run22 --gif   # open-endedness: MAP-Elites zoo vs fitness converges + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -472,7 +498,8 @@ genesis/
   embodied_memory.py  a recurrent brain driving a Lenia forager (memory pays)
   planning.py   acting on foresight: intercept a moving target (pursuit vs planner)
   unified.py    one creature integrating body+memory+prediction+planning (ablation)
-  run1d.py … run21.py   round drivers + visualisation
+  openended.py  MAP-Elites illuminating a behaviour-space zoo (open-endedness)
+  run1d.py … run22.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
