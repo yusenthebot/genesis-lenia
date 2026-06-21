@@ -118,6 +118,9 @@ PANELS = [
     ("outputs/round43_open_ended.png",
      "Round 43 · OPEN-ENDED RATCHET — no target this time: a culture stacks a stable TOWER whose height just keeps accumulating "
      "(148 blocks vs 5 for one lifetime vs 1 for copy-only). Open-ended complexity with no ceiling but physics itself."),
+    ("outputs/round44_symmetry_break.png",
+     "Round 44 · EMERGENT ROLES FROM SCRATCH — two IDENTICAL agents (no id) break symmetry into complementary roles via a learned "
+     "mutual-inhibition bifurcation: split rate 1.00 vs 0.0 with no interaction vs 0.0 under perfect symmetry. Both ingredients needed."),
 ]
 
 

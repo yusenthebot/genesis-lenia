@@ -807,6 +807,27 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 44 — emergent roles from scratch: symmetry-breaking with no id (DONE, committed)
+
+### What worked (closes the honest gap in R37/R40)
+- genesis/symmetry_break.py: in R37/R40 the role distinction was GIVEN (each agent had an id). Here two IDENTICAL agents
+  (ONE shared policy, no id, the same near-symmetric start) must end in COMPLEMENTARY roles. A learned MUTUAL-INHIBITION
+  dynamic + a tiny symmetry-breaking trigger make their leanings DIVERGE to opposite roles (a pitchfork bifurcation).
+  Result: split rate 1.00 full | 0.00 no-interaction | 0.00 no-trigger (perfect symmetry). BOTH ingredients necessary --
+  spontaneous symmetry breaking (a balanced pencil needs instability AND a perturbation). Roles emerge from interaction,
+  not a handed-out label. The bifurcation visual (identical leanings fanning to +-1) makes the mechanism vivid.
+
+### What did NOT work / honest notes
+- The trigger turned out to live in the INITIAL near-symmetric state (0.02 jitter), not the per-step noise -- so the
+  honest "no-trigger" ablation is a PERFECTLY symmetric start (exactly 0,0) with no noise -> the deterministic symmetric
+  dynamics never break (split 0.00). Corrected the ablation to be honest about what the trigger is.
+- It's a 2-agent / 2-role abstract settling dynamic (scalar leanings), not embodied in Lenia; the symmetry-breaking
+  principle is substrate-independent and this is the cleanest demonstration. N-agent / N-role from scratch is a harder extension.
+
+### Next-round seed
+Round 45 = MILESTONE REVIEW (re-verify R43/R44, refresh capstone to 44 rounds; the new-dimension vein is thinning) OR
+eco-evolution major transitions. Motion stays a proven wall.
+
 ## Round 43 — open-ended ratchet: cumulative complexity with no target (DONE, committed)
 
 ### What worked (deepens R41 into open-endedness)
@@ -956,8 +977,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 43 rounds + NINE reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet, + OPEN-ENDED RATCHET/unbounded complexity no target); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 44 rounds + NINE reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind x2 incl. misleading-behaviour, + COORDINATION/division-of-labour, + UNIFIED social world where comm+coord are each load-bearing, + CUMULATIVE CULTURE/the ratchet, + OPEN-ENDED RATCHET/unbounded complexity no target, + EMERGENT ROLES from scratch/symmetry-breaking); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

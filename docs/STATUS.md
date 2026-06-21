@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 43 (OPEN-ENDED RATCHET — cumulative complexity with no target; complete, committed)
+ROUND: 44 (EMERGENT ROLES FROM SCRATCH — symmetry-breaking, no pre-given id; complete, committed)
 
 REVIEW (round 42, WHOLE-PROJECT): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R40 unified social
 (seeds 5-6): full 1.00 vs no-comm 0.38-0.56 vs no-coord 0.50 (both faculties load-bearing). R41 cumulative culture
@@ -76,7 +76,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 109 tests green.
+  convolution + growth; same code 1D/2D/3D. 111 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -342,17 +342,28 @@ CURRENT STATE:
   reaching upward with no ceiling but stability itself -- open-ended complexity no single lifetime could build, and the
   first round with NO target/fitness landscape (R41 had a target shape). Evidence: outputs/round43_open_ended.png (height
   -over-generations open-ended ramp + the towers: a tall spire vs a stub vs one block) + .gif (the tower rising). run43.py.
+- ROUND 44 (VERIFIED): EMERGENT ROLES FROM SCRATCH — symmetry-breaking with NO pre-given id (closes the honest gap in
+  R37/R40, whose role distinction was GIVEN as an id). genesis/symmetry_break.py — two IDENTICAL agents (ONE shared
+  policy, no id, the same near-symmetric start) must end in COMPLEMENTARY roles. A learned MUTUAL-INHIBITION dynamic +
+  a tiny symmetry-breaking trigger make their 'leanings' DIVERGE to opposite roles (a pitchfork bifurcation). Result:
+  split (role-differentiation) rate 1.00 full | 0.00 no-interaction (agents ignore each other -> can't anti-coordinate) |
+  0.00 no-trigger (perfect symmetry + no noise -> deterministic tie never breaks). BOTH ingredients necessary -- exactly
+  spontaneous symmetry breaking (a balanced pencil needs both instability AND a perturbation). The roles emerge from the
+  interaction, not from a handed-out label. Evidence: outputs/round44_symmetry_break.png (split bars + the BIFURCATION:
+  identical leanings diverge to opposite roles; + the perfect-symmetry contrast where they stay tied) + .gif. run44.py.
 
-NEXT ROUND SEED (round 44): summit + 2 genuinely-new dims (cumulative culture R41, open-ended ratchet R43). Remaining ungated
-  forks (do NOT add same-shaped increments). Ranked:
-  (a) EMERGENT ROLES WITHOUT pre-given ids (leading): symmetry-breaking from scratch -- two IDENTICAL agents must
-      differentiate into complementary roles with no id to distinguish them (deepens R37/R40, whose role distinction was GIVEN).
-  (b) ECO-EVOLUTION major transitions (niche construction / multi-level selection) on the existing ecology (R6-8).
-  (c) A whole-project REVIEW soon (last full review R42) if the new dims start to thin; or honour the user's /loop steer.
+NEXT ROUND SEED (round 45): summit + 3 genuinely-new dims (R41 cumulative culture, R43 open-ended ratchet, R44 symmetry-
+  breaking). A whole-project REVIEW is now DUE (last full review R42, 2 build rounds ago + nearing the substrate's edge). Ranked:
+  (a) MILESTONE REVIEW (leading): re-verify R43/R44 on fresh seeds, refresh CAPSTONE.md to 44 rounds, prune; the summit is
+      broad and the new-dimension vein is starting to thin -- consolidate and re-survey what (if anything) is genuinely left.
+  (b) ECO-EVOLUTION major transitions (niche construction / multi-level selection) on the existing ecology (R6-8) -- the last
+      clearly-distinct ungated dimension not yet touched.
+  (c) Honour the user's /loop steer (gated motion via differentiable Lenia stays a human call).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run44 --gif     # round-44 emergent roles from scratch (symmetry-breaking) + gif (~8s)
   .venv/bin/python -m genesis.run43 --gif     # round-43 open-ended ratchet (a culture builds a tower) + gif (~5s)
   .venv/bin/python -m genesis.run41 --gif     # round-41 cumulative culture (the ratchet -> a star) + gif (~6s)
   .venv/bin/python -m genesis.run40 --gif     # round-40 unified social world (communicate AND coordinate) + gif (~12s)

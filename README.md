@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~43 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~44 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -78,6 +78,7 @@ with a runnable driver, a figure, and a metric.
 | 40 | **Unified social world** — communicate AND coordinate | ✅ round 40 (both faculties load-bearing; the social-arc capstone) |
 | 41 | **Cumulative culture** — the ratchet | ✅ round 41 (an artifact ratchets into a star no lifetime could build) |
 | 43 | **Open-ended ratchet** — complexity with no target | ✅ round 43 (a culture stacks a tower whose height just keeps growing) |
+| 44 | **Emergent roles** — symmetry-breaking, no id | ✅ round 44 (identical agents differentiate into complementary roles) |
 
 ---
 
@@ -767,6 +768,24 @@ at all**: the structure's worth is intrinsic.
 > under one block-width, and "open-ended" here means unbounded accumulation of one complexity axis,
 > not the invention of qualitatively new *kinds* of structure (a deeper frontier still).
 
+## Round 44 — emergent roles from scratch (symmetry-breaking, no id)
+
+Rounds 37 and 40 had agents divide labour — but each agent was *handed* a distinct id to break the
+tie. The harder, genuine phenomenon is two **identical** agents (one shared policy, no id, the same
+starting state) that must nonetheless end up in **complementary** roles. That requires spontaneous
+**symmetry-breaking**:
+
+![emergent roles: identical agents break symmetry into complementary roles](outputs/round44_symmetry_break.png)
+
+A learned **mutual-inhibition** dynamic plus a tiny trigger make the two agents' "leanings" *diverge*
+from a near-symmetric start to opposite roles — a pitchfork bifurcation. Both ingredients are
+necessary: split rate **1.00** with interaction and a trigger, **0.00** if the agents can't see each
+other (no anti-coordination), and **0.00** under perfect symmetry with no trigger (the deterministic
+tie never breaks). The roles are *not* assigned — they emerge from the interaction, the way a balanced
+pencil needs both instability and a nudge to fall.
+
+![two identical agents settling into two roles](outputs/round44_symmetry_break.gif)
+
 ---
 
 ## How it works
@@ -822,6 +841,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run40 --gif   # unified social world: communicate AND coordinate + gif
 .venv/bin/python -m genesis.run41 --gif   # cumulative culture: the ratchet builds a star + gif
 .venv/bin/python -m genesis.run43 --gif   # open-ended ratchet: a culture stacks a tower + gif
+.venv/bin/python -m genesis.run44 --gif   # emergent roles from scratch: symmetry-breaking + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -866,7 +886,8 @@ genesis/
   unified_social.py  unified social world: communicate AND coordinate (both load-bearing)
   cumulative_culture.py  cumulative culture: the ratchet (transmission + innovation)
   open_ended.py  open-ended ratchet: a culture stacks a tower (complexity, no target)
-  run1d.py … run43.py   round drivers + visualisation
+  symmetry_break.py  emergent roles from scratch: identical agents break symmetry
+  run1d.py … run44.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
