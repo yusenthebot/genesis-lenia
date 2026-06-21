@@ -30,7 +30,8 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 5 | **3D** — the same engine, one more axis | ✅ round 5 (3D self-organisation) |
 | 6 | **Ecology** — many creatures compete for food | ✅ round 6 (stabilizing selection) |
 | 7 | **Evolution running** — the population self-tunes | ✅ round 7 (discovers the optimum) |
-| 8 | **Predator–prey / learning** | → next |
+| 8 | **Predator–prey** — a world that pushes back | ✅ round 8 (top-down regulation) |
+| 9 | **Within-lifetime learning** | → next |
 
 ---
 
@@ -143,6 +144,27 @@ independent runs, matching round 6's independently-swept optimum (~4). Two metho
 
 *(population colour = foraging gain; over time it shifts toward the optimal strategy)*
 
+## Round 8 — predator & prey (2D)
+
+A **second species** now hunts the foragers. Prey forage food *and* flee predators;
+predators sense the prey-density field, chase it, and eat prey into their own energy.
+Both carry energy, reproduce, and have a heritable strategy gene. The world starts to
+push back:
+
+![predator–prey dynamics + co-evolution](outputs/round8_predprey.png)
+
+- **Top-down regulation:** predators hold the prey population at ~14, four times below
+  its predator-free ceiling of ~55 — the prey's very numbers are now set by something
+  hunting it, and the prey shows vivid boom-bust fluctuations.
+- **Co-evolution (the honest surprise):** selection acts, but prey evolve *lower* evasion
+  (7 → 3), not higher — fleeing costs more foraging than it saves, so "forage hard and
+  out-breed predation" wins. The evolved answer to predators is fecundity, not flight.
+  *(A clean escalating arms race did not emerge — documented honestly; see `docs/progress.md`.)*
+
+![predator–prey animation](outputs/round8_predprey.gif)
+
+*(prey = blue, predators = red, food = green)*
+
 ---
 
 ## How it works
@@ -171,6 +193,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run5_3d --gif # 3D self-organisation + rotating gif
 .venv/bin/python -m genesis.run6  --gif   # ecology / competition + gif
 .venv/bin/python -m genesis.run7  --gif   # evolution running inside the ecology + gif
+.venv/bin/python -m genesis.run8  --gif   # predator-prey + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -188,7 +211,8 @@ genesis/
   foraging.py   food field + sensorimotor reflex + metabolism (agency, survival)
   ecology.py    many creatures sharing one food field (competition)
   evo_ecology.py  heritable gain + birth/death/mutation (evolution running)
-  run1d.py … run7.py   round drivers + visualisation
+  predprey.py   two species: prey + predators (co-evolution, regulation)
+  run1d.py … run8.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

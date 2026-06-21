@@ -5,11 +5,11 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 7 (complete, committed)
+ROUND: 8 (complete, committed)
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 29 tests green.
+  convolution + growth; same code 1D/2D/3D. 32 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -41,18 +41,28 @@ CURRENT STATE:
   ones die. Under scarce food (food-limited population), from RANDOM gains the population
   self-tunes: mean gain 9.2 -> 3.5 across 3 runs, MATCHING round 6's independently-swept
   optimum (~4). Selection is happening, not measured. Evidence: outputs/round7_evolution.png
-  (convergence curves + start/evolved gain histograms) + .gif (population colour = gain,
-  shifting to the optimum). run7.py.
+  (convergence curves + start/evolved gain histograms) + .gif. run7.py.
+- ROUND 8 (2D, VERIFIED): PREDATOR-PREY. genesis/predprey.py — two species in one world:
+  prey (forage food + flee predators) and predators (hunt+eat prey via a field interaction);
+  both have energy/metabolism/reproduction + a heritable strategy gene. Results: (1) TOP-DOWN
+  REGULATION — predators hold prey ~14 vs ~55 without predators (4x suppression), prey shows
+  boom-bust fluctuations; (2) COEXISTENCE for the full run; (3) CO-EVOLUTION (honest surprise)
+  — prey evolve LOWER evasion (7->3), not higher: fleeing costs more foraging than it saves, so
+  "forage hard, out-breed predation" wins; predator pursuit stable (~10). HONEST NEGATIVE: no
+  clean escalating arms race — across 5 regimes evasion was always selected down and the
+  balance is knife-edge (strong predation -> prey extinction; moderate -> predator-cap-pinned
+  coexistence). Evidence: outputs/round8_predprey.png + .gif (prey blue, predators red, food green).
 
-NEXT ROUND SEED (round 8): deepen co-evolution / intelligence. Ranked:
-  (a) PREDATOR/PREY: a second species that eats creatures (not food) -> co-evolutionary arms
-      race (prey evolve evasion, predators evolve pursuit). Two heritable strategies coupled.
-  (b) EVOLVE MORPHOLOGY too in the ecology (not just gain) -> open-ended body+brain evolution.
-  (c) WITHIN-LIFETIME LEARNING: a neural controller modulating drift (torch+MPS).
-  (d) Quantify INTELLIGENCE (predictive/info-theoretic measures), or revisit stable 3D creature.
+NEXT ROUND SEED (round 9): ranked options to deepen "real intelligence":
+  (a) WITHIN-LIFETIME LEARNING: give a creature a tiny neural/plastic controller that ADAPTS
+      during life (not just evolution) -> learning, the missing ingredient. (numpy or torch+MPS.)
+  (b) Quantify INTELLIGENCE: predictive ability / info-integration / goal achievement under
+      perturbation -> measure mind, don't assert it.
+  (c) EVOLVE MORPHOLOGY in-ecology (body+brain), or revisit stable mobile 3D creature.
 
 HOW TO RUN:
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run8 --gif      # round-8 predator-prey + gif
   .venv/bin/python -m genesis.run7 --gif      # round-7 evolution inside the ecology + gif
   .venv/bin/python -m genesis.run6 --gif      # round-6 ecology / competition + gif
   .venv/bin/python -m genesis.run5_3d --gif   # round-5 3D self-organisation + rotating gif

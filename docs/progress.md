@@ -192,18 +192,47 @@ Round 8 = PREDATOR/PREY (leading): a second species that eats CREATURES (not foo
 coupled heritable strategies, a co-evolutionary arms race (prey evolve evasion, predators
 pursuit). Or evolve MORPHOLOGY in the ecology (body+brain), or within-lifetime LEARNING.
 
+## Round 8 — predator & prey: a world that pushes back (DONE, committed)
+
+### What worked
+- genesis/predprey.py: two species in one world. Prey forage food AND flee predators (heritable
+  evasion gene); predators hunt+eat prey via a field interaction (impose a removal field on the
+  prey-density field, gaining energy, taking prey mass), chasing the prey gradient (heritable
+  pursuit gene). Both have energy/metabolism/reproduction.
+- TOP-DOWN REGULATION (clean, robust): predators hold prey ~14 vs ~55 without predators (4x), with
+  vivid prey boom-bust fluctuations. COEXISTENCE for the full run. The prey's numbers are now set
+  by something hunting it — the world pushes back.
+- Visuals: prey/predator population dynamics with a no-predator control + gene trajectories +
+  a chase GIF (prey blue, predators red, food green).
+
+### What did NOT work / honest negative
+- No clean ESCALATING arms race. Across 5 tuned regimes the prey EVASION gene was ALWAYS selected
+  DOWN (7 -> ~3): fleeing costs more foraging than it saves, so "forage hard, out-breed predation"
+  beats "flee". Predator pursuit stays ~10 (predators at cap, weak selection). The honest finding
+  is that the evolved answer to predation here is fecundity, not evasion.
+- The balance is knife-edge: strong predation / high predator cap -> prey EXTINCTION; moderate ->
+  predators pin at their cap (prey-limited cycles never fully form). Sustained Lotka-Volterra
+  cycles (both populations oscillating) were not achieved — a known difficulty of agent-based PP.
+
+### Next-round seed
+Round 9 = WITHIN-LIFETIME LEARNING (leading): give a creature a small plastic/neural controller
+that ADAPTS during its life (not only across generations). Learning is the missing ingredient of
+"real intelligence". Or QUANTIFY intelligence (prediction / info-integration / goal under
+perturbation). Or evolve morphology in-ecology / revisit stable mobile 3D creature.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING: 1D->2D->3D engine; a 2D creature with agency+survival; an ECOLOGY with
-  stabilizing selection; and EVOLUTION RUNNING in it (population discovers the optimal strategy
-  on its own). Missing: co-evolution / predator-prey, evolved morphology in-ecology, within-
-  lifetime learning, stable mobile 3D creatures, quantitative intelligence measures.
+- CURRENT CEILING: 1D->2D->3D engine; agency + survival; ecology with stabilizing selection;
+  evolution running; AND a two-species world with top-down regulation + (honest) co-evolution.
+  Missing: within-lifetime LEARNING, quantitative intelligence measures, evolved morphology
+  in-ecology, stable mobile 3D creatures, sustained predator-prey cycles.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. PREDATOR/PREY co-evolution: a species that preys on creatures -> arms race. (Round 8 pick.)
-  2. Evolve MORPHOLOGY in-ecology (not just the foraging gain) -> open-ended body+brain evolution.
-  3. Within-lifetime LEARNING: a neural controller modulating drift/growth (torch + MPS).
+  1. WITHIN-LIFETIME LEARNING: a plastic/neural controller that adapts during life -> the
+     missing ingredient of real intelligence. (Round 9 pick.)
+  2. Intelligence MEASURED: prediction, info-integration, goal achievement under perturbation.
+  3. Evolve MORPHOLOGY in-ecology (body+brain) -> open-ended.
   4. Stable MOBILE 3D creatures: multi-ring kernels + CMA-ES/gradient search (hard, open).
-  5. Intelligence MEASURED: prediction, info-integration, goal achievement under perturbation.
+  5. Sustained predator-prey CYCLES (delicate balance; agent-based PP is finicky).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -211,10 +240,10 @@ pursuit). Or evolve MORPHOLOGY in the ecology (body+brain), or within-lifetime L
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (what an expert would still find unimpressive): selection now RUNS and the
-  population discovers the optimal forager on its own — but it is still ONE species optimising
-  ONE scalar gene against a STATIC world. There is no co-evolution (a moving target / arms
-  race), no evolved morphology, no within-lifetime learning, and the "intelligence" is a tuned
-  reflex, not anything that predicts or plans. The ratchet: round 8 should couple TWO evolving
-  strategies (predator/prey) so the fitness landscape itself moves, then add learning. Real
-  intelligence shows up under a world that pushes back, not a fixed optimum to roll downhill to.
+- AMBITION CRITIC (what an expert would still find unimpressive): there are now two species and
+  the world pushes back (predators regulate prey) — but every "decision" any creature makes is
+  still a FIXED reflex whose gain is set by EVOLUTION across generations. Nothing LEARNS within
+  its own life; nothing predicts or plans; "intelligence" is a tuned tropism. The ratchet: round
+  9 must add WITHIN-LIFETIME adaptation — a small plastic/neural controller that changes a
+  creature's behaviour based on its own experience — and ideally MEASURE the resulting intelligence
+  (prediction / goal achievement), not assert it. Evolution found good reflexes; a mind learns.

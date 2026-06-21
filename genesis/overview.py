@@ -36,6 +36,9 @@ PANELS = [
     ("outputs/round7_evolution.png",
      "Round 7 · 2D · EVOLUTION RUNNING — foraging skill is heritable; from random gains the "
      "population self-tunes to the optimum (~3.5), matching round 6's swept optimum"),
+    ("outputs/round8_predprey.png",
+     "Round 8 · 2D · PREDATOR-PREY — a second species hunts the foragers: predators regulate "
+     "prey 4x below its food ceiling; prey evolve to forage-hard, not flee (honest co-evolution)"),
 ]
 
 
