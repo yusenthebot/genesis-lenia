@@ -1,0 +1,8 @@
+{
+  "T": 2400,
+  "flip": 400,
+  "gain": 0.6,
+  "brain_correct": 0.9257500000000001,
+  "learner_nutfrac": 0.8944618853602538,
+  "ablated_nutfrac": 0.5167075080477534
+}

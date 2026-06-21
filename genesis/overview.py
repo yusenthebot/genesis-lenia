@@ -42,6 +42,9 @@ PANELS = [
     ("outputs/round9_learning.png",
      "Round 9 · LEARNING — a plastic brain learns which source is rewarding and RE-LEARNS after "
      "the rule reverses (0.87 vs 0.49 ablated): adaptation within one life, not across generations"),
+    ("outputs/round11_embodied.png",
+     "Round 11 · EMBODIED LEARNING — the plastic brain lives INSIDE a Lenia creature: its drift "
+     "weights flip with the rule (93% correct) and it eats 0.89 nutritious vs 0.52 ablated (body+mind united)"),
 ]
 
 

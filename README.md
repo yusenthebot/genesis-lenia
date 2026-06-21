@@ -32,6 +32,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 7 | **Evolution running** — the population self-tunes | ✅ round 7 (discovers the optimum) |
 | 8 | **Predator–prey** — a world that pushes back | ✅ round 8 (top-down regulation) |
 | 9 | **Learning** — a creature adapts within its life | ✅ round 9 (reversal learning) |
+| 11 | **Embodied learning** — the brain inside the body | ✅ round 11 (body + agency + learning) |
 
 ---
 
@@ -183,6 +184,25 @@ hallmark of learning within a lifetime, not across generations.
 
 *(the agent follows whichever source is currently nutritious as the rule flips)*
 
+## Round 11 — embodied learning (2D)
+
+Rounds 2–8 gave a creature a *body* and a *fixed* foraging reflex; round 9 gave a *brain*
+that learns, but in a detached point agent. Round 11 puts them together: the plastic brain
+lives **inside a Lenia creature**. The creature forages two food types, its drift is a
+plastic policy `w_A·∇F_A + w_B·∇F_B`, only one type is nutritious, and the rule reverses
+mid-life (food evaporates if uneaten, so it must actively forage).
+
+![embodied learning — weights flip with the rule + behavioural payoff](outputs/round11_embodied.png)
+
+The drift weights **flip with the rule** (the brain prefers the correct food **93%** of the
+time, re-learning after each reversal), and the embodied learner eats **0.89** nutritious food
+vs **0.52** for the same body with plasticity off. Body (round 2) + agency (round 3) +
+within-life learning (round 9), united in **one creature**.
+
+![embodied learning animation](outputs/round11_embodied.gif)
+
+*(magenta = the Lenia creature; the nutritious food type is shown brighter; it flips mid-life)*
+
 ---
 
 ## How it works
@@ -213,6 +233,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run7  --gif   # evolution running inside the ecology + gif
 .venv/bin/python -m genesis.run8  --gif   # predator-prey + gif
 .venv/bin/python -m genesis.run9  --gif   # within-lifetime learning + gif
+.venv/bin/python -m genesis.run11 --gif   # embodied learning (brain in a Lenia body) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -232,7 +253,8 @@ genesis/
   evo_ecology.py  heritable gain + birth/death/mutation (evolution running)
   predprey.py   two species: prey + predators (co-evolution, regulation)
   learning.py   a plastic value-learning brain (within-lifetime, reversal)
-  run1d.py … run9.py   round drivers + visualisation
+  embodied_learning.py  the plastic brain inside a Lenia creature (round 11)
+  run1d.py … run11.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

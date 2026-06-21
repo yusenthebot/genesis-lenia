@@ -263,20 +263,46 @@ fresh seeds to catch cherry-picking):
 VERDICT: the project stands up. Nine capabilities, each verified by a real run + a picture matching
 its metric. Resume building at round 11.
 
+## Round 11 — embodied learning (DONE, committed)
+
+### What worked
+- genesis/embodied_learning.py: the round-9 plasticity now lives INSIDE a Lenia creature. The body
+  forages two food types; its drift is a plastic policy w_A*grad(sense F_A)+w_B*grad(sense F_B);
+  only one type is nutritious; the rule reverses mid-life; food EVAPORATES if uneaten so the creature
+  must actively chase fresh food. Reward-modulated delta rule updates w on tasting each type.
+- THE BRAIN LEARNS: the drift weights track the nutritious type and FLIP at every reversal
+  (argmax(w)==active ~93%) — a clean anti-phase square-wave plot aligned with the active-food shading.
+- BEHAVIOURAL PAYOFF: the embodied learner eats 0.89 nutritious vs 0.52 for the same body with
+  plasticity off (lr=0, fixed w). Body (R2) + agency (R3) + within-life learning (R9) in ONE creature.
+
+### What did NOT work / honest notes
+- A large drift GAIN HURT (0.50, chance): high gain makes the body lock onto one region and stop
+  sampling, so it can't track reversals. Gentle steering (gain~0.6) works.
+- Without food evaporation the world saturated with food (muddy + the eating signal washed out to
+  0.66). Adding evaporation (food_decay 0.015) made foraging matter -> payoff jumped to 0.89 and the
+  visual cleaned up. The brain metric (~93%) is the clean signal; the body is an imperfect actuator.
+
+### Next-round seed
+Round 12 = MEASURE intelligence (leading): a NUMBER for the mind — predictive information the brain
+carries about the world / goal achievement under perturbation — not a task score. Or put learners
+INTO the ecology/predator-prey (do learners out-compete non-learners?). Or Baldwin / deeper controller.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 9 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 11 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
-  two-species predator-prey world (top-down regulation); and a creature that LEARNS within its
-  life and re-learns under reversal. The arc emergence->locomotion->agency->survival->3D->ecology
-  ->evolution->predation->learning is complete in skeleton.
+  two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
+  re-learns under reversal; AND (round 11) that plastic brain now lives INSIDE a Lenia creature —
+  body+agency+learning united in one organism. The arc emergence->locomotion->agency->survival->3D
+  ->ecology->evolution->predation->learning->embodied-learning is complete in skeleton.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. REVIEW + consolidate (milestone): adversarially re-verify all claims; tighten the story.
-  2. MEASURE intelligence: predictive info / goal achievement under perturbation -> mind, measured.
-  3. Embodied LEARNING: plastic brain drives the Lenia creature's drift in the ecology.
-  4. Baldwin effect: evolve the learning rule / priors (learning x evolution).
-  5. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard).
+  1. MEASURE intelligence: predictive info / goal achievement under perturbation -> mind, MEASURED
+     not scored. The biggest remaining "is it real intelligence?" lever.
+  2. Embodied learners IN the ecology/predator-prey: do learners out-compete fixed-reflex creatures?
+  3. Baldwin effect: evolve the learning rule / priors (learning x evolution).
+  4. Deeper controller: multi-cue / recurrent / short-term memory (still numpy, or torch+MPS if asked).
+  5. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -284,12 +310,11 @@ its metric. Resume building at round 11.
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (milestone, after the round-10 review): the skeleton is complete and verified, but
-  it is a SUITE OF SEPARATE DEMOS, not one creature that is all of these at once. The biggest single
-  gap: the LEARNING brain (R9) and the EMBODIED creature (R2-R8) never meet — the learner is a point
-  agent, the body is a fixed-reflex glider. Nothing in the project both has a Lenia body AND learns in
-  its life AND lives in the ecology. Second gap: intelligence is shown by task scores, never MEASURED
-  (no predictive-information or goal-under-perturbation number). The ratchet for round 11+: (1) EMBODY
-  the learner — the plastic policy drives a Lenia creature's foraging drift in the food world; then
-  (2) MEASURE the mind. Unifying the capabilities into one creature is now worth more than adding a
-  tenth separate one.
+- AMBITION CRITIC (after round 11): the learning brain and the Lenia body have now MET — one creature
+  that emerges, forages, and learns which food to chase, re-learning under reversal. What is still
+  missing for "real intelligence": (1) it is never MEASURED — we report task scores (accuracy, nutfrac),
+  never an information-theoretic or goal-under-perturbation NUMBER for the mind; (2) the learner has not
+  been dropped into the ECOLOGY to see if learning beats fixed reflexes under competition; (3) the brain
+  is shallow — one cue-value mapping, no memory of sequences, no prediction or planning. The ratchet for
+  round 12+: MEASURE the mind first (a number, not a demo), then test learning under selection, then
+  deepen the controller. Adding capabilities is cheap now; proving and quantifying them is the work.

@@ -5,18 +5,14 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 10 (REVIEW/milestone complete, committed)
+ROUND: 11 (complete, committed)
 
-REVIEW (round 10): adversarially re-verified all 9 rounds by re-running drivers and
-checking metrics vs claims. ALL HOLD: R2 glider 4.05w/straight 0.99/conc 1.00; R3 85/18/18;
-R4 832/158/299; R6 optimum~4; R9 0.87 vs 0.49 (and 0.87 vs 0.57 on FRESH unused seeds 200-207
--> not cherry-picked). 39 tests green; all 19 README images resolve; outputs clean. Only orphan
-module was evolve3d.py (round-5 3D-GA, no driver) -> now smoke-tested, kept for the 3D frontier.
-No overclaiming found; honest negatives (3D creature, PP arms race) intact.
+REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (R2 4.05w/0.99, R3 85/18/18,
+R4 832/158/299, R6 optimum~4, R9 0.87 vs 0.49 incl fresh seeds). Honest negatives intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 39 tests green.
+  convolution + growth; same code 1D/2D/3D. 42 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -65,18 +61,25 @@ CURRENT STATE:
   reversal: accuracy 0.87 vs 0.49 for the SAME creature with plasticity off (lr=0, chance). This
   is adaptation within ONE life, not across generations — the missing ingredient. Pure numpy (no
   torch, avoided the dependency gate). Evidence: outputs/round9_learning.png (accuracy-over-life
-  with reversal dips+recoveries + learner-vs-ablated bars) + .gif (agent following the active source).
+  with reversal dips+recoveries + learner-vs-ablated bars) + .gif. run9.py.
+- ROUND 11 (VERIFIED): EMBODIED LEARNING. genesis/embodied_learning.py — the plastic brain now lives
+  INSIDE a Lenia creature: it forages two food types, its drift is a PLASTIC policy
+  w_A*grad(F_A)+w_B*grad(F_B), only one type nutritious, rule flips mid-life, food evaporates if
+  uneaten (so it must actively forage). The drift weights flip with the rule (argmax(w)==active 93%)
+  and the embodied learner eats 0.89 nutritious vs 0.52 for the same body with plasticity off. Body
+  (R2) + agency (R3) + learning (R9) united in ONE creature. Evidence: outputs/round11_embodied.png
+  (weight-flip trajectory + nutritious-fraction curve) + .gif (creature chasing the nutritious food).
 
-NEXT ROUND SEED (round 11 — review done, resume building): ranked:
-  (a) EMBODIED LEARNING (leading): put the plastic brain (round 9) INTO a Lenia creature in the
-      food world — the learned policy drives the foraging drift, so learning + agency + body meet
-      in one creature (the R9 agent is currently a detached point). Reversal task on a real body.
-  (b) MEASURE intelligence: predictive information / goal achievement under perturbation -> a number
-      for "mind", not a task score. (c) Baldwin effect: evolve the learning rule/priors.
-  (d) Evolve morphology in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
+NEXT ROUND SEED (round 12): ranked:
+  (a) MEASURE intelligence (leading): give the mind a NUMBER — predictive information the brain
+      carries about the world, or goal achievement under perturbation — not a task score.
+  (b) Embodied learning IN the ecology/predator-prey (learners vs non-learners compete; does
+      learning win?). (c) Baldwin effect (evolve the learning rule). (d) Deeper controller
+      (multi-cue / recurrent / memory). (e) Stable mobile 3D creature (hard/open).
 
-HOW TO RUN (all drivers verified in round-10 review):
+HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run11 --gif     # round-11 embodied learning + gif
   .venv/bin/python -m genesis.run9 --gif      # round-9 within-lifetime learning + gif
   .venv/bin/python -m genesis.run8 --gif      # round-8 predator-prey + gif
   .venv/bin/python -m genesis.run7 --gif      # round-7 evolution inside the ecology + gif
