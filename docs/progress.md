@@ -605,9 +605,22 @@ search (multi-ring/shell kernels + CMA-ES / large random screen). May stay negat
 Round 26 = CAPSTONE REVIEW + "what is this" essay (most frontiers now explored; the last big negative is sharply
 characterised). Or one more 3D-glider attempt from the diffuse-moving side. A richer substrate (Flow-Lenia/torch) is GATED.
 
+## Round 26 — CAPSTONE REVIEW + essay (DONE, committed)
+
+Consolidation at the natural plateau (25 build rounds explored; last big negative sharply characterised).
+- R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST — the motion search's best stays DIFFUSE (conc 0.40),
+  no compact-AND-moving creature. The POSITIVE (compact 3D creature) has SEARCH VARIANCE — committed seeds 0/7 reach
+  conc 1.00 and the saved genome reproduces conc 1.00, but a shorter run on seed 11 reached only 0.39 -> findable, not
+  on every seed/budget. Recorded honestly; the core claims (compact found; mobile not) hold with this nuance.
+- Wrote docs/CAPSTONE.md — the definitive one-page "what is this": the one-paragraph version, the arc as one line, what
+  it IS and is NOT, the honest negatives (kept on purpose), and the gated next-step decision. README links to it.
+- 80 tests green; all images resolve; no orphan modules. Repo .git 67M / outputs 52M (growing; visual-README cost).
+VERDICT: the project is COMPLETE IN KIND and honest about its limits. The next BIG move is a GATED dependency decision
+for the USER (Flow-Lenia / torch-GPU / differentiable Lenia) — surface it, don't cross it. This is a real plateau, not a stall.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 25 rounds + FOUR reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 26 rounds + FIVE reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

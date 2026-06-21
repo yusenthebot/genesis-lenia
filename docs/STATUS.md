@@ -5,7 +5,15 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 25 (THE 3D CREATURE — compact found, mobile still negative; complete, committed)
+ROUND: 26 (CAPSTONE REVIEW + essay, complete, committed)
+
+REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
+even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
+(compact 3D creature) has SEARCH VARIANCE — committed seeds 0/7 reach conc 1.00 (and the saved genome
+reproduces conc 1.00), but a SHORTER run on seed 11 reached only conc 0.39, so the compact creature is
+FINDABLE but not on every seed/budget (honest nuance). Wrote docs/CAPSTONE.md (the definitive "what is this"
++ honest negatives + the gated next-step decision); README points to it. 80 tests green; all images resolve;
+no orphans. Repo .git 67M / outputs 52M (growing; inherent to the visual README).
 
 REVIEW (round 23): re-verified R21-22 on FRESH unseen seeds -> BOTH HOLD (not cherry-picked). R21 ablation
 ladder on seeds 30-49: full 288 > memory_only 192 > no_memory 157 (committed 263/188/140 on seeds 0-19 —
@@ -177,14 +185,14 @@ CURRENT STATE:
   INTERSECTION (compact AND moving), and that corner is empty. Evidence: outputs/round25_creature3d.png (3 views of
   the compact creature + the compact-OR-moving trade-off scatter) + .gif (rotating 3D creature). run25.py.
 
-NEXT ROUND SEED (round 26 — most frontiers explored; lean consolidation/honesty): ranked:
-  (a) CAPSTONE REVIEW + "what is this" essay (leading): 25 rounds in, the arc is comprehensive and the last big
-      negative (3D glider) is now sharply characterised. Re-verify a couple recent rounds, write the definitive
-      whole-project telling, ensure the README/montage are the artifact. A natural place to consolidate.
-  (b) One more 3D-glider attempt from the DIFFUSE-MOVING side (relax compactness, seek a propagating localised wave)
-      — lower odds, but the scatter hints motion is reachable; could try seeding from 2D-glider-like asymmetry in 3D.
-  (c) GATED: a richer substrate (Flow-Lenia / torch-GPU / differentiable Lenia) would unlock harder 3D + bigger
-      worlds, but needs a NEW DEPENDENCY -> ask the user before adding.
+NEXT ROUND SEED (round 27 — the project is at a natural plateau; the next BIG move is a GATED user decision):
+  The numpy-CA substrate is near its ceiling (capstone written, all frontiers explored, last negative sharply
+  characterised). HIGH-VALUE next steps all need a NEW DEPENDENCY = a GATE -> SURFACE to the user, do not cross:
+  (a) Flow-Lenia (mass-conserving, multi-species) -> unbounded open-endedness + a real shot at mobile 3D creatures.
+  (b) torch / GPU -> larger 3D worlds + bigger learned controllers.
+  (c) differentiable Lenia -> gradient-FIND the 3D glider the GA can't reach.
+  If the user does not pick one, low-value options remain: another small numpy round (diminishing returns) or
+  hold. Recommendation: PRESENT (a)/(b)/(c) and let the user choose direction rather than grind numpy rounds.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis

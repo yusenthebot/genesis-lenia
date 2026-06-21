@@ -3,6 +3,9 @@
 **A sandbox world where intelligence is grown, not coded — and the same engine carries
 that world from 1D to 2D to 3D.**
 
+> New here? Read [**docs/CAPSTONE.md**](docs/CAPSTONE.md) for the one-page "what is this" — what
+> 25 autonomous rounds produced, what is honestly *not* there, and where it goes next.
+
 ![progress overview: emergence → locomotion → agency](outputs/progress_overview.png)
 
 The substrate is a continuous cellular automaton (Lenia family): the world is an
