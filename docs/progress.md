@@ -807,9 +807,22 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 36 — MILESTONE REVIEW: social rounds re-verified + capstone refresh (DONE, committed)
+
+Adversarial re-verification of the SOCIAL rounds (R33/34/35) on FRESH unseen seeds (last full review R32).
+- R33 grounded comm (seeds 5-6): catch WITH comm 0.71 vs ablated 0.03 (committed 0.58/0.05 -> even stronger) -> holds.
+- R34 iterated learning (seeds 7-9): topo bottleneck 0.28 vs full 0.10 (the bottleneck-vs-full gap holds) -> holds.
+- R35 theory of mind (seed 3): observer 0.78 vs ablated 0.25 = chance -> holds.
+- 99 tests green; all README images resolve; no orphan modules.
+- CORRECTED an over-claim: theory_of_mind.py docstring claimed the observer "beats a position-based naive heuristic"
+  -> it does NOT (a position oracle is as good, since the actor cooperatively reveals its goal); fixed to honest scope.
+- REFRESHED docs/CAPSTONE.md (25 -> 31 -> NOW 35 rounds): the SOCIAL thread now spans all 5 social rounds; reviews -> 7;
+  README capstone pointer 31->35. NOTE: repo .git 88M / outputs 56M (growing; inherent to the visual README; watch).
+VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim corrected; docs back in sync with 35-round reality.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 35 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+- CURRENT CEILING (after 36 rounds + SEVEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
   emergent/compositional/grounded/iterated, + theory of mind); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a

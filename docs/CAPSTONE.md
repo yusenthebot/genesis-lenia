@@ -1,6 +1,6 @@
 # genesis — what this is
 
-A capstone reflection after 31 rounds. For the per-round detail see the [README](../README.md);
+A capstone reflection after 35 rounds. For the per-round detail see the [README](../README.md);
 for the working state see [STATUS.md](STATUS.md) and [progress.md](progress.md).
 
 ## The one-paragraph version
@@ -10,13 +10,15 @@ evolution; scale the same engine 1D → 2D → 3D"* — an autonomous loop built
 world and a mind inside it on **one** substrate: a continuous cellular automaton (the Lenia
 family). The engine is dimension-agnostic (`len(shape)` *is* the dimensionality), so nothing
 above it is hand-placed — structure, locomotion, agency, evolution, and the mind all *emerge*
-from local rules and selection. Thirty-one rounds later the sandbox contains a creature that
+from local rules and selection. Thirty-five rounds later the sandbox contains a creature that
 emerges, moves, forages, survives, competes, evolves, is hunted, learns within its life,
 **remembers**, **predicts**, **plans**, is **integrated** into one organism whose every faculty
 is load-bearing, a substrate shown to keep **generating** new bodies and strategies rather than
-converging, and — once the world holds two agents — a **shared language** that *emerges* and
-becomes *compositional* under pressure. Each result is a runnable driver, a figure, and a metric
-— and every honest negative is kept, not hidden.
+converging, and — once the world holds two agents — a whole **social** layer: a **shared language**
+that *emerges*, becomes *compositional* (both under pressure and, principled, through cultural
+transmission), *grounds* itself in foraging action, and a separate faculty of **theory of mind**
+that reads another agent's hidden goal from its behaviour. Each result is a runnable driver, a
+figure, and a metric — and every honest negative is kept, not hidden.
 
 ## The arc, as one line
 
@@ -25,14 +27,18 @@ learning → embodied learning → measuring the mind (bits) → learning-under-
 Baldwin effect → **memory** → **prediction** → embodied memory → **planning** → **unification**
 → **open-endedness (bodies)** → **open-ended minds (strategies)** → **the 3D creature** →
 **Flow-Lenia** (mass-conserving substrate) → **emergent communication** → **compositional
-communication**.
+communication** → **grounded communication** → **iterated learning** → **theory of mind**.
 
 Three threads run through it: (1) a **mind's core loop**, grown from scratch — *perceive → model
 → predict → act-to-achieve* — then *integrated* (one creature that needs memory + prediction +
 planning together to survive; ablate any one and it starves); (2) **open-endedness** — illuminate
 a behaviour space and a zoo of distinct bodies *and* foraging strategies appears, where plain
-optimisation collapses to one; (3) **social intelligence** — two agents evolve a shared code (2
-bits, ablation-proven), and that code becomes *compositional* under a structural pressure.
+optimisation collapses to one; (3) **social intelligence** — the deepest recent thread: two agents
+evolve a shared code (2 bits, ablation-proven); it becomes *compositional* both under a structural
+pressure (topo 0.25→0.79) and — the principled mechanism — through cultural transmission's
+learnability bottleneck (Kirby); it *grounds* in action (a scout's signal lets a blind forager
+forage, 0.58 vs 0.05 ablated); and a separate faculty, *theory of mind*, infers another agent's
+hidden goal from its motion alone (belief sharpening as it watches, ablate→chance).
 
 ## What it is — and is not
 
@@ -69,18 +75,21 @@ negative.
   rate does not track the world's change-rate; embodied memory is real but seed-sensitive (an early
   over-claim corrected in a later review).
 
-Five review rounds (10, 17, 20, 23, 26) re-verified earlier results on **fresh, unseen seeds**, and
-round 32 re-verified the recent ones (Flow-Lenia mass conservation, both communication rounds) —
-all hold; one over-claim (embodied memory) was found and corrected. The discipline is the point: a
-cleared bar is a floor, and a result only counts if it survives someone trying to break it.
+Seven review rounds (10, 17, 20, 23, 26, 32, 36) re-verified earlier results on **fresh, unseen
+seeds** — round 32 the substrate + first communication rounds, round 36 the later social rounds
+(grounded comm 0.71 vs 0.03 ablated, iterated learning bottleneck 0.28 vs full 0.10, theory of mind
+0.78 vs 0.25 chance) — all hold; two over-claims (embodied memory; a ToM "beats naive" docstring)
+were found and corrected. The discipline is the point: a cleared bar is a floor, and a result only
+counts if it survives someone trying to break it.
 
 ## Where it goes next
 
-The **core goal — real intelligence — still has a rich, ungated vein** that recent rounds opened:
-**social / multi-agent** intelligence. Emergent communication (30) and compositionality (31) are
-the first two steps; grounded communication (a speaker signalling food to a coordinating forager),
-iterated learning / cultural transmission, multi-agent coordination, and theory-of-mind are
-natural, ungated continuations in pure `numpy`.
+The **core goal — real intelligence — still has a rich, ungated vein**: **social / multi-agent**
+intelligence, now five rounds deep (emergent → compositional → grounded → iterated communication,
+plus theory of mind). Natural ungated continuations in pure `numpy`: **multi-agent coordination**
+(a task solvable only together; division of labour), comm-enabled coordination, harder theory of
+mind (behaviour that *misleads* — detours/obstacles, where modelling beats a position oracle), and
+cultural/iterated dynamics over the grounded language.
 
 The one place that is genuinely **gated** (a dependency decision for the human) is the **mobile
 creature**: it is a proven wall in numpy, and the credible path is **differentiable Lenia**

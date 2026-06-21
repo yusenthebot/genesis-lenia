@@ -4,7 +4,7 @@
 that world from 1D to 2D to 3D.**
 
 > New here? Read [**docs/CAPSTONE.md**](docs/CAPSTONE.md) for the one-page "what is this" — what
-> 31 autonomous rounds produced, what is honestly *not* there, and where it goes next.
+> 35 autonomous rounds produced, what is honestly *not* there, and where it goes next.
 
 ![progress overview: emergence → locomotion → agency](outputs/progress_overview.png)
 

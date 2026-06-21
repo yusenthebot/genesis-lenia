@@ -5,7 +5,17 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 35 (THEORY OF MIND — infer a hidden goal from behaviour; complete, committed)
+ROUND: 36 (MILESTONE REVIEW — social rounds re-verified + capstone refresh; complete, committed)
+
+REVIEW (round 36): re-verified the SOCIAL rounds (R33/34/35) on FRESH unseen seeds -> ALL HOLD. R33 grounded comm
+(seeds 5-6): catch WITH comm 0.71 vs ablated 0.03 (committed 0.58/0.05 -> even stronger). R34 iterated learning
+(seeds 7-9): topo bottleneck 0.28 vs full 0.10 (the bottleneck-vs-full gap holds). R35 theory of mind (seed 3):
+observer 0.78 vs ablated 0.25 = chance (holds). 99 tests green; all images resolve; no orphan modules. CORRECTED an
+over-claim: theory_of_mind.py docstring said the observer "beats a position-based naive heuristic" -> it does NOT
+(a position oracle is as good); fixed to the honest scope. REFRESHED docs/CAPSTONE.md (25->31->NOW 35 rounds): the
+SOCIAL thread now spans all 5 social rounds (emergent/compositional/grounded/iterated comm + theory of mind);
+review list updated to 7 (10/17/20/23/26/32/36); README capstone pointer 31->35. NOTE: repo .git 88M / outputs 56M
+(growing; inherent to the visual README; watch it).
 
 REVIEW (round 32): re-verified the post-R26 rounds on FRESH seeds -> ALL HOLD. R27 Flow-Lenia: mass conserved
 EXACTLY (ratio 1.00000) 2D AND 3D on a fresh config. R30 emergent comm (fresh seeds 5-7): accuracy 1.00, 2.00
@@ -270,11 +280,12 @@ CURRENT STATE:
   harder 'behaviour that MISLEADS', e.g. detours/obstacles, is a future frontier). Evidence: outputs/round35_theory_of_mind.png
   (accuracy-by-step + belief-sharpening + trajectories) + .gif (actor moving while the observer's belief bars update). run35.py.
 
-NEXT ROUND SEED (round 36): social vein still ungated; 6 social rounds done (R30/31/33/34/35) -> consider consolidating soon. Ranked:
+NEXT ROUND SEED (round 37 — review done, resume building): social vein ungated. Ranked:
   (a) MULTI-AGENT COORDINATION (leading): a task only solvable TOGETHER (it-takes-two food / division of labour) -> coordinated
       pair beats solo; or COMBINE threads: comm-enabled coordination (agents agree where to meet via the channel, ablate -> fail).
-  (b) HARDER theory-of-mind where behaviour MISLEADS (actor detours around an obstacle; modeling beats the position oracle).
-  (c) MILESTONE REVIEW + a "social intelligence" SUMMARY figure tying R30-35 together (the vein is getting deep; consolidate).
+  (b) HARDER theory-of-mind where behaviour MISLEADS (actor detours around an obstacle; modeling beats the position oracle) ->
+      this is the genuine ToM the R35 review flagged as the future frontier.
+  (c) Iterated/cultural dynamics over the GROUNDED language; or a new non-social frontier if the social vein thins.
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):

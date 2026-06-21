@@ -4,8 +4,11 @@ A distinct social-intelligence axis (not communication). An ACTOR picks a hidden
 targets) and moves toward it with NOISE; an OBSERVER sees only the actor's step-by-step motion and
 must infer WHICH target it intends. The observer is a RECURRENT net (evolved) that integrates the
 noisy trajectory into a belief over goals — mentalising intent from behaviour. It reads the goal
-EARLY (from a few steps), its belief SHARPENS as it watches, and it beats a position-based naive
-heuristic and chance. Ablate the observation (no trajectory) and it collapses to chance.
+EARLY (from a few steps) and its belief SHARPENS as it watches; ablate the observation (random
+motion) and it collapses to chance. Honest scope: inferring "which target an agent walks toward"
+is partly geometric (a position oracle also solves it well, since the actor cooperatively reveals
+its goal) — the real result here is the LEARNED belief-updating from motion alone + the ablation
+dependence; behaviour that MISLEADS (detours/obstacles) is a future frontier.
 """
 
 from __future__ import annotations
