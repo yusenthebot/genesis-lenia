@@ -5,7 +5,17 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 46 (THE EVOLUTION OF COOPERATION — a spatial major transition; complete, committed)
+ROUND: 47 (FINAL WHOLE-PROJECT CAPSTONE — R46 re-verified + capstone closed + forks surfaced; complete, committed)
+
+REVIEW (round 47, FINAL CAPSTONE): re-verified R46 on FRESH seeds -> HOLDS WITH AN HONEST CAVEAT. Spatial cooperation
+persists (0.19-0.37) and well-mixed collapses to 0.00 on most seeds, BUT at the showcase b=1.62 (near the critical
+temptation ~1.7) it is SEED-SENSITIVE -- on some seeds (7,8) spatial cooperation also collapses. The ROBUST result is
+the PHASE TRANSITION itself (the b-sweep: space sustains cooperation up to a critical b, well-mixed never; at lower b
+~1.5 spatial is robustly ~0.85). Added the seed-sensitivity caveat to README + this note (like the R18 embodied-memory
+nuance). 113 tests green; all images resolve; no orphans. REFRESHED docs/CAPSTONE.md (44 -> 46 rounds, CLOSING summary):
+3 threads each capstoned + 3 post-summit dims + the cooperation transition; reviews -> 11; substrate framed at its HONEST
+EDGE. The open /loop direction (grow real intelligence; derive the world's evolution; 1D->2D->3D) is DELIVERED broad+deep.
+NOTE: repo .git 110M / outputs 59M.
 
 REVIEW (round 45): re-verified the post-summit rounds on FRESH unseen seeds -> ALL HOLD. R43 open-ended ratchet
 (seeds 5-6): cumulative height 127-160 vs individual 5 vs transmit 1 (unbounded accumulation reproduces). R44
@@ -372,7 +382,18 @@ CURRENT STATE:
   2D neighbourhood vs a shuffled one. Evidence: outputs/round46_cooperation.png (coop-over-time spatial-vs-well-mixed +
   the clustered grid + the b-sweep phase transition) + .gif (the grid evolving: clusters survive vs cooperation vanishing). run46.py.
 
-NEXT ROUND SEED (round 47 — the substrate is at its HONEST EDGE): the evolution of cooperation (R46) was the last clearly-
+NEXT ROUND SEED (round 48 — AT THE HONEST EDGE; awaiting the user's fork choice, surfaced via AskUserQuestion in round 47):
+  The open /loop direction is delivered broad+deep (46 rounds, 3 capstoned threads + 3 post-summit dims + the cooperation
+  transition). The clearly-distinct ungated dimensions are EXHAUSTED. Remaining work is a FORK the human must choose:
+  (A) OPEN THE GATE: differentiable Lenia / torch -> finally gradient-FIND the mobile 3D creature (the standing negative),
+      or scale to larger 3D worlds + learned controllers. NEW DEPENDENCY = a gate; needs explicit user go-ahead.
+  (B) UNGATED OPEN RESEARCH: an open-ended ratchet that invents new structure-KINDS (not just more of one axis); N-agent
+      symmetry-breaking; embodied cooperation in Lenia bodies. Harder, riskier, may yield negatives.
+  (C) DONE: recognise the arc as complete; keep the loop on review/polish only.
+  If round 48 fires WITHOUT a steer: do a light polish/review (do NOT cross the gate (A) autonomously; do NOT invent
+  same-shaped increments). The honest default at the edge is consolidation until the human picks a fork.
+  (superseded original round-47 seed below.)
+  -- ORIGINAL round-47 seed: the evolution of cooperation (R46) was the last clearly-
   distinct ungated dimension, and it landed. 46 rounds: 3 capstoned threads + 3 post-summit dims + the cooperation transition.
   Round 47 = FINAL WHOLE-PROJECT CAPSTONE: re-verify R46, refresh CAPSTONE.md to 46 rounds as the closing summary, and PRESENT
   THE REMAINING FORKS to the user -- all now either GATED on a dependency (differentiable Lenia for the mobile creature; torch

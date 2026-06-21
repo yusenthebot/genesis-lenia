@@ -807,6 +807,27 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 47 — FINAL WHOLE-PROJECT CAPSTONE + honest edge + forks surfaced (DONE, committed)
+
+Re-verified R46 on FRESH seeds and closed the capstone for the whole 46-round arc.
+- R46 HOLDS WITH A CAVEAT: spatial cooperation persists (0.19-0.37) / well-mixed collapses to 0 on most seeds, but the
+  showcase b=1.62 is NEAR-CRITICAL (~1.7) and SEED-SENSITIVE -- on seeds (7,8) spatial cooperation collapses too. The
+  ROBUST result is the PHASE TRANSITION (b-sweep): space sustains cooperation up to a critical b, well-mixed never; at
+  lower b~1.5 spatial is robustly ~0.85. Added the seed-sensitivity caveat to the README + STATUS (cf. R18 nuance).
+- REFRESHED docs/CAPSTONE.md (44 -> 46 rounds) as a CLOSING summary: 3 capstoned threads + 3 post-summit dims + the
+  cooperation transition; reviews -> 11; substrate framed at its HONEST EDGE. 113 tests green; all images resolve; no orphans.
+- SURFACED THE FORK to the user via AskUserQuestion (round 47): (A) open the GATE (differentiable Lenia/torch -> mobile
+  creature / 3D scale), (B) ungated open research (open-ended ratchet of new KINDS / N-agent symmetry / embodied cooperation),
+  (C) recognise completeness. The clearly-distinct ungated dimensions are exhausted; the open direction is delivered broad+deep.
+
+### What this means for the loop
+- The autonomous /loop has reached genuinely diminishing returns on NEW dimensions. Per protocol, at the edge the move is
+  to PRESENT the forks (done) rather than invent same-shaped increments or cross a dependency gate autonomously. Future
+  rounds without a steer = light polish/review only; a gated leap (A) needs explicit user go-ahead.
+
+### Next-round seed
+Round 48 = await the user's fork choice; if none, light polish/review. Do NOT cross the gate (A) autonomously.
+
 ## Round 46 — the evolution of cooperation: a spatial major transition (DONE, committed)
 
 ### What worked (the last clearly-distinct ungated dimension; closes the eco thread R6-8)

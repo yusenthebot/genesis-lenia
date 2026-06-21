@@ -805,7 +805,10 @@ cooperation up to a critical point, then it falls — while the well-mixed world
 ![cooperator clusters surviving vs cooperation vanishing](outputs/round46_cooperation.gif)
 
 > This is **network reciprocity** (Nowak & May, 1992): space itself is the mechanism that lets altruism
-> invade a world of cheaters — a genuine major transition, and fittingly a 2D one.
+> invade a world of cheaters — a genuine major transition, and fittingly a 2D one. (Honest scope: the
+> showcase `b = 1.62` sits *near* the critical temptation, so the exact persisting fraction is
+> seed-sensitive — on some seeds cooperation collapses too; the robust claim is the **phase transition**
+> itself — space sustains cooperation up to a critical `b`, the well-mixed world never.)
 
 ---
 
