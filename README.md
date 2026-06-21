@@ -36,6 +36,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 12 | **Measuring the mind** — intelligence in bits | ✅ round 12 (I(brain;world) = 0.69 bits) |
 | 13 | **Learning under selection** — does knowing win? | ✅ round 13 (yes — in a changing world) |
 | 14 | **The Baldwin effect** — evolving how to learn | ✅ round 14 (rate self-tunes; honest negative) |
+| 15 | **A brain with memory** — holding a cue across a delay | ✅ round 15 (1 bit of memory; reflex can't) |
 
 ---
 
@@ -266,6 +267,26 @@ effect operates on the learning rate itself.
 
 *(creatures coloured by learning rate — red = slow learner, blue = fast)*
 
+## Round 15 — a brain with memory (recurrent controller)
+
+Every controller so far was a *memoryless reflex* — `action = f(current sensation)`. Round 15
+gives the brain a **hidden recurrent state** and tests it on a task that *requires* memory:
+**cue recall** — a cue appears, vanishes, and after a random delay the creature must act on
+the cue it can no longer see. The recurrent weights are evolved (an evolution strategy, pure
+numpy):
+
+![a brain with memory](outputs/round15_memory.png)
+
+The recurrent net reaches **100%** recall and holds exactly **1.00 bit** of memory across the
+delay (the two cue trajectories separate and stay separated, flat, through the whole delay).
+A **feedforward** net with recurrence ablated is stuck at **chance** and holds **0.00 bits** —
+it cannot, the cue is gone when it must act. **Memory unlocks a class of mind a reflex can't
+reach**, and the memory is both *measured* (1 bit) and *visible* in the hidden state.
+
+![watch the memory](outputs/round15_memory.gif)
+
+*(the cue sets the memory, the memory persists through the delay, then the correct action fires)*
+
 ---
 
 ## How it works
@@ -300,6 +321,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run12 --gif   # measuring the mind: I(brain;world) in bits + gif
 .venv/bin/python -m genesis.run13 --gif   # learning under selection (does knowing win?) + gif
 .venv/bin/python -m genesis.run14 --gif   # the Baldwin effect (evolving the learning rate) + gif
+.venv/bin/python -m genesis.run15 --gif   # a brain with memory (recurrent cue-recall) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -323,7 +345,8 @@ genesis/
   measure.py    information-theoretic measures of mind (I(brain;world), bits)
   evo_learning.py  learners vs fixed-reflex creatures compete (evolution of learning)
   baldwin.py    a heritable learning rate (the Baldwin effect)
-  run1d.py … run14.py   round drivers + visualisation
+  memory_brain.py  a recurrent controller with memory (evolved by ES)
+  run1d.py … run15.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

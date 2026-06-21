@@ -54,6 +54,9 @@ PANELS = [
     ("outputs/round14_baldwin.png",
      "Round 14 · THE BALDWIN EFFECT — the LEARNING RATE is heritable: from random rates evolution "
      "self-tunes the population to a consistent optimum (~0.5). (Honest negative: it doesn't track change-rate.)"),
+    ("outputs/round15_memory.png",
+     "Round 15 · A BRAIN WITH MEMORY — a recurrent controller holds a cue across a delay (1.00 bit of "
+     "memory, 100% recall) where a memoryless reflex is stuck at chance. Memory unlocks a new class of mind."),
 ]
 
 

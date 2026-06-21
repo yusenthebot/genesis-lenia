@@ -5,13 +5,13 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 14 (complete, committed)
+ROUND: 15 (complete, committed)
 
 REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (incl fresh seeds). Negatives intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 54 tests green.
+  convolution + growth; same code 1D/2D/3D. 58 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -90,16 +90,25 @@ CURRENT STATE:
   effect operates on the rate. HONEST NEGATIVE: the evolved rate does NOT track the world's change-
   rate (tested flip 80..3000, +/- reward noise -> ~flat / no clean gradient). The clean Bayesian
   volatility->learning-rate law is washed out by the embodied foraging dynamics. Evidence:
-  outputs/round14_baldwin.png (mean-lr convergence + random->concentrated histogram) + .gif.
+  outputs/round14_baldwin.png + .gif. run14.py.
+- ROUND 15 (VERIFIED): A BRAIN WITH MEMORY. genesis/memory_brain.py — a tiny RECURRENT controller
+  (hidden state, evolved by an ES, pure numpy) on a cue-recall task: a cue appears, vanishes, and
+  after a random delay the creature must act on it. Result: recurrent 1.00 accuracy + holds 1.00 BIT
+  of memory across the delay; feedforward (memory ablated) 0.53 (chance) + 0.00 bits — it literally
+  cannot, the cue is gone when it must act. Memory unlocks a task class impossible for a reflex, and
+  the memory is both MEASURED (1 bit, via measure.py MI) and VISUALISED (the held hidden-state trace).
+  Fast (~6s, no FFTs). Evidence: outputs/round15_memory.png (ES curves + memory trace) + .gif
+  (watch the cue set the memory, persist through the delay, then fire the correct action).
 
-NEXT ROUND SEED (round 15): ranked:
-  (a) DEEPER CONTROLLER (leading): give the brain MEMORY / recurrence (a hidden state) so it can do
-      more than a one-cue reflex -> sequence tasks, anticipation. (b) PREDICTIVE intelligence: a
-      creature that predicts the next world-state (measure predictive info, not just I(brain;world)).
-  (c) MILESTONE REVIEW (14 rounds in: re-verify newer rounds). (d) Stable mobile 3D creature (open).
+NEXT ROUND SEED (round 16): ranked:
+  (a) PREDICTIVE intelligence (leading): now that the brain has memory, give it a PREDICTIVE objective
+      -> a creature that anticipates the next world-state (measure predictive info I(state_t ; obs_t+1)).
+  (b) Put the recurrent brain into the EMBODIED Lenia creature / ecology (memory-using foragers).
+  (c) MILESTONE REVIEW (15 rounds in). (d) Stable mobile 3D creature (open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run15 --gif     # round-15 a brain with memory + gif (~6s)
   .venv/bin/python -m genesis.run14 --gif     # round-14 Baldwin effect + gif (~4 min)
   .venv/bin/python -m genesis.run13 --gif     # round-13 learning under selection + gif (~6 min)
   .venv/bin/python -m genesis.run12 --gif     # round-12 measuring the mind (bits) + gif

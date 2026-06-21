@@ -1,0 +1,6 @@
+{
+  "acc_recurrent": 1.0,
+  "acc_feedforward": 0.53,
+  "memory_bits_recurrent": 0.9991161687869751,
+  "memory_bits_feedforward": 0.0
+}

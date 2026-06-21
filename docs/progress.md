@@ -361,9 +361,34 @@ Round 15 = DEEPER CONTROLLER (leading): the brain is a one-cue value reflex; giv
 recurrent state so it can handle sequences and anticipate, not just react. Or predictive intelligence
 (a creature that predicts the next world-state). Or a milestone review (14 rounds in).
 
+## Round 15 — a brain with memory (DONE, committed)
+
+### What worked
+- genesis/memory_brain.py: a tiny RECURRENT controller (6 hidden units, ~66 weights) evolved by an
+  OpenAI-style ES (pure numpy, no torch) on a CUE-RECALL task — a cue appears, vanishes, and after a
+  random delay the creature must act on it. The recurrent net reaches 1.00 accuracy and holds exactly
+  1.00 BIT of memory across the delay (measured by MI between the mid-delay hidden readout and the
+  cue). A FEEDFORWARD net (recurrence ablated) is stuck at 0.53 / 0.00 bits — it cannot, the cue is
+  gone when it must act. Memory unlocks a task class impossible for a reflex.
+- The memory is both MEASURED (1 bit, reusing measure.py) and VISUALISED (the two cue trajectories
+  separate at the cue and stay separated, flat, through the whole delay until the go step). Fast (~6s).
+- This is the first controller in the project with a HIDDEN STATE — the depth-of-mind frontier the
+  ambition critic kept naming. It also directly explains round 14's failure: a memoryless learner
+  cannot be Bayes-optimal about volatility.
+
+### What did NOT work / honest notes
+- The task is abstract (a clean cue-recall benchmark, point-agent style like round 9), not embodied in
+  a Lenia body yet — deliberate, to isolate the memory result. Re-embodying the recurrent brain in the
+  ecology is a future round. The net is small (6 units); deeper/longer-memory tasks remain open.
+
+### Next-round seed
+Round 16 = PREDICTIVE intelligence (leading): with memory in hand, give the brain a task/objective that
+rewards ANTICIPATING the next world-state, and measure predictive information I(state_t ; obs_{t+1}) —
+a mind that predicts, not just remembers. Or embody the recurrent brain in the ecology.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 14 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 15 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -372,14 +397,13 @@ recurrent state so it can handle sequences and anticipate, not just react. Or pr
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate is complete in skeleton. (Round 14 Baldwin: evolution tunes the
-  learning RATE to a good value, but — honest negative — not to the world's change-rate.)
+  learning-selected->baldwin-rate->memory is complete in skeleton. (Round 15: the FIRST controller
+  with a hidden state — holds 1 bit of memory across a delay, solving a task a reflex cannot.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. DEEPER CONTROLLER: give the brain MEMORY / a recurrent hidden state -> sequences, anticipation,
-     beyond a one-cue reflex. The path to a less shallow mind.
-  2. Predictive/planning intelligence: a creature that PREDICTS the next world-state, not just reacts
-     (measure predictive information, not only I(brain;world)).
-  3. MILESTONE REVIEW (14 rounds in): adversarially re-verify the newer rounds; consolidate.
+  1. PREDICTIVE intelligence: with memory in hand, reward ANTICIPATING the next world-state; measure
+     predictive information I(state_t ; obs_{t+1}). A mind that predicts, not just remembers/reacts.
+  2. Embody the RECURRENT brain in the ecology (memory-using foragers compete; does memory pay?).
+  3. MILESTONE REVIEW (15 rounds in): adversarially re-verify the newer rounds; consolidate.
   4. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -388,12 +412,11 @@ recurrent state so it can handle sequences and anticipate, not just react. Or pr
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 14): the loop is complete AND the learning rule itself now evolves
-  (Baldwin) — though honestly it tunes to a good value, not to volatility as theory predicts. The one
-  thing that has not moved across 14 rounds: the CONTROLLER is shallow. Every "mind" here is a one-cue
-  value reflex with no MEMORY — it cannot represent a sequence, hold a belief over time, or PREDICT
-  what comes next; it only maps current sensation to action. That ceiling is why round 14's clean
-  Bayesian prediction failed (a memoryless learner can't be Bayes-optimal about volatility) and why
-  "intelligence" still means "tropism + fast value-update." The ratchet for round 15+: give the brain
-  a HIDDEN STATE (memory/recurrence) and a PREDICTIVE objective. Depth of mind, not breadth of demo,
-  is now the whole game.
+- AMBITION CRITIC (after round 15): the controller finally has a HIDDEN STATE — it holds a bit of
+  memory across time and solves a task a reflex cannot. That is a real step in depth, not breadth. What
+  remains: (1) the brain REMEMBERS but does not yet PREDICT — it stores the past, it does not anticipate
+  the future (no forward model, no planning); (2) the memory result lives in an ABSTRACT benchmark, not
+  in the embodied Lenia creature / ecology — body and deep-brain haven't met yet; (3) the net is tiny (6
+  units, one bit). The ratchet for round 16+: a PREDICTIVE objective (anticipate next state, measure
+  predictive info), then put the recurrent brain back in a body and an ecology. Remembering is done;
+  predicting is the next depth.
