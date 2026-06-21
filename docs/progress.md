@@ -786,10 +786,31 @@ multi-agent COORDINATION / theory-of-mind. Motion stays a proven wall.
 ### Next-round seed
 Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or multi-agent COORDINATION. Motion stays a proven wall.
 
+## Round 35 — theory of mind: infer a hidden goal from behaviour (DONE, committed)
+
+### What worked
+- genesis/theory_of_mind.py: a social axis DISTINCT from communication — mentalising. An ACTOR moves toward one of K=4
+  goals with heavy noise; an OBSERVER (recurrent net, ES-evolved) sees only the actor's step-by-step MOTION (displacements,
+  no absolute position) and must infer WHICH goal. Result: accuracy 0.48 -> 0.84 as it watches; belief SHARPENS on the
+  true goal (mean P(true) 0.43->0.81, P(best-wrong) 0.56->0.19); ABLATED (random motion) -> 0.29 ~ chance (0.25). The
+  observer integrates noisy motion into a belief about intent — reading another agent's mind from behaviour.
+
+### What did NOT work / honest notes
+- Inferring "which target an agent walks toward" is PARTLY GEOMETRIC: a position oracle (nearest target to current
+  position) also solves it well (~0.95), because the actor cooperatively reveals its goal. So this is NOT "modeling beats
+  the optimal heuristic"; the honest result is (1) the observer LEARNS to read intent from motion-only, (2) the belief-
+  updating dynamic, (3) ablation -> chance. The harder, genuine ToM (behaviour that MISLEADS — detours/obstacles, where
+  surface motion points the wrong way) is a future frontier; stated, not hidden. Also tuned noise up to 1.5 so single
+  steps are ambiguous (the belief sharpens gradually) — at low noise it's certain after 1 step (trivial).
+
+### Next-round seed
+Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
+rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 34 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (emergent +
-  compositional + grounded communication + iterated learning); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 35 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

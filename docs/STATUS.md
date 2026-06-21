@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 34 (ITERATED LEARNING — compositionality from cultural transmission; complete, committed)
+ROUND: 35 (THEORY OF MIND — infer a hidden goal from behaviour; complete, committed)
 
 REVIEW (round 32): re-verified the post-R26 rounds on FRESH seeds -> ALL HOLD. R27 Flow-Lenia: mass conserved
 EXACTLY (ratio 1.00000) 2D AND 3D on a fresh config. R30 emergent comm (fresh seeds 5-7): accuracy 1.00, 2.00
@@ -47,7 +47,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 97 tests green.
+  convolution + growth; same code 1D/2D/3D. 99 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -259,16 +259,27 @@ CURRENT STATE:
   HONEST: the effect is ~0.3 (more modest than R31's hand-pressured 0.79) and fluctuates across seeds (a stochastic
   process); the bottleneck-vs-full contrast (~0.3 vs ~0.0) is the robust claim. Evidence: outputs/round34_iterated.png
   (topo-over-generations bottleneck vs full + the structured transmitted language) + .gif (language organising over generations). run34.py.
+- ROUND 35 (VERIFIED): THEORY OF MIND — inferring another agent's hidden GOAL from its behaviour (a social axis
+  distinct from communication). genesis/theory_of_mind.py — an ACTOR moves toward one of K=4 goals with HEAVY noise;
+  an OBSERVER (recurrent net, evolved by ES) sees only the actor's step-by-step MOTION (displacements, no absolute
+  position) and must infer WHICH goal. Result: goal-inference accuracy rises 0.48 -> 0.84 as it watches (reads intent
+  PROGRESSIVELY); the belief SHARPENS on the true goal (mean P(true) 0.43 -> 0.81, P(best-wrong) 0.56 -> 0.19);
+  ABLATED (random motion) -> 0.29 ~ chance (0.25). So the observer mentalises intent from behaviour, integrating noisy
+  motion into a belief. HONEST: inferring 'which target an agent walks toward' is partly geometric (a position oracle
+  also solves it); the genuine result is the LEARNED belief-updating from motion-only + the ablation dependence (the
+  harder 'behaviour that MISLEADS', e.g. detours/obstacles, is a future frontier). Evidence: outputs/round35_theory_of_mind.png
+  (accuracy-by-step + belief-sharpening + trajectories) + .gif (actor moving while the observer's belief bars update). run35.py.
 
-NEXT ROUND SEED (round 35): the social/intelligence vein stays rich + ungated. Ranked:
-  (a) THEORY-OF-MIND (leading): an OBSERVER infers another agent's hidden GOAL from its behaviour (mentalising) — a
-      distinct social-intelligence axis (not communication). Or multi-agent COORDINATION (a task only solvable together).
-  (b) Combine threads: comm-enabled coordination (agents must agree where to meet via the channel).
-  (c) A capstone/"social intelligence" SUMMARY figure tying R30-34 together if the vein starts to thin.
+NEXT ROUND SEED (round 36): social vein still ungated; 6 social rounds done (R30/31/33/34/35) -> consider consolidating soon. Ranked:
+  (a) MULTI-AGENT COORDINATION (leading): a task only solvable TOGETHER (it-takes-two food / division of labour) -> coordinated
+      pair beats solo; or COMBINE threads: comm-enabled coordination (agents agree where to meet via the channel, ablate -> fail).
+  (b) HARDER theory-of-mind where behaviour MISLEADS (actor detours around an obstacle; modeling beats the position oracle).
+  (c) MILESTONE REVIEW + a "social intelligence" SUMMARY figure tying R30-35 together (the vein is getting deep; consolidate).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run35 --gif     # round-35 theory of mind (infer hidden goal from behaviour) + gif (~15s)
   .venv/bin/python -m genesis.run34 --gif     # round-34 iterated learning (compositionality from transmission) + gif (~12s)
   .venv/bin/python -m genesis.run33 --gif     # round-33 grounded communication (scout guides blind forager) + gif (~10s)
   .venv/bin/python -m genesis.run31 --gif     # round-31 compositional communication (structure under pressure) + gif (~8s)

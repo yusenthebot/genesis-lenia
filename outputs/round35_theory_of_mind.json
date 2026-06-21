@@ -1,0 +1,6 @@
+{
+  "final_accuracy": 0.84,
+  "ablated": 0.2925,
+  "chance": 0.25,
+  "accuracy_step5": 0.6575
+}

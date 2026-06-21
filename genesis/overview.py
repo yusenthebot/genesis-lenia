@@ -100,6 +100,9 @@ PANELS = [
     ("outputs/round34_iterated.png",
      "Round 34 · ITERATED LEARNING — compositionality emerges from cultural transmission through a learnability BOTTLENECK "
      "(Kirby): topo ~0 -> ~0.35 across generations, while FULL transmission stays flat. No hand-added structure pressure."),
+    ("outputs/round35_theory_of_mind.png",
+     "Round 35 · THEORY OF MIND — an OBSERVER infers another agent's hidden GOAL from its motion alone: accuracy 0.48->0.84 "
+     "as it watches, belief sharpens on the true goal, ablated -> chance. Mentalising intent from behaviour."),
 ]
 
 

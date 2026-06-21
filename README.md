@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~34 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~35 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -72,6 +72,7 @@ with a runnable driver, a figure, and a metric.
 | 31 | **Compositional communication** — does it factorise? | ✅ round 31 (holistic by default; structured under pressure) |
 | 33 | **Grounded communication** — a signal that drives foraging | ✅ round 33 (blind forager forages only with the channel) |
 | 34 | **Iterated learning** — compositionality from transmission | ✅ round 34 (Kirby: structure emerges from a bottleneck) |
+| 35 | **Theory of mind** — infer a hidden goal from behaviour | ✅ round 35 (belief sharpens; ablate observation → chance) |
 
 ---
 
@@ -635,6 +636,26 @@ compositional languages are *learnable from few examples* and holistic ones are 
 > language to the next learner. Honest scope: the emergent effect (~0.3) is more modest than R31's
 > forced 0.79 and fluctuates across runs; the bottleneck-vs-full *contrast* is the robust claim.
 
+## Round 35 — theory of mind (infer a hidden goal from behaviour)
+
+A social ability *distinct* from communication: reading another agent's mind. An **actor** moves
+toward one of four hidden goals with heavy noise; an **observer** (a recurrent net) sees only the
+actor's step-by-step **motion** — no absolute position — and must infer *which* goal it intends:
+
+![theory of mind: belief over the hidden goal sharpens as the observer watches](outputs/round35_theory_of_mind.png)
+
+The observer reads intent **progressively** (accuracy **0.48 → 0.84** as it watches), its **belief
+sharpens** on the true goal (mean belief 0.43 → 0.81, while the best wrong goal falls 0.56 → 0.19),
+and **ablating the observation** (random motion) drops it to **chance**. It integrates noisy
+behaviour into a belief about intent — mentalising.
+
+![the actor moves while the observer's belief updates](outputs/round35_theory_of_mind.gif)
+
+> Honest scope: inferring *which target an agent walks toward* is partly geometric — a position
+> oracle also solves it, because the actor cooperatively reveals its goal. The real result here is
+> the *learned* belief-updating from motion alone and its dependence on observing. The harder ToM
+> (behaviour that *misleads* — detours around obstacles) is a future frontier.
+
 ---
 
 ## How it works
@@ -684,6 +705,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run31 --gif   # compositional communication: structure under pressure + gif
 .venv/bin/python -m genesis.run33 --gif   # grounded communication: scout guides a blind forager + gif
 .venv/bin/python -m genesis.run34 --gif   # iterated learning: compositionality from transmission + gif
+.venv/bin/python -m genesis.run35 --gif   # theory of mind: infer a hidden goal from behaviour + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -722,7 +744,8 @@ genesis/
   communicate_comp.py  compositional communication (2-attribute referents; topo pressure)
   communicate_grounded.py  grounded communication: scout signals food, blind forager navigates
   communicate_iterate.py  iterated learning: compositionality from a transmission bottleneck (Kirby)
-  run1d.py … run34.py   round drivers + visualisation
+  theory_of_mind.py  infer another agent's hidden goal from its behaviour (mentalising)
+  run1d.py … run35.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
