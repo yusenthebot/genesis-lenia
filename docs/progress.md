@@ -450,9 +450,35 @@ Round 19 = PLANNING / model-based control (leading): the brain can predict (16) 
 to choose actions that steer the future toward a goal (anticipatory interception), not just react. Or embody
 prediction (a foresight-requiring task: moving/scheduled food).
 
+## Round 19 — planning: acting on foresight (the mind's capstone) (DONE, committed)
+
+### What worked
+- genesis/planning.py: a target ORBITS on a circle; an agent (slightly faster) must intercept. A REACTIVE
+  pursuer heads at where the target IS and tail-chases around the circle; a model-based PLANNER heads where
+  it WILL be and cuts across the interior. Result: planner catches in 24 steps vs reactive pursuit 54
+  (~2.2x faster) — the classic pursuit-curve-vs-interception picture. Acting on prediction beats reacting.
+- LEARNED: an EVOLVED RECURRENT controller (sees only relative position each step, so it must INFER the
+  target's motion) discovers anticipation -> catch rate 0.45 vs 0.05 for a feedforward (reaction-only)
+  controller (9x). Recurrence is what lets a creature learn to lead a moving target.
+- This completes the mind's core loop: perceive -> model -> predict -> ACT-TO-ACHIEVE. React (3-13),
+  remember (15), predict (16), and now INTEND (19) are all present and measured.
+
+### What did NOT work / honest notes
+- Getting here took 4 task redesigns: a big speed margin made pursuit ~= planner (planning didn't matter);
+  a bouncing target broke long-horizon prediction; an open-space straight target let the ES policy let the
+  target escape (rate 0.10). A CIRCULAR (bounded, periodic, predictable) target with a small speed margin
+  is the regime where pursuit clearly tail-chases AND ES can learn. Documented as the lesson.
+- The evolved recurrent (0.45) does NOT reach the hand-coded planner (1.00) — interception is hard to learn
+  from scratch via ES; the honest, real result is the 9x gap over feedforward, not parity with the planner.
+
+### Next-round seed
+Round 20 is a natural MILESTONE (the mind's core loop is complete). Options: a review + capstone README/story
+pass; or UNIFY (one creature with body+memory+prediction+planning in the ecology); or open-endedness (a ZOO
+of evolved minds + diversity metric). Leaning toward review+capstone, then unification.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 18 rounds + TWO clean reviews): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 19 rounds + TWO clean reviews): the mind's core loop is COMPLETE — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -461,13 +487,14 @@ prediction (a foresight-requiring task: moving/scheduled food).
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate->memory->prediction->embodied-memory is complete in skeleton. (Round 18:
-  a recurrent brain drives a Lenia forager; memory ~2x foraging in a flashing world — the tracks reunited.)
+  learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING is complete in skeleton.
+  (Round 19: a planner intercepts a circling target ~2x faster than reaction; a recurrent controller LEARNS
+  to anticipate. perceive->model->predict->act-to-achieve — the mind's core loop is whole.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. PLANNING / model-based control: the brain predicts (16) -> make it USE the model to CHOOSE actions that
-     steer the future toward a goal (anticipatory interception), not just react. The capstone of "mind".
-  2. Embody PREDICTION (a foresight-requiring task: moving/scheduled food), like R18 did for memory.
-  3. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
+  1. MILESTONE + CAPSTONE: review 18-19, then tighten the README/story into a coherent "what this is" telling.
+  2. UNIFY: one creature with body + memory + prediction + planning, in the ecology (the grand integration).
+  3. Open-endedness: a ZOO of evolved minds + a behavioural-diversity/novelty metric over the whole arc.
+  4. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open, long-parked).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -475,12 +502,13 @@ prediction (a foresight-requiring task: moving/scheduled food).
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 18): the mind now remembers (15), predicts (16), and — reunited with the body
-  (18) — its memory PAYS in a world that hides information. That closes the integration + proof-of-payoff gaps
-  the round-16 critic named. The one capstone left for "real intelligence": the brain foresees the future but
-  does not yet ACT ON that foresight — there is no PLANNING, no model-based control where the creature chooses
-  actions to STEER the world toward a goal. Everything so far is react / remember / predict; the missing verb
-  is INTEND. The ratchet for round 19+: planning (use the predictive model to select goal-directed actions;
-  e.g. intercept a target whose future position must be predicted). Also still open and honestly parked: a
-  stable mobile 3D creature. After planning, the mind's core loop (perceive->model->predict->act-to-achieve)
-  would be complete — a defensible end of the "make real intelligence" arc, modest in scale but whole in kind.
+- AMBITION CRITIC (after round 19 — the mind's core loop is complete): react (3-13), remember (15), predict
+  (16), and now INTEND (19) are all present, measured, and where it matters shown to PAY. The "make real
+  intelligence" arc is, in kind, WHOLE — modest in scale, but a genuine perceive->model->predict->act-to-achieve
+  loop grown from local rules. Honest framing of what this is and is NOT: it is NOT one creature that does all of
+  these at once (the capabilities are demonstrated across separate, focused settings — embodied where it counts,
+  abstract where that isolates the result); it is NOT large-scale or competitive with engineered agents; and the
+  3D *creature* remains an open negative. The next ambition is therefore UNIFICATION (one organism with body +
+  memory + prediction + planning in the ecology) and TELLING (a capstone README that makes the whole arc legible),
+  not another isolated capability. Adding verbs is done; integrating them into one mind, and proving the integrated
+  whole, is the remaining frontier — plus the long-parked stable 3D creature for anyone returning to the substrate.

@@ -63,6 +63,9 @@ PANELS = [
     ("outputs/round18_embodied_memory.png",
      "Round 18 · EMBODIED MEMORY — a recurrent brain drives a Lenia forager in a FLASHING world: memory "
      "lets it coast to food through the dark (forages) where a memoryless reflex collects nothing. Memory pays."),
+    ("outputs/round19_planning.png",
+     "Round 19 · PLANNING — acting on foresight: a planner intercepts a circling target (cuts across, 2x "
+     "faster) where reaction tail-chases; an evolved recurrent controller LEARNS to anticipate. Mind loop complete."),
 ]
 
 

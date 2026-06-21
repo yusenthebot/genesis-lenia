@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 18 (complete, committed)
+ROUND: 19 (complete, committed)
 
 REVIEW (round 10): re-verified rounds 1-9 -> all hold. REVIEW (round 17): re-verified rounds 11-16 ->
 ALL HOLD. R11 93%/0.89-vs-0.52; R12 0.69 bits + envelope; R13 changing->1.00 / stable->0.44; R14 lr
@@ -16,7 +16,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 65 tests green.
+  convolution + growth; same code 1D/2D/3D. 69 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -116,17 +116,26 @@ CURRENT STATE:
   So flashing CRUSHES the memoryless forager (3.4 -> 1.0, -70%) and memory roughly DOUBLES it (-> 1.9),
   recovering much of the loss -> memory PAYS exactly when the world hides information across time. The
   embodied (rounds 3-13) and deep-mind (rounds 15-16) tracks are now ONE creature. Evidence:
-  outputs/round18_embodied_memory.png (ES curves + 3-bar payoff with steady control) + .gif (the Lenia
-  creature coasting to food through the DARK on memory).
+  outputs/round18_embodied_memory.png + .gif. run18.py.
+- ROUND 19 (VERIFIED): PLANNING — acting on foresight (the mind's capstone). genesis/planning.py — a
+  target ORBITS on a circle; an agent must intercept. REACTIVE pursuit heads at where the target IS and
+  tail-chases around the circle; a model-based PLANNER heads where it WILL be and cuts across. Result:
+  planner catches in 24 steps vs reactive pursuit 54 (~2.2x faster), with the classic pursuit-curve-vs-
+  interception trajectories. And an EVOLVED RECURRENT controller (sees only relative position, must infer
+  the motion) LEARNS to anticipate: catch rate 0.45 vs 0.05 for a feedforward (reaction-only) controller.
+  Completes the mind's core loop perceive->model->predict->ACT-TO-ACHIEVE. (Honest: ES doesn't reach the
+  hand-coded planner; interception is hard to learn from scratch, but recurrent >> feedforward 9x.) Fast
+  (~90s). Evidence: outputs/round19_planning.png (trajectories + catch-time bars + evolved catch-rate) + .gif.
 
-NEXT ROUND SEED (round 19): ranked:
-  (a) PLANNING / model-based control (leading): the brain PREDICTS (16) — now make it use the model to
-      CHOOSE actions that steer the future toward a goal (not just react). Anticipatory interception, etc.
-  (b) Embody PREDICTION (like R18 embodied memory, but a task needing foresight: moving/scheduled food).
-  (c) Open-endedness metrics / a creature ZOO; or stable mobile 3D creature (hard/open).
+NEXT ROUND SEED (round 20 — a natural milestone; the mind's core loop is complete): ranked:
+  (a) MILESTONE REVIEW + a capstone README/story pass (19 rounds; re-verify 18-19, tighten the arc's telling).
+  (b) UNIFY: one creature with body + memory + prediction + planning in the ecology (the grand integration).
+  (c) Open-endedness: a ZOO of evolved minds + a diversity/novelty metric over the whole arc.
+  (d) Stable mobile 3D creature (hard/open, long-parked).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run19 --gif     # round-19 planning / interception + gif (~90s)
   .venv/bin/python -m genesis.run18 --gif     # round-18 embodied memory (recurrent brain in Lenia) + gif (~4 min)
   .venv/bin/python -m genesis.run16 --gif     # round-16 a brain that predicts + gif (~5s)
   .venv/bin/python -m genesis.run15 --gif     # round-15 a brain with memory + gif (~6s)

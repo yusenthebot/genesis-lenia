@@ -39,6 +39,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 15 | **A brain with memory** — holding a cue across a delay | ✅ round 15 (1 bit of memory; reflex can't) |
 | 16 | **A brain that predicts** — foreseeing the next state | ✅ round 16 (1 bit predictive info; reflex can't) |
 | 18 | **Embodied memory** — a recurrent brain in a Lenia body | ✅ round 18 (memory pays: ~2× foraging) |
+| 19 | **Planning** — acting on foresight to intercept | ✅ round 19 (planner 2× faster; the loop is whole) |
 
 ---
 
@@ -326,6 +327,28 @@ information across time**, and the body + the deep brain are now *one creature*.
 
 *(red = the Lenia creature, green = food; it keeps moving to food even when the signal is dark)*
 
+## Round 19 — planning (acting on foresight)
+
+A mind that *predicts* the future is one thing; a mind that *acts on* that prediction to
+achieve a goal is the capstone. A target orbits on a circle and an agent must intercept it.
+A **reactive** pursuer heads at where the target *is* and tail-chases around the circle; a
+**planner** heads where it *will be* and cuts across:
+
+![planning: interception vs reaction + a creature that learns to anticipate](outputs/round19_planning.png)
+
+The planner intercepts in **24** steps vs **54** for reactive pursuit (~2× faster) — the
+classic pursuit-curve-vs-interception picture. And an **evolved recurrent** controller (which
+sees only the relative position, so it must *infer* the target's motion) **learns to
+anticipate** — catch rate **0.45** vs **0.05** for a feedforward, reaction-only controller.
+
+This completes the mind's core loop: **perceive → model → predict → act-to-achieve.** Across
+the arc the creature came to **react** (rounds 3–13), **remember** (15), **predict** (16), and
+now **intend** (19) — all grown from local rules, and where it matters, shown to pay.
+
+![the chase: planner intercepts, pursuit tail-chases](outputs/round19_planning.gif)
+
+*(blue = target, red = reactive pursuit, green = planner cutting across to intercept)*
+
 ---
 
 ## How it works
@@ -363,6 +386,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run15 --gif   # a brain with memory (recurrent cue-recall) + gif
 .venv/bin/python -m genesis.run16 --gif   # a brain that predicts (recurrent forecasting) + gif
 .venv/bin/python -m genesis.run18 --gif   # embodied memory (recurrent brain in a Lenia forager) + gif
+.venv/bin/python -m genesis.run19 --gif   # planning / interception (act on foresight) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -389,7 +413,8 @@ genesis/
   memory_brain.py  a recurrent controller with memory (evolved by ES)
   predict_brain.py  a recurrent controller that predicts the next world-state
   embodied_memory.py  a recurrent brain driving a Lenia forager (memory pays)
-  run1d.py … run18.py   round drivers + visualisation
+  planning.py   acting on foresight: intercept a moving target (pursuit vs planner)
+  run1d.py … run19.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)
