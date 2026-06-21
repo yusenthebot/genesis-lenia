@@ -34,6 +34,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 9 | **Learning** — a creature adapts within its life | ✅ round 9 (reversal learning) |
 | 11 | **Embodied learning** — the brain inside the body | ✅ round 11 (body + agency + learning) |
 | 12 | **Measuring the mind** — intelligence in bits | ✅ round 12 (I(brain;world) = 0.69 bits) |
+| 13 | **Learning under selection** — does knowing win? | ✅ round 13 (yes — in a changing world) |
 
 ---
 
@@ -222,6 +223,25 @@ to 0.88 bits (a slow world, near the 1-bit ceiling). The mind, *measured*, not a
 
 *(left: the creature foraging; right: a live "knowledge meter" — recent `I(brain;world)` rising and falling as it learns and the world flips)*
 
+## Round 13 — learning under selection (2D)
+
+Round 12 showed learners *know* more. Does knowing make them *win*? Learners (plastic brains)
+and fixed-reflex creatures (a non-plastic, inherited strategy) **compete in one world** for two
+food types, with `is_learner` heritable and the nutritious type reversing at a tunable rate:
+
+![learning under selection — the evolution of learning](outputs/round13_selection.png)
+
+The answer is conditional and clean — the **evolution-of-learning (Baldwin)** result:
+- In a **changing** world, the learner fraction rises **0.5 → 1.0** — learning takes over.
+- In a **stable** world, it falls **0.5 → 0.39** — fixed reflexes win, because learning's
+  startup cost buys nothing when the world never changes.
+- The change-rate sweep shows a sharp transition: **learning pays only in worlds that change
+  within a lifetime.** Knowing more makes a creature win — conditionally.
+
+![learners take over a changing world](outputs/round13_selection.gif)
+
+*(blue = learners, red = fixed-reflex creatures, green = food; in a changing world the blue learners take over)*
+
 ---
 
 ## How it works
@@ -254,6 +274,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run9  --gif   # within-lifetime learning + gif
 .venv/bin/python -m genesis.run11 --gif   # embodied learning (brain in a Lenia body) + gif
 .venv/bin/python -m genesis.run12 --gif   # measuring the mind: I(brain;world) in bits + gif
+.venv/bin/python -m genesis.run13 --gif   # learning under selection (does knowing win?) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -275,7 +296,8 @@ genesis/
   learning.py   a plastic value-learning brain (within-lifetime, reversal)
   embodied_learning.py  the plastic brain inside a Lenia creature (round 11)
   measure.py    information-theoretic measures of mind (I(brain;world), bits)
-  run1d.py … run12.py   round drivers + visualisation
+  evo_learning.py  learners vs fixed-reflex creatures compete (evolution of learning)
+  run1d.py … run13.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

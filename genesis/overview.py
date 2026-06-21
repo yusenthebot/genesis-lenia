@@ -48,6 +48,9 @@ PANELS = [
     ("outputs/round12_measure.png",
      "Round 12 · MEASURING THE MIND — I(brain;world)=0.69 bits for the learner vs 0.00 ablated; the "
      "operating envelope shows knowledge scaling with how slowly the world changes. Mind, measured."),
+    ("outputs/round13_selection.png",
+     "Round 13 · LEARNING UNDER SELECTION — learners vs fixed-reflex creatures compete: learning is "
+     "selected (fraction -> 1) in a CHANGING world but lost in a STABLE one. Knowing wins, conditionally."),
 ]
 
 

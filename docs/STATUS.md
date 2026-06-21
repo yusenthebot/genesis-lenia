@@ -5,13 +5,13 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 12 (complete, committed)
+ROUND: 13 (complete, committed)
 
 REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (incl fresh seeds). Negatives intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 48 tests green.
+  convolution + growth; same code 1D/2D/3D. 51 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -74,16 +74,26 @@ CURRENT STATE:
   ablated 0.00 bits. OPERATING ENVELOPE (MI vs reversal interval): 0.17 bits (fast world, flip 100)
   -> 0.88 bits (slow world, flip 1600) -> the rate of change the mind can track, approaching the
   1-bit ceiling. The mind MEASURED, not asserted. Evidence: outputs/round12_measure.png (MI bar +
-  envelope) + .gif (live "knowledge meter": recent I(brain;world) rising/falling as it learns/reverses).
+  envelope) + .gif. run12.py.
+- ROUND 13 (VERIFIED): LEARNING UNDER SELECTION. genesis/evo_learning.py — learners (plastic brains)
+  and fixed-reflex creatures (non-plastic inherited strategy) COMPETE in one world for two food types
+  with 'is_learner' heritable; the nutritious type reverses at a tunable rate. Result (evolution of
+  learning / Baldwin): in a CHANGING world the learner fraction RISES 0.5 -> 1.00 (learning wins); in
+  a STABLE world it FALLS 0.5 -> 0.39 (fixed reflexes win — learning's startup cost buys nothing). The
+  change-rate sweep shows a sharp transition (~interval 1000-2000): learning pays ONLY in worlds that
+  change within a lifetime. Knowing more (R12) makes a creature win — conditionally. Evidence:
+  outputs/round13_selection.png (learner-fraction-over-time + when-does-learning-pay curve) + .gif
+  (learners=blue take over fixed=red in a changing world). Slow (~6 min, ~9 sims).
 
-NEXT ROUND SEED (round 13): ranked:
-  (a) LEARNING UNDER SELECTION (leading): put learners vs fixed-reflex creatures in the ecology
-      (round 6/7) under competition — does learning WIN? (does plasticity pay its cost?) Measure
-      I(brain;world) of survivors. (b) Baldwin effect (evolve the learning rule/priors).
-      (c) Deeper controller (multi-cue/recurrent/memory). (d) Stable mobile 3D creature (hard/open).
+NEXT ROUND SEED (round 14): ranked:
+  (a) BALDWIN EFFECT: let the learning rule / brain priors themselves evolve -> does evolution tune
+      HOW to learn? (b) Deeper controller: multi-cue / recurrent / short-term memory.
+  (c) PREDICTIVE/PLANNING intelligence: a creature that predicts the next world-state, not just reacts.
+  (d) MILESTONE REVIEW (13 rounds in). (e) Stable mobile 3D creature (hard/open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run13 --gif     # round-13 learning under selection + gif (~6 min)
   .venv/bin/python -m genesis.run12 --gif     # round-12 measuring the mind (bits) + gif
   .venv/bin/python -m genesis.run11 --gif     # round-11 embodied learning + gif
   .venv/bin/python -m genesis.run9 --gif      # round-9 within-lifetime learning + gif

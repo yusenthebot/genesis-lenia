@@ -312,22 +312,50 @@ Round 13 = LEARNING UNDER SELECTION (leading): drop learners AND fixed-reflex cr
 ecology under competition — does learning WIN (does plasticity pay its metabolic cost)? Measure
 I(brain;world) of the survivors. Then Baldwin effect, deeper controllers.
 
+## Round 13 — learning under selection (DONE, committed)
+
+### What worked
+- genesis/evo_learning.py: learners (plastic brain, w starts [0,0], re-learns each life) and
+  fixed-reflex creatures (non-plastic w, inherited + mutated across generations) COMPETE in one
+  world for two food types; 'is_learner' is heritable (rare strategy mutation); nutritious type
+  reverses at a tunable rate. Shared sensed gradients -> only N+2 FFTs/step (efficient).
+- THE EVOLUTION-OF-LEARNING (BALDWIN) RESULT, clean: CHANGING world -> learner fraction 0.5 -> 1.00
+  (learning wins); STABLE world -> 0.5 -> 0.39 (fixed reflexes win). The change-rate sweep shows a
+  sharp transition (~interval 1000-2000): learning pays ONLY in worlds that change within a lifetime.
+  This closes the loop from round 12: a learner doesn't just KNOW more, it WINS — conditionally.
+- Visuals: learner-fraction-over-time (stable vs changing) + when-does-learning-pay transition curve
+  + a GIF of learners (blue) taking over fixed-reflex creatures (red) in a changing world.
+
+### What did NOT work / honest notes
+- Run is slow (~6 min, ~9 competitive sims of ~36 creatures x 2600 steps). Kept population/time
+  modest; the signal is strong enough to be unambiguous at this scale.
+- The fixed-reflex baseline is the fair one: it inherits + evolves its w across generations, so it is
+  NOT static — it just can't track within-life reversals. That is exactly why it loses only when the
+  world changes faster than generational evolution can follow.
+
+### Next-round seed
+Round 14 = BALDWIN EFFECT (leading): let the learning RULE / brain priors evolve, not just the
+is_learner flag -> does evolution tune HOW to learn? Or deeper controller (memory/recurrence), or
+predictive/planning intelligence, or a milestone review (13 rounds in).
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 12 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 13 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
   re-learns under reversal; AND (round 11) that plastic brain now lives INSIDE a Lenia creature —
   body+agency+learning united in one organism; AND (round 12) intelligence MEASURED — I(brain;world)
-  = 0.69 bits, with an operating envelope. The arc emergence->locomotion->agency->survival->3D
-  ->ecology->evolution->predation->learning->embodied-learning->measured-mind is complete in skeleton.
+  = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
+  learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
+  agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
+  learning-selected is complete in skeleton.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. LEARNING UNDER SELECTION: learners vs fixed-reflex creatures competing in the ecology -> does
-     learning WIN / pay its cost? Measure I(brain;world) of survivors. The "is plasticity adaptive?" test.
-  2. Baldwin effect: evolve the learning rule / priors (learning x evolution).
-  3. Deeper controller: multi-cue / recurrent / short-term memory (still numpy, or torch+MPS if asked).
-  4. Predictive/planning intelligence: a creature that PREDICTS the next world-state, not just reacts.
+  1. BALDWIN EFFECT: evolve the learning RULE / brain priors, not just the is_learner flag -> does
+     evolution tune HOW to learn (lr, sensing, initial weights)?
+  2. Deeper controller: multi-cue / recurrent / short-term memory (still numpy, or torch+MPS if asked).
+  3. Predictive/planning intelligence: a creature that PREDICTS the next world-state, not just reacts.
+  4. MILESTONE REVIEW (13 rounds in): adversarially re-verify the newer rounds; consolidate.
   5. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -336,11 +364,12 @@ I(brain;world) of the survivors. Then Baldwin effect, deeper controllers.
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 12): the mind is now MEASURED (0.69 bits about the world, with an
-  operating envelope) — a real number, not a demo. What still separates this from "real intelligence":
-  (1) the brain only KNOWS (encodes the present hidden state); it does not PREDICT the future or PLAN;
-  (2) learning has never been shown to PAY — drop learners and fixed-reflex creatures into the ecology
-  and see if plasticity wins under competition/its metabolic cost; (3) the controller is shallow (one
-  cue-value mapping, no memory of sequences). The ratchet for round 13+: test learning UNDER SELECTION
-  (is plasticity adaptive?), then prediction/planning, then a deeper controller. Knowing is measured;
-  the open question is whether knowing more makes a creature win.
+- AMBITION CRITIC (after round 13): we now have the full loop — a creature that emerges, forages,
+  learns, whose mind is MEASURED, and whose learning is shown ADAPTIVE under selection (wins in a
+  changing world). That is a genuine, end-to-end artificial-life-to-intelligence story. What still
+  separates it from "real intelligence": (1) the brain only KNOWS the present hidden state — it does
+  not PREDICT the future or PLAN ahead; (2) the controller is shallow (one cue-value mapping, no memory
+  of sequences); (3) HOW it learns is hand-set, not itself evolved (no Baldwin of the learning rule).
+  The ratchet for round 14+: evolve the learning rule (Baldwin), add memory/prediction so the creature
+  anticipates rather than reacts, deepen the controller. The skeleton is whole; the depth of mind is
+  the remaining frontier.
