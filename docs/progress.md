@@ -733,9 +733,22 @@ or grounded comm in the foraging world), OR a milestone review (30 rounds; last 
 ### Next-round seed
 Round 32 = MILESTONE REVIEW (overdue; last review R26) or GROUNDED communication in the foraging world. Motion stays a proven wall.
 
+## Round 32 — MILESTONE REVIEW + capstone refresh (DONE, committed)
+
+Adversarial re-verification of the post-R26 rounds on FRESH seeds (last full review was R26).
+- R27 Flow-Lenia: mass conserved EXACTLY (ratio 1.00000) in 2D AND 3D on a fresh config -> holds.
+- R30 emergent communication (fresh seeds 5-7): accuracy 1.00, 2.00 bits (ceiling), ablated 0.25 (chance) -> robust, not cherry-picked.
+- R31 compositional (fresh seeds 5-6): topo naive 0.33 -> pressured 0.80 -> compositionality emerges robustly.
+- 93 tests green; all README images resolve; no orphan modules; every honest negative/caveat intact.
+- REFRESHED docs/CAPSTONE.md (was stale at "25 rounds"): now 31 rounds, three threads (mind loop / open-endedness /
+  SOCIAL), adds the Flow-Lenia substrate + the EXHAUSTIVELY-explained motion negative (gradient-flow wall + gated
+  diff-Lenia path) + the social rounds; README capstone pointer (25->31) + intro arc updated to include R30/31.
+- NOTE: repo .git 80M / outputs 55M (growing; inherent to the visual README — ~33 round figures + GIFs; acceptable).
+VERDICT: the recent rounds stand up on unseen seeds; docs are back in sync with the (now 31-round) reality. Resume the social vein.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 31 rounds + FIVE reviews): the mind's core loop is COMPLETE + INTEGRATED + now SOCIAL (emergent +
+- CURRENT CEILING (after 32 rounds + SIX reviews): the mind's core loop is COMPLETE + INTEGRATED + now SOCIAL (emergent +
   COMPOSITIONAL communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a

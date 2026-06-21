@@ -5,7 +5,15 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 31 (COMPOSITIONAL COMMUNICATION — structure emerges under pressure; complete, committed)
+ROUND: 32 (MILESTONE REVIEW + capstone refresh; complete, committed)
+
+REVIEW (round 32): re-verified the post-R26 rounds on FRESH seeds -> ALL HOLD. R27 Flow-Lenia: mass conserved
+EXACTLY (ratio 1.00000) 2D AND 3D on a fresh config. R30 emergent comm (fresh seeds 5-7): accuracy 1.00, 2.00
+bits (ceiling), ablated 0.25 (chance) -> robust. R31 compositional (fresh seeds 5-6): topo naive 0.33 ->
+pressured 0.80 -> compositionality emerges robustly. 93 tests green; all images resolve; no orphan modules;
+honest negatives intact. REFRESHED docs/CAPSTONE.md (was stale at 25 rounds): now 31 rounds, adds the social
+dimension + Flow-Lenia substrate + the EXHAUSTIVELY-explained motion negative; README pointer + intro updated.
+NOTE: repo .git 80M / outputs 55M (growing; inherent to the visual README; ~33 round figures + GIFs).
 
 REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
 even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
@@ -233,13 +241,13 @@ CURRENT STATE:
   A recognised emergent-language result, replicated in numpy. Evidence: outputs/round31_compositional.png (topo bars +
   naive-scrambled vs pressured-structured signal scatter) + .gif (signals organising under pressure). run31.py.
 
-NEXT ROUND SEED (round 32): the SOCIAL-intelligence frontier is rich and ungated. Ranked:
-  (a) MILESTONE REVIEW (leading; 31 rounds, last review R26 — overdue): adversarially re-verify a few recent rounds
-      (R27 Flow-Lenia, R30/R31 communication), refresh the capstone, prune. A natural consolidation point.
-  (b) GROUNDED communication in the embodied foraging world (a speaker that sees food signals a listener -> coordinated
-      foraging beats solo) — ties the social mind back to the Lenia body. (c) Other social frontiers: multi-agent
-      coordination, cultural transmission / iterated learning, theory-of-mind. NOTE: numpy motion stays a proven wall;
-      the mobile creature is a gated, honestly-parked negative. Lean (a) review or (b) grounded comm.
+NEXT ROUND SEED (round 33 — review done; resume the social vein): ranked:
+  (a) GROUNDED communication (leading): tie the social mind back to the Lenia BODY — a speaker that SEES food signals a
+      listener; coordinated foraging (with comm) beats solo (ablate the channel). Embodied + social in one demo.
+  (b) ITERATED LEARNING / cultural transmission: does compositionality emerge from a transmission bottleneck across
+      "generations" (Kirby), without the hand-added topo pressure? The principled mechanism for R31's effect.
+  (c) Multi-agent COORDINATION (a shared task only solvable together) or theory-of-mind (model the other agent).
+  NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis

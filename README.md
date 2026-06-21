@@ -4,7 +4,7 @@
 that world from 1D to 2D to 3D.**
 
 > New here? Read [**docs/CAPSTONE.md**](docs/CAPSTONE.md) for the one-page "what is this" — what
-> 25 autonomous rounds produced, what is honestly *not* there, and where it goes next.
+> 31 autonomous rounds produced, what is honestly *not* there, and where it goes next.
 
 ![progress overview: emergence → locomotion → agency](outputs/progress_overview.png)
 
@@ -26,9 +26,11 @@ From that one substrate, ~31 rounds grow a world and, inside it, a mind: structu
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
-act-to-achieve*. Those faculties are then **integrated into one organism** (round 21), and the
+act-to-achieve*. Those faculties are then **integrated into one organism** (round 21), the
 substrate is shown to keep **generating a zoo of distinct creatures** rather than converging
-(round 22) — in both body shape and **foraging strategy** (round 24). Each capability is shown with a runnable driver, a figure, and a metric.
+(rounds 22/24 — body shape *and* foraging strategy), and — once the world holds two agents — a
+**shared language emerges** and becomes **compositional** (rounds 30/31). Each capability is shown
+with a runnable driver, a figure, and a metric.
 
 > **Honest scope.** These are *focused demonstrations*, not one organism doing everything at
 > once: the deep-mind results (memory, prediction, planning) are isolated in the settings that
