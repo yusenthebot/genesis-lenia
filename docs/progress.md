@@ -692,10 +692,30 @@ Round 30 = the ungated motion frontier is EXHAUSTED -> surface to user: (a) GATE
 gradient-FIND a glider, the biggest real shot, needs a dependency) vs (b) CONSOLIDATE (comprehensive + every negative
 now exhaustively explained). Do NOT keep grinding numpy motion variants.
 
+## Round 30 — emergent communication: two agents evolve a shared code (DONE, committed)
+
+### What worked (a clean positive, back on the core goal)
+- "继续" after the motion wall -> pivoted from the (proven-walled) motion frontier back to the CORE goal (real
+  intelligence), into a dimension the single-agent mind arc never touched: SOCIAL / multi-agent.
+- genesis/communicate.py: a Lewis signaling / referential game. A SPEAKER sees a hidden referent (1 of K=4) and emits a
+  continuous 2-D SIGNAL; a LISTENER sees only the signal and must name the referent. Neither is given a code; both nets
+  are evolved JOINTLY (OpenAI-ES, pure numpy). A shared language EMERGES: accuracy 0.25 (chance) -> 1.00; the K signals
+  separate into distinct "words"; I(referent; listener-action) reaches 2.00 bits = log2(K) ceiling. ABLATION (random
+  signal): accuracy -> 0.23, I -> 0.01 bits -> the channel is genuinely USED.
+- Measured in bits like the earlier mind rounds (R12/R15/R16); a striking, rigorous emergent-communication result.
+
+### What did NOT work / honest notes
+- Clean round, no negative. (The K=4, 2-D-signal game is deliberately simple — a clear demonstration, not a claim of
+  rich/compositional language. Compositionality is the natural next push.)
+
+### Next-round seed
+Round 31 = push social intelligence (COMPOSITIONAL communication — signal encodes 2 attributes; does the code factorise?
+or grounded comm in the foraging world), OR a milestone review (30 rounds; last review R26). Motion in numpy stays a proven wall.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 29 rounds + FIVE reviews): the mind's core loop is COMPLETE and INTEGRATED, the substrate has
-  LEVELED UP (Flow-Lenia + multi-channel, mass-conserving); the mobile creature is an EXHAUSTIVELY-tested, explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 30 rounds + FIVE reviews): the mind's core loop is COMPLETE + INTEGRATED + now SOCIAL (emergent
+  communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -813,3 +833,12 @@ now exhaustively explained). Do NOT keep grinding numpy motion variants.
   actually used, needs torch/JAX = a dependency), or (b) CONSOLIDATE and call the project complete-in-kind. Continuing to grind
   numpy motion variants would now be busywork against a proven wall. The whole arc (mind + integration + open-endedness +
   leveled-up substrate + an exhaustively-explained creature negative) stands as a defensible, honest body of work.
+- AMBITION CRITIC (after round 30 — social intelligence opened): the right read of the motion wall was NOT "consolidate or
+  go gated" — it was "the MOTION sub-goal is walled, but the CORE goal (real intelligence) has whole unexplored dimensions
+  that are ungated." R30 proved it: emergent communication (a recognised hallmark of intelligence) landed cleanly in numpy,
+  reopening the intelligence frontier into SOCIAL/multi-agent. Lesson: when one sub-frontier walls, don't default to gated
+  leaps or consolidation — check whether the PRIMARY goal has other ungated dimensions. It did (and likely still does:
+  compositional language, grounded/embodied communication, multi-agent coordination, theory-of-mind, curiosity/intrinsic
+  motivation, cultural transmission). So returns are NOT diminishing on the core goal; round 31 should push social
+  intelligence further (compositionality or grounding) — a richer, ungated frontier. The mobile creature stays a gated,
+  honestly-parked negative; it is not the only way forward and should not gate the whole project.

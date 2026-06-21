@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 29 (MULTI-CHANNEL FLOW-LENIA built; motion still walled off — complete, committed)
+ROUND: 30 (EMERGENT COMMUNICATION — two agents evolve a shared code; complete, committed)
 
 REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
 even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
@@ -39,7 +39,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 88 tests green.
+  convolution + growth; same code 1D/2D/3D. 90 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -213,18 +213,27 @@ CURRENT STATE:
   (F=grad(G) relaxes to a stationary equilibrium), NOT the channel count or advection scheme. Translation needs a
   self-sustaining asymmetric (uniform-drift) attractor these numpy formulations don't reach. The mobile creature is
   now an EXHAUSTIVELY-tested, well-explained negative (plain Lenia + Flow-Lenia single/multi-channel + 2 advections).
-  Evidence: outputs/round29_multichannel.png (2-channel creature + per-channel mass curve + motion-vs-channels bars) + .gif.
+  Evidence: outputs/round29_multichannel.png + .gif. run29.py.
+- ROUND 30 (VERIFIED): EMERGENT COMMUNICATION — the first SOCIAL-intelligence round (the mind arc was single-agent).
+  genesis/communicate.py — a SPEAKER sees a hidden referent (1 of K=4) and emits a continuous 2-D SIGNAL; a LISTENER
+  sees only the signal and must name the referent. Neither is given a code; both are evolved JOINTLY (OpenAI-ES, numpy).
+  A shared language EMERGES: listener accuracy climbs 0.25 (chance) -> 1.00; the K signals separate into distinct
+  "words" in signal space; realised information I(referent; listener-action) reaches 2.00 bits = log2(K) ceiling.
+  ABLATION (feed the listener a random signal): accuracy -> 0.23 (chance), I -> 0.01 bits -> the channel is genuinely
+  USED. Pivots from the walled motion frontier back to the CORE goal (real intelligence), extending the arc into the
+  SOCIAL dimension. Evidence: outputs/round30_communication.png (accuracy curve + evolved code scatter + bits bars) +
+  .gif (the 4 signals separating into a code over evolution). run30.py.
 
-NEXT ROUND SEED (round 30 — the ungated motion frontier is EXHAUSTED; DECISION for the user):
-  multi-channel (the user's pick) was built + searched and did NOT crack motion; the wall is the gradient flow, not
-  fixable by channel count / advection in numpy. The mobile creature now genuinely needs the GATED differentiable-Lenia
-  apparatus (gradient-descent through the dynamics to FIND a glider; the paper used JAX). Options to surface:
-  (a) GATED: add torch/JAX -> differentiable Lenia to gradient-find the glider (a dependency gate; biggest real shot).
-  (b) CONSOLIDATE: the project is comprehensive + every negative now exhaustively explained; refresh capstone, call it.
-  Do NOT keep grinding numpy motion variants (proven a wall). Recommend surfacing (a) vs (b).
+NEXT ROUND SEED (round 31): the intelligence frontier is reopened into SOCIAL/multi-agent (a clean positive after the
+  motion wall). Ranked: (a) push social intelligence further — COMPOSITIONAL communication (signal must encode 2
+  attributes; does the code become compositional?), or grounded comm in the embodied foraging world (a speaker that
+  sees food signals a listener -> coordinated foraging beats solo). (b) MILESTONE REVIEW (30 rounds; last review R26).
+  (c) GATED: differentiable Lenia for the mobile creature (still the standing negative). NOTE: motion in numpy = a
+  proven wall; do NOT grind it. Lean (a) social-intelligence or (b) review.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run30 --gif     # round-30 emergent communication (two agents evolve a code) + gif (~6s)
   .venv/bin/python -m genesis.run29 --gif     # round-29 multi-channel Flow-Lenia (built; motion walled off) + gif (~10s)
   .venv/bin/python -m genesis.run28 --gif     # round-28 Flow-Lenia motion diagnosis (gradient flow relaxes) + gif (~20s)
   .venv/bin/python -m genesis.run27 --gif     # round-27 Flow-Lenia (mass-conserving substrate) + gif (~3s)

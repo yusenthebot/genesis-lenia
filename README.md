@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~29 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~30 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -66,6 +66,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 27 | **Flow-Lenia** — a mass-conserving substrate (numpy) | ✅ round 27 (exact conservation; robust 3D; multi-creature) |
 | 28 | **Why it won't move** — diagnosing the motion negative | ✅ round 28 (gradient flow relaxes; needs multi-channel) |
 | 29 | **Multi-channel Flow-Lenia** — coupled channels | ◑ round 29 (built + coupled creatures; motion still walled off) |
+| 30 | **Emergent communication** — two agents, a shared code | ✅ round 30 (a language emerges: 2 bits, ablation-proven) |
 
 ---
 
@@ -549,6 +550,26 @@ wall with or without multi-channel** — so the binding constraint really is the
 > (gradient-descend through the dynamics to *find* a glider), which needs a deep-learning
 > dependency — a gate this numpy-only project leaves to a deliberate decision.
 
+## Round 30 — emergent communication (two agents evolve a shared code)
+
+The whole mind arc so far was *single-agent*. Communication needs two — and is a hallmark of
+intelligence. A **speaker** sees a hidden referent (one of K = 4) and emits a continuous 2-D
+**signal**; a **listener** sees only the signal and must name the referent. Neither is given a
+code — both networks are **evolved jointly**, and a shared language *emerges*:
+
+![emergent communication: accuracy climbs, signals separate into words, 2 bits transmitted](outputs/round30_communication.png)
+
+Listener accuracy climbs from chance (0.25) to **1.00**; the four signals separate into distinct
+**"words"** in signal space; and the realised information **I(referent ; listener-action) = 2.00
+bits**, the `log2(K)` ceiling. Feed the listener a *random* signal and it collapses to chance
+(accuracy 0.23, 0.01 bits) — so the channel is genuinely **used**, not a confound.
+
+![the four signals separating into a code over evolution](outputs/round30_communication.gif)
+
+> This reopens the *intelligence* frontier into a new dimension — **social / multi-agent** — that
+> the single-agent mind arc never touched. (When the mobile-creature sub-goal hit a wall, the core
+> goal still had whole ungated dimensions left; this is one of them.)
+
 ---
 
 ## How it works
@@ -594,6 +615,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run27 --gif   # Flow-Lenia: mass-conserving substrate (robust 3D, multi-creature) + gif
 .venv/bin/python -m genesis.run28 --gif   # why it won't move: the gradient-flow motion diagnosis + gif
 .venv/bin/python -m genesis.run29 --gif   # multi-channel Flow-Lenia: coupled creatures; motion walled + gif
+.venv/bin/python -m genesis.run30 --gif   # emergent communication: two agents evolve a shared code + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -628,7 +650,8 @@ genesis/
   flowlenia.py  Flow-Lenia: mass-conserving substrate in numpy (robust 3D + multi-creature)
   creature_flow.py  GA for a mobile Flow-Lenia creature (the gradient-flow negative)
   flowlenia_mc.py  multi-channel Flow-Lenia (coupled channels; mass conserved per channel)
-  run1d.py … run29.py   round drivers + visualisation
+  communicate.py  emergent communication: two agents evolve a shared code (ES)
+  run1d.py … run30.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

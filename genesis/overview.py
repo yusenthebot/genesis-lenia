@@ -88,6 +88,9 @@ PANELS = [
     ("outputs/round29_multichannel.png",
      "Round 29 · MULTI-CHANNEL FLOW-LENIA — built: C coupled channels, each conserving its mass; structured 2-channel creatures "
      "form. But a GA + reintegration advection still leave motion at ~0.1R: the wall is the GRADIENT FLOW, not the channel count."),
+    ("outputs/round30_communication.png",
+     "Round 30 · EMERGENT COMMUNICATION — two agents EVOLVE a shared code from scratch: listener accuracy 0.25->1.00, the signals "
+     "separate into distinct words, 2.00 bits transmitted (vs 0.01 ablated). The first SOCIAL-intelligence round."),
 ]
 
 
