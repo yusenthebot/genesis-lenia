@@ -615,8 +615,10 @@ Consolidation at the natural plateau (25 build rounds explored; last big negativ
 - Wrote docs/CAPSTONE.md — the definitive one-page "what is this": the one-paragraph version, the arc as one line, what
   it IS and is NOT, the honest negatives (kept on purpose), and the gated next-step decision. README links to it.
 - 80 tests green; all images resolve; no orphan modules. Repo .git 67M / outputs 52M (growing; visual-README cost).
-VERDICT: the project is COMPLETE IN KIND and honest about its limits. The next BIG move is a GATED dependency decision
-for the USER (Flow-Lenia / torch-GPU / differentiable Lenia) — surface it, don't cross it. This is a real plateau, not a stall.
+VERDICT: the project is COMPLETE IN KIND and honest about its limits. CORRECTION (made same round): Flow-Lenia is an
+ALGORITHM buildable in PURE NUMPY -> NOT gated; it is the natural autonomous next frontier (mass conservation may unlock
+the mobile 3D creature + multi-creature worlds). Only torch/GPU + differentiable Lenia stay gated. So round 27 = a
+Flow-Lenia spike (ungated, spike-then-migrate, keep plain Lenia intact), not a stop. A real frontier leap, not a stall.
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 

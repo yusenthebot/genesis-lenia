@@ -185,14 +185,16 @@ CURRENT STATE:
   INTERSECTION (compact AND moving), and that corner is empty. Evidence: outputs/round25_creature3d.png (3 views of
   the compact creature + the compact-OR-moving trade-off scatter) + .gif (rotating 3D creature). run25.py.
 
-NEXT ROUND SEED (round 27 — the project is at a natural plateau; the next BIG move is a GATED user decision):
-  The numpy-CA substrate is near its ceiling (capstone written, all frontiers explored, last negative sharply
-  characterised). HIGH-VALUE next steps all need a NEW DEPENDENCY = a GATE -> SURFACE to the user, do not cross:
-  (a) Flow-Lenia (mass-conserving, multi-species) -> unbounded open-endedness + a real shot at mobile 3D creatures.
-  (b) torch / GPU -> larger 3D worlds + bigger learned controllers.
-  (c) differentiable Lenia -> gradient-FIND the 3D glider the GA can't reach.
-  If the user does not pick one, low-value options remain: another small numpy round (diminishing returns) or
-  hold. Recommendation: PRESENT (a)/(b)/(c) and let the user choose direction rather than grind numpy rounds.
+NEXT ROUND SEED (round 27 — FLOW-LENIA, the ungated frontier leap):
+  CORRECTION to the R26 capstone framing: Flow-Lenia is an ALGORITHM (mass-conserving Lenia via mass transport),
+  implementable in PURE NUMPY -> NOT a dependency gate; it is the natural autonomous next frontier (a substrate
+  rebuild, spike-then-migrate). Architectural argument: (1) mass CONSERVATION may let a moving 3D body hold together
+  (R25's mobile candidates were diffuse because mass DISSIPATES) -> a real shot at the mobile 3D creature;
+  (2) it natively lets MULTIPLE creatures share one world -> richer open-endedness/ecology.
+  ROUND 27 PLAN: spike Flow-Lenia in numpy (genesis/flowlenia.py): affinity -> flow field -> mass-conserving
+  advection (reintegration/semi-Lagrangian); VERIFY mass is conserved + a 2D creature still emerges; then probe
+  whether 3D mobile creatures / multi-creature worlds are more reachable than plain Lenia. Keep plain Lenia intact
+  (additive module, not a rewrite of world.py). STILL GATED (ask user): torch/GPU, differentiable Lenia.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis

@@ -63,15 +63,24 @@ Five review rounds (10, 17, 20, 23, and this one) re-verified earlier results on
 seeds**; one over-claim was found and corrected. The discipline is the point: a cleared bar is a
 floor, and a result only counts if it survives someone trying to break it.
 
-## Where it goes next (a decision, not a default)
+## Where it goes next
 
-The `numpy`-CA substrate is near its ceiling. Every remaining *big* leap needs a new
-dependency — a **gate** the loop will not cross on its own:
+The plain-Lenia substrate is near its ceiling, but one capable upgrade is **ungated** —
+implementable in pure `numpy`, no new dependency — and is the natural next frontier:
 
-- **Flow-Lenia** (mass-conserving; multiple species share a world) → *unbounded* open-endedness
-  and a real shot at mobile 3D creatures.
+- **Flow-Lenia** (Plantec et al. 2022): reformulate the update so mass is *conserved*, moved
+  along a flow field instead of grown/clipped in place. Two reasons it matters here: (1) mass
+  conservation is plausibly what a *moving* 3D structure needs to hold together — R25's mobile
+  candidates were diffuse because mass *dissipates*; conserving it may let a compact 3D body
+  translate without falling apart, i.e. a real shot at the **mobile 3D creature**; (2) it natively
+  lets **multiple creatures share one world**, a richer substrate for *unbounded* open-endedness
+  and ecology. This is a substrate rebuild (spike-then-migrate), not a small round — but ungated.
+
+Two further leaps remain genuinely **gated** on a new dependency (a decision for the human):
+
 - **torch / GPU** → larger 3D worlds and bigger, learned controllers.
 - **Differentiable Lenia** → gradient-*find* the 3D glider the genetic search can't reach.
 
-Until one of those is chosen, the project is at a natural, honest plateau: complete in kind,
-modest in scale, and truthful about both.
+So the honest next step is Flow-Lenia (ungated); torch / differentiable Lenia are there if the
+human wants to open them. Either way the present project stands complete in kind and truthful
+about its scale.
