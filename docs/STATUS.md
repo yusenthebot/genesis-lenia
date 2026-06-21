@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 36 (MILESTONE REVIEW — social rounds re-verified + capstone refresh; complete, committed)
+ROUND: 37 (MULTI-AGENT COORDINATION — division of labour; complete, committed)
 
 REVIEW (round 36): re-verified the SOCIAL rounds (R33/34/35) on FRESH unseen seeds -> ALL HOLD. R33 grounded comm
 (seeds 5-6): catch WITH comm 0.71 vs ablated 0.03 (committed 0.58/0.05 -> even stronger). R34 iterated learning
@@ -57,7 +57,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 99 tests green.
+  convolution + growth; same code 1D/2D/3D. 101 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -279,17 +279,26 @@ CURRENT STATE:
   also solves it); the genuine result is the LEARNED belief-updating from motion-only + the ablation dependence (the
   harder 'behaviour that MISLEADS', e.g. detours/obstacles, is a future frontier). Evidence: outputs/round35_theory_of_mind.png
   (accuracy-by-step + belief-sharpening + trajectories) + .gif (actor moving while the observer's belief bars update). run35.py.
+- ROUND 37 (VERIFIED): MULTI-AGENT COORDINATION — division of labour (acting jointly; a team axis distinct from
+  communication). genesis/coordinate.py — N=4 agents must COVER N sites; the team's yield is the number of DISTINCT
+  sites occupied (a doubled-up site wastes an agent). With distinct ROLES the team evolves a DIVISION OF LABOUR (ES) —
+  a PERMUTATION assigning each agent its own site -> coverage 1.00; an independent-random team gets ~0.69 (some collide
+  by chance); an ABLATED identical team (no role distinction) collapses to 0.25 (all pile on one site). Coordination
+  needs BROKEN SYMMETRY; the assignment is an emergent convention (a different permutation each seed). NOTE (design
+  honesty): a comm-rendezvous variant was tried first but the agents found a fixed meeting CONVENTION that needed no
+  channel; division-of-labour is the cleaner, genuinely-distinct coordination result. Evidence: outputs/round37_coordination.png
+  (coverage bars + evolved team each on its own site vs ablated all-piled-up) + .gif (the team spreading to cover). run37.py.
 
-NEXT ROUND SEED (round 37 — review done, resume building): social vein ungated. Ranked:
-  (a) MULTI-AGENT COORDINATION (leading): a task only solvable TOGETHER (it-takes-two food / division of labour) -> coordinated
-      pair beats solo; or COMBINE threads: comm-enabled coordination (agents agree where to meet via the channel, ablate -> fail).
-  (b) HARDER theory-of-mind where behaviour MISLEADS (actor detours around an obstacle; modeling beats the position oracle) ->
-      this is the genuine ToM the R35 review flagged as the future frontier.
-  (c) Iterated/cultural dynamics over the GROUNDED language; or a new non-social frontier if the social vein thins.
+NEXT ROUND SEED (round 38): social vein now BROAD (comm 4 ways + theory of mind + coordination = 7 social rounds). Ranked:
+  (a) MILESTONE REVIEW soon (7 social rounds; last review R36) — a "social intelligence" consolidation if the vein thins.
+  (b) HARDER theory-of-mind where behaviour MISLEADS (actor detours around an obstacle; modeling beats the position oracle)
+      -- the genuine ToM the R35 review flagged. (c) EMERGENT roles WITHOUT pre-given ids (symmetry-breaking from scratch),
+      or comm-COORDINATION combined. (d) A new NON-social frontier if social returns diminish (the vein is getting deep).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run37 --gif     # round-37 multi-agent coordination (division of labour) + gif (~8s)
   .venv/bin/python -m genesis.run35 --gif     # round-35 theory of mind (infer hidden goal from behaviour) + gif (~15s)
   .venv/bin/python -m genesis.run34 --gif     # round-34 iterated learning (compositionality from transmission) + gif (~12s)
   .venv/bin/python -m genesis.run33 --gif     # round-33 grounded communication (scout guides blind forager) + gif (~10s)

@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~35 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~37 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -73,6 +73,7 @@ with a runnable driver, a figure, and a metric.
 | 33 | **Grounded communication** — a signal that drives foraging | ✅ round 33 (blind forager forages only with the channel) |
 | 34 | **Iterated learning** — compositionality from transmission | ✅ round 34 (Kirby: structure emerges from a bottleneck) |
 | 35 | **Theory of mind** — infer a hidden goal from behaviour | ✅ round 35 (belief sharpens; ablate observation → chance) |
+| 37 | **Multi-agent coordination** — division of labour | ✅ round 37 (team covers all sites; identical agents collide) |
 
 ---
 
@@ -656,6 +657,27 @@ behaviour into a belief about intent — mentalising.
 > the *learned* belief-updating from motion alone and its dependence on observing. The harder ToM
 > (behaviour that *misleads* — detours around obstacles) is a future frontier.
 
+## Round 37 — multi-agent coordination (division of labour)
+
+Communication and mind-reading are in place; the last social piece is **acting together**. A team
+of N agents must **cover** N food sites — the team's yield is the number of *distinct* sites
+occupied (a doubled-up site wastes an agent). With distinct roles, the team evolves a **division of
+labour**:
+
+![coordination: a team evolves a division of labour to cover all sites](outputs/round37_coordination.png)
+
+The evolved team learns a **permutation** — each agent claims its own site, **coverage 1.00** —
+beating an independent-random team (~0.69, some collide by chance) and crushing an **ablated**
+identical team (**0.25**, all pile onto one site). Coordination needs **broken symmetry**, and the
+assignment is an *emergent convention* (a different permutation each run).
+
+![the team spreading out to cover all sites](outputs/round37_coordination.gif)
+
+> Honest scope: the role distinction is *given* (each agent has an id) — symmetry-breaking *from
+> scratch* (identical agents differentiating with no id) is a harder frontier. A comm-rendezvous
+> variant was tried first but collapsed into a fixed convention / one-way communication; division of
+> labour is the cleaner, genuinely-distinct coordination result.
+
 ---
 
 ## How it works
@@ -706,6 +728,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run33 --gif   # grounded communication: scout guides a blind forager + gif
 .venv/bin/python -m genesis.run34 --gif   # iterated learning: compositionality from transmission + gif
 .venv/bin/python -m genesis.run35 --gif   # theory of mind: infer a hidden goal from behaviour + gif
+.venv/bin/python -m genesis.run37 --gif   # multi-agent coordination: division of labour + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -745,7 +768,8 @@ genesis/
   communicate_grounded.py  grounded communication: scout signals food, blind forager navigates
   communicate_iterate.py  iterated learning: compositionality from a transmission bottleneck (Kirby)
   theory_of_mind.py  infer another agent's hidden goal from its behaviour (mentalising)
-  run1d.py … run35.py   round drivers + visualisation
+  coordinate.py  multi-agent coordination: a team evolves a division of labour
+  run1d.py … run37.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

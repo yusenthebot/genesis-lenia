@@ -807,6 +807,28 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 37 — multi-agent coordination: division of labour (DONE, committed)
+
+### What worked
+- genesis/coordinate.py: ACTING TOGETHER — a team axis distinct from communication. N=4 agents must COVER N sites;
+  the team's yield is the number of DISTINCT sites occupied. With distinct ROLES the team evolves a DIVISION OF LABOUR
+  (ES) — a PERMUTATION assigning each agent its own site -> coverage 1.00; an independent-random team gets ~0.69 (some
+  collide by chance); an ABLATED identical team collapses to 0.25 (all pile on one site). Coordination needs BROKEN
+  SYMMETRY; the assignment is an emergent convention (a different permutation each seed). The embodied figure makes it
+  vivid: evolved agents fan out to a site each; ablated agents pile onto one.
+
+### What did NOT work / honest notes
+- First tried a COMM-RENDEZVOUS variant (only A sees the target, signals B, both must meet on it). Two issues: (1) with
+  a static meeting site the agents found a fixed CONVENTION that needed no channel (ablated stayed high); (2) with a
+  varying target only A sees, B decoded perfectly (match 1.00) but A failed to reliably go to the target (0.35-0.64) —
+  it kept collapsing toward one-way communication (already covered in R30/R33). Division-of-labour is the cleaner,
+  genuinely-distinct coordination result; documented the dead-end rather than forcing the comm variant.
+- The role distinction is GIVEN (each agent has an id); symmetry-breaking FROM SCRATCH (identical agents differentiating
+  without pre-given ids) is a harder future frontier. Stated honestly.
+
+### Next-round seed
+Round 38 = consolidation/review soon (7 social rounds) OR harder theory-of-mind (misleading behaviour) OR a new non-social frontier. Motion stays a proven wall.
+
 ## Round 36 — MILESTONE REVIEW: social rounds re-verified + capstone refresh (DONE, committed)
 
 Adversarial re-verification of the SOCIAL rounds (R33/34/35) on FRESH unseen seeds (last full review R32).
@@ -822,8 +844,8 @@ VERDICT: the social rounds stand up on unseen seeds; one docstring over-claim co
 
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 36 rounds + SEVEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
-  emergent/compositional/grounded/iterated, + theory of mind); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 37 rounds + SEVEN reviews): the mind's core loop is COMPLETE + INTEGRATED + SOCIAL (communication:
+  emergent/compositional/grounded/iterated, + theory of mind, + COORDINATION/division-of-labour); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and

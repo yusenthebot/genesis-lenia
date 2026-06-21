@@ -103,6 +103,9 @@ PANELS = [
     ("outputs/round35_theory_of_mind.png",
      "Round 35 · THEORY OF MIND — an OBSERVER infers another agent's hidden GOAL from its motion alone: accuracy 0.48->0.84 "
      "as it watches, belief sharpens on the true goal, ablated -> chance. Mentalising intent from behaviour."),
+    ("outputs/round37_coordination.png",
+     "Round 37 · MULTI-AGENT COORDINATION — a team must COVER N sites; it evolves a DIVISION OF LABOUR (a permutation, each "
+     "agent its own site): coverage 1.00 vs 0.69 random vs 0.25 ablated (identical agents pile up). Joint action via broken symmetry."),
 ]
 
 
