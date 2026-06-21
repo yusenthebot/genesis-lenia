@@ -91,6 +91,9 @@ PANELS = [
     ("outputs/round30_communication.png",
      "Round 30 · EMERGENT COMMUNICATION — two agents EVOLVE a shared code from scratch: listener accuracy 0.25->1.00, the signals "
      "separate into distinct words, 2.00 bits transmitted (vs 0.01 ablated). The first SOCIAL-intelligence round."),
+    ("outputs/round31_compositional.png",
+     "Round 31 · COMPOSITIONAL COMMUNICATION — naive emergent language is HOLISTIC (memorises, topo 0.25); under a structural "
+     "pressure it becomes COMPOSITIONAL (topographic similarity 0.25->0.79, partial zero-shot generalisation). Structure is not free."),
 ]
 
 

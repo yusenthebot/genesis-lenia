@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~30 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~31 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -67,6 +67,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 28 | **Why it won't move** — diagnosing the motion negative | ✅ round 28 (gradient flow relaxes; needs multi-channel) |
 | 29 | **Multi-channel Flow-Lenia** — coupled channels | ◑ round 29 (built + coupled creatures; motion still walled off) |
 | 30 | **Emergent communication** — two agents, a shared code | ✅ round 30 (a language emerges: 2 bits, ablation-proven) |
+| 31 | **Compositional communication** — does it factorise? | ✅ round 31 (holistic by default; structured under pressure) |
 
 ---
 
@@ -570,6 +571,27 @@ bits**, the `log2(K)` ceiling. Feed the listener a *random* signal and it collap
 > the single-agent mind arc never touched. (When the mobile-creature sub-goal hit a wall, the core
 > goal still had whole ungated dimensions left; this is one of them.)
 
+## Round 31 — compositional communication (does the language factorise?)
+
+A referent now has **two attributes** (3 shapes × 3 colours), and the speaker must convey both.
+The deep question: is the emerged code **compositional** — built from reusable parts, so *unseen*
+combinations decode zero-shot — or **holistic** (each combo an arbitrary code)?
+
+![compositionality: holistic by default, structured under pressure](outputs/round31_compositional.png)
+
+The naive emerged code (round 30's trick) is **holistic**: perfect on training meanings, but
+held-out zero-shot **0.00** and topographic similarity only **0.25** — it *memorises* each meaning.
+Add a **structural pressure** (reward topographic similarity) and the language becomes
+**compositional**: topographic similarity **0.25 → 0.79**, the signals organise by attribute, and
+partial zero-shot generalisation appears (**0.00 → 0.33**).
+
+![the signals organising under structural pressure](outputs/round31_compositional.gif)
+
+> So compositionality — the property that lets *finite* parts express *infinite* meanings — is **not
+> free** from communicative success alone; it emerges under a learnability/structure pressure (a
+> known emergent-language result, here in pure numpy). Honest scope: the speaker's code becomes
+> compositional, but the *listener's* zero-shot decoding lags, so generalisation is partial.
+
 ---
 
 ## How it works
@@ -616,6 +638,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run28 --gif   # why it won't move: the gradient-flow motion diagnosis + gif
 .venv/bin/python -m genesis.run29 --gif   # multi-channel Flow-Lenia: coupled creatures; motion walled + gif
 .venv/bin/python -m genesis.run30 --gif   # emergent communication: two agents evolve a shared code + gif
+.venv/bin/python -m genesis.run31 --gif   # compositional communication: structure under pressure + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -651,7 +674,8 @@ genesis/
   creature_flow.py  GA for a mobile Flow-Lenia creature (the gradient-flow negative)
   flowlenia_mc.py  multi-channel Flow-Lenia (coupled channels; mass conserved per channel)
   communicate.py  emergent communication: two agents evolve a shared code (ES)
-  run1d.py … run30.py   round drivers + visualisation
+  communicate_comp.py  compositional communication (2-attribute referents; topo pressure)
+  run1d.py … run31.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

@@ -712,10 +712,31 @@ now exhaustively explained). Do NOT keep grinding numpy motion variants.
 Round 31 = push social intelligence (COMPOSITIONAL communication — signal encodes 2 attributes; does the code factorise?
 or grounded comm in the foraging world), OR a milestone review (30 rounds; last review R26). Motion in numpy stays a proven wall.
 
+## Round 31 — compositional communication: does the language factorise? (DONE, committed)
+
+### What worked
+- genesis/communicate_comp.py: referents now have TWO attributes (3 shapes x 3 colours); the speaker conveys both, the
+  listener decodes both (two heads); some combos are HELD OUT for a zero-shot test. NAIVE emergent comm (the round-30
+  trick) is HOLISTIC: train accuracy 1.00 but held-out zero-shot 0.00 and topographic similarity only ~0.25 — it
+  MEMORISES each meaning rather than building from reusable parts. Add a STRUCTURAL pressure (reward topographic
+  similarity) and the language becomes COMPOSITIONAL: topo 0.25 -> 0.79, with partial zero-shot generalisation
+  (0.00 -> 0.33). Compositionality — the hallmark that lets finite parts express infinite meanings — is NOT free from
+  communicative success alone; it emerges under a learnability/structure pressure. A recognised emergent-language
+  result (cf. iterated-learning / Kirby), replicated cleanly in numpy.
+
+### What did NOT work / honest notes
+- Held-out zero-shot generalisation rose only to ~0.33 (not 1.0) and is noisy across seeds — the SPEAKER's code becomes
+  compositional (topo 0.79) but the LISTENER's zero-shot decoding is the bottleneck. So "partial generalisation," stated
+  honestly. The 2-D PCA scatter of the pressured (3-D) code shows increased structure but not a textbook-crisp grid;
+  topographic similarity (0.25 -> 0.79) is the robust quantitative claim, the scatter the qualitative illustration.
+
+### Next-round seed
+Round 32 = MILESTONE REVIEW (overdue; last review R26) or GROUNDED communication in the foraging world. Motion stays a proven wall.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 30 rounds + FIVE reviews): the mind's core loop is COMPLETE + INTEGRATED + now SOCIAL (emergent
-  communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 31 rounds + FIVE reviews): the mind's core loop is COMPLETE + INTEGRATED + now SOCIAL (emergent +
+  COMPOSITIONAL communication); the substrate LEVELED UP (Flow-Lenia + multi-channel); the mobile creature is an exhaustively-explained negative — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -842,3 +863,10 @@ or grounded comm in the foraging world), OR a milestone review (30 rounds; last 
   motivation, cultural transmission). So returns are NOT diminishing on the core goal; round 31 should push social
   intelligence further (compositionality or grounding) — a richer, ungated frontier. The mobile creature stays a gated,
   honestly-parked negative; it is not the only way forward and should not gate the whole project.
+- AMBITION CRITIC (after round 31 — social vein deepening, review overdue): R30 opened social intelligence; R31 deepened
+  it (compositionality emerges under structural pressure) — both clean, ungated, on the CORE goal, confirming the core goal
+  has a rich ungated vein far from exhausted. But 31 rounds in with the last FULL review at R26, the project is overdue a
+  CONSOLIDATION pass (re-verify recent rounds, refresh the capstone to include the Flow-Lenia substrate + the social rounds
+  + the exhaustively-explained motion negative; prune). So round 32 = MILESTONE REVIEW, then resume the social vein
+  (grounded comm, iterated learning, coordination). Motion stays parked-gated. Balance: push the live frontier, but
+  consolidate before the docs/claims drift from the (now large, 31-round) reality.

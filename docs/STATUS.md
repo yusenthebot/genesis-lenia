@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 30 (EMERGENT COMMUNICATION — two agents evolve a shared code; complete, committed)
+ROUND: 31 (COMPOSITIONAL COMMUNICATION — structure emerges under pressure; complete, committed)
 
 REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
 even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
@@ -39,7 +39,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 90 tests green.
+  convolution + growth; same code 1D/2D/3D. 93 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -223,16 +223,27 @@ CURRENT STATE:
   USED. Pivots from the walled motion frontier back to the CORE goal (real intelligence), extending the arc into the
   SOCIAL dimension. Evidence: outputs/round30_communication.png (accuracy curve + evolved code scatter + bits bars) +
   .gif (the 4 signals separating into a code over evolution). run30.py.
+- ROUND 31 (VERIFIED): COMPOSITIONAL COMMUNICATION — does the emerged language factorise? genesis/communicate_comp.py
+  — referents now have TWO attributes (3 shapes x 3 colours); speaker conveys both, listener decodes both (two heads);
+  some combos HELD OUT for a zero-shot test. NAIVE emergent comm (round-30 trick) is HOLISTIC: train accuracy 1.00 but
+  held-out zero-shot 0.00 and topographic similarity only ~0.25 (it MEMORISES each meaning, doesn't build from parts).
+  Add a STRUCTURAL pressure (reward topographic similarity) and the language becomes COMPOSITIONAL: topo 0.25 -> 0.79,
+  with partial zero-shot generalisation (0.00 -> 0.33). So compositionality (the hallmark that lets finite parts express
+  infinite meanings) is NOT free from communicative success alone — it emerges under a learnability/structure pressure.
+  A recognised emergent-language result, replicated in numpy. Evidence: outputs/round31_compositional.png (topo bars +
+  naive-scrambled vs pressured-structured signal scatter) + .gif (signals organising under pressure). run31.py.
 
-NEXT ROUND SEED (round 31): the intelligence frontier is reopened into SOCIAL/multi-agent (a clean positive after the
-  motion wall). Ranked: (a) push social intelligence further — COMPOSITIONAL communication (signal must encode 2
-  attributes; does the code become compositional?), or grounded comm in the embodied foraging world (a speaker that
-  sees food signals a listener -> coordinated foraging beats solo). (b) MILESTONE REVIEW (30 rounds; last review R26).
-  (c) GATED: differentiable Lenia for the mobile creature (still the standing negative). NOTE: motion in numpy = a
-  proven wall; do NOT grind it. Lean (a) social-intelligence or (b) review.
+NEXT ROUND SEED (round 32): the SOCIAL-intelligence frontier is rich and ungated. Ranked:
+  (a) MILESTONE REVIEW (leading; 31 rounds, last review R26 — overdue): adversarially re-verify a few recent rounds
+      (R27 Flow-Lenia, R30/R31 communication), refresh the capstone, prune. A natural consolidation point.
+  (b) GROUNDED communication in the embodied foraging world (a speaker that sees food signals a listener -> coordinated
+      foraging beats solo) — ties the social mind back to the Lenia body. (c) Other social frontiers: multi-agent
+      coordination, cultural transmission / iterated learning, theory-of-mind. NOTE: numpy motion stays a proven wall;
+      the mobile creature is a gated, honestly-parked negative. Lean (a) review or (b) grounded comm.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run31 --gif     # round-31 compositional communication (structure under pressure) + gif (~8s)
   .venv/bin/python -m genesis.run30 --gif     # round-30 emergent communication (two agents evolve a code) + gif (~6s)
   .venv/bin/python -m genesis.run29 --gif     # round-29 multi-channel Flow-Lenia (built; motion walled off) + gif (~10s)
   .venv/bin/python -m genesis.run28 --gif     # round-28 Flow-Lenia motion diagnosis (gradient flow relaxes) + gif (~20s)
