@@ -5,7 +5,16 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 41 (CUMULATIVE CULTURE — the ratchet; complete, committed)
+ROUND: 42 (WHOLE-PROJECT CAPSTONE/REVIEW — R40/R41 re-verified + capstone refresh + frontier menu; complete, committed)
+
+REVIEW (round 42, WHOLE-PROJECT): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R40 unified social
+(seeds 5-6): full 1.00 vs no-comm 0.38-0.56 vs no-coord 0.50 (both faculties load-bearing). R41 cumulative culture
+(seeds 5-6): cumulative 0.91-0.92 vs individual ~0.0-0.04 vs transmit ~0.0-0.09 (ratchet robust). 107 tests green; all
+images resolve; no orphan modules. REFRESHED docs/CAPSTONE.md (38 -> 41 rounds): now framed as a SUMMIT -- 3 threads each
+carried to its own capstone (mind UNIFIED R21, open-endedness ILLUMINATED R22/24, social UNIFIED R40 + cumulative ratchet
+R41); reviews list -> 9; added a FRONTIER MENU (gated motion via differentiable Lenia; ungated new dims = open-ended
+ratchet / emergent-roles-from-scratch / eco-evolution; or recognise completeness) surfaced for the human to choose.
+NOTE: repo .git 100M / outputs 57M (growing; inherent to the visual README; the one real watch-item).
 
 REVIEW (round 39): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R37 coordination (seeds 5-7):
 coverage 1.00 vs ablated 0.25 (perfect division of labour reproduces). R38 harder ToM (seed 4): mid-detour observer
@@ -325,13 +334,13 @@ CURRENT STATE:
   Evidence: outputs/round41_cumulative.png (quality-over-generations ratchet + the artifact emerging blob->partial->star
   at gens 0/27/55) + .gif (the star ratcheting into existence across generations). run41.py.
 
-NEXT ROUND SEED (round 42): cumulative culture (R41) added a NEW depth to the social arc (now 10 social rounds). The
-  project spans 3 mature threads across 41 rounds + a fresh cumulative-culture result. Ranked:
-  (a) WHOLE-PROJECT CAPSTONE/REVIEW (leading): refresh CAPSTONE.md to 41 rounds incl. cumulative culture; re-verify R40/R41
-      on fresh seeds; a milestone consolidation (last review R39). The project is at a rich, broad summit.
-  (b) One more genuinely new dimension: emergent roles WITHOUT pre-given ids (symmetry-breaking from scratch), or combine
-      cumulative culture WITH the grounded language (a culturally-ratcheting communication system).
-  (c) Surface the frontier menu to the user (41 rounds; remaining big leaps are gated motion / new-dimension calls).
+NEXT ROUND SEED (round 43): at a broad/deep SUMMIT (42 rounds, 3 capstoned threads, frontier menu surfaced in CAPSTONE.md).
+  Continue ONLY into a genuinely-new ungated dimension; do not add same-shaped increments. Ranked:
+  (a) OPEN-ENDED RATCHET (leading): cumulative culture that INVENTS its own complexity (no fixed target) -- novelty search /
+      MAP-Elites-over-artifacts as the innovation step, quality measured as un-reachable-by-one-lifetime structure. Deepens R41.
+  (b) EMERGENT ROLES WITHOUT pre-given ids (symmetry-breaking from scratch) -- deepens R37/R40's "role distinction is given".
+  (c) ECO-EVOLUTION major transitions (niche construction / multi-level selection) on the existing ecology (R6-8).
+  (d) Recognise completeness; honour the user's next /loop as the steer (gated motion stays a human call).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 
 HOW TO RUN (drivers verified in round-10 review):

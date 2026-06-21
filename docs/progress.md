@@ -807,6 +807,21 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 42 — WHOLE-PROJECT CAPSTONE/REVIEW + frontier menu (DONE, committed)
+
+Adversarial re-verification of the latest rounds on FRESH unseen seeds (last review R39), at a broad/deep summit.
+- R40 unified social (seeds 5-6): full 1.00 vs no-comm 0.38-0.56 vs no-coord 0.50 -> both faculties load-bearing.
+- R41 cumulative culture (seeds 5-6): cumulative 0.91-0.92 vs individual ~0 vs transmit ~0 -> the ratchet holds.
+- 107 tests green; all README images resolve; no orphan modules.
+- REFRESHED docs/CAPSTONE.md (38 -> 41 rounds): now framed as a SUMMIT -- 3 threads each carried to its own capstone
+  (mind UNIFIED R21, open-endedness ILLUMINATED R22/24, social UNIFIED R40 + cumulative RATCHET R41); reviews -> 9.
+- Added a FRONTIER MENU surfaced for the human: GATED (mobile creature via differentiable Lenia -> needs torch/JAX);
+  UNGATED NEW DIMENSIONS (open-ended ratchet that invents its own complexity; emergent roles from scratch; eco-evolution
+  major transitions); or RECOGNISE COMPLETENESS. At this summit the direction is the human's to set.
+- NOTE: repo .git 100M / outputs 57M (growing; the one real watch-item; inherent to the visual README).
+VERDICT: latest rounds hold; docs in sync with the 41-round summit; the menu is surfaced -- round 43 should be a
+genuinely-new ungated dimension (lean open-ended ratchet) rather than another same-shaped increment.
+
 ## Round 41 — cumulative culture: the ratchet (DONE, committed)
 
 ### What worked (a genuinely new dimension beyond R34)

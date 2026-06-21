@@ -1,6 +1,6 @@
 # genesis — what this is
 
-A capstone reflection after 38 rounds. For the per-round detail see the [README](../README.md);
+A capstone reflection after 41 rounds. For the per-round detail see the [README](../README.md);
 for the working state see [STATUS.md](STATUS.md) and [progress.md](progress.md).
 
 ## The one-paragraph version
@@ -10,7 +10,7 @@ evolution; scale the same engine 1D → 2D → 3D"* — an autonomous loop built
 world and a mind inside it on **one** substrate: a continuous cellular automaton (the Lenia
 family). The engine is dimension-agnostic (`len(shape)` *is* the dimensionality), so nothing
 above it is hand-placed — structure, locomotion, agency, evolution, and the mind all *emerge*
-from local rules and selection. Thirty-eight rounds later the sandbox contains a creature that
+from local rules and selection. Forty-one rounds later the sandbox contains a creature that
 emerges, moves, forages, survives, competes, evolves, is hunted, learns within its life,
 **remembers**, **predicts**, **plans**, is **integrated** into one organism whose every faculty
 is load-bearing, a substrate shown to keep **generating** new bodies and strategies rather than
@@ -18,8 +18,10 @@ converging, and — once the world holds two or more agents — a whole **social
 language** that *emerges*, becomes *compositional* (both under pressure and, principled, through
 cultural transmission), and *grounds* itself in foraging action; a **theory of mind** that reads
 another agent's hidden goal from its behaviour (even when a detour makes that behaviour *mislead*);
-and **coordination** — a team that evolves a *division of labour*. Each result is a runnable driver,
-a figure, and a metric — and every honest negative is kept, not hidden.
+**coordination** — a team that evolves a *division of labour*; a **unified social world** where
+communication *and* coordination are each load-bearing; and a **cumulative-culture ratchet** that
+accumulates an artifact across generations beyond any single lifetime. Each result is a runnable
+driver, a figure, and a metric — and every honest negative is kept, not hidden.
 
 ## The arc, as one line
 
@@ -29,14 +31,17 @@ Baldwin effect → **memory** → **prediction** → embodied memory → **plann
 → **open-endedness (bodies)** → **open-ended minds (strategies)** → **the 3D creature** →
 **Flow-Lenia** (mass-conserving substrate) → **emergent communication** → **compositional
 communication** → **grounded communication** → **iterated learning** → **theory of mind** →
-**coordination (division of labour)** → **harder theory of mind (misleading behaviour)**.
+**coordination (division of labour)** → **harder theory of mind (misleading behaviour)** →
+**unified social world** → **cumulative culture (the ratchet)**.
 
-Three threads run through it: (1) a **mind's core loop**, grown from scratch — *perceive → model
-→ predict → act-to-achieve* — then *integrated* (one creature that needs memory + prediction +
-planning together to survive; ablate any one and it starves); (2) **open-endedness** — illuminate
-a behaviour space and a zoo of distinct bodies *and* foraging strategies appears, where plain
-optimisation collapses to one; (3) **social intelligence** — the deepest recent thread (eight
-rounds): two agents evolve a shared code (2 bits, ablation-proven); it becomes *compositional* both
+Three threads run through it, and each has reached its own *capstone*: (1) a **mind's core loop**,
+grown from scratch — *perceive → model → predict → act-to-achieve* — then **unified** (round 21: one
+creature that needs memory + prediction + planning together to survive; ablate any one and it
+starves); (2) **open-endedness** — **illuminate** a behaviour space and a zoo of distinct bodies
+*and* foraging strategies appears (rounds 22/24), where plain optimisation collapses to one;
+(3) **social intelligence** — ten rounds, itself **unified** (round 40: a team needs communication
+*and* coordination together, each load-bearing) and reaching the **cumulative-culture ratchet**
+(round 41). Within the social thread: two agents evolve a shared code (2 bits, ablation-proven); it becomes *compositional* both
 under a structural pressure (topo 0.25→0.79) and — the principled mechanism — through cultural
 transmission's learnability bottleneck (Kirby); it *grounds* in action (a scout's signal lets a
 blind forager forage, 0.58 vs 0.05 ablated); *theory of mind* infers another agent's hidden goal
@@ -79,28 +84,32 @@ negative.
   rate does not track the world's change-rate; embodied memory is real but seed-sensitive (an early
   over-claim corrected in a later review).
 
-Eight review rounds (10, 17, 20, 23, 26, 32, 36, 39) re-verified earlier results on **fresh, unseen
-seeds** — round 32 the substrate + first communication rounds, round 36 the middle social rounds,
-round 39 the latest (coordination coverage 1.0 vs 0.25 ablated, harder theory of mind mid-detour
-0.99 vs 0.63 oracle) — all hold; two over-claims (embodied memory; a ToM "beats naive" docstring)
-were found and corrected. The discipline is the point: a cleared bar is a floor, and a result only
-counts if it survives someone trying to break it.
+Nine review rounds (10, 17, 20, 23, 26, 32, 36, 39, 42) re-verified earlier results on **fresh,
+unseen seeds** — round 39 coordination + harder theory of mind, round 42 the unified social world
+(full 1.0 vs ≤0.56 ablated) and the cumulative-culture ratchet (0.92 vs ~0 individual/copy-only) —
+all hold; two over-claims (embodied memory; a ToM "beats naive" docstring) were found and corrected.
+The discipline is the point: a cleared bar is a floor, and a result only counts if it survives
+someone trying to break it.
 
 ## Where it goes next
 
-The social thread is now **eight rounds deep** (communication ×4 + theory of mind ×2 + coordination)
-and broad. The strongest remaining *in-kind* move is a **unified social world** — the multi-agent
-analogue of round 21's unification of the single mind: one world where agents must *communicate AND
-coordinate AND model each other* to survive/forage under selection, with each social faculty shown
-load-bearing (ablate it and the group does worse). Beyond that, the social pattern (evolve a net,
-beat an ablation) starts to repeat — so the honest options are: the unified social capstone; a
-genuinely new dimension (e.g. emergent roles with no pre-given id; cumulative culture); or
-recognising the project's broad completeness.
+After 41 rounds the project is at a **broad, deep summit**: three threads, each carried to its own
+capstone (the mind unified, open-endedness illuminated, the social mind unified *and* reaching the
+cumulative ratchet). The remaining moves are no longer same-shaped increments — they are real forks:
 
-The one place that is genuinely **gated** (a dependency decision for the human) is the **mobile
-creature**: it is a proven wall in numpy, and the credible path is **differentiable Lenia**
-(gradient-descend through the dynamics to *find* a glider, the method the Flow-Lenia paper used) —
-which needs torch / JAX. `torch / GPU` would also unlock larger 3D worlds and learned controllers.
+- **Gated (needs a dependency — a human call).** The **mobile creature** is a proven numpy wall;
+  the credible path is **differentiable Lenia** (gradient-descend through the dynamics to *find* a
+  glider, as the Flow-Lenia paper did), which needs torch / JAX. `torch / GPU` would also unlock
+  larger 3D worlds and learned controllers.
+- **Genuinely new dimensions (ungated, in numpy).** An **open-ended ratchet** that *invents* its own
+  complexity rather than matching a given target; **emergent roles with no pre-given id**
+  (symmetry-breaking from scratch); deeper **eco-evolutionary** dynamics (niche construction, the
+  major transitions).
+- **Recognise completeness.** The arc *"grow real intelligence, 1D → 2D → 3D"* has been delivered
+  broadly and honestly; a whole-project capstone is a legitimate stopping point.
+
+These are surfaced as a menu rather than silently chosen — at this summit the direction is the
+human's to set.
 
 So: keep pushing the ungated social/intelligence vein; the gated motion path waits for a deliberate
 call. The present project stands complete in kind, broad and deep, and truthful about its scale.
