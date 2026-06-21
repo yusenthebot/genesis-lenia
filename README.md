@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~25 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~27 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -63,6 +63,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 22 | **Open-endedness** — keep generating, or converge? | ✅ round 22 (MAP-Elites zoo: 54/64 niches vs 1) |
 | 24 | **Open-ended minds** — a zoo of foraging strategies | ✅ round 24 (28 distinct strategies vs ~5) |
 | 25 | **The 3D creature** — a compact body in 3D; a mover? | ◑ round 25 (compact body found; mobile glider still open) |
+| 27 | **Flow-Lenia** — a mass-conserving substrate (numpy) | ✅ round 27 (exact conservation; robust 3D; multi-creature) |
 
 ---
 
@@ -480,6 +481,28 @@ the compactness × motion scatter has the two ingredients only **separately** �
 > yet. Reaching it likely needs a richer substrate (differentiable Lenia to gradient-find it, or
 > Flow-Lenia) — a dependency this numpy-only project has deliberately not added.
 
+## Round 27 — Flow-Lenia (a mass-conserving substrate)
+
+Round 25 diagnosed *why* the mobile 3D creature is hard: plain Lenia *grows and clips* mass in
+place, so it isn't conserved — a moving body **dissipates**, and 3D dynamics are knife-edge.
+**Flow-Lenia** (Plantec et al. 2022) fixes the root cause: treat the growth as an *affinity*,
+and **move** mass along its gradient with mass-conserving advection instead of growing it. It's
+an algorithm, not a package — so it's built here in **pure numpy** (no new dependency):
+
+![Flow-Lenia: exact mass conservation, robust 2D & 3D creatures, multi-creature worlds](outputs/round27_flowlenia.png)
+
+What the conservation buys: **mass is conserved exactly** (a flat line, 2D and 3D); a seed
+self-organises into a **compact creature** — with an emergent orbium-like ring in 2D — and,
+crucially, into a **robust compact 3D creature** *where plain Lenia 3D died or foamed*; and
+**multiple creatures coexist** in one world, sharing the conserved mass.
+
+![four Flow-Lenia creatures coexisting, mass conserved](outputs/round27_flowlenia.gif)
+
+> Honest scope: a *mobile* creature is still not delivered — with a symmetric kernel the clumps
+> are stationary attractors, and motion needs a search (as in round 2) or multi-channel kernels.
+> But the substrate now *conserves* mass, so a moving body can no longer dissipate — which is
+> exactly the obstacle round 25 hit. The mobile creature is *reopened*, not yet caught.
+
 ---
 
 ## How it works
@@ -522,6 +545,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run22 --gif   # open-endedness: MAP-Elites zoo vs fitness converges + gif
 .venv/bin/python -m genesis.run24 --gif   # open-ended minds: a zoo of foraging strategies + gif
 .venv/bin/python -m genesis.run25 --gif   # the 3D creature: compact body found, mobile glider open + gif
+.venv/bin/python -m genesis.run27 --gif   # Flow-Lenia: mass-conserving substrate (robust 3D, multi-creature) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -553,7 +577,8 @@ genesis/
   openended.py  MAP-Elites illuminating a behaviour-space zoo (open-endedness)
   openmind.py   MAP-Elites over foraging policies — a zoo of strategies (open-ended minds)
   creature3d.py  multi-ring + shaped search for a 3D creature (compact found, glider open)
-  run1d.py … run25.py   round drivers + visualisation
+  flowlenia.py  Flow-Lenia: mass-conserving substrate in numpy (robust 3D + multi-creature)
+  run1d.py … run27.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

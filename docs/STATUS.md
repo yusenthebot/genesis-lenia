@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 26 (CAPSTONE REVIEW + essay, complete, committed)
+ROUND: 27 (FLOW-LENIA — mass-conserving substrate; complete, committed)
 
 REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
 even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
@@ -39,7 +39,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 80 tests green.
+  convolution + growth; same code 1D/2D/3D. 83 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -184,20 +184,28 @@ CURRENT STATE:
   STATIONARY attractors, the structures that MOVE (travel ~0.5) are DIFFUSE (conc ~0.3); the glider is the unmet
   INTERSECTION (compact AND moving), and that corner is empty. Evidence: outputs/round25_creature3d.png (3 views of
   the compact creature + the compact-OR-moving trade-off scatter) + .gif (rotating 3D creature). run25.py.
+- ROUND 27 (VERIFIED): FLOW-LENIA — a mass-conserving substrate, pure numpy (genesis/flowlenia.py). Plain Lenia
+  grows/clips mass in place (not conserved -> moving bodies dissipate, 3D is knife-edge). Flow-Lenia MOVES mass
+  along the affinity gradient (F = grad(growth(U)), clipped) with mass-conserving UPWIND advection. Results: mass
+  conserved EXACTLY (ratio 1.0000) in 2D AND 3D; a seed self-organises into a COMPACT creature with an emergent
+  orbium-like ring in 2D, and a ROBUST compact 3D creature (conc ~0.98 — where plain Lenia 3D died/foamed); and
+  4 creatures COEXIST in one world sharing the conserved mass. HONEST: a MOBILE creature is NOT delivered here
+  either (symmetric radial kernel -> stationary attractors; an offset kernel did not unlock motion); but it is now
+  on a substrate where a moving body cannot dissipate. Additive module — plain Lenia (world.py) untouched.
+  Evidence: outputs/round27_flowlenia.png (2D creature + mass-conservation curve + 3D creature + multi-creature) +
+  .gif (4 creatures, mass conserved). run27.py.
 
-NEXT ROUND SEED (round 27 — FLOW-LENIA, the ungated frontier leap):
-  CORRECTION to the R26 capstone framing: Flow-Lenia is an ALGORITHM (mass-conserving Lenia via mass transport),
-  implementable in PURE NUMPY -> NOT a dependency gate; it is the natural autonomous next frontier (a substrate
-  rebuild, spike-then-migrate). Architectural argument: (1) mass CONSERVATION may let a moving 3D body hold together
-  (R25's mobile candidates were diffuse because mass DISSIPATES) -> a real shot at the mobile 3D creature;
-  (2) it natively lets MULTIPLE creatures share one world -> richer open-endedness/ecology.
-  ROUND 27 PLAN: spike Flow-Lenia in numpy (genesis/flowlenia.py): affinity -> flow field -> mass-conserving
-  advection (reintegration/semi-Lagrangian); VERIFY mass is conserved + a 2D creature still emerges; then probe
-  whether 3D mobile creatures / multi-creature worlds are more reachable than plain Lenia. Keep plain Lenia intact
-  (additive module, not a rewrite of world.py). STILL GATED (ask user): torch/GPU, differentiable Lenia.
+NEXT ROUND SEED (round 28): ranked:
+  (a) EVOLVE A MOBILE FLOW-LENIA CREATURE (leading): R27 built the mass-conserving substrate + showed robust
+      compact 2D/3D creatures, but motion is NOT yet there (symmetric radial kernel -> stationary attractors).
+      Run a search (like round 2) over Flow-Lenia rule + ASYMMETRIC/multi-channel kernel + seed for a MOVING
+      creature; mass conservation means a found mover won't dissipate -> the real shot at the mobile 2D/3D glider.
+  (b) An open-ended ECOLOGY on Flow-Lenia (multiple creatures + food + selection on the conserved-mass substrate).
+  (c) GATED (ask user): torch/GPU (scale), differentiable Lenia (gradient-find the glider).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run27 --gif     # round-27 Flow-Lenia (mass-conserving substrate) + gif (~3s)
   .venv/bin/python -m genesis.run25 --gif     # round-25 the 3D creature (compact found, mobile negative) + gif (~7s)
   .venv/bin/python -m genesis.run24 --gif     # round-24 open-ended minds (foraging-strategy zoo) + gif (~6 min)
   .venv/bin/python -m genesis.run22 --gif     # round-22 open-endedness (MAP-Elites zoo) + gif (~5 min)

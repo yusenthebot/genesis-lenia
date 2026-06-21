@@ -620,9 +620,38 @@ ALGORITHM buildable in PURE NUMPY -> NOT gated; it is the natural autonomous nex
 the mobile 3D creature + multi-creature worlds). Only torch/GPU + differentiable Lenia stay gated. So round 27 = a
 Flow-Lenia spike (ungated, spike-then-migrate, keep plain Lenia intact), not a stop. A real frontier leap, not a stall.
 
+## Round 27 — Flow-Lenia: a mass-conserving substrate (DONE, committed)
+
+### What worked
+- genesis/flowlenia.py: Flow-Lenia (Plantec et al. 2022) in PURE NUMPY — the ungated substrate leap. Plain Lenia
+  does A += dt*G(U) and clips (mass NOT conserved). Flow-Lenia instead treats growth as an AFFINITY, computes a flow
+  F = clip(grad(growth(U))), and MOVES mass along it with a mass-conserving UPWIND finite-volume advection
+  (every face flux that leaves a cell enters its neighbour -> total mass exactly constant). Dimension-agnostic;
+  additive (world.py untouched).
+- RESULTS: (1) mass conserved EXACTLY (ratio 1.0000) in 2D AND 3D — verified + unit-tested. (2) a seed self-organises
+  into a COMPACT creature with an emergent orbium-like RING in 2D, and a ROBUST compact 3D creature (conc ~0.98) —
+  this is the big one: plain Lenia 3D was knife-edge (die/foam/proliferate, R5/R25), but mass conservation removes
+  the dissipation/explosion failure modes, so 3D creatures are now ROBUST and EASY. (3) 4 creatures COEXIST in one
+  world sharing the conserved mass (multi-creature — what plain Lenia struggles with).
+- This is a genuine substrate level-up that directly addresses R25's diagnosis (mobile candidates were diffuse
+  because mass dissipates) and opens multi-creature ecology.
+
+### What did NOT work / honest notes
+- A MOBILE creature is STILL not delivered. With a symmetric radial kernel the Flow-Lenia clumps are STATIONARY
+  attractors (travel ~0); an offset/asymmetric kernel did NOT unlock motion in a quick test. Like plain Lenia,
+  a moving creature is a narrow attractor needing a SEARCH (round-2 style) or multi-channel kernels. The win is that
+  the substrate now CONSERVES mass, so a found mover won't dissipate -> the mobile glider is more reachable, not yet reached.
+- Counting "how many creatures" needed a blur-first step (the creatures have fine internal texture + a dotted ring
+  halo that naive thresholding fragments into ~80-110 components; blur-then-label gives the true 4).
+
+### Next-round seed
+Round 28 = EVOLVE a MOBILE Flow-Lenia creature (search over rule + asymmetric/multi-channel kernel + seed; mass
+conservation means a found mover persists) — the real shot at the mobile 2D/3D glider. Or an open-ended ecology on Flow-Lenia.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 26 rounds + FIVE reviews): the mind's core loop is COMPLETE and now INTEGRATED — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 27 rounds + FIVE reviews): the mind's core loop is COMPLETE and INTEGRATED, AND the substrate
+  has LEVELED UP (Flow-Lenia, mass-conserving) — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -632,13 +661,14 @@ Flow-Lenia spike (ungated, spike-then-migrate, keep plain Lenia intact), not a s
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
   learning-selected->baldwin-rate->memory->prediction->embodied-memory->PLANNING->UNIFICATION->OPEN-ENDEDNESS(bodies)
-  ->OPEN-ENDED-MINDS->3D-CREATURE(compact yes, mobile no). (Round 25: a serious push finds a stable COMPACT 3D creature
-  — upgrade on R5 — but the mobile 3D glider stays the knife-edge intersection of compact-stationary and diffuse-moving.)
+  ->OPEN-ENDED-MINDS->3D-CREATURE(compact yes, mobile no)->FLOW-LENIA(mass-conserving substrate; robust 3D + multi-creature).
+  (Round 27: a mass-conserving substrate in pure numpy — 3D creatures are now ROBUST where plain Lenia 3D was knife-edge,
+  and multiple creatures coexist; mobile creature reopened because mass can no longer dissipate.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. CAPSTONE REVIEW + "what is this" telling — consolidate 25 rounds into the definitive artifact (the high-value move now).
-  2. GATED substrate leaps (ask the user first): Flow-Lenia (unbounded open-endedness + real 3D creatures); torch/GPU
-     (scale, bigger 3D); differentiable Lenia (gradient-find the 3D glider the GA can't reach). Each = a new dependency.
-  3. Smaller numpy-CA rounds (diminishing returns — avoid unless a fresh genuinely-new angle appears).
+  1. EVOLVE a MOBILE Flow-Lenia creature (ungated): search rule + asymmetric/multi-channel kernel + seed on the conserving
+     substrate -> the real shot at the mobile 2D/3D glider (a found mover won't dissipate). The reopened frontier.
+  2. An open-ended ECOLOGY on Flow-Lenia (multi-creature + food + selection; conserved mass = natural resource competition).
+  3. GATED (ask the user): torch/GPU (scale, bigger 3D), differentiable Lenia (gradient-find the glider).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -711,3 +741,11 @@ Flow-Lenia spike (ungated, spike-then-migrate, keep plain Lenia intact), not a s
   "what is this" telling, making the repo the artifact. Continuing to add small numpy-CA rounds would be busywork / diminishing
   returns; the high-value moves from here are either (a) capstone, or (b) a user-approved substrate leap. Round 26 = capstone,
   and surface the gated substrate options to the user rather than silently grinding.
+- AMBITION CRITIC (after round 27 — Flow-Lenia, substrate leveled up): the R26 "everything left is gated" read was WRONG —
+  Flow-Lenia is an algorithm (pure numpy), so the substrate leap was ungated and got done. Real progress: a mass-conserving
+  substrate where 3D creatures are now ROBUST (the R5/R25 knife-edge is gone) and multiple creatures coexist. The frontier has
+  REOPENED: the mobile creature, which looked terminal on plain Lenia, is now plausibly reachable because mass can't dissipate.
+  So returns are NOT diminishing — there is a concrete, high-value, ungated next round: EVOLVE a mobile Flow-Lenia creature
+  (round-2-style search over rule + asymmetric/multi-channel kernel + seed, on the conserving substrate). That is the right
+  round 28 — keep pushing, don't consolidate prematurely. Genuinely gated leaps (torch/GPU, differentiable Lenia) remain for
+  later if the user wants them. Lesson recorded: check whether a "frontier" actually needs a dependency before declaring a plateau.

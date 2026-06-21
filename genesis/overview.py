@@ -79,6 +79,9 @@ PANELS = [
     ("outputs/round25_creature3d.png",
      "Round 25 · THE 3D CREATURE — a serious push (multi-ring kernels + shaped search) finds a STABLE COMPACT 3D creature "
      "(an upgrade on R5's lattice), but the compact-OR-moving trade-off leaves the MOBILE 3D glider an honest open negative."),
+    ("outputs/round27_flowlenia.png",
+     "Round 27 · FLOW-LENIA — a mass-conserving substrate built in pure numpy: mass is conserved EXACTLY, 3D creatures are "
+     "now ROBUST (where plain Lenia 3D was knife-edge), and multiple creatures coexist in one world. The substrate levels up."),
 ]
 
 
