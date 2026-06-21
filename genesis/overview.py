@@ -82,6 +82,9 @@ PANELS = [
     ("outputs/round27_flowlenia.png",
      "Round 27 · FLOW-LENIA — a mass-conserving substrate built in pure numpy: mass is conserved EXACTLY, 3D creatures are "
      "now ROBUST (where plain Lenia 3D was knife-edge), and multiple creatures coexist in one world. The substrate levels up."),
+    ("outputs/round28_motion_diagnosis.png",
+     "Round 28 · WHY IT WON'T MOVE — a proper GA can't make a single-channel Flow-Lenia creature locomote (plateaus far below "
+     "the bar). The diagnosis: F=grad(G) is a GRADIENT flow -> relaxes to a stationary equilibrium; locomotion needs multi-channel."),
 ]
 
 

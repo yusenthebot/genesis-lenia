@@ -648,10 +648,34 @@ Flow-Lenia spike (ungated, spike-then-migrate, keep plain Lenia intact), not a s
 Round 28 = EVOLVE a MOBILE Flow-Lenia creature (search over rule + asymmetric/multi-channel kernel + seed; mass
 conservation means a found mover persists) — the real shot at the mobile 2D/3D glider. Or an open-ended ecology on Flow-Lenia.
 
+## Round 28 — why the creature won't move: the gradient-flow diagnosis (DONE, committed)
+
+### What worked (a precise NEGATIVE + its mechanism)
+- genesis/creature_flow.py: the proper round-2-equivalent search — a GA over Flow-Lenia rule + kernel asymmetry +
+  EVOLVED SEED SHAPE (round 2's lesson: the glider seed must be evolved, not random), rewarding directed motion of
+  a compact body. Evolution pushed net travel from ~0.06R (random screen) to ~0.2R (evolved) — but PLATEAUED far
+  below locomotion (round-2 plain-Lenia glider crossed 3.78 widths ~ 7.5R). Also ruled out by probes: asymmetric
+  kernels, rotated (chiral) flow, and multi-creature competition (creatures coexist inertly, no mass transfer).
+- THE DIAGNOSIS (the real result): single-channel Flow-Lenia moves mass by F = grad(G(U)) — a GRADIENT flow, which
+  is curl-free, so it can only RELAX mass toward a stationary equilibrium. That is WHY every motion attempt (R25
+  plain Lenia, R27/R28 Flow-Lenia) lands on a compact STATIONARY creature. Sustained locomotion needs a NON-gradient
+  flow = MULTI-CHANNEL Flow-Lenia (the combined flow of several channels is not a pure gradient — the paper's glider
+  mechanism). The recurring negative is now EXPLAINED, not just observed.
+
+### What did NOT work / honest notes
+- No mobile creature (the headline hope). But the round converts a string of "it didn't move" results into one clean
+  mechanistic explanation + a concrete next step. That is the honest, valuable form of this negative.
+- This is the diminishing-returns boundary on the motion frontier: the next real attempt (multi-channel) is a
+  multi-round speculative build. Per protocol, surface the decision to the user rather than autonomously sinking rounds.
+
+### Next-round seed
+Round 29 = a DECISION POINT (surface to user): (a) build MULTI-CHANNEL Flow-Lenia (ungated, big, the path to gliders +
+rich ecology), or (b) CONSOLIDATE (the project is comprehensive; update the capstone and call it), or (c) gated leaps.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 27 rounds + FIVE reviews): the mind's core loop is COMPLETE and INTEGRATED, AND the substrate
-  has LEVELED UP (Flow-Lenia, mass-conserving) — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 28 rounds + FIVE reviews): the mind's core loop is COMPLETE and INTEGRATED, AND the substrate
+  has LEVELED UP (Flow-Lenia, mass-conserving); the mobile creature is a THOROUGH, EXPLAINED negative (gradient flow) — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -749,3 +773,13 @@ conservation means a found mover persists) — the real shot at the mobile 2D/3D
   (round-2-style search over rule + asymmetric/multi-channel kernel + seed, on the conserving substrate). That is the right
   round 28 — keep pushing, don't consolidate prematurely. Genuinely gated leaps (torch/GPU, differentiable Lenia) remain for
   later if the user wants them. Lesson recorded: check whether a "frontier" actually needs a dependency before declaring a plateau.
+- AMBITION CRITIC (after round 28 — motion frontier resolved as an EXPLAINED negative): the mobile creature was NOT cracked,
+  but R28 did the honest, valuable thing — a proper GA (round-2-equivalent) confirmed single-channel Flow-Lenia can't locomote,
+  AND diagnosed WHY (gradient flow = curl-free = relaxational). That turns three rounds of "it won't move" into one clean
+  mechanism + a concrete next step (multi-channel = non-gradient flow). This is now genuine diminishing returns on the motion
+  frontier within reach of one round: the next real attempt (multi-channel Flow-Lenia) is a MULTI-ROUND speculative build with
+  uncertain payoff. Per the loop protocol ("stop only when returns genuinely diminish after real pushing — and even then,
+  present the remaining frontier options"), round 29 = SURFACE THE DECISION to the user: (a) commit to multi-channel (big, the
+  real path to gliders + rich ecology), or (b) consolidate — the project is comprehensive and every negative is now explained.
+  Do NOT autonomously sink many rounds into speculative multi-channel work without the user's call. The mind arc is whole, the
+  substrate is leveled up, the last negative is understood; this is a legitimate place to ask "keep climbing, or call it?"

@@ -22,7 +22,7 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
-From that one substrate, ~27 rounds grow a world and, inside it, a mind: structure
+From that one substrate, ~28 rounds grow a world and, inside it, a mind: structure
 **emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
 second species **hunts**, a brain **learns** within a life, then comes to **remember**,
 **predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
@@ -64,6 +64,7 @@ substrate is shown to keep **generating a zoo of distinct creatures** rather tha
 | 24 | **Open-ended minds** — a zoo of foraging strategies | ✅ round 24 (28 distinct strategies vs ~5) |
 | 25 | **The 3D creature** — a compact body in 3D; a mover? | ◑ round 25 (compact body found; mobile glider still open) |
 | 27 | **Flow-Lenia** — a mass-conserving substrate (numpy) | ✅ round 27 (exact conservation; robust 3D; multi-creature) |
+| 28 | **Why it won't move** — diagnosing the motion negative | ✅ round 28 (gradient flow relaxes; needs multi-channel) |
 
 ---
 
@@ -503,6 +504,28 @@ crucially, into a **robust compact 3D creature** *where plain Lenia 3D died or f
 > But the substrate now *conserves* mass, so a moving body can no longer dissipate — which is
 > exactly the obstacle round 25 hit. The mobile creature is *reopened*, not yet caught.
 
+## Round 28 — why the creature won't move (a diagnosis)
+
+The mobile creature has now been attacked three ways — plain Lenia (round 25), symmetric
+Flow-Lenia (round 27), and here a proper round-2-style **GA over the rule + kernel asymmetry +
+the evolved seed shape**, plus probes with asymmetric kernels and rotated flows. They all land
+in the same place, and this round explains *why*:
+
+![why it won't move: evolution plateaus far below locomotion; a gradient flow relaxes](outputs/round28_motion_diagnosis.png)
+
+Evolution pushes net travel up — from ~0.06 R (random) to ~0.2 R (evolved) — but **plateaus far
+below locomotion** (round 2's plain-Lenia glider crossed **3.78 widths**). The diagnosis: a
+single-channel Flow-Lenia moves mass by **F = ∇G**, a *gradient* flow, which is **curl-free** — so
+it can only *relax* mass toward a stationary equilibrium. That is exactly why every attempt yields
+a **compact but stationary** creature. Sustained locomotion needs a **non-gradient** flow — i.e.
+**multi-channel** Flow-Lenia (the paper's glider mechanism), a larger build.
+
+![a compact Flow-Lenia creature, staying put](outputs/round28_motion_diagnosis.gif)
+
+> So the mobile creature is now a *thorough, explained* negative rather than a mystery: three
+> substrates, a proper evolutionary search, and a clear mechanism for the wall. The next real
+> attempt (multi-channel Flow-Lenia) is a multi-round effort — a genuine fork in the road.
+
 ---
 
 ## How it works
@@ -546,6 +569,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run24 --gif   # open-ended minds: a zoo of foraging strategies + gif
 .venv/bin/python -m genesis.run25 --gif   # the 3D creature: compact body found, mobile glider open + gif
 .venv/bin/python -m genesis.run27 --gif   # Flow-Lenia: mass-conserving substrate (robust 3D, multi-creature) + gif
+.venv/bin/python -m genesis.run28 --gif   # why it won't move: the gradient-flow motion diagnosis + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -578,7 +602,8 @@ genesis/
   openmind.py   MAP-Elites over foraging policies — a zoo of strategies (open-ended minds)
   creature3d.py  multi-ring + shaped search for a 3D creature (compact found, glider open)
   flowlenia.py  Flow-Lenia: mass-conserving substrate in numpy (robust 3D + multi-creature)
-  run1d.py … run27.py   round drivers + visualisation
+  creature_flow.py  GA for a mobile Flow-Lenia creature (the gradient-flow negative)
+  run1d.py … run28.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

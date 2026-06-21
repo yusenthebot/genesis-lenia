@@ -5,7 +5,7 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 27 (FLOW-LENIA — mass-conserving substrate; complete, committed)
+ROUND: 28 (FLOW-LENIA MOTION DIAGNOSIS — gradient flow relaxes; complete, committed)
 
 REVIEW (round 26): capstone consolidation. R25 re-verified on a FRESH seed (11): the NEGATIVE is ROBUST —
 even the motion search's best is DIFFUSE (conc 0.40), no compact-AND-moving creature appears. The POSITIVE
@@ -39,7 +39,7 @@ GIFs/PNGs — inherent to the visual README; acceptable, watch it.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 83 tests green.
+  convolution + growth; same code 1D/2D/3D. 86 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -194,17 +194,29 @@ CURRENT STATE:
   on a substrate where a moving body cannot dissipate. Additive module — plain Lenia (world.py) untouched.
   Evidence: outputs/round27_flowlenia.png (2D creature + mass-conservation curve + 3D creature + multi-creature) +
   .gif (4 creatures, mass conserved). run27.py.
+- ROUND 28 (VERIFIED, negative w/ diagnosis): WHY THE CREATURE WON'T MOVE. genesis/creature_flow.py — a proper
+  round-2-style GA over Flow-Lenia rule + kernel asymmetry + EVOLVED SEED SHAPE, rewarding directed motion of a
+  compact body. Result: evolution pushes net travel up from ~0.06R (random) to ~0.2R (evolved) but PLATEAUS far
+  below locomotion (round-2 plain-Lenia glider: 3.78 widths ~ 7.5R). Also ruled out (probes): asymmetric kernels,
+  rotated (chiral) flow, and multi-creature competition (creatures COEXIST inertly, no mass transfer). DIAGNOSIS:
+  single-channel Flow-Lenia moves mass by F = grad(G(U)) — a GRADIENT flow, which is curl-free, so it can only
+  RELAX to a stationary equilibrium; sustained locomotion needs a NON-gradient flow (= MULTI-CHANNEL Flow-Lenia,
+  the paper's glider mechanism). This resolves the recurring motion negative (R25/R27/R28) with a precise mechanism.
+  Evidence: outputs/round28_motion_diagnosis.png (GA curve vs locomotion bar + compact-but-stationary creature +
+  centroid-stays-put trajectory) + .gif. run28.py.
 
-NEXT ROUND SEED (round 28): ranked:
-  (a) EVOLVE A MOBILE FLOW-LENIA CREATURE (leading): R27 built the mass-conserving substrate + showed robust
-      compact 2D/3D creatures, but motion is NOT yet there (symmetric radial kernel -> stationary attractors).
-      Run a search (like round 2) over Flow-Lenia rule + ASYMMETRIC/multi-channel kernel + seed for a MOVING
-      creature; mass conservation means a found mover won't dissipate -> the real shot at the mobile 2D/3D glider.
-  (b) An open-ended ECOLOGY on Flow-Lenia (multiple creatures + food + selection on the conserved-mass substrate).
-  (c) GATED (ask user): torch/GPU (scale), differentiable Lenia (gradient-find the glider).
+NEXT ROUND SEED (round 29 — DECISION POINT, surface to user): the mobile creature is now a THOROUGH negative across
+  3 substrates/methods; the diagnosis says it needs MULTI-CHANNEL Flow-Lenia (a multi-round build, uncertain payoff).
+  Options to PRESENT to the user (returns on the motion frontier are genuinely diminishing):
+  (a) Build MULTI-CHANNEL Flow-Lenia (ungated, big): the principled path to gliders + rich ecology; multi-round, may
+      still be hard. (b) CONSOLIDATE: the project is comprehensive (mind arc + integration + open-endedness + a
+      rigorous, well-explained 3D/motion negative); update the capstone and call it. (c) GATED: torch/GPU,
+      differentiable Lenia. Recommendation: surface (a)/(b) to the user rather than autonomously sinking many rounds
+      into a speculative multi-channel build.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run28 --gif     # round-28 Flow-Lenia motion diagnosis (gradient flow relaxes) + gif (~20s)
   .venv/bin/python -m genesis.run27 --gif     # round-27 Flow-Lenia (mass-conserving substrate) + gif (~3s)
   .venv/bin/python -m genesis.run25 --gif     # round-25 the 3D creature (compact found, mobile negative) + gif (~7s)
   .venv/bin/python -m genesis.run24 --gif     # round-24 open-ended minds (foraging-strategy zoo) + gif (~6 min)

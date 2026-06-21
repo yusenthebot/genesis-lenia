@@ -20,12 +20,20 @@ import numpy as np
 from genesis.world import LeniaParams, kernel_shell
 
 
-def _build_kernel_fft(shape, params: LeniaParams):
+def _build_kernel_fft(shape, params: LeniaParams, asym=0.0, phi=0.0):
+    """Radial Lenia kernel, optionally made ASYMMETRIC (ring stronger on one side).
+
+    asym in [0,1) tilts the kernel by (1 + asym*cos(theta - phi)) in the first two axes,
+    breaking rotational symmetry -> a persistent directional bias in the flow -> motion.
+    """
     idx = np.indices(shape, dtype=np.float64)
     centre = np.array([s // 2 for s in shape], dtype=np.float64)
     centre = centre.reshape((len(shape),) + (1,) * len(shape))
     r = np.sqrt(((idx - centre) ** 2).sum(0)) / params.R
     K = kernel_shell(r, params)
+    if asym > 0.0 and len(shape) >= 2:
+        theta = np.arctan2(idx[0] - centre[0], idx[1] - centre[1])
+        K = K * np.clip(1.0 + asym * np.cos(theta - phi), 0.0, None)
     K /= K.sum()
     return np.fft.rfftn(np.fft.ifftshift(K))
 
@@ -49,11 +57,12 @@ def advect(A, F, dt):
 class FlowWorld:
     """A Flow-Lenia world: total mass is conserved; structure self-organises and moves."""
 
-    def __init__(self, shape, params: LeniaParams, flow_clip=1.0, dt=None):
+    def __init__(self, shape, params: LeniaParams, flow_clip=1.0, dt=None,
+                 asym=0.0, phi=0.0):
         self.shape = tuple(int(s) for s in shape)
         self.ndim = len(self.shape)
         self.params = params
-        self.K_fft = _build_kernel_fft(self.shape, params)
+        self.K_fft = _build_kernel_fft(self.shape, params, asym=asym, phi=phi)
         self.flow_clip = flow_clip
         self.dt = params.dt if dt is None else dt
         self.A = np.zeros(self.shape)
