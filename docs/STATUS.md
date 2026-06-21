@@ -5,11 +5,18 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 9 (complete, committed)
+ROUND: 10 (REVIEW/milestone complete, committed)
+
+REVIEW (round 10): adversarially re-verified all 9 rounds by re-running drivers and
+checking metrics vs claims. ALL HOLD: R2 glider 4.05w/straight 0.99/conc 1.00; R3 85/18/18;
+R4 832/158/299; R6 optimum~4; R9 0.87 vs 0.49 (and 0.87 vs 0.57 on FRESH unused seeds 200-207
+-> not cherry-picked). 39 tests green; all 19 README images resolve; outputs clean. Only orphan
+module was evolve3d.py (round-5 3D-GA, no driver) -> now smoke-tested, kept for the 3D frontier.
+No overclaiming found; honest negatives (3D creature, PP arms race) intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 36 tests green.
+  convolution + growth; same code 1D/2D/3D. 39 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -60,14 +67,15 @@ CURRENT STATE:
   torch, avoided the dependency gate). Evidence: outputs/round9_learning.png (accuracy-over-life
   with reversal dips+recoveries + learner-vs-ablated bars) + .gif (agent following the active source).
 
-NEXT ROUND SEED (round 10 — a milestone/review point after 9 rounds): options:
-  (a) MEASURE intelligence quantitatively (predictive info / goal achievement under perturbation),
-      or combine learning + evolution (Baldwin effect: evolve the learning rule / priors).
-  (b) Put the plastic brain into the EMBODIED Lenia creature (drive the drift policy) so learning
-      and the ecology meet. (c) A REVIEW round: adversarially re-verify all 9 claims, prune, polish.
-  (d) Evolve morphology in-ecology, or revisit stable mobile 3D creature.
+NEXT ROUND SEED (round 11 — review done, resume building): ranked:
+  (a) EMBODIED LEARNING (leading): put the plastic brain (round 9) INTO a Lenia creature in the
+      food world — the learned policy drives the foraging drift, so learning + agency + body meet
+      in one creature (the R9 agent is currently a detached point). Reversal task on a real body.
+  (b) MEASURE intelligence: predictive information / goal achievement under perturbation -> a number
+      for "mind", not a task score. (c) Baldwin effect: evolve the learning rule/priors.
+  (d) Evolve morphology in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 
-HOW TO RUN:
+HOW TO RUN (all drivers verified in round-10 review):
   cd ~/evolab/genesis
   .venv/bin/python -m genesis.run9 --gif      # round-9 within-lifetime learning + gif
   .venv/bin/python -m genesis.run8 --gif      # round-8 predator-prey + gif

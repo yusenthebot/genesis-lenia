@@ -245,9 +245,27 @@ claims by re-running every driver and checking the picture matches the metric, p
 plastic brain to the embodied Lenia creature (learned drift policy in the ecology); (d) Baldwin
 effect (evolve the learning rule). Leaning toward a REVIEW round at this milestone, then (c)/(b).
 
+## Round 10 — REVIEW / milestone (DONE, committed)
+
+Adversarial re-verification of all 9 rounds (re-ran drivers, checked metric vs claim, tried
+fresh seeds to catch cherry-picking):
+- R2 glider artifact still glides: net 4.05 widths, straightness 0.99, concentration 1.00, mass_cv 0.0021.
+- R3 agency: 85% / 18% / 18% (evolved / ablated / random) — exact.
+- R4 survival: 832 / 158 / 299 — exact.
+- R6 ecology: inverted-U, optimum gain ~4 — holds.
+- R9 learning: 0.87 vs 0.49; and 0.87 vs 0.57 on FRESH unused seeds 200-207 -> NOT cherry-picked.
+- R5/R7/R8 were verified across seeds/regimes within their own rounds (kept).
+- 39 tests green; all 19 README images resolve; outputs/ clean (no temp files).
+- Hygiene: only orphan module was evolve3d.py (round-5 3D-GA, used by no driver) -> added smoke
+  tests, kept for the open 3D-creature frontier. ~2950 LOC, repo ~22M.
+- No overclaiming found. The honest negatives (no stable mobile 3D creature; no clean predator-prey
+  arms race; transient 1D locomotion) are all still documented and intact.
+VERDICT: the project stands up. Nine capabilities, each verified by a real run + a picture matching
+its metric. Resume building at round 11.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 9 rounds): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 9 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); and a creature that LEARNS within its
@@ -266,11 +284,12 @@ effect (evolve the learning rule). Leaning toward a REVIEW round at this milesto
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (what an expert would still find unimpressive): a creature now LEARNS within its
-  life and re-learns under reversal — but the brain is a one-layer value learner on a 2-choice task,
-  and it lives DETACHED from the Lenia body/ecology (a point agent). The mind and the embodied
-  world have not yet met, the learning is shallow (no prediction, no planning, no memory of
-  sequences), and intelligence is still shown by a task score, not MEASURED information-theoretically.
-  The ratchet: marry the plastic brain to the embodied creature in the ecology, deepen the
-  controller, and measure the mind (predictive info / goal under perturbation). Also: consolidate —
-  after 9 rounds, a REVIEW that adversarially re-verifies every claim is overdue.
+- AMBITION CRITIC (milestone, after the round-10 review): the skeleton is complete and verified, but
+  it is a SUITE OF SEPARATE DEMOS, not one creature that is all of these at once. The biggest single
+  gap: the LEARNING brain (R9) and the EMBODIED creature (R2-R8) never meet — the learner is a point
+  agent, the body is a fixed-reflex glider. Nothing in the project both has a Lenia body AND learns in
+  its life AND lives in the ecology. Second gap: intelligence is shown by task scores, never MEASURED
+  (no predictive-information or goal-under-perturbation number). The ratchet for round 11+: (1) EMBODY
+  the learner — the plastic policy drives a Lenia creature's foraging drift in the food world; then
+  (2) MEASURE the mind. Unifying the capabilities into one creature is now worth more than adding a
+  tenth separate one.
