@@ -1,0 +1,9 @@
+{
+  "spawn": 75,
+  "size": 160,
+  "T": 2200,
+  "runs": 3,
+  "start_mean_gain": 9.235461030519039,
+  "evolved_mean_gain": 3.481520756299112,
+  "round6_optimum": 4.0
+}

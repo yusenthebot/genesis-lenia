@@ -5,11 +5,11 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 6 (complete, committed)
+ROUND: 7 (complete, committed)
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 25 tests green.
+  convolution + growth; same code 1D/2D/3D. 29 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -35,19 +35,25 @@ CURRENT STATE:
   the foraging reflex (genesis/ecology.py). Result: STABILIZING SELECTION — survival peaks
   at INTERMEDIATE foraging gain (~4), with under-foragers (gain 0) starving first and
   over-foragers (gain 16) overshooting; robust across food-scarcity regimes (spawn 38/50/65,
-  optimum=4 in all). Evidence: outputs/round6_ecology.png + .gif (creatures coloured by
-  skill competing for green food). run6.py.
+  optimum=4 in all). Evidence: outputs/round6_ecology.png + .gif. run6.py.
+- ROUND 7 (2D, VERIFIED): EVOLUTION RUNNING. genesis/evo_ecology.py — foraging gain is a
+  HERITABLE gene; well-fed creatures REPRODUCE (offspring inherit gain + mutation), starving
+  ones die. Under scarce food (food-limited population), from RANDOM gains the population
+  self-tunes: mean gain 9.2 -> 3.5 across 3 runs, MATCHING round 6's independently-swept
+  optimum (~4). Selection is happening, not measured. Evidence: outputs/round7_evolution.png
+  (convergence curves + start/evolved gain histograms) + .gif (population colour = gain,
+  shifting to the optimum). run7.py.
 
-NEXT ROUND SEED (round 7): deepen the ecology / intelligence. Ranked:
-  (a) EVOLVE the foragers IN the ecology (not a fixed gain sweep): let gain/sense/morphology
-      mutate + be selected by competitive survival -> watch the population converge to the
-      optimal strategy on its own (evolution inside the ecology, open-ended).
-  (b) PREDATOR/PREY: a second species that eats creatures (not food) -> arms race.
+NEXT ROUND SEED (round 8): deepen co-evolution / intelligence. Ranked:
+  (a) PREDATOR/PREY: a second species that eats creatures (not food) -> co-evolutionary arms
+      race (prey evolve evasion, predators evolve pursuit). Two heritable strategies coupled.
+  (b) EVOLVE MORPHOLOGY too in the ecology (not just gain) -> open-ended body+brain evolution.
   (c) WITHIN-LIFETIME LEARNING: a neural controller modulating drift (torch+MPS).
-  (d) Revisit stable mobile 3D creature (multi-ring kernels + CMA-ES) — hard, open.
+  (d) Quantify INTELLIGENCE (predictive/info-theoretic measures), or revisit stable 3D creature.
 
 HOW TO RUN:
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run7 --gif      # round-7 evolution inside the ecology + gif
   .venv/bin/python -m genesis.run6 --gif      # round-6 ecology / competition + gif
   .venv/bin/python -m genesis.run5_3d --gif   # round-5 3D self-organisation + rotating gif
   .venv/bin/python -m genesis.run4 --gif      # round-4 survival (metabolism) + benchmark

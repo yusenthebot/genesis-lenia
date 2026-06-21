@@ -33,6 +33,9 @@ PANELS = [
     ("outputs/round6_ecology.png",
      "Round 6 · 2D · ECOLOGY — many creatures contest shared food: survival peaks at an "
      "INTERMEDIATE foraging skill (stabilizing selection) — under- & over-foragers die out"),
+    ("outputs/round7_evolution.png",
+     "Round 7 · 2D · EVOLUTION RUNNING — foraging skill is heritable; from random gains the "
+     "population self-tunes to the optimum (~3.5), matching round 6's swept optimum"),
 ]
 
 

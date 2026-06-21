@@ -168,20 +168,42 @@ be selected by competitive survival, and watch the population converge to the op
 strategy on its own (open-ended evolution in a social world). Or PREDATOR/PREY (a species
 that eats creatures -> arms race). Or within-lifetime LEARNING (neural controller, torch+MPS).
 
+## Round 7 — evolution RUNNING inside the ecology (DONE, committed)
+
+### What worked
+- genesis/evo_ecology.py: foraging gain is a HERITABLE gene. Well-fed creatures reproduce
+  (offspring = body placed near parent + parent gain + Gaussian mutation), starving ones die,
+  hard cap on population for compute. Selection now ACTS rather than being measured.
+- The key result (run7.py): under scarce food the population is food-limited (not cap-limited),
+  so foraging skill decides who reproduces. From RANDOM gains (mean ~9) the population self-
+  tunes to ~3.5 across 3 independent runs — MATCHING round 6's swept optimum (~4). Two
+  independent methods (sweep vs running evolution) agree on the optimum. Start gains uniform
+  0-18 -> evolved gains concentrated in the good-forager band (peak ~3-4).
+
+### What did NOT work / honest notes
+- First attempt used abundant food: the population instantly hit the hard cap and EVERYONE
+  reproduced -> no selection (cap-limited, mean gain frozen ~9-11). Selection only RUNS when
+  the population is FOOD-limited (scarce food, spawn ~75) so poor foragers die before reproducing.
+- The evolved distribution is a band, not a spike: round 6's landscape is a plateau (gain 2-6
+  all forage well), so selection + mutation settle on a distribution around the optimum. Honest.
+
+### Next-round seed
+Round 8 = PREDATOR/PREY (leading): a second species that eats CREATURES (not food) -> two
+coupled heritable strategies, a co-evolutionary arms race (prey evolve evasion, predators
+pursuit). Or evolve MORPHOLOGY in the ecology (body+brain), or within-lifetime LEARNING.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING: a 2D creature with AGENCY + SURVIVAL, the engine validated in 3D, AND an
-  ECOLOGY where competition imposes stabilizing selection on foraging skill. 1D->2D->3D
-  complete; single -> social done. Missing: evolution INSIDE the ecology (selection acting
-  live, not a sweep), predator/prey, within-lifetime learning, stable mobile 3D creatures.
+- CURRENT CEILING: 1D->2D->3D engine; a 2D creature with agency+survival; an ECOLOGY with
+  stabilizing selection; and EVOLUTION RUNNING in it (population discovers the optimal strategy
+  on its own). Missing: co-evolution / predator-prey, evolved morphology in-ecology, within-
+  lifetime learning, stable mobile 3D creatures, quantitative intelligence measures.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. EVOLUTION-IN-ECOLOGY: mutate+select foragers by competitive survival -> emergent
-     convergence to the optimum; open-ended. (Round 7 pick.)
-  2. PREDATOR/PREY: a second species that preys on creatures -> co-evolutionary arms race.
+  1. PREDATOR/PREY co-evolution: a species that preys on creatures -> arms race. (Round 8 pick.)
+  2. Evolve MORPHOLOGY in-ecology (not just the foraging gain) -> open-ended body+brain evolution.
   3. Within-lifetime LEARNING: a neural controller modulating drift/growth (torch + MPS).
   4. Stable MOBILE 3D creatures: multi-ring kernels + CMA-ES/gradient search (hard, open).
-  5. Intelligence MEASURED: prediction, info-integration, goal achievement under
-     perturbation — not asserted.
+  5. Intelligence MEASURED: prediction, info-integration, goal achievement under perturbation.
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
   for differentiable/neural controllers -> real-time interactive viewer.
@@ -189,10 +211,10 @@ that eats creatures -> arms race). Or within-lifetime LEARNING (neural controlle
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (what an expert would still find unimpressive): there is now an ecology
-  with competition and stabilizing selection — but the selection is MEASURED by a sweep, not
-  RUNNING: the foragers don't yet mutate and evolve their skill live, there is no predator to
-  drive an arms race, and no within-lifetime learning. The ratchet: round 7 should make
-  evolution ACT inside the ecology (the population should DISCOVER the optimal strategy on its
-  own), then predator/prey and learning. Selection observed is good; selection running is the
-  thing. Also still open: a stable mobile 3D creature, and quantitative intelligence measures.
+- AMBITION CRITIC (what an expert would still find unimpressive): selection now RUNS and the
+  population discovers the optimal forager on its own — but it is still ONE species optimising
+  ONE scalar gene against a STATIC world. There is no co-evolution (a moving target / arms
+  race), no evolved morphology, no within-lifetime learning, and the "intelligence" is a tuned
+  reflex, not anything that predicts or plans. The ratchet: round 8 should couple TWO evolving
+  strategies (predator/prey) so the fitness landscape itself moves, then add learning. Real
+  intelligence shows up under a world that pushes back, not a fixed optimum to roll downhill to.
