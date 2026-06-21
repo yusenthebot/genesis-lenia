@@ -67,3 +67,17 @@ def test_analyze_reports_dead_for_empty_history():
     m = analyze_history(hist)
     assert m["alive"] is False
     assert m["dead"] is True
+
+
+def test_3d_world_runs_and_stays_bounded():
+    """The identical engine runs a real 3D world for many steps, staying bounded."""
+    from genesis.run5_3d import PARAMS
+    p = LeniaParams(**PARAMS)
+    n = 32
+    w = World((n, n, n), p)
+    rng = np.random.default_rng(1)
+    w.seed_blob(center=(n // 2,) * 3, radius=7, amp=1.0, asymmetry=4.0, rng=rng)
+    w.run(60)
+    assert w.A.shape == (n, n, n)
+    assert np.isfinite(w.A).all()
+    assert 0.0 <= w.A.min() and w.A.max() <= 1.0

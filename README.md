@@ -27,7 +27,8 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 2 | **Locomotion** — a creature that travels | ✅ round 2 (evolved 2D glider) |
 | 3 | **Agency** — sense the world and act to pursue a goal | ✅ round 3 (evolved forager) |
 | 4 | **Survival** — forage to stay alive, or die | ✅ round 4 (metabolism) |
-| 5 | **Ecology / learning / 3D** | → next |
+| 5 | **3D** — the same engine, one more axis | ✅ round 5 (3D self-organisation) |
+| 6 | **Ecology / learning** | → next |
 
 ---
 
@@ -92,6 +93,24 @@ Intelligence now has teeth — it is the difference between living and dying.
 
 ![survival animation](outputs/round4_survival.gif)
 
+## Round 5 — the third dimension (3D)
+
+The whole engine was built so dimensionality is just `len(shape)`. Here the **identical
+code** runs a 3D world, and a single seed spontaneously self-organises into a **robust,
+persistent 3D structure** — homeostatic mass (`mass_cv ≈ 0.0008`), reproducible across
+seeds. This completes the **1D → 2D → 3D** arc on one codebase.
+
+![3D self-organisation](outputs/round5_3d.png)
+
+![rotating 3D structure](outputs/round5_3d.gif)
+
+> Honest scope: a *compact, mobile* 3D creature (the 3D analogue of the 2D glider) is **not**
+> delivered. Across five search strategies (single/multi-ring kernels, growth-width sweeps,
+> evolved 3D morphology) the reachable 3D dynamics are knife-edge — they die, foam, or
+> proliferate, and flip on grid size and seed. Stable localised 3D creatures need the heavy
+> specialised search the 3D-Lenia literature uses. What is solid here is robust 3D
+> *self-organisation*; the 3D *creature* is an open frontier.
+
 ---
 
 ## How it works
@@ -117,6 +136,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run2d --gif   # evolve a 2D glider, render strip + gif
 .venv/bin/python -m genesis.run3  --gif   # evolve a forager, agency benchmark + gif
 .venv/bin/python -m genesis.run4  --gif   # turn on metabolism, survival benchmark + gif
+.venv/bin/python -m genesis.run5_3d --gif # 3D self-organisation + rotating gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -129,9 +149,10 @@ Outputs (figures, GIFs, evolved genomes) are written to `outputs/`.
 genesis/
   world.py      dimension-agnostic Lenia engine
   metrics.py    emergence + concentration metrics (any dimension)
-  evolve.py     co-evolution of rule + seed morphology
+  evolve.py     co-evolution of rule + seed morphology (2D)
+  evolve3d.py   3D morphology GA (PATCH^3 seed + rule)
   foraging.py   food field + sensorimotor reflex + metabolism (agency, survival)
-  run1d.py run2d.py run3.py run4.py   round drivers + visualisation
+  run1d.py run2d.py run3.py run4.py run5_3d.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

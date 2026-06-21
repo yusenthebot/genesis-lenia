@@ -27,6 +27,9 @@ PANELS = [
     ("outputs/round4_survival.png",
      "Round 4 · 2D · SURVIVAL — with metabolism, foraging is life or death: the "
      "forager lives ~832 steps vs 158 ablated / 299 random (unseen schedules)"),
+    ("outputs/round5_3d.png",
+     "Round 5 · 3D · DIMENSIONAL GENERALITY — the SAME engine self-organises a seed "
+     "into a robust, homeostatic 3D structure (mass_cv 0.0008); 1D -> 2D -> 3D, one codebase"),
 ]
 
 

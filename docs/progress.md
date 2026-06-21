@@ -117,19 +117,45 @@ acts in a social/competitive setting (then predator-prey). Needs per-creature id
 energy bookkeeping; Flow-Lenia-style mass handling helps. Alternatively bank the
 "1D->2D->3D" headline goal by doing 3D now that agency+survival work in 2D.
 
+## Round 5 — the third dimension (DONE, committed)
+
+### What worked
+- The dimension-agnostic bet pays off end to end: the IDENTICAL engine runs a 3D world
+  (len(shape)=3, no code changes) and self-organises a seed into a ROBUST, persistent 3D
+  structure (tail mass_cv=0.0008; final mass ~22150 reproducible across 3 seeds) — the 3D
+  analogue of round 1's 1D lattice. Regime: mu_g=0.12, mu_k=0.5, sigma_g=0.024, R=8 on 50^3.
+- genesis/run5_3d.py renders it: 3D scatter over time + homeostasis curve + a rotating GIF.
+- genesis/evolve3d.py: a 3D morphology GA (PATCH^3 seed + rule), reusing the ND fitness.
+
+### What did NOT work / honest negative (the open 3D frontier)
+- A compact MOBILE 3D creature (round-2-glider analogue) was NOT found. Five principled
+  search strategies all failed: (1) single-ring growth sweep -> diffuse foam (conc~0.34);
+  (2) kernel-shape sweep -> mu_k=0.3 gave a transiently compact creature (conc 0.56) that
+  then proliferates; (3) multi-ring kernels -> 0 stable compact; (4) narrow growth -> 0;
+  (5) evolved 3D morphology -> mostly dies. The dynamics are KNIFE-EDGE: the same params
+  die on 56^3 but proliferate on 52^3 -> no robust localised attractor in reach. 3D Lenia
+  creatures need the heavy specialised search (multi-ring kernels + CMA-ES/gradient) the
+  literature uses. Honest result: 3D *self-organisation* is solid; 3D *creatures* are open.
+
+### Next-round seed
+Round 6 = ECOLOGY (2D). Put MULTIPLE creatures in one food world: per-creature identity +
+energy, shared/finite food -> competition; then predator/prey. Implementation options: a
+multi-channel field (one channel per creature) or tracked bodies in one field with
+collision/competition for food. Social/competitive selection -> richer intelligence.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING: an evolved 2D creature with AGENCY + SURVIVAL — it senses food, steers
-  to it, and must do so to stay alive (metabolism + death), proven vs ablation + random
-  controls on unseen schedules. Engine N-D capable. Missing: other creatures / ecology,
-  within-lifetime learning, the 3D leg of the 1D->2D->3D goal, deeper intelligence measures.
+- CURRENT CEILING: a 2D creature with AGENCY + SURVIVAL (senses food, forages to stay alive,
+  proven vs controls) AND the engine validated in 3D (robust 3D self-organisation). The
+  1D->2D->3D engine arc is COMPLETE. Missing: other creatures / ecology, within-lifetime
+  learning, stable mobile 3D creatures (open), deeper intelligence measures.
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
   1. ECOLOGY: many creatures + contested food -> competition; then predator/prey. Social
-     selection is where richer intelligence pressure comes from.
-  2. 3D worlds: same engine, one more axis — completes the stated 1D->2D->3D arc.
-  3. Open-endedness: a ZOO of distinct survivors + behavioural-diversity / novelty metrics.
-  4. Within-lifetime LEARNING: a neural controller modulating drift/growth; adaptation,
+     selection is where richer intelligence pressure comes from. (Round 6 pick.)
+  2. Open-endedness: a ZOO of distinct survivors + behavioural-diversity / novelty metrics.
+  3. Within-lifetime LEARNING: a neural controller modulating drift/growth; adaptation,
      not just evolution. (torch + MPS here.)
+  4. Stable MOBILE 3D creatures: multi-ring kernels + CMA-ES/gradient search (hard, open).
   5. Intelligence MEASURED: prediction, info-integration, goal achievement under
      perturbation — not asserted.
 - FIDELITY / STACK ESCALATION LADDER:
@@ -139,9 +165,9 @@ energy bookkeeping; Flow-Lenia-style mass handling helps. Alternatively bank the
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (what an expert would still find unimpressive): the creature now forages
-  to SURVIVE (agency with real stakes) — but it lives ALONE against an indifferent world,
-  with no other creatures to compete/cooperate with and no within-lifetime learning, and
-  it is still 2D. The ratchet: round 5+ should add OTHER CREATURES (ecology/competition,
-  where richer intelligence pressure lives) and/or the 3D leg of the goal, and eventually
-  learning. A single survivor is real but lonely intelligence; ecology is where it deepens.
+- AMBITION CRITIC (what an expert would still find unimpressive): the engine now spans
+  1D->2D->3D and the 2D creature forages to survive — but it still lives ALONE, with no
+  other creatures to compete/cooperate with and no within-lifetime learning, and the 3D leg
+  is only self-organisation (no 3D creature yet). The ratchet: round 6 MUST add OTHER
+  CREATURES (ecology/competition — where richer intelligence pressure lives); then learning.
+  A lone survivor is real but lonely intelligence; an ecology is where minds get interesting.
