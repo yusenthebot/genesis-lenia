@@ -5,7 +5,17 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 44 (EMERGENT ROLES FROM SCRATCH — symmetry-breaking, no pre-given id; complete, committed)
+ROUND: 45 (MILESTONE REVIEW — R43/R44 re-verified + capstone refresh; complete, committed)
+
+REVIEW (round 45): re-verified the post-summit rounds on FRESH unseen seeds -> ALL HOLD. R43 open-ended ratchet
+(seeds 5-6): cumulative height 127-160 vs individual 5 vs transmit 1 (unbounded accumulation reproduces). R44
+symmetry-breaking (seeds 5-6): split 1.00 vs no-interaction 0.01-0.45 vs no-trigger 0.00 (identical agents differentiate
+only with interaction + a trigger). 111 tests green; all images resolve; no orphan modules. REFRESHED docs/CAPSTONE.md
+(41 -> 44 rounds): notes the two post-summit dimensions (open-ended ratchet R43, emergent roles R44); reviews list -> 10;
+arc one-line updated. ASSESSMENT: the genuinely-new-dimension vein is THIN -- 3 post-summit dims done (R41/R43/R44); the
+one clearly-distinct ungated dimension still untouched is ECO-EVOLUTION major transitions (R6-8 ecology -> niche
+construction / multi-level selection). After that the substrate is at its honest edge (remaining leaps gated on a
+dependency). NOTE: repo .git 107M / outputs 58M (growing; the one real watch-item; inherent to the visual README).
 
 REVIEW (round 42, WHOLE-PROJECT): re-verified the latest rounds on FRESH unseen seeds -> ALL HOLD. R40 unified social
 (seeds 5-6): full 1.00 vs no-comm 0.38-0.56 vs no-coord 0.50 (both faculties load-bearing). R41 cumulative culture
@@ -352,12 +362,13 @@ CURRENT STATE:
   interaction, not from a handed-out label. Evidence: outputs/round44_symmetry_break.png (split bars + the BIFURCATION:
   identical leanings diverge to opposite roles; + the perfect-symmetry contrast where they stay tied) + .gif. run44.py.
 
-NEXT ROUND SEED (round 45): summit + 3 genuinely-new dims (R41 cumulative culture, R43 open-ended ratchet, R44 symmetry-
-  breaking). A whole-project REVIEW is now DUE (last full review R42, 2 build rounds ago + nearing the substrate's edge). Ranked:
-  (a) MILESTONE REVIEW (leading): re-verify R43/R44 on fresh seeds, refresh CAPSTONE.md to 44 rounds, prune; the summit is
-      broad and the new-dimension vein is starting to thin -- consolidate and re-survey what (if anything) is genuinely left.
-  (b) ECO-EVOLUTION major transitions (niche construction / multi-level selection) on the existing ecology (R6-8) -- the last
-      clearly-distinct ungated dimension not yet touched.
+NEXT ROUND SEED (round 46): review done; the new-dimension vein is THIN. The ONE clearly-distinct ungated dimension still
+  untouched is ECO-EVOLUTION major transitions. Ranked:
+  (a) ECO-EVOLUTION / MAJOR TRANSITIONS (leading): on the existing ecology (R6-8), show a major evolutionary transition --
+      e.g. the EVOLUTION OF COOPERATION (cooperators vs defectors + a mechanism: kin/spatial clustering or reciprocity that
+      lets cooperation invade), or NICHE CONSTRUCTION (organisms modify the shared environment, changing selection). A genuinely
+      distinct eco-evolutionary result, not another single-agent net-vs-ablation.
+  (b) If (a) lands, the substrate is at its HONEST EDGE -> a final whole-project capstone, then present remaining (gated) forks.
   (c) Honour the user's /loop steer (gated motion via differentiable Lenia stays a human call).
   NOTE: numpy motion is a PROVEN wall; the mobile creature is a gated, honestly-parked negative -> do NOT grind it.
 

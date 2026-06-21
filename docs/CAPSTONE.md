@@ -1,6 +1,6 @@
 # genesis — what this is
 
-A capstone reflection after 41 rounds. For the per-round detail see the [README](../README.md);
+A capstone reflection after 44 rounds. For the per-round detail see the [README](../README.md);
 for the working state see [STATUS.md](STATUS.md) and [progress.md](progress.md).
 
 ## The one-paragraph version
@@ -10,7 +10,7 @@ evolution; scale the same engine 1D → 2D → 3D"* — an autonomous loop built
 world and a mind inside it on **one** substrate: a continuous cellular automaton (the Lenia
 family). The engine is dimension-agnostic (`len(shape)` *is* the dimensionality), so nothing
 above it is hand-placed — structure, locomotion, agency, evolution, and the mind all *emerge*
-from local rules and selection. Forty-one rounds later the sandbox contains a creature that
+from local rules and selection. Forty-four rounds later the sandbox contains a creature that
 emerges, moves, forages, survives, competes, evolves, is hunted, learns within its life,
 **remembers**, **predicts**, **plans**, is **integrated** into one organism whose every faculty
 is load-bearing, a substrate shown to keep **generating** new bodies and strategies rather than
@@ -32,7 +32,7 @@ Baldwin effect → **memory** → **prediction** → embodied memory → **plann
 **Flow-Lenia** (mass-conserving substrate) → **emergent communication** → **compositional
 communication** → **grounded communication** → **iterated learning** → **theory of mind** →
 **coordination (division of labour)** → **harder theory of mind (misleading behaviour)** →
-**unified social world** → **cumulative culture (the ratchet)**.
+**unified social world** → **cumulative culture (the ratchet)** → **open-ended ratchet** → **emergent roles from scratch**.
 
 Three threads run through it, and each has reached its own *capstone*: (1) a **mind's core loop**,
 grown from scratch — *perceive → model → predict → act-to-achieve* — then **unified** (round 21: one
@@ -84,7 +84,7 @@ negative.
   rate does not track the world's change-rate; embodied memory is real but seed-sensitive (an early
   over-claim corrected in a later review).
 
-Nine review rounds (10, 17, 20, 23, 26, 32, 36, 39, 42) re-verified earlier results on **fresh,
+Ten review rounds (10, 17, 20, 23, 26, 32, 36, 39, 42, 45) re-verified earlier results on **fresh,
 unseen seeds** — round 39 coordination + harder theory of mind, round 42 the unified social world
 (full 1.0 vs ≤0.56 ablated) and the cumulative-culture ratchet (0.92 vs ~0 individual/copy-only) —
 all hold; two over-claims (embodied memory; a ToM "beats naive" docstring) were found and corrected.
@@ -93,9 +93,12 @@ someone trying to break it.
 
 ## Where it goes next
 
-After 41 rounds the project is at a **broad, deep summit**: three threads, each carried to its own
+After 44 rounds the project is at a **broad, deep summit**: three threads, each carried to its own
 capstone (the mind unified, open-endedness illuminated, the social mind unified *and* reaching the
-cumulative ratchet). The remaining moves are no longer same-shaped increments — they are real forks:
+cumulative ratchet), plus two further genuinely-new dimensions explored *past* the summit — an
+**open-ended ratchet** (complexity accumulating toward no target, round 43) and **emergent roles
+from scratch** (identical agents breaking symmetry into complementary roles, round 44). The remaining
+moves are no longer same-shaped increments — they are real forks:
 
 - **Gated (needs a dependency — a human call).** The **mobile creature** is a proven numpy wall;
   the credible path is **differentiable Lenia** (gradient-descend through the dynamics to *find* a

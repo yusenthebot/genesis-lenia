@@ -807,6 +807,22 @@ Round 35 = THEORY-OF-MIND (infer another agent's hidden goal from behaviour) or 
 Round 36 = multi-agent COORDINATION (a task only solvable together) or comm-enabled coordination; OR consolidate (6 social
 rounds done -> a "social intelligence" summary + milestone review). Motion stays a proven wall.
 
+## Round 45 — MILESTONE REVIEW: R43/R44 re-verified + capstone refresh + edge assessment (DONE, committed)
+
+Adversarial re-verification of the post-summit rounds on FRESH unseen seeds (last full review R42).
+- R43 open-ended ratchet (seeds 5-6): cumulative height 127-160 vs individual 5 vs transmit 1 -> unbounded accumulation reproduces.
+- R44 symmetry-breaking (seeds 5-6): split 1.00 vs no-interaction 0.01-0.45 vs no-trigger 0.00 -> roles differentiate only with both ingredients.
+- 111 tests green; all README images resolve; no orphan modules.
+- REFRESHED docs/CAPSTONE.md (41 -> 44 rounds): notes the two post-summit dims (open-ended ratchet R43, emergent roles R44);
+  reviews list -> 10; arc one-line updated; summit paragraph corrected ("two further" post-summit dims, not three).
+- ASSESSMENT: the genuinely-new-dimension vein is THIN. 3 post-summit dims done (R41 cumulative culture, R43 open-ended
+  ratchet, R44 symmetry-breaking). The ONE clearly-distinct ungated dimension still untouched is ECO-EVOLUTION major
+  transitions (evolution of cooperation / niche construction on the R6-8 ecology). After that the substrate is at its honest
+  edge -- remaining big leaps are gated on a dependency (differentiable Lenia for motion; torch for scale).
+- NOTE: repo .git 107M / outputs 58M (growing; the one real watch-item).
+VERDICT: post-summit rounds hold; docs in sync with 44-round reality; round 46 = the last distinct ungated dimension
+(eco-evolution / major transitions), then the substrate's honest edge + a final capstone.
+
 ## Round 44 — emergent roles from scratch: symmetry-breaking with no id (DONE, committed)
 
 ### What worked (closes the honest gap in R37/R40)
