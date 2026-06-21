@@ -3,6 +3,8 @@
 **A sandbox world where intelligence is grown, not coded — and the same engine carries
 that world from 1D to 2D to 3D.**
 
+![progress overview: emergence → locomotion → agency](outputs/progress_overview.png)
+
 The substrate is a continuous cellular automaton (Lenia family): the world is an
 N-dimensional real-valued field, and one update is a radial-kernel convolution followed
 by a growth map.
