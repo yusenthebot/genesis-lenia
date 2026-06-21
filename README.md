@@ -37,6 +37,7 @@ the engine is hand-placed: persistent structure, locomotion, evolution and agenc
 | 13 | **Learning under selection** — does knowing win? | ✅ round 13 (yes — in a changing world) |
 | 14 | **The Baldwin effect** — evolving how to learn | ✅ round 14 (rate self-tunes; honest negative) |
 | 15 | **A brain with memory** — holding a cue across a delay | ✅ round 15 (1 bit of memory; reflex can't) |
+| 16 | **A brain that predicts** — foreseeing the next state | ✅ round 16 (1 bit predictive info; reflex can't) |
 
 ---
 
@@ -287,6 +288,24 @@ reach**, and the memory is both *measured* (1 bit) and *visible* in the hidden s
 
 *(the cue sets the memory, the memory persists through the delay, then the correct action fires)*
 
+## Round 16 — a brain that predicts (recurrent model)
+
+Remembering the past is one depth; foreseeing the future is the next. The world emits a
+periodic **ambiguous** pattern `[0,0,1,1]` — a `0` is followed by `0` at one phase and `1`
+at another, so the current symbol *doesn't* determine the next. To predict it you must track
+the phase and *model* the pattern. The recurrent weights are evolved (pure numpy ES):
+
+![a brain that predicts](outputs/round16_predict.png)
+
+The recurrent brain reaches **100%** next-state prediction and carries a full **1.00 bit of
+predictive information** about the future — anticipating *every flip before it lands*. A
+feedforward (reactive) brain is at **chance / 0.00 bits** — it can't disambiguate. The brain
+builds an internal model and **foresees** the world, measured in bits.
+
+![watch it foresee](outputs/round16_predict.gif)
+
+*(the brain calls the next symbol before it arrives — even at the flips)*
+
 ---
 
 ## How it works
@@ -322,6 +341,7 @@ uv venv --python 3.12 && uv pip install -e ".[dev]"
 .venv/bin/python -m genesis.run13 --gif   # learning under selection (does knowing win?) + gif
 .venv/bin/python -m genesis.run14 --gif   # the Baldwin effect (evolving the learning rate) + gif
 .venv/bin/python -m genesis.run15 --gif   # a brain with memory (recurrent cue-recall) + gif
+.venv/bin/python -m genesis.run16 --gif   # a brain that predicts (recurrent forecasting) + gif
 .venv/bin/python -m genesis.overview      # rebuild the progress montage
 .venv/bin/python -m pytest -q             # engine + evolution + foraging invariants
 ```
@@ -346,7 +366,8 @@ genesis/
   evo_learning.py  learners vs fixed-reflex creatures compete (evolution of learning)
   baldwin.py    a heritable learning rate (the Baldwin effect)
   memory_brain.py  a recurrent controller with memory (evolved by ES)
-  run1d.py … run15.py   round drivers + visualisation
+  predict_brain.py  a recurrent controller that predicts the next world-state
+  run1d.py … run16.py   round drivers + visualisation
   overview.py   stitches the per-round figures into one progress montage
 tests/          engine (1D/2D/3D) + evolution + foraging invariants
 docs/           STATUS.md + progress.md (autonomous-loop resume state)

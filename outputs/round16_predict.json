@@ -1,0 +1,12 @@
+{
+  "acc_recurrent": 1.0,
+  "acc_feedforward": 0.5016077170418006,
+  "predictive_bits_recurrent": 0.9999925419633433,
+  "predictive_bits_feedforward": 0.0,
+  "pattern": [
+    0,
+    0,
+    1,
+    1
+  ]
+}

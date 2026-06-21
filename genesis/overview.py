@@ -57,6 +57,9 @@ PANELS = [
     ("outputs/round15_memory.png",
      "Round 15 · A BRAIN WITH MEMORY — a recurrent controller holds a cue across a delay (1.00 bit of "
      "memory, 100% recall) where a memoryless reflex is stuck at chance. Memory unlocks a new class of mind."),
+    ("outputs/round16_predict.png",
+     "Round 16 · A BRAIN THAT PREDICTS — a recurrent model foresees an ambiguous world, anticipating "
+     "every flip (1.00 bit of predictive info) where a reactive brain is at chance. A mind that sees ahead."),
 ]
 
 

@@ -5,13 +5,13 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 15 (complete, committed)
+ROUND: 16 (complete, committed)
 
 REVIEW (round 10): adversarially re-verified all 9 rounds -> ALL HOLD (incl fresh seeds). Negatives intact.
 
 CURRENT STATE:
 - Dimension-agnostic Lenia engine (genesis/world.py): N-D field, FFT radial-kernel
-  convolution + growth; same code 1D/2D/3D. 58 tests green.
+  convolution + growth; same code 1D/2D/3D. 62 tests green.
 - Emergence metrics (genesis/metrics.py): alive/localized/persistent/locomotion +
   scale-aware mass-concentration & gyration (creature vs soup), wrap-aware centroid.
 - Evolution (genesis/evolve.py): co-evolves RULE + evolvable SEED MORPHOLOGY (patch).
@@ -98,16 +98,24 @@ CURRENT STATE:
   cannot, the cue is gone when it must act. Memory unlocks a task class impossible for a reflex, and
   the memory is both MEASURED (1 bit, via measure.py MI) and VISUALISED (the held hidden-state trace).
   Fast (~6s, no FFTs). Evidence: outputs/round15_memory.png (ES curves + memory trace) + .gif
-  (watch the cue set the memory, persist through the delay, then fire the correct action).
+  (watch the cue set the memory ... fire the correct action). run15.py.
+- ROUND 16 (VERIFIED): A BRAIN THAT PREDICTS. genesis/predict_brain.py — a recurrent net (ES, numpy)
+  must predict the next state of a periodic AMBIGUOUS world (pattern [0,0,1,1]: a 0 leads to 0 at one
+  phase and 1 at another, so you must track phase + model the pattern). Result: recurrent 1.00 accuracy
+  + 1.00 BIT of PREDICTIVE INFORMATION I(brain;next-state), anticipating EVERY flip; feedforward
+  (reactive) 0.50 + 0.00 bits (can't disambiguate). The brain builds a model and FORESEES the world,
+  measured in bits. Fast (~5s). Evidence: outputs/round16_predict.png (ES curves + prediction trace
+  matching the actual next-state at every flip) + .gif (the brain calls the next symbol before it lands).
 
-NEXT ROUND SEED (round 16): ranked:
-  (a) PREDICTIVE intelligence (leading): now that the brain has memory, give it a PREDICTIVE objective
-      -> a creature that anticipates the next world-state (measure predictive info I(state_t ; obs_t+1)).
-  (b) Put the recurrent brain into the EMBODIED Lenia creature / ecology (memory-using foragers).
-  (c) MILESTONE REVIEW (15 rounds in). (d) Stable mobile 3D creature (open).
+NEXT ROUND SEED (round 17): ranked:
+  (a) MILESTONE REVIEW (16 rounds in): adversarially re-verify the newer rounds (11-16), consolidate.
+  (b) Embody the recurrent/predictive brain in the ecology (does memory/prediction PAY under selection?).
+  (c) PLANNING: use the predictive model to choose actions that steer the future (model-based control).
+  (d) Stable mobile 3D creature (hard/open).
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis
+  .venv/bin/python -m genesis.run16 --gif     # round-16 a brain that predicts + gif (~5s)
   .venv/bin/python -m genesis.run15 --gif     # round-15 a brain with memory + gif (~6s)
   .venv/bin/python -m genesis.run14 --gif     # round-14 Baldwin effect + gif (~4 min)
   .venv/bin/python -m genesis.run13 --gif     # round-13 learning under selection + gif (~6 min)

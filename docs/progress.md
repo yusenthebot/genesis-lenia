@@ -386,9 +386,33 @@ Round 16 = PREDICTIVE intelligence (leading): with memory in hand, give the brai
 rewards ANTICIPATING the next world-state, and measure predictive information I(state_t ; obs_{t+1}) —
 a mind that predicts, not just remembers. Or embody the recurrent brain in the ecology.
 
+## Round 16 — a brain that predicts (DONE, committed)
+
+### What worked
+- genesis/predict_brain.py: a recurrent net (8 hidden units, ES, pure numpy) must PREDICT the next
+  state of a periodic AMBIGUOUS world (pattern [0,0,1,1]: a 0 is followed by 0 at one phase and 1 at
+  another, so the current symbol does NOT determine the next — you must track phase and model the
+  pattern). Recurrent: 1.00 accuracy + 1.00 BIT of predictive information I(brain;next-state),
+  anticipating EVERY flip BEFORE it lands. Feedforward (reactive): 0.50 + 0.00 bits (cannot disambiguate).
+- This is the deepest mind-property so far: not reacting (rounds 3-13), not remembering (round 15), but
+  FORESEEING — the brain builds an internal model of the world's dynamics and predicts the future. The
+  predictive information is measured in bits (reusing measure.py), continuing the "measure the mind" thread.
+- Visuals: ES curves (recurrent solves / feedforward stuck at chance) + a prediction trace where the
+  brain's predicted next-state matches the actual next-state at every step incl. the flips + a GIF.
+
+### What did NOT work / honest notes
+- Like round 15, the task is an abstract benchmark (clean, isolates prediction), not embodied in a Lenia
+  creature yet. And predicting is not yet PLANNING — the brain foresees the world but does not use the
+  model to CHOOSE actions that steer the future. That (model-based control) is the next depth.
+
+### Next-round seed
+Round 17 = MILESTONE REVIEW (leading; 16 rounds in): adversarially re-verify rounds 11-16, consolidate,
+run the ambition critic. Then: embody the predictive brain (does foresight PAY under selection?), or
+PLANNING (use the model to act). 
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 15 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 16 rounds + a clean review): a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -397,13 +421,12 @@ a mind that predicts, not just remembers. Or embody the recurrent brain in the e
   = 0.69 bits, with an operating envelope; AND (round 13) learning shown ADAPTIVE under selection —
   learners win in a changing world, lose in a stable one (Baldwin). The arc emergence->locomotion->
   agency->survival->3D->ecology->evolution->predation->learning->embodied-learning->measured-mind->
-  learning-selected->baldwin-rate->memory is complete in skeleton. (Round 15: the FIRST controller
-  with a hidden state — holds 1 bit of memory across a delay, solving a task a reflex cannot.)
+  learning-selected->baldwin-rate->memory->prediction is complete in skeleton. (Round 16: the brain
+  FORESEES — 1 bit of predictive information, anticipating an ambiguous world's flips; a reflex can't.)
 - NEXT FRONTIER(S), ranked by ambition x feasibility:
-  1. PREDICTIVE intelligence: with memory in hand, reward ANTICIPATING the next world-state; measure
-     predictive information I(state_t ; obs_{t+1}). A mind that predicts, not just remembers/reacts.
-  2. Embody the RECURRENT brain in the ecology (memory-using foragers compete; does memory pay?).
-  3. MILESTONE REVIEW (15 rounds in): adversarially re-verify the newer rounds; consolidate.
+  1. MILESTONE REVIEW (16 rounds in): adversarially re-verify rounds 11-16; consolidate; ambition critic.
+  2. Embody the recurrent/predictive brain in the ecology (does memory/prediction PAY under selection?).
+  3. PLANNING / model-based control: use the predictive model to CHOOSE actions that steer the future.
   4. Evolve MORPHOLOGY in-ecology; stable mobile 3D creature (multi-ring + CMA-ES, hard/open).
 - FIDELITY / STACK ESCALATION LADDER:
   numpy CPU (now) -> vectorised batch search -> torch + MPS/GPU for large 2D/3D and
@@ -412,11 +435,12 @@ a mind that predicts, not just remembers. Or embody the recurrent brain in the e
   world — strong for open-ended ecology + foraging); Particle-Lenia (particle substrate,
   cheap agency); differentiable Lenia (gradient-evolve creatures / learned controllers).
   Flow-Lenia is now the leading candidate substrate for round 3+ (food + ecology).
-- AMBITION CRITIC (after round 15): the controller finally has a HIDDEN STATE — it holds a bit of
-  memory across time and solves a task a reflex cannot. That is a real step in depth, not breadth. What
-  remains: (1) the brain REMEMBERS but does not yet PREDICT — it stores the past, it does not anticipate
-  the future (no forward model, no planning); (2) the memory result lives in an ABSTRACT benchmark, not
-  in the embodied Lenia creature / ecology — body and deep-brain haven't met yet; (3) the net is tiny (6
-  units, one bit). The ratchet for round 16+: a PREDICTIVE objective (anticipate next state, measure
-  predictive info), then put the recurrent brain back in a body and an ecology. Remembering is done;
-  predicting is the next depth.
+- AMBITION CRITIC (after round 16): the brain now REMEMBERS (15) and PREDICTS (16) — it carries a model
+  of the world and foresees it, measured in bits. The mind has real depth now, not just breadth. Two
+  honest gaps remain: (1) predicting is not PLANNING — the brain foresees the world but does not yet use
+  its model to CHOOSE actions that steer the future (no model-based control); (2) the deep-brain results
+  (15, 16) live in ABSTRACT benchmarks, divorced from the Lenia body and the ecology — the embodied track
+  (1-13) and the deep-mind track (15-16) have not been reunited, and it is unproven that memory/prediction
+  PAY under selection. Also, 16 rounds in, the newer half (11-16) has not been adversarially reviewed.
+  The ratchet for round 17+: REVIEW + consolidate, then reunite (embody the predictive brain; does
+  foresight win?), then PLANNING. Depth is established; integration and proof-of-payoff are the work.
