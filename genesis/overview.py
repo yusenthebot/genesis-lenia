@@ -62,7 +62,8 @@ PANELS = [
      "every flip (1.00 bit of predictive info) where a reactive brain is at chance. A mind that sees ahead."),
     ("outputs/round18_embodied_memory.png",
      "Round 18 · EMBODIED MEMORY — a recurrent brain drives a Lenia forager in a FLASHING world: memory "
-     "lets it coast to food through the dark (forages) where a memoryless reflex collects nothing. Memory pays."),
+     "lets it coast to food through the dark, collecting ~1.9 vs ~1.2 for a memoryless reflex (wins 3/4 ES "
+     "seeds). Memory pays — moderately, and only when the world hides information."),
     ("outputs/round19_planning.png",
      "Round 19 · PLANNING — acting on foresight: a planner intercepts a circling target (cuts across, 2x "
      "faster) where reaction tail-chases; an evolved recurrent controller LEARNS to anticipate. Mind loop complete."),
@@ -73,9 +74,10 @@ def main(out="outputs/progress_overview.png"):
     panels = [(p, c) for p, c in PANELS if Path(p).exists()]
     n = len(panels)
     fig = plt.figure(figsize=(12, 4.6 * n), facecolor="white")
-    fig.suptitle("genesis — intelligence grown, not coded:  "
-                 "emergence  →  locomotion  →  agency   (1D → 2D → 3D)",
-                 fontsize=15, fontweight="bold", y=0.995)
+    fig.suptitle("genesis — intelligence grown, not coded   (1D → 2D → 3D engine)\n"
+                 "emergence → locomotion → agency → survival → ecology → evolution → "
+                 "learning → memory → prediction → planning",
+                 fontsize=13, fontweight="bold", y=0.997)
     for i, (path, caption) in enumerate(panels):
         ax = fig.add_subplot(n, 1, i + 1)
         ax.imshow(mpimg.imread(path))

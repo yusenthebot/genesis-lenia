@@ -5,7 +5,15 @@ scale the same engine 1D -> 2D -> 3D. (open /loop direction, evolving mode)
 
 MODE: evolving / frontier. A cleared bar is a floor, not the finish.
 
-ROUND: 19 (complete, committed)
+ROUND: 20 (MILESTONE REVIEW + capstone, complete, committed)
+
+REVIEW (round 20): re-verified R18-19. R19 reproduces EXACTLY (pursuit 54 vs planner 24; recurrent 0.45 vs
+feedforward 0.05). R18 HOLDS ON AVERAGE but is the project's MOST SEED-SENSITIVE result: a quick under-
+trained probe FLIPPED it (recurrent 0.2 < feedforward 1.0); careful re-check (4 ES seeds, committed settings)
+gives recurrent mean 1.90 vs feedforward 1.21, recurrent wins 3/4 -> real moderate effect, NOT the clean 2x
+the single figure showed. CORRECTED overclaims: montage caption ("collects nothing" -> "~1.2") + README
+(added honest seed-sensitivity caveat) + whole-arc capstone intro with honest-scope box. 69 tests green; all
+images resolve. Earlier reviews (R10: rounds 1-9; R17: rounds 11-16) still hold.
 
 REVIEW (round 10): re-verified rounds 1-9 -> all hold. REVIEW (round 17): re-verified rounds 11-16 ->
 ALL HOLD. R11 93%/0.89-vs-0.52; R12 0.69 bits + envelope; R13 changing->1.00 / stable->0.44; R14 lr
@@ -127,11 +135,11 @@ CURRENT STATE:
   hand-coded planner; interception is hard to learn from scratch, but recurrent >> feedforward 9x.) Fast
   (~90s). Evidence: outputs/round19_planning.png (trajectories + catch-time bars + evolved catch-rate) + .gif.
 
-NEXT ROUND SEED (round 20 — a natural milestone; the mind's core loop is complete): ranked:
-  (a) MILESTONE REVIEW + a capstone README/story pass (19 rounds; re-verify 18-19, tighten the arc's telling).
-  (b) UNIFY: one creature with body + memory + prediction + planning in the ecology (the grand integration).
-  (c) Open-endedness: a ZOO of evolved minds + a diversity/novelty metric over the whole arc.
-  (d) Stable mobile 3D creature (hard/open, long-parked).
+NEXT ROUND SEED (round 21 — review/capstone done; build again): ranked:
+  (a) UNIFY (leading): ONE creature with body + memory + prediction + planning, in a task/ecology that
+      needs all of them (the grand integration — answers the round-20 critic's "not one organism does it all").
+  (b) Open-endedness: a ZOO of evolved minds + a behavioural-diversity/novelty metric over the whole arc.
+  (c) Stable mobile 3D creature (hard/open, long-parked) — would also strengthen the 1D->2D->3D claim.
 
 HOW TO RUN (drivers verified in round-10 review):
   cd ~/evolab/genesis

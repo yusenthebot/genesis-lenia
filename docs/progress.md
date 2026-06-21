@@ -476,9 +476,24 @@ Round 20 is a natural MILESTONE (the mind's core loop is complete). Options: a r
 pass; or UNIFY (one creature with body+memory+prediction+planning in the ecology); or open-endedness (a ZOO
 of evolved minds + diversity metric). Leaning toward review+capstone, then unification.
 
+## Round 20 — MILESTONE REVIEW + capstone (DONE, committed)
+
+Adversarial re-verification of R18-19 + a capstone README pass at the natural milestone (mind's core loop complete).
+- R19 (planning): reproduces EXACTLY — pursuit 54 vs planner 24; evolved recurrent 0.45 vs feedforward 0.05.
+- R18 (embodied memory): the review CAUGHT AN OVERCLAIM. A quick under-trained probe FLIPPED the result
+  (recurrent 0.2 < feedforward 1.0). A careful re-check (4 ES seeds, committed settings, 12 unseen eval seeds)
+  gives recurrent mean 1.90 vs feedforward 1.21, recurrent wins 3/4 seeds -> the effect is REAL and directionally
+  robust but MODERATE and seed-sensitive, not the clean "2x / memoryless collects nothing" the single figure
+  implied. FIXED: montage caption + README now state ~1.9 vs ~1.2 (3/4 seeds) with an explicit seed caveat.
+  This is exactly what a review is for: looking harder than the first run did.
+- Capstone README: rewrote the intro to tell the whole arc (emergence -> ... -> planning) + an HONEST-SCOPE box
+  (focused demonstrations not one organism; small-scale numpy-only; 3D creature still an open negative). Montage
+  suptitle updated to the full arc. 69 tests green; all README images resolve; honest negatives intact.
+VERDICT: the arc holds; one optimistic headline (R18) corrected to honest numbers. Build resumes at UNIFICATION.
+
 ## Frontier (durable ambition horizon — what ORIENT is pulled up by)
 
-- CURRENT CEILING (after 19 rounds + TWO clean reviews): the mind's core loop is COMPLETE — a continuous-CA world with ONE engine across 1D/2D/3D; an
+- CURRENT CEILING (after 20 rounds + THREE reviews): the mind's core loop is COMPLETE — a continuous-CA world with ONE engine across 1D/2D/3D; an
   embodied creature that emerges, moves, senses+forages (agency), forages-to-survive (metabolism);
   a social ECOLOGY with stabilizing selection and EVOLUTION RUNNING (discovers the optimum); a
   two-species predator-prey world (top-down regulation); a creature that LEARNS within its life and
@@ -512,3 +527,10 @@ of evolved minds + diversity metric). Leaning toward review+capstone, then unifi
   memory + prediction + planning in the ecology) and TELLING (a capstone README that makes the whole arc legible),
   not another isolated capability. Adding verbs is done; integrating them into one mind, and proving the integrated
   whole, is the remaining frontier — plus the long-parked stable 3D creature for anyone returning to the substrate.
+- AMBITION CRITIC (after round 20 — review + capstone): TELLING is now done (whole-arc README + honest-scope box),
+  and the review honestly corrected R18's headline (real but moderate/seed-sensitive, not 2x). What remains is the
+  single most valuable next step: UNIFICATION — stop demonstrating verbs in isolation and build ONE creature that
+  must use body + memory + prediction + planning together to survive a task none of them alone solves. That is the
+  honest answer to "it's not one organism doing it all," and it is the natural climax of the arc. Second: open-ended
+  novelty (a ZOO + diversity metric) to show the world keeps GENERATING, not just converging. The 3D creature stays
+  parked (would need a heavier specialised search). Build, don't add: integrate and prove the whole.

@@ -19,6 +19,20 @@ runs in any dimension — `len(shape)` **is** the world's dimensionality. Nothin
 the engine is hand-placed: persistent structure, locomotion, evolution and agency all
 *emerge* from local rules and selection.
 
+From that one substrate, ~20 rounds grow a world and, inside it, a mind: structure
+**emerges**, a creature learns to **move** and **forage**, a population **evolves**, a
+second species **hunts**, a brain **learns** within a life, then comes to **remember**,
+**predict**, and **act on its foresight** — closing the loop *perceive → model → predict →
+act-to-achieve*. Each capability is shown with a runnable driver, a figure, and a metric.
+
+> **Honest scope.** These are *focused demonstrations*, not one organism doing everything at
+> once: the deep-mind results (memory, prediction, planning) are isolated in the settings that
+> make them measurable, embodied in the Lenia creature where that's the point (agency, survival,
+> embodied memory). It is small-scale and CPU/`numpy`-only — not competitive with engineered
+> agents. And the **3D *creature*** (a mobile 3D analogue of the 2D glider) is an open negative;
+> what 3D delivers here is robust self-*organisation*. Every round's honest negatives are kept,
+> not hidden.
+
 ## The arc so far
 
 | # | Frontier | Status |
@@ -319,9 +333,15 @@ coast through the dark:
 ![embodied memory: memory pays under a flashing signal](outputs/round18_embodied_memory.png)
 
 A **steady** signal lets even a memoryless forager thrive (**3.4** food/episode). **Flashing
-crushes it** (→ **1.0**, a 70% collapse). **Memory roughly doubles it** (→ **1.9**), recovering
-much of the loss. So memory isn't a free upgrade — it **pays exactly when the world hides
-information across time**, and the body + the deep brain are now *one creature*.
+hurts it** (the figure's seeds: → **1.0**). **Memory recovers much of that** (→ **1.9**). So
+memory isn't a free upgrade — it **pays when the world hides information across time**, and the
+body + the deep brain are now *one creature*.
+
+> Honest caveat (verified in the round-20 review): this is the **most seed-sensitive** result in
+> the project. Averaged over 4 independent evolution seeds the recurrent forager collects **~1.9**
+> vs **~1.2** for the memoryless one and wins **3 of 4** seeds — a real, moderate effect, *not* the
+> clean 2× the single figure suggests; an under-trained or unlucky seed can erase it. The direction
+> (memory helps under a flashing signal) is robust; the magnitude is modest.
 
 ![the creature coasts to food through the dark](outputs/round18_embodied_memory.gif)
 
